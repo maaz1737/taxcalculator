@@ -64,10 +64,14 @@
      * Error helpers
      * =========================== */
     function showError(msg) {
-        $timeError.text(msg || "Something went wrong.").show();
+        $timeError.removeClass("-translate-y-full opacity-0");
+        $timeError.text(msg);
+        setTimeout(() => {
+            $timeError.addClass("-translate-y-full opacity-0");
+        }, 2000);
     }
     function clearError() {
-        $timeError.hide().text("");
+        // $timeError.hide().text("");
     }
 
     /* ===========================
@@ -159,7 +163,6 @@
         }
     }
 
-    // Debounce
     const debounce = (fn, ms = 150) => {
         let t;
         return (...a) => {
@@ -168,7 +171,6 @@
         };
     };
 
-    // Input listeners
     ["input", "change"].forEach((evt) => {
         if (evt === "input") $timeValue.on(evt, debounce(update, 150));
         else $timeValue.on(evt, update);
@@ -176,7 +178,6 @@
         $timeTo.on(evt, update);
     });
 
-    // Init converter
     update();
 
     /* ===========================
@@ -210,33 +211,18 @@
             $btnSaveTime.html("Saved ✓");
             setTimeout(() => $btnSaveTime.html(original), 1500);
         } catch (e) {
-            if (e.status === 419) {
-                console.log(
-                    "Unauthenticated (419):",
-                    e.data?.message || e.message
-                );
-                showError("you are not authenticated");
-            } else if (e.status === 401) {
-                console.log(
-                    "Unauthorized (401):",
-                    e.data?.message || e.message
-                );
-                showError("you are not authorized");
-                // window.location.href = '/login';
-            } else {
-                console.error(
-                    "Save failed:",
-                    e.status,
-                    e.message,
-                    e.data || e.responseText
-                );
-            }
+            showError(e.data?.message);
+
             $btnSaveTime.html("Error ✗");
+
+            setTimeout(() => {
+                $btnSaveTime.html(` <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 7a2 2 0 0 1 2-2h9l5 5v7a2 2 0 0 1-2 2h-2v-6H7v6H5a2 2 0 0 1-2-2V7Z" />
+                    <path d="M9 5h4v4H9z" />
+                </svg> Save`);
+            }, 2000);
         } finally {
             $btnSaveTime.prop("disabled", false);
-            setTimeout(() => {
-                $timeError.hide();
-            }, 3000);
         }
     }
     $btnSaveTime.on("click", saveTimeConversion);

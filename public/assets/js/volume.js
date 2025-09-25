@@ -53,11 +53,14 @@
      * Error helpers
      * =========================== */
     function showError(msg) {
-        $elError.text(msg || "Something went wrong.").show();
+        console.log(msg);
+        $elError.removeClass("-translate-y-full opacity-0");
+        $elError.text(msg);
+        setTimeout(() => {
+            $elError.addClass("-translate-y-full opacity-0");
+        }, 2000);
     }
-    function clearError() {
-        $elError.hide().text("");
-    }
+    function clearError() {}
 
     /* ===========================
      * HTTP helpers
@@ -204,7 +207,7 @@
             $btnSaveVolume.html("Error ✗");
             setTimeout(() => {
                 $btnSaveVolume.html(original);
-                window.location.href = "/login";
+                // window.location.href = "/login";
             }, 1000);
         } finally {
             $btnSaveVolume.prop("disabled", false);

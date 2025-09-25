@@ -93,6 +93,8 @@
                 offsetX = e.clientX - icon.getBoundingClientRect().left;
                 offsetY = e.clientY - icon.getBoundingClientRect().top;
                 icon.style.transition = "none"; // stop smoothness while dragging
+
+
             });
 
             document.addEventListener("mousemove", (e) => {

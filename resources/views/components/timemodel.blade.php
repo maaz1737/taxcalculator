@@ -6,12 +6,17 @@
             <button id="closePopupTimeConverter" class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900" aria-label="Close">✕</button>
         </div>
 
+        <div class="relative z-[99999999999]">
+            <div id="time_error"
+                class="absolute top-2 left-12 w-[40%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+            </div>
+        </div>
         <!-- Body -->
         <div class="p-6 sm:p-8 pb-24">
-            <!-- Error Message (matched red palette) -->
-            <div id="time_error" class="error hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
 
-            <!-- Converter Form (matched card + borders) -->
+            <div id="" class="error hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
+
             <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg border border-slate-200/70 dark:border-slate-700/60">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div class="col-span-1">

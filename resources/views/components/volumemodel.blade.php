@@ -1,15 +1,22 @@
 <div id="popupVolumeConverter" class="scroll-skin fixed inset-0 z-[60] hidden bg-black/50 backdrop-blur-sm flex items-center justify-center" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="volumeConverterTitle">
+
     <div class="scroll-area popup-content w-[min(960px,95vw)] max-h-[85vh] overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900 relative">
         <!-- Sticky header -->
         <div class="sticky top-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur flex items-center justify-between px-5 py-3 rounded-t-2xl border-b border-slate-200 dark:border-slate-700" style="z-index:1;">
             <h2 id="volumeConverterTitle" class="text-xl font-semibold text-gray-900 dark:text-white">Volume Converter</h2>
             <button id="closePopupVolumeConverter" class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900" aria-label="Close">✕</button>
         </div>
+        <div class="relative z-[99999999999]">
+            <div id="volume_error"
+                class="absolute top-2 left-12 w-[50%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+                ddd
+            </div>
+        </div>
 
         <!-- Body -->
         <div class="p-6 sm:p-8 pb-24">
             <!-- Error Message -->
-            <div id="volume_error" class="error hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
 
             <!-- Converter Form -->
             <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg border border-slate-200/70 dark:border-slate-700/60">
