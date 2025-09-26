@@ -95,6 +95,9 @@ class DepreciationService
                 break;
         }
 
+
+
+
         return [
             'inputs'      => [
                 'cost' => $cost,

@@ -227,7 +227,6 @@
             dataType: "json",
             success: function(res) {
                 render(res.data.data);
-                console.log(res.data);
 
                 pagination(res.data);
             },
