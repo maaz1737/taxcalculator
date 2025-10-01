@@ -177,8 +177,8 @@
             </div>
 
             <!-- RIGHT -->
-            <aside class="card">
-                <div class="flex items-center justify-between mb-2">
+            <aside class="scroll-skin card">
+                <div class=" flex items-center justify-between mb-2">
                     <h3 class="font-semibold">Recent</h3>
                     <select id="recentType" class="form-control bmiselect" style="max-width: 160px;">
                         <option value="">All</option>
@@ -190,7 +190,7 @@
                         <option value="macros">Macros</option>
                     </select>
                 </div>
-                <ul id="recentList" class="space-y-2 text-sm mt-1" style="overflow: auto;height:250px;"></ul>
+                <ul id="recentList" class="scroll-area space-y-2 text-sm mt-1" style="overflow: auto;height:250px;"></ul>
             </aside>
         </div>
     </div>

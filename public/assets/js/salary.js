@@ -3,6 +3,14 @@ const token =
     $('#salary-form input[name="_token"]').val();
 let error = $("#errorSalary");
 
+function money(n) {
+    const num = Number(n ?? 0);
+    return num.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+}
+
 function errorSalary(msg) {
     error.removeClass("-translate-y-full opacity-0");
     error.text(msg);
@@ -140,16 +148,16 @@ $(document).ready(function () {
     let tax_out = $("#tax_out");
 
     function showData(data) {
-        p_hourly.text(Number(data.hourly).toFixed(2));
-        p_weekly.text(Number(data.weekly).toFixed(2));
-        p_biweekly.text(Number(data.biweekly).toFixed(2));
-        p_semimonthly.text(Number(data.semimonthly).toFixed(2));
-        p_monthly.text(Number(data.monthly).toFixed(2));
-        p_annual.text(Number(data.after_tax).toFixed(2));
-        levy_out.text(Number(data.medicare_levy).toFixed(2));
-        tax_out.text(Number(data.tax).toFixed(2));
+        p_hourly.text("$ " + Number(data.hourly).toFixed(2));
+        p_weekly.text("$ " + Number(data.weekly).toFixed(2));
+        p_biweekly.text("$ " + Number(data.biweekly).toFixed(2));
+        p_semimonthly.text("$ " + Number(data.semimonthly).toFixed(2));
+        p_monthly.text("$ " + Number(data.monthly).toFixed(2));
+        p_annual.text("$ " + Number(data.after_tax).toFixed(2));
+        levy_out.text("$ " + Number(data.medicare_levy).toFixed(2));
+        tax_out.text("$ " + Number(data.tax).toFixed(2));
         tax_total.text(
-            (Number(data.tax) + Number(data.medicare_levy)).toFixed(2)
+            "$ " + (Number(data.tax) + Number(data.medicare_levy)).toFixed(2)
         );
     }
 });
@@ -214,14 +222,6 @@ $(function () {
         });
     }
 
-    // Helpers
-    function money(n) {
-        const num = Number(n ?? 0);
-        return num.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        });
-    }
     function dt(iso) {
         const d = new Date(iso);
         return isNaN(d) ? "—" : d.toLocaleString(); // you can localize further if you want
@@ -243,21 +243,46 @@ $(function () {
 
         // li container
         const $li = $(`
-  <li class="py-1">
-    <div class="flex items-center text-sm text-gray-900 dark:text-white">
-      <span class="font-medium">$${gross}</span>
-      <span class="mx-1 text-gray-500">→</span>
-      <span class="font-medium">$${net}</span>
-      <span class="ml-2 text-xs text-gray-500 dark:text-gray-400">${created}</span>
-      <span class="ml-auto text-xs text-gray-500 dark:text-gray-400">#${
-          row.id ?? "—"
-      }</span>
+<li class="group rounded-xl border border-slate-200/60 dark:border-slate-800/60 bg-white/60 dark:bg-slate-900/30 backdrop-blur p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition">
+  <!-- Row 1 -->
+  <div class="flex items-center gap-2 text-sm text-slate-900 dark:text-slate-100">
+    <div class="inline-flex items-center gap-1.5 font-medium font-mono tabular-nums">
+      <span>$${gross}</span>
+      <span class="text-slate-500 dark:text-slate-400" aria-hidden="true">→</span>
+      <span>$${net}</span>
     </div>
-    <div class="mt-0.5 flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
-      <span>Hr $${whr}</span><span>Wk $${wwk}</span><span>Mo $${wmo}</span>
-      <span class="ml-auto">Tax $${tax} · Med $${med}</span>
-    </div>
-  </li>
+
+    <span class="ml-2 text-xs text-slate-500 dark:text-slate-400">
+      ${created}
+    </span>
+
+    <span class="ml-auto inline-flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
+      <span class="hidden sm:inline">ID</span>
+      <span class="inline-flex items-center rounded-full px-1.5 py-0.5 border border-slate-200 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/60 font-mono tabular-nums">
+        #${row.id ?? "—"}
+      </span>
+    </span>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="mt-1.5 flex items-center gap-3 text-[13px] text-slate-600 dark:text-slate-400 font-mono tabular-nums">
+    <span>Hr&nbsp;$${whr}</span>
+    <span class="text-slate-400">•</span>
+    <span>Wk&nbsp;$${wwk}</span>
+    <span class="text-slate-400">•</span>
+    <span>Mo&nbsp;$${wmo}</span>
+
+    <span class="ml-auto inline-flex items-center gap-2">
+      <span class="inline-flex items-center rounded-md px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-[11px]">
+        Tax&nbsp;$${tax}
+      </span>
+      <span class="inline-flex items-center rounded-md px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-[11px]">
+        Med&nbsp;$${med}
+      </span>
+    </span>
+  </div>
+</li>
+
 `);
 
         // (Optional) click to restore this history row into the form

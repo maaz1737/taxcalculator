@@ -14,7 +14,7 @@ class IncomeTaxRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'income'          => ['required', 'numeric'],
+            'income' => ['required', 'numeric', 'min:2'],
         ];
     }
 }

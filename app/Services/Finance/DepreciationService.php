@@ -12,6 +12,7 @@ class DepreciationService
     public function schedule(array $in): array
     {
 
+
         $cost    = (float) $in['cost'];
         $salvage = (float) $in['salvage_value'];
         $life    = (int)   $in['life_years'];

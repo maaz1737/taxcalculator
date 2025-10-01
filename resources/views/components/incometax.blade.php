@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div id="historySheetTax" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+            <div id="historySheetTax" class="scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900">
                     <!-- Sheet header -->
                     <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-slate-700">
@@ -132,7 +132,7 @@
                         <button id="closeHistoryTax" class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" aria-label="Close history">✕</button>
                     </div>
                     <!-- Sheet body -->
-                    <div class="p-5 overflow-y-auto max-h-[70vh]">
+                    <div class="scroll-area p-5 overflow-y-auto max-h-[70vh]">
                         <ol id="historyListTax" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
                         <div id="forbuttonssss" class="my-3"></div>
                     </div>
@@ -145,3 +145,4 @@
         </div>
 
     </div>
+

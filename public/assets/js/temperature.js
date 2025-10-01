@@ -47,12 +47,32 @@
     const csrf = () => $('meta[name="csrf-token"]').attr("content");
 
     function showError(msg) {
-        $err.text(msg || "Something went wrong.").show();
+        console.log(msg);
+        $err.removeClass("-translate-y-full opacity-0 ");
+        $err.text(msg);
+        setTimeout(() => {
+            $err.addClass("-translate-y-full opacity-0 ");
+        }, 2000);
     }
-    function clearError() {
-        $err.hide().text("");
-    }
+    function clearError() {}
 
+    function showSuccessMessage(msg) {
+        $err.removeClass(
+            "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+        );
+        $err.addClass(
+            "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+        );
+        $err.text(msg);
+        setTimeout(() => {
+            $err.addClass(
+                "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+            );
+            $err.removeClass(
+                "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+            );
+        }, 2000);
+    }
     // Ajax GET
     function fetchJson(url, params) {
         return $.ajax({
@@ -118,12 +138,15 @@
         $btnSave.html("Saving…");
 
         postJson("/lenghtsave", { from, to, value, category, resultValue })
-            .done(() => {
+            .done((res) => {
+                // console.log(res);
+                showSuccessMessage(res.message);
                 $btnSave.html("Saved ✓");
                 setTimeout(() => $btnSave.html(original), 1200);
             })
             .fail((xhr) => {
                 console.log(xhr);
+                showError(xhr.responseJSON.message);
                 $btnSave.html("Error ✗");
                 setTimeout(() => $btnSave.html(original), 1000);
             })
@@ -161,7 +184,6 @@
         $pages.append($frag);
     }
 
-    // Prev/Next + GoTo state
     function setPagerUI() {
         $prev.prop("disabled", temPage <= 1);
         $next.prop("disabled", temPage >= temLast);
@@ -214,7 +236,7 @@
 
         fetchJson("/lenghts", {
             category: "temperature",
-            per_page: 4,
+            per_page: 10,
             page,
             sort: "created_at",
             order: "desc",
@@ -234,7 +256,7 @@
                 $list.empty();
                 $.each(items, function (_, r) {
                     $list.append(`
-          <li class="flex items-start gap-3">
+          <li class="flex items-start gap-4">
             <span class="mt-1 h-2 w-2 rounded-full bg-slate-400 dark:bg-slate-600"></span>
             <div>
               <div class="font-medium text-gray-900 dark:text-gray-200">
@@ -242,14 +264,16 @@
                     units[r.from_unit] || r.from_unit
                 } → ${units[r.to_unit] || r.to_unit}
               </div>
-              <div class="text-xs text-gray-500 dark:text-gray-400">
-                value: ${Number(r.value).toFixed(
+              <div class="text-xs text-gray-500 dark:text-gray-400 py-1">
+                <span class='w-[25%]'> value: ${Number(r.value).toFixed(
                     2
-                )} ${units[r.from_unit] || r.from_unit} •
-                Result: ${Number(r.result).toFixed(
-                    2
-                )} ${units[r.to_unit] || r.to_unit} •
-                ${r.category} • ${new Date(r.created_at).toLocaleString()}
+                )} ${units[r.from_unit] || r.from_unit} </span> •
+               <span class='mx-2 w-[25%]'>  Result : ${Number(r.result).toFixed(
+                   2
+               )} ${units[r.to_unit] || r.to_unit} </span> •
+                <span class='mx-2 w-[25%]'> ${
+                    r.category
+                }  </span> • <span class='mx-2 w-[25%]'> ${new Date(r.created_at).toLocaleString()} </span>
               </div>
             </div>
           </li>

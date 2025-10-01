@@ -1,120 +1,133 @@
 <div id="popupTimeConverter" class="scroll-skin fixed inset-0 z-[60] hidden bg-black/50 backdrop-blur-sm flex items-center justify-center" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="timeConverterTitle">
-    <div class="scroll-area popup-content w-[min(960px,95vw)] max-h-[85vh] overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900 relative">
-        <!-- Sticky header (same style as weight) -->
-        <div class="sticky top-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur flex items-center justify-between px-5 py-3 rounded-t-2xl border-b border-slate-200 dark:border-slate-700" style="z-index:1;">
-            <h2 id="timeConverterTitle" class="text-xl font-semibold text-gray-900 dark:text-white">Time Converter</h2>
-            <button id="closePopupTimeConverter" class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900" aria-label="Close">✕</button>
-        </div>
 
-        <div class="relative z-[99999999999]">
+    <div>
+        <div class=" relative z-[99999999999]">
             <div id="time_error"
-                class="absolute top-2 left-12 w-[40%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                class=" absolute top-[80px] left-[7%] w-[50%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
-            </div>
-        </div>
-        <!-- Body -->
-        <div class="p-6 sm:p-8 pb-24">
-
-            <div id="" class="error hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
-
-            <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg border border-slate-200/70 dark:border-slate-700/60">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">Value</label>
-                        <input id="time_value" type="number" step="any" value="1" class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">From</label>
-                        <select id="time_from" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
-                            <option value="ns">Nanosecond (ns)</option>
-                            <option value="us">Microsecond (µs)</option>
-                            <option value="ms">Millisecond (ms)</option>
-                            <option value="s" selected>Second (s)</option>
-                            <option value="min">Minute (min)</option>
-                            <option value="h">Hour (h)</option>
-                            <option value="day">Day</option>
-                            <option value="week">Week</option>
-                            <option value="mo">Month (avg)</option>
-                            <option value="yr">Year (avg)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">To</label>
-                        <select id="time_to" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
-                            <option value="ns">Nanosecond (ns)</option>
-                            <option value="us">Microsecond (µs)</option>
-                            <option value="ms">Millisecond (ms)</option>
-                            <option value="s">Second (s)</option>
-                            <option value="min" selected>Minute (min)</option>
-                            <option value="h">Hour (h)</option>
-                            <option value="day">Day</option>
-                            <option value="week">Week</option>
-                            <option value="mo">Month (avg)</option>
-                            <option value="yr">Year (avg)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Result Display (matched styles) -->
-            <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/70 dark:border-slate-700/60">
-                <div class="text-sm text-gray-600 dark:text-gray-300">Result</div>
-                <div class="text-2xl font-semibold text-gray-900 dark:text-white" id="time_result">—</div>
-                <div class="text-sm text-gray-400 dark:text-gray-500" id="time_toUnit">min</div>
-            </div>
-
-            <!-- Conversion Table (matched table borders/dividers) -->
-            <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/70 dark:border-slate-700/60">
-                <div class="font-semibold text-sm mb-2 text-gray-800 dark:text-gray-200">Quick Conversion Table</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">Based on current input.</div>
-                <div class="overflow-x-auto mt-4">
-                    <table class="min-w-full">
-                        <thead>
-                            <tr class="border-b border-slate-200 dark:border-slate-800">
-                                <th class="text-left text-sm font-medium text-gray-800 dark:text-gray-200">Unit</th>
-                                <th class="text-left text-sm font-medium text-gray-800 dark:text-gray-200">Value</th>
-                            </tr>
-                        </thead>
-                        <tbody id="time_tableBody" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Note card (kept subtle) -->
-            <div class="card bg-white/60 dark:bg-gray-900/50 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/50 dark:border-slate-700/50">
-                <div class="text-sm text-gray-700 dark:text-gray-300">
-                    <strong>Note:</strong> “mo” and “yr” use average Gregorian lengths (not calendar-specific).
-                </div>
+                ddd
             </div>
         </div>
 
-        <!-- Sticky bottom action bar (same as weight) -->
-        <div class="sticky bottom-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur border-t border-slate-200 dark:border-slate-700 px-5 py-3 rounded-b-2xl flex items-center justify-end gap-2">
 
-            @auth
-            <button id="btnOpenTimeHistory" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">
-                <!-- clock icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm.75 5a.75.75 0 0 0-1.5 0v5c0 .199.079.389.22.53l3 3a.75.75 0 0 0 1.06-1.06l-2.78-2.78V7Z" />
-                </svg>
-                History
-            </button>
+        <div class="scroll-area popup-content w-[min(960px,95vw)] max-h-[85vh] overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900 relative">
+            <!-- Sticky header (same style as weight) -->
+            <div class="sticky top-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur flex items-center justify-between px-5 py-3 rounded-t-2xl border-b border-slate-200 dark:border-slate-700" style="z-index:1;">
+                <h2 id="timeConverterTitle" class="text-xl font-semibold text-gray-900 dark:text-white">Time Converter</h2>
+                <button id="closePopupTimeConverter" class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900" aria-label="Close">✕</button>
+            </div>
 
-            @endauth
+            <!-- <div class="relative z-[99999999999]">
+                <div id=""
+                    class="fixed top-18 left-[28%] w-[30%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+                    ddd
+                </div>
+            </div> -->
+            <!-- Body -->
+            <div class="p-6 sm:p-8 pb-24">
 
-            <button id="btnSaveTime" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
-                <!-- disk icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 7a2 2 0 0 1 2-2h9l5 5v7a2 2 0 0 1-2 2h-2v-6H7v6H5a2 2 0 0 1-2-2V7Z" />
-                    <path d="M9 5h4v4H9z" />
-                </svg>
-                Save
-            </button>
+                <div id="" class="error hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
+
+                <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg border border-slate-200/70 dark:border-slate-700/60">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">Value</label>
+                            <input id="time_value" type="number" step="any" value="1" class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">From</label>
+                            <select id="time_from" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                <option value="ns">Nanosecond (ns)</option>
+                                <option value="us">Microsecond (µs)</option>
+                                <option value="ms">Millisecond (ms)</option>
+                                <option value="s" selected>Second (s)</option>
+                                <option value="min">Minute (min)</option>
+                                <option value="h">Hour (h)</option>
+                                <option value="day">Day</option>
+                                <option value="week">Week</option>
+                                <option value="mo">Month (avg)</option>
+                                <option value="yr">Year (avg)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-200">To</label>
+                            <select id="time_to" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                <option value="ns">Nanosecond (ns)</option>
+                                <option value="us">Microsecond (µs)</option>
+                                <option value="ms">Millisecond (ms)</option>
+                                <option value="s">Second (s)</option>
+                                <option value="min" selected>Minute (min)</option>
+                                <option value="h">Hour (h)</option>
+                                <option value="day">Day</option>
+                                <option value="week">Week</option>
+                                <option value="mo">Month (avg)</option>
+                                <option value="yr">Year (avg)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Display (matched styles) -->
+                <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/70 dark:border-slate-700/60">
+                    <div class="text-sm text-gray-600 dark:text-gray-300">Result</div>
+                    <div class="text-2xl font-semibold text-gray-900 dark:text-white" id="time_result">—</div>
+                    <div class="text-sm text-gray-400 dark:text-gray-500" id="time_toUnit">min</div>
+                </div>
+
+                <!-- Conversion Table (matched table borders/dividers) -->
+                <div class="card bg-white/70 dark:bg-gray-900/60 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/70 dark:border-slate-700/60">
+                    <div class="font-semibold text-sm mb-2 text-gray-800 dark:text-gray-200">Quick Conversion Table</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Based on current input.</div>
+                    <div class="overflow-x-auto mt-4">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-slate-800">
+                                    <th class="text-left text-sm font-medium text-gray-800 dark:text-gray-200">Unit</th>
+                                    <th class="text-left text-sm font-medium text-gray-800 dark:text-gray-200">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="time_tableBody" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Note card (kept subtle) -->
+                <div class="card bg-white/60 dark:bg-gray-900/50 backdrop-blur p-4 rounded-lg mt-4 border border-slate-200/50 dark:border-slate-700/50">
+                    <div class="text-sm text-gray-700 dark:text-gray-300">
+                        <strong>Note:</strong> “mo” and “yr” use average Gregorian lengths (not calendar-specific).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky bottom action bar (same as weight) -->
+            <div class="sticky bottom-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur border-t border-slate-200 dark:border-slate-700 px-5 py-3 rounded-b-2xl flex items-center justify-end gap-2">
+
+                @auth
+                <button id="btnOpenTimeHistory" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">
+                    <!-- clock icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm.75 5a.75.75 0 0 0-1.5 0v5c0 .199.079.389.22.53l3 3a.75.75 0 0 0 1.06-1.06l-2.78-2.78V7Z" />
+                    </svg>
+                    History
+                </button>
+
+                @endauth
+
+                <button id="btnSaveTime" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                    <!-- disk icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 7a2 2 0 0 1 2-2h9l5 5v7a2 2 0 0 1-2 2h-2v-6H7v6H5a2 2 0 0 1-2-2V7Z" />
+                        <path d="M9 5h4v4H9z" />
+                    </svg>
+                    Save
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Bottom Sheet (History for time) -->
-    <div id="timeHistorySheet" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+    <div id="timeHistorySheet" class="scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
         <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900">
             <!-- Sheet header -->
             <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-slate-700">
@@ -122,8 +135,10 @@
                 <button id="closeTimeHistory" class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" aria-label="Close history">✕</button>
             </div>
             <!-- Sheet body -->
-            <div class="p-5 overflow-y-auto max-h-[70vh]">
+            <div class="scroll-area p-5 overflow-y-auto max-h-[70vh]">
                 <ol id="timeHistoryList" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
+                <div class="my-3" id="time_pagination"></div>
+
             </div>
             <!-- Sheet footer -->
             <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-700 flex justify-end">
@@ -132,4 +147,3 @@
         </div>
     </div>
 </div>
-

@@ -10,6 +10,7 @@ class MortgageService
         $years   = (int)   $in['years'];
         $apr     = (float) $in['apr_percent'];
 
+
         // Down payment
         $down = 0.0;
         if (!empty($in['down_amount']))  $down = (float) $in['down_amount'];
@@ -19,7 +20,7 @@ class MortgageService
 
         // Base amortization (P&I)
         $sched = Amortization::schedule($loan, $apr, $years, $in['start_date'] ?? null);
-        $M = $sched['payment']; // monthly P&I
+        $M = $sched['payment'];
 
         // Escrow pieces (monthly)
         $taxMonthly = isset($in['annual_property_tax'])   ? ((float)$in['annual_property_tax']   / 12.0) : 0.0;

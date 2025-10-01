@@ -18,13 +18,17 @@
               </div>
           </div>
 
+          <div class="relative z-[99999999999]">
+              <div id="errorDepreciation"
+                  class="absolute top-2 left-12 w-[40%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+                  ddd
+              </div>
+          </div>
+
           <!-- Body (single scroll container) -->
           <div class="px-6 sm:px-8 py-6 overflow-y-auto max-h-[calc(85vh-48px-56px)] scroll-area">
               <div class="container">
-                  <!-- Error -->
-                  <div id="errorDepreciation" role="alert"
-                      class="hidden text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2 mb-4"></div>
-
                   <!-- Form -->
                   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <!-- Inputs -->
@@ -153,6 +157,7 @@
               </div>
               <div class="p-5 overflow-y-auto max-h-[70vh] scroll-area">
                   <ol id="historyListDep" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
+                  <div class="my-3" id="depreciation_pagination"></div>
               </div>
               <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-700 flex justify-end">
                   <button id="closeHistoryDep2"

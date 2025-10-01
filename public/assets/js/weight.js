@@ -39,10 +39,31 @@
     const $SaveWeight = $("#btnSaveWeight");
 
     function showError(msg) {
-        $elError.text(msg || "Something went wrong cc.").show();
+        console.log(msg);
+        $elError.removeClass("-translate-y-full opacity-0");
+        $elError.text(msg);
+        setTimeout(() => {
+            $elError.addClass("-translate-y-full opacity-0");
+        }, 2000);
     }
-    function clearError() {
-        $elError.hide().text("");
+    function clearError() {}
+
+    function showSuccessMessage(msg) {
+        $elError.removeClass(
+            "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+        );
+        $elError.addClass(
+            "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+        );
+        $elError.text(msg);
+        setTimeout(() => {
+            $elError.addClass(
+                "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+            );
+            $elError.removeClass(
+                "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+            );
+        }, 2000);
     }
 
     // Simple GET with query (used for /convert and /convert/table)
@@ -204,6 +225,7 @@
                 resultValue,
             });
             $SaveWeight.html("Saved ✓");
+            showSuccessMessage("Conversion Saved Successfully.");
             setTimeout(() => $SaveWeight.html(original), 1500);
         } catch (e) {
             console.log(e);
@@ -211,7 +233,7 @@
             $SaveWeight.html("Error ✗");
             setTimeout(() => {
                 $SaveWeight.html(original);
-            }, 4000);
+            }, 3000);
         } finally {
             $SaveWeight.prop("disabled", false);
         }
@@ -269,7 +291,7 @@
         try {
             const res = await getJson("/lenghts", {
                 category: "weight",
-                per_page: 5,
+                per_page: 10,
                 page,
                 sort: "created_at",
                 order: "desc",
@@ -294,6 +316,21 @@
             $("#weightPagination").html("");
             return;
         }
+        let change_units = {
+            ug: "Microgrom",
+            mg: "Miligram",
+            g: "Gram",
+            kg: "Kilogram",
+            t: "Metric Tonne",
+            ct: "Carat",
+            oz: "Ounce",
+            lb: "Pounds",
+            st: "Stone",
+            ton_us: "US ton",
+            ton_uk: "Uk Ton",
+            gr: "Grain",
+            dr: "Dram",
+        };
 
         $.each(items, function (_, r) {
             const $li = $(`
@@ -301,7 +338,7 @@
           <span class="mt-1 h-2 w-2 rounded-full bg-slate-400 dark:bg-slate-600"></span>
           <div>
             <div class="font-medium text-gray-900 dark:text-gray-200">
-              ${r.from_unit} → ${r.to_unit}
+              ${change_units[r.from_unit]} → ${change_units[r.to_unit]}
             </div>
             <div class="text-xs text-gray-500 dark:text-gray-400">
               value: ${Number(r.value).toFixed(2)} • 

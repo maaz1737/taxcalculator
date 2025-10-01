@@ -88,19 +88,13 @@
                         <button type="submit"
                             id="save-rent"
                             class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
-                            Calculate
+                            Save
                         </button>
-                        <span id="saving" class="text-sm ml-3 hidden">Calculating…</span>
-                        <div id="error" class="hidden text-sm text-red-700 dark:text-red-300 mt-2"></div>
-                        <!-- <button id="openHistoryRent"
-                            class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
-                                    text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
-                            History
-                        </button> -->
+                        <span id="saving" class="text-sm ml-3 hidden">Saving...</span>
+
                     </form>
                 </div>
 
-                <!-- Right Column: Results -->
                 <div class="rounded-xl border border-slate-200/70 dark:border-slate-700/60 bg-white/70 dark:bg-gray-900/60 backdrop-blur p-5">
                     <h2 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Your Result</h2>
                     <div id="headline" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">—</div>

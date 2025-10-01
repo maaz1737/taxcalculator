@@ -21,6 +21,7 @@ class Amortization
         ?string $startDate = null,
         int $ppY = 12
     ): array {
+
         $n = $years * $ppY;
         $r = ($aprPercent / 100) / $ppY;
         $payment = self::pmt($principal, $aprPercent, $years, $ppY);

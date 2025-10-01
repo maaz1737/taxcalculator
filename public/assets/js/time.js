@@ -70,10 +70,25 @@
             $timeError.addClass("-translate-y-full opacity-0");
         }, 2000);
     }
-    function clearError() {
-        // $timeError.hide().text("");
-    }
+    function clearError() {}
 
+    function showSuccessMessage(msg) {
+        $timeError.removeClass(
+            "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+        );
+        $timeError.addClass(
+            "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+        );
+        $timeError.text(msg);
+        setTimeout(() => {
+            $timeError.addClass(
+                "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+            );
+            $timeError.removeClass(
+                "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+            );
+        }, 2000);
+    }
     /* ===========================
      * HTTP helpers
      * =========================== */
@@ -104,7 +119,7 @@
         }).then(
             function (json) {
                 // keep original logic: show success via showError box
-                showError("data saved successfully");
+                showSuccessMessage("conversion saved successfully");
                 return json;
             },
             function (xhr) {
@@ -230,11 +245,10 @@
     /* ===========================
      * History: fetch + render
      * =========================== */
-    function loadTimeHistory(page = 1) {
-        fetchJson("/lenghts", {
+    function loadTimeHistory(url) {
+        fetchJson(url, {
             category: "time",
             per_page: 10,
-            page,
             sort: "created_at",
             order: "desc",
         })
@@ -244,6 +258,7 @@
                     : Array.isArray(res)
                     ? res
                     : [];
+                pagination(res.links);
                 $timeHistoryList.empty();
 
                 const timeKeyObj = {
@@ -293,8 +308,58 @@
     // Open/Close history events
     $btnOpenTimeHistory.on("click", function () {
         openTimeHistory();
-        loadTimeHistory(1);
+        loadTimeHistory("/lenghts");
     });
     $closeTimeHistory.on("click", closeTimeHis);
     $closeTimeHistory2.on("click", closeTimeHis);
+
+    function pagination(links) {
+        console.log(links);
+
+        $time_pagination = $("#time_pagination");
+
+        $time_pagination.empty();
+
+        if (links.length <= 3) {
+            return 0;
+        }
+
+        links.forEach((link, i) => {
+            let label = link.label ?? String(i + 1);
+            if (i === 0) label = "«";
+            else if (i === links.length - 1) label = "»";
+            else {
+                label = $("<span>").html(label).text().trim();
+            }
+
+            const $a = $("<a>", {
+                text: label,
+                href: link.url || "#",
+                target: "_self",
+                "aria-label": label,
+            }).addClass(
+                "inline-flex mx-1 items-center justify-center min-w-8 h-8 px-2 rounded-md text-sm " +
+                    "text-gray-700 dark:text-gray-200 hover:bg-gray-900 hover:text-white"
+            );
+
+            if (link.active) {
+                $a.addClass(
+                    "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                );
+            }
+
+            if (!link.url) {
+                $a.removeAttr("href")
+                    .addClass("opacity-50 cursor-not-allowed")
+                    .attr("aria-disabled", "true");
+            } else {
+                $a.on("click", (e) => {
+                    e.preventDefault();
+                    loadTimeHistory(link.url);
+                });
+            }
+
+            $time_pagination.append($a);
+        });
+    }
 })(jQuery);

@@ -14,6 +14,8 @@ use App\Services\Finance\RentService;
 use App\Http\Requests\MortgageRequest;
 use App\Http\Requests\IncomeTaxRequest;
 use App\Http\Requests\RentRequest;
+use App\Models\Depreciation;
+use App\Models\Mortgage;
 use App\Models\RentCalculation;
 use App\Services\Finance\SalaryService;
 use App\Services\Finance\AutoLoanService;
@@ -21,6 +23,7 @@ use App\Services\Finance\MortgageService;
 use App\Services\Finance\IncomeTaxService;
 use App\Services\Finance\DepreciationService;
 use App\Services\Finance\RentAffordabilityService;
+use Carbon\Carbon;
 
 class FinanceController extends Controller
 {
@@ -28,6 +31,74 @@ class FinanceController extends Controller
     {
         $payload = $request->validated();
         return response()->json($svc->calculate($payload));
+    }
+
+    public function mortgage_save(MortgageRequest $request)
+    {
+
+        if (Auth::check()) {
+            Mortgage::create([
+                "price" => $request->price,
+                "down_amount" => $request->down_amount,
+                "years" => $request->years,
+                'user_id' => Auth::id(),
+                "apr_percent" => $request->apr_percent,
+                "annual_property_tax" => $request->annual_property_tax,
+                "annual_home_insurance" => $request->annual_home_insurance,
+                "pmi_percent" =>  $request->pmi_percent ?? 0,
+                "hoa_monthly" =>  $request->hoa_monthly ?? 0,
+                "start_date" =>  $request->start_date,
+            ]);
+
+
+
+            return response()->json([
+
+                'message' => 'New record has been created',
+                'ok' => true
+
+            ], 200);
+        } else {
+            return response()->json([
+
+                'message' => 'Unauthenticated user',
+                'ok' => false
+
+            ], 401);
+        }
+    }
+
+    public function mortgageHistory(MortgageService $svc)
+    {
+
+        $authUserData = Mortgage::where('user_id', Auth::user()->id)->latest()->paginate(10);
+
+
+        $rawdata = [];
+
+        foreach ($authUserData as $data) {
+            $majbori = [
+                "price" => $data['price'],
+                "down_amount" =>  $data['down_amount'],
+                "apr_percent" =>  $data['apr_percent'],
+                "years" => $data['years'],
+                "annual_property_tax" =>  $data['annual_property_tax'],
+                "annual_home_insurance" =>  $data['annual_home_insurance'],
+                "pmi_percent" =>  $data['pmi_percent'],
+                "hoa_monthly" =>  $data['hoa_monthly'],
+                "start_date" =>  $data['start_date'],
+            ];
+            $rawdata[] = $svc->calculate($majbori);
+        };
+
+        return response()->json([
+
+            'message' => 'History',
+            'data' => $rawdata,
+            'dataForPagination' => $authUserData,
+            'ok' => true
+
+        ]);
     }
 
     // --- Stubs for now (you’ll fill these services in the same pattern) ---
@@ -151,7 +222,7 @@ class FinanceController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Unauthenticated',
+                'message' => 'Unauthenticated User',
                 'ok' => false
             ], 401);
         }
@@ -203,7 +274,7 @@ class FinanceController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Unauthenticated.',
+                'message' => 'Unauthenticated user.',
                 'ok' => false
             ], 401);
         }
@@ -220,6 +291,69 @@ class FinanceController extends Controller
             'message' => 'History',
             'data' => $data,
             'ok' => true
+        ], 200);
+    }
+
+    public function depreciationSave(Request $request)
+    {
+
+
+        if (Auth::check()) {
+            Depreciation::create([
+                'cost' => $request['inputs']['cost'],
+                'user_id' => Auth::user()->id,
+                'salvage' => $request['inputs']['salvage_value'],
+                'method' => $request['inputs']['method'],
+                'years' => $request['inputs']['life_years'],
+                'ddb_switch_to_sl' => $request['inputs']['ddb_switch_to_sl'],
+                'round' => $request['inputs']['round']
+            ]);
+            return response()->json([
+
+                'message' => 'you data inserted successfully',
+                'ok' => true
+
+            ], 200);
+        } else {
+            return response()->json([
+
+                'message' => 'Unauthenticated User',
+                'ok' => false
+
+            ], 401);
+        }
+    }
+
+
+    public function DepreciationHistory(Request $request, DepreciationService $dep)
+    {
+
+        $per_page = 5;
+
+        $rawdata = Depreciation::where('user_id', Auth::id())->latest()->paginate(5);
+
+
+
+
+
+        $filteredData = [];
+        foreach ($rawdata as $data) {
+            $majbori = [
+                "cost" => $data['cost'],
+                "salvage_value" => $data['salvage'],
+                "method" => $data['method'],
+                "life_years" => $data['years'],
+                "ddb_switch_to_sl" => $data['ddb_switch_to_sl'],
+                "round" => $data['round'],
+            ];
+            $filteredData[] = $dep->schedule($majbori);
+        }
+
+
+        return response()->json([
+            'message' => 'history',
+            'data' => $filteredData,
+            'rawdata' => $rawdata
         ], 200);
     }
 }

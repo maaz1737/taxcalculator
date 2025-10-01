@@ -24,7 +24,7 @@
     };
 
     // Helpers
-    const debounce = (fn, wait = 10000000) => {
+    const debounce = (fn, wait = 3000) => {
         let t;
         return (...a) => {
             clearTimeout(t);
@@ -74,7 +74,7 @@
         const run = debounce(() => {
             clearErrors($root);
             const data = Object.fromEntries(new FormData($form[0]).entries());
-            $form.find("input, select, button").prop("disabled", true);
+            // $form.find("input, select, button").prop("disabled", true);
 
             $.post(url, data)
                 .done((res) => {
@@ -83,7 +83,7 @@
                         setSaveEnabled($root, false);
                         return;
                     }
-                     window.currentCalcPayload = {
+                    window.currentCalcPayload = {
                         calc_type: url.split("/").pop(),
                         inputs: res.inputs || data,
                         outputs: res.data,

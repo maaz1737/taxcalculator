@@ -1,340 +1,514 @@
-(function () {
-    // Modal open/close logic for Mortgage Calculator
-    const openMortgageCalculatorBtn = document.getElementById(
-        "openPopupMortgageCalculator"
-    );
-    const closeMortgageCalculatorBtn = document.getElementById(
-        "closePopupMortgageCalculator"
-    );
-    const overlayMortgageCalculator = document.getElementById(
-        "popupMortgageCalculator"
-    );
+$(function () {
+    // ---------- Modal open/close ----------
+    const $openBtn = $("#openPopupMortgageCalculator");
+    const $closeBtn = $("#closePopupMortgageCalculator");
+    const $overlay = $("#popupMortgageCalculator");
 
     function openModal() {
-        overlayMortgageCalculator.classList.remove("hidden"); // Show the modal
-        overlayMortgageCalculator.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden"; // Disable scrolling when modal is open
+        $overlay.removeClass("hidden").attr("aria-hidden", "false");
+        $("body").css("overflow", "hidden");
     }
-
-    // Function to close the modal
     function closeModal() {
-        overlayMortgageCalculator.classList.add("hidden"); // Hide the modal
-        overlayMortgageCalculator.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = ""; // Re-enable scrolling when modal is closed
+        $overlay.addClass("hidden").attr("aria-hidden", "true");
+        $("body").css("overflow", "");
     }
 
-    // Event listener to open the modal when the "Open" button is clicked
-    openMortgageCalculatorBtn.addEventListener("click", openModal);
+    $openBtn.on("click", openModal);
+    $closeBtn.on("click", closeModal);
 
-    // Event listener to close the modal when the "Close" button is clicked
-    closeMortgageCalculatorBtn.addEventListener("click", closeModal);
-
-    // Close modal if clicking outside of the modal content
-    overlayMortgageCalculator.addEventListener("click", (e) => {
-        if (e.target === overlayMortgageCalculator) closeModal();
+    $overlay.on("click", function (e) {
+        if (e.target === this) closeModal();
     });
 
-    // Close modal with 'Escape' key
-    window.addEventListener("keydown", (e) => {
-        if (
-            e.key === "Escape" &&
-            !overlayMortgageCalculator.classList.contains("hidden")
-        )
-            closeModal();
+    $(window).on("keydown", function (e) {
+        if (e.key === "Escape" && !$overlay.hasClass("hidden")) closeModal();
     });
 
-    // Ensure the modal is hidden on page load (this should already be the case)
-    document.addEventListener("DOMContentLoaded", function () {
-        overlayMortgageCalculator.classList.add("hidden"); // Ensure modal is hidden on page load
-    });
+    $overlay.addClass("hidden").attr("aria-hidden", "true");
 
-    // Fetching elements for Mortgage Calculator
-    const elPrice = document.getElementById("mortgage_price");
-    const elDownAmount = document.getElementById("mortgage_down_amount");
-    const elYears = document.getElementById("mortgage_years");
-    const elAprPercent = document.getElementById("mortgage_apr_percent");
-    const elAnnualPropertyTax = document.getElementById(
-        "mortgage_annual_property_tax"
-    );
-    const elAnnualHomeInsurance = document.getElementById(
-        "mortgage_annual_home_insurance"
-    );
-    const elPmiPercent = document.getElementById("mortgage_pmi_percent");
-    const elHoaMonthly = document.getElementById("mortgage_hoa_monthly");
-    const elStartDate = document.getElementById("mortgage_start_date");
-    const elError = document.getElementById("mortgage_error");
-    const elMonthlyTotal = document.getElementById("mortgage_monthly_total");
-    const elMonthlyPI = document.getElementById("mortgage_monthly_PI");
-    const elMonthlyTax = document.getElementById("mortgage_monthly_tax");
-    const elMonthlyIns = document.getElementById("mortgage_monthly_ins");
-    const elMonthlyPmi = document.getElementById("mortgage_monthly_pmi");
-    const elMonthlyHoa = document.getElementById("mortgage_monthly_hoa");
-    const elLoanAmount = document.getElementById("mortgage_loan_amount");
-    const elTotalInterest = document.getElementById("mortgage_total_interest");
-    const elPayoffDate = document.getElementById("mortgage_payoff_date");
-    const elTableBody = document.getElementById("mortgage_tableBody");
+    // ---------- Element refs ----------
+    const $price = $("#mortgage_price");
+    const $down = $("#mortgage_down_amount");
+    const $years = $("#mortgage_years");
+    const $apr = $("#mortgage_apr_percent");
+    const $tax = $("#mortgage_annual_property_tax");
+    const $ins = $("#mortgage_annual_home_insurance");
+    const $pmi = $("#mortgage_pmi_percent");
+    const $hoa = $("#mortgage_hoa_monthly");
+    const $start = $("#mortgage_start_date");
 
-    // Show error message
+    const $err = $("#mortgage_error");
+    const $mtotal = $("#mortgage_monthly_total");
+    const $mpi = $("#mortgage_monthly_PI");
+    const $mtax = $("#mortgage_monthly_tax");
+    const $mins = $("#mortgage_monthly_ins");
+    const $mpmi = $("#mortgage_monthly_pmi");
+    const $mhoa = $("#mortgage_monthly_hoa");
+    const $loan = $("#mortgage_loan_amount");
+    const $tint = $("#mortgage_total_interest");
+    const $payoff = $("#mortgage_payoff_date");
+    const $tbody = $("#mortgage_tableBody");
+
+    // ---------- Helpers ----------
     function showError(msg) {
-        elError.textContent = msg;
-        elError.style.display = "block";
+        $err.removeClass("-translate-y-full opacity-0");
+        $err.text(msg);
+        setTimeout(() => {
+            $err.addClass("-translate-y-full opacity-0");
+        }, 2000);
+    }
+    function showSuccessMessage(msg) {
+        $err.removeClass(
+            "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+        );
+        $err.addClass(
+            "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+        );
+        $err.text(msg);
+        setTimeout(() => {
+            $err.addClass(
+                "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
+            );
+            $err.removeClass(
+                "text-green-700 bg-green-100 border-green-200 dark:text-green-300 dark:bg-green-900/30 dark:border-green-800"
+            );
+        }, 2000);
     }
 
-    // Clear error message
-    function clearError() {
-        elError.style.display = "none";
-        elError.textContent = "";
-    }
-
-    async function fetchJson(url, params) {
-        const csrf = document
-            .querySelector('meta[name="csrf-token"]')
-            ?.getAttribute("content");
-
-        const res = await fetch(url, {
-            method: "POST", // Ensure it's a POST request
+    function ajaxJson(url, params) {
+        const csrf = $('meta[name="csrf-token"]').attr("content") || "";
+        return $.ajax({
+            url,
+            method: "POST",
+            data: JSON.stringify(params),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": csrf || "",
+                "X-CSRF-TOKEN": csrf,
             },
-            body: JSON.stringify(params), // Pass the params as the request body
         });
-
-        if (!res.ok) {
-            const data = await res.json(); // Parse the error response
-            throw new Error(data.message || "HTTP " + res.status);
-        }
-
-        return res.json(); // Parse JSON response
     }
 
-    // Update conversion result and table
-    async function update() {
-        clearError();
+    // Simple debounce
+    function debounce(fn, ms) {
+        let t;
+        return function () {
+            clearTimeout(t);
+            const ctx = this,
+                args = arguments;
+            t = setTimeout(function () {
+                fn.apply(ctx, args);
+            }, ms || 150);
+        };
+    }
 
-        // Validate fields before sending the request
-        const price = parseFloat(elPrice.value);
-        const years = parseInt(elYears.value);
-        const aprPercent = parseFloat(elAprPercent.value);
+    function payload() {
+        const price = parseFloat($price.val());
+        const years = parseInt($years.val(), 10);
+        const apr = parseFloat($apr.val());
 
         if (Number.isNaN(price)) return showError("Price is required.");
         if (Number.isNaN(years)) return showError("Years is required.");
-        if (Number.isNaN(aprPercent))
-            return showError("APR Percent is required.");
+        if (Number.isNaN(apr)) return showError("APR Percent is required.");
 
-        const payload = {
+        return {
             price: price,
-            down_amount: parseFloat(elDownAmount.value),
+            down_amount: parseFloat($down.val()),
             years: years,
-            apr_percent: aprPercent,
-            annual_property_tax: parseFloat(elAnnualPropertyTax.value),
-            annual_home_insurance: parseFloat(elAnnualHomeInsurance.value),
-            pmi_percent: elPmiPercent.value
-                ? parseFloat(elPmiPercent.value)
-                : null,
-            hoa_monthly: elHoaMonthly.value
-                ? parseFloat(elHoaMonthly.value)
-                : null,
-            start_date: elStartDate.value,
+            apr_percent: apr,
+            annual_property_tax: parseFloat($tax.val()),
+            annual_home_insurance: parseFloat($ins.val()),
+            pmi_percent: $pmi.val() ? parseFloat($pmi.val()) : null,
+            hoa_monthly: $hoa.val() ? parseFloat($hoa.val()) : null,
+            start_date: $start.val(),
         };
-
-        try {
-            const data = await fetchJson("v1/finance/mortgage", payload);
-            elMonthlyTotal.textContent = data.monthly_total;
-            elMonthlyPI.textContent = data.monthly_PI;
-            elMonthlyTax.textContent = data.monthly_tax;
-            elMonthlyIns.textContent = data.monthly_ins;
-            elMonthlyPmi.textContent = data.monthly_pmi;
-            elMonthlyHoa.textContent = data.monthly_hoa;
-            elLoanAmount.textContent = data.loan_amount;
-            elTotalInterest.textContent = data.total_interest;
-            elPayoffDate.textContent = data.payoff_date || "—";
-
-            // Limit the number of rows to the number of months based on years input
-            const maxRows = years * 12; // 12 months per year
-            const limitedSchedule = data.schedule.slice(0, maxRows);
-
-            elTableBody.innerHTML = limitedSchedule
-                .map(
-                    (r) => `
-                <tr>
-                    <td>${r.index}</td>
-                    <td>${r.date}</td>
-                    <td>${r.payment}</td>
-                    <td>${r.interest}</td>
-                    <td>${r.principal}</td>
-                    <td>${r.balance}</td>
-                    <td>${r.pmi}</td>
-                    <td>${r.tax}</td>
-                    <td>${r.ins}</td>
-                    <td>${r.hoa}</td>
-                    <td>${r.total_monthly}</td>
-                </tr>
-            `
-                )
-                .join("");
-        } catch (e) {
-            showError(e.message);
-        }
     }
 
-    // Debounce function for input changes
-    const debounce = (fn, ms = 150) => {
-        let t;
-        return (...a) => {
-            clearTimeout(t);
-            t = setTimeout(() => fn(...a), ms);
-        };
-    };
+    // ---------- Main update ----------
+    function update() {
+        let x = payload();
+        ajaxJson("v1/finance/mortgage", x)
+            .done(function (data) {
+                $mtotal.text(data.monthly_total);
+                $mpi.text(data.monthly_PI);
+                $mtax.text(data.monthly_tax);
+                $mins.text(data.monthly_ins);
+                $mpmi.text(data.monthly_pmi);
+                $mhoa.text(data.monthly_hoa);
+                $loan.text(data.loan_amount);
+                $tint.text(data.total_interest);
+                $payoff.text(data.payoff_date || "—");
 
-    // Add event listeners for the value changes
-    ["input", "change"].forEach((evt) => {
-        [
-            elPrice,
-            elDownAmount,
-            elYears,
-            elAprPercent,
-            elAnnualPropertyTax,
-            elAnnualHomeInsurance,
-            elPmiPercent,
-            elHoaMonthly,
-            elStartDate,
-        ].forEach((el) => {
-            if (el && el.tagName === "INPUT") {
-                el.addEventListener(evt, debounce(update, 150));
-            }
+                const maxRows = x.years * 12;
+                const rows = (data.schedule || []).slice(0, maxRows);
+
+                const html = $.map(rows, function (r) {
+                    return `
+    <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-900/40 transition-colors">
+      <td class="py-2 px-3 text-center">${r.index ?? ""}</td>
+      <td class="py-2 px-3 text-left">${r.date ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.payment ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.interest ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.principal ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.balance ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.pmi ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.tax ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.ins ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.hoa ?? ""}</td>
+      <td class="py-2 px-3 text-right">${r.total_monthly ?? ""}</td>
+    </tr>
+  `;
+                }).join("");
+                $("#mortgage_tableBody").html(html);
+            })
+            .fail(function (xhr) {
+                const msg =
+                    (xhr.responseJSON &&
+                        (xhr.responseJSON.message || xhr.responseJSON.error)) ||
+                    "HTTP " + xhr.status;
+                showError(msg);
+            });
+    }
+
+    // ---------- Bind inputs (input + change) ----------
+    const inputs = $([
+        $price[0],
+        $down[0],
+        $years[0],
+        $apr[0],
+        $tax[0],
+        $ins[0],
+        $pmi[0],
+        $hoa[0],
+        $start[0],
+    ]);
+
+    inputs.on("input change", debounce(update, 150));
+
+    // Initial compute
+    update();
+
+    $("#btnSaveMortgage").on("click", mortagageSave);
+
+    function mortagageSave() {
+        let x = payload();
+        const csrf = $('meta[name="csrf-token"]').attr("content") || "";
+        $.ajax({
+            url: "v1/finance/mortgagesave",
+            method: "POST",
+            data: JSON.stringify(x),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            headers: {
+                Accept: "application/json",
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRF-TOKEN": csrf,
+            },
+            success: function (res) {
+                console.log(res);
+                showSuccessMessage(res.message);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                showError(xhr.responseJSON.message);
+            },
         });
+    }
+
+    const $openHistoryMortgage = $("#openHistoryMortgage");
+    const $sheet = $("#historySheetMortgage");
+
+    if (!$openHistoryMortgage.length || !$sheet.length) return;
+    if ($sheet.data("bound") === "1") return;
+    $sheet.data("bound", "1");
+
+    const $closeBtns = $sheet.find(
+        '[id^="close"], [data-close], .js-close-sheet'
+    );
+
+    function show() {
+        $sheet.removeClass("pointer-events-none opacity-0 translate-y-full");
+        $(document).on("keydown.history", function (e) {
+            if (e.key === "Escape") hide();
+        });
+        // TODO: fetch & render history items into #historyListMortgage if needed
+        // fillMortgageHistory();
+    }
+
+    function hide() {
+        $sheet.addClass("pointer-events-none opacity-0 translate-y-full");
+        $(document).off("keydown.history");
+    }
+
+    $openHistoryMortgage.on("click", function (e) {
+        e.preventDefault();
+        show();
+        loadMortgageHistory("v1/finance/mortgageHistory");
     });
 
-    update();
-})();
+    $closeBtns.on("click", hide);
 
-// (function () {
-//     const q = (id) => document.getElementById(id);
-//     const els = {
-//         price: q("price"),
-//         down_amount: q("down_amount"),
-//         down_percent: q("down_percent"),
-//         years: q("years"),
-//         apr_percent: q("apr_percent"),
-//         annual_property_tax: q("annual_property_tax"),
-//         annual_home_insurance: q("annual_home_insurance"),
-//         pmi_percent: q("pmi_percent"),
-//         hoa_monthly: q("hoa_monthly"),
-//         start_date: q("start_date"),
-//         err: q("error"),
-//         monthly_total: q("monthly_total"),
-//         monthly_PI: q("monthly_PI"),
-//         monthly_tax: q("monthly_tax"),
-//         monthly_ins: q("monthly_ins"),
-//         monthly_pmi: q("monthly_pmi"),
-//         monthly_hoa: q("monthly_hoa"),
-//         loan_amount: q("loan_amount"),
-//         total_interest: q("total_interest"),
-//         payoff_date: q("payoff_date"),
-//         tableBody: q("tableBody"),
-//     };
+    // Optional expose to global (if you want to call from outside)
+    $sheet[0].showSheet = show;
+    $sheet[0].hideSheet = hide;
 
-//     function showError(msg) {
-//         els.err.textContent = msg;
-//         els.err.style.display = "block";
-//     }
-//     function clearError() {
-//         els.err.style.display = "none";
-//         els.err.textContent = "";
-//     }
-//     const money = (n) =>
-//         Number(n).toLocaleString(undefined, {
-//             style: "currency",
-//             currency: "USD",
-//         });
+    function loadMortgageHistory(url) {
+        const csrf = $('meta[name="csrf-token"]').attr("content") || "";
+        $.ajax({
+            url: url,
+            method: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            headers: {
+                Accept: "application/json",
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRF-TOKEN": csrf,
+            },
+            success: function (res) {
+                showSuccessMessage(res.message);
+                console.log(res.authUserData);
+                showMortgageHistory(res.data);
+                pagination(res.dataForPagination.links);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+            },
+        });
+    }
 
-//     async function calc() {
-//         clearError();
-//         const payload = {
-//             price: +els.price.value,
-//             down_amount:
-//                 els.down_amount.value === "" ? null : +els.down_amount.value,
-//             down_percent:
-//                 els.down_percent.value === "" ? null : +els.down_percent.value,
-//             years: +els.years.value,
-//             apr_percent: +els.apr_percent.value,
-//             annual_property_tax:
-//                 els.annual_property_tax.value === ""
-//                     ? null
-//                     : +els.annual_property_tax.value,
-//             annual_home_insurance:
-//                 els.annual_home_insurance.value === ""
-//                     ? null
-//                     : +els.annual_home_insurance.value,
-//             pmi_percent:
-//                 els.pmi_percent.value === "" ? null : +els.pmi_percent.value,
-//             hoa_monthly:
-//                 els.hoa_monthly.value === "" ? null : +els.hoa_monthly.value,
-//             start_date:
-//                 els.start_date.value === "" ? null : els.start_date.value,
-//         };
+    function pagination(links) {
+        $mortgage_pagination = $("#mortgage_pagination");
 
-//         try {
-//             const res = await fetch(API_MORTGAGE, {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Accept: "application/json",
-//                 },
-//                 body: JSON.stringify(payload),
-//             });
-//             if (!res.ok) throw new Error(await res.text());
-//             const data = await res.json();
+        $mortgage_pagination.empty();
 
-//             els.monthly_total.textContent = money(data.monthly_total);
-//             els.monthly_PI.textContent = money(data.monthly_PI);
-//             els.monthly_tax.textContent = money(data.monthly_tax);
-//             els.monthly_ins.textContent = money(data.monthly_ins);
-//             els.monthly_pmi.textContent = money(data.monthly_pmi);
-//             els.monthly_hoa.textContent = money(data.monthly_hoa);
-//             els.loan_amount.textContent = money(data.loan_amount);
-//             els.total_interest.textContent = money(data.total_interest);
-//             els.payoff_date.textContent = data.payoff_date || "—";
+        if (links.length <= 3) {
+            return 0;
+        }
 
-//             els.tableBody.innerHTML = data.schedule
-//                 .map(
-//                     (r) =>
-//                         `<tr>
-//           <td>${r.index}</td>
-//           <td style="text-align:left">${r.date}</td>
-//           <td>${money(r.payment)}</td>
-//           <td>${money(r.interest)}</td>
-//           <td>${money(r.principal)}</td>
-//           <td>${money(r.balance)}</td>
-//           <td>${money(r.pmi)}</td>
-//           <td>${money(r.tax)}</td>
-//           <td>${money(r.ins)}</td>
-//           <td>${money(r.hoa)}</td>
-//           <td>${money(r.total_monthly)}</td>
-//         </tr>`
-//                 )
-//                 .join("");
-//         } catch (e) {
-//             showError(e.message);
-//         }
-//     }
+        links.forEach((link, i) => {
+            let label = link.label ?? String(i + 1);
+            if (i === 0) label = "«";
+            else if (i === links.length - 1) label = "»";
+            else {
+                label = $("<span>").html(label).text().trim();
+            }
 
-//     const deb = (fn, ms = 200) => {
-//         let t;
-//         return (...a) => {
-//             clearTimeout(t);
-//             t = setTimeout(() => fn(...a), ms);
-//         };
-//     };
-//     ["input", "change"].forEach((evt) => {
-//         Object.values(els).forEach((el) => {
-//             if (el && el.tagName === "INPUT")
-//                 el.addEventListener(evt, deb(calc, 150));
-//         });
-//     });
+            const $a = $("<a>", {
+                text: label,
+                href: link.url || "#",
+                target: "_self",
+                "aria-label": label,
+            }).addClass(
+                "inline-flex mx-1 items-center justify-center min-w-8 h-8 px-2 rounded-md text-sm " +
+                    "text-gray-700 dark:text-gray-200 hover:bg-gray-900 hover:text-white"
+            );
 
-//     calc();
-// })();
+            if (link.active) {
+                $a.addClass(
+                    "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                );
+            }
+
+            if (!link.url) {
+                $a.removeAttr("href")
+                    .addClass("opacity-50 cursor-not-allowed")
+                    .attr("aria-disabled", "true");
+            } else {
+                $a.on("click", (e) => {
+                    e.preventDefault();
+                    loadMortgageHistory(link.url);
+                });
+            }
+
+            $mortgage_pagination.append($a);
+        });
+    }
+
+    function showMortgageHistory(data) {
+        const $list = $("#historyListMortgage");
+        if (!Array.isArray(data)) return;
+        $list.empty();
+
+        const money = (n, digits = 2) =>
+            Number(n ?? 0).toLocaleString(undefined, {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: digits,
+                maximumFractionDigits: digits,
+            });
+
+        const fmtDate = (s) => (s ? String(s) : "—");
+
+        data.forEach((row, idx) => {
+            const {
+                loan_amount = 0,
+                monthly_PI = 0,
+                monthly_tax = 0,
+                monthly_ins = 0,
+                monthly_pmi = 0,
+                monthly_hoa = 0,
+                monthly_total = 0,
+                payoff_date = null,
+                schedules = row.schedule ?? [], // keep your source flexible
+                created_at = null,
+            } = row || {};
+
+            const id = `mort-${Date.now()}-${idx}`;
+
+            // Subtle, unified chip styles
+            const chip = (label, val, extra = "") => `
+      <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] leading-none
+                  bg-slate-50/70 ring-1 ring-slate-200 text-slate-700
+                  dark:bg-slate-900/40 dark:ring-slate-800 dark:text-slate-200 ${extra}">
+        <span class="opacity-70">${label}:</span>
+        <strong class="font-semibold">${val}</strong>
+      </span>`;
+
+            const topChips = `
+      <div class="flex flex-wrap gap-1.5 mt-2">
+        ${chip("Loan", money(loan_amount))}
+        ${chip("P&I", money(monthly_PI))}
+        ${chip("Tax", money(monthly_tax))}
+        ${chip("Ins", money(monthly_ins))}
+        ${chip("PMI", money(monthly_pmi))}
+        ${chip("HOA", money(monthly_hoa))}
+        ${chip(
+            "Total",
+            money(monthly_total),
+            "bg-indigo-50/70 ring-indigo-200 text-indigo-700 dark:bg-indigo-900/20 dark:ring-indigo-800 dark:text-indigo-300"
+        )}
+        ${chip("Payoff", fmtDate(payoff_date))}
+      </div>
+    `;
+
+            // Table rows
+            const rowsHtml = (Array.isArray(schedules) ? schedules : [])
+                .map((r) => {
+                    return `
+          <tr class="border-b border-slate-100/70 dark:border-slate-800/70 hover:bg-slate-50/60 dark:hover:bg-slate-900/40 transition-colors">
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-center">${
+                r.index ?? ""
+            }</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300">${fmtDate(
+                r.date
+            )}</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-right">${money(
+                r.payment
+            )}</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-right">${money(
+                r.interest
+            )}</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-right">${money(
+                r.principal
+            )}</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-right">${money(
+                r.balance
+            )}</td>
+            <td class="px-2 py-2 text-[11px] text-slate-600 dark:text-slate-400 text-right">${money(
+                r.pmi
+            )}</td>
+            <td class="px-2 py-2 text-[11px] text-slate-600 dark:text-slate-400 text-right">${money(
+                r.tax
+            )}</td>
+            <td class="px-2 py-2 text-[11px] text-slate-600 dark:text-slate-400 text-right">${money(
+                r.ins
+            )}</td>
+            <td class="px-2 py-2 text-[11px] text-slate-600 dark:text-slate-400 text-right">${money(
+                r.hoa
+            )}</td>
+            <td class="px-2 py-2 text-xs text-slate-700 dark:text-slate-300 text-right">${money(
+                r.total_monthly
+            )}</td>
+          </tr>
+        `;
+                })
+                .join("");
+
+            const scheduleTable = rowsHtml
+                ? `
+        <div class="mt-3 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden bg-white/60 dark:bg-slate-950/40">
+          <div class="px-3 py-2 text-[11px] font-medium bg-slate-50/80 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 tracking-wide">
+            Schedule (${schedules.length} ${
+                      schedules.length === 1 ? "row" : "rows"
+                  })
+          </div>
+
+          <div class="max-h-64 overflow-auto">
+            <table class="min-w-full border-collapse">
+              <thead class="sticky top-0 bg-white/85 backdrop-blur-sm dark:bg-slate-950/70 border-b border-slate-200/70 dark:border-slate-800/70">
+                <tr class="text-center">
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300">#</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-left">Date</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-right">Payment</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-right">Interest</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-right">Principal</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-right">Balance</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 text-right">PMI</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 text-right">Tax</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 text-right">Ins</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 text-right">HOA</th>
+                  <th class="px-2 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                ${rowsHtml}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `
+                : `<div class="mt-3 text-xs text-slate-500 dark:text-slate-400">No schedule available.</div>`;
+
+            const li = $(`
+      <li class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-950/60 shadow-sm p-4">
+        <details id="${id}" class="group">
+          <summary class="list-none cursor-pointer">
+            <div class="flex items-start justify-between">
+              <div>
+                ${topChips}
+                ${
+                    created_at
+                        ? `<div class="mt-1 text-[10px] text-slate-400">Created: ${created_at}</div>`
+                        : ""
+                }
+              </div>
+              <div class="ml-3 shrink-0 opacity-60 group-open:rotate-180 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m6 9 6 6 6-6"/>
+                </svg>
+              </div>
+            </div>
+          </summary>
+
+          ${scheduleTable}
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <button type="button" class="px-3 py-1.5 text-xs rounded-xl
+                    bg-slate-100 hover:bg-slate-200 text-slate-700 ring-1 ring-slate-200
+                    dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 dark:ring-slate-700">
+              Re-run
+            </button>
+            <button type="button" class="px-3 py-1.5 text-xs rounded-xl
+                    bg-indigo-50 hover:bg-indigo-100 text-indigo-700 ring-1 ring-indigo-200
+                    dark:bg-indigo-900/20 dark:hover:bg-indigo-900/30 dark:text-indigo-300 dark:ring-indigo-800">
+              Duplicate
+            </button>
+          </div>
+        </details>
+      </li>
+    `);
+
+            $list.append(li);
+        });
+
+        if ($list.children().length === 0) {
+            $list.append(`
+      <li class="rounded-2xl ring-1 ring-dashed ring-slate-300 dark:ring-slate-700 p-6 text-sm text-slate-500 dark:text-slate-400 text-center">
+        No history yet.
+      </li>
+    `);
+        }
+    }
+});

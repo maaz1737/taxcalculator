@@ -30,10 +30,37 @@ $(document).ready(function () {
     });
 
     function showError(msg) {
-        errorMessageEl2.text(msg).removeClass("-translate-y-full opacity-0");
+        errorMessageEl2
+            .text(msg)
+            .removeClass(
+                "-translate-y-full opacity-0"
+            );
 
         setTimeout(() => {
             errorMessageEl2.text(msg).addClass("-translate-y-full opacity-0");
+        }, 2000);
+    }
+    function showSuccessMsg(msg) {
+        errorMessageEl2
+            .text(msg)
+            .removeClass(
+                "-translate-y-full opacity-0 dark:bg-red-400 dark:border-red-800 bg-red-100 border-red-200"
+            );
+        errorMessageEl2
+            .text(msg)
+            .addClass(
+                " dark:bg-green-400 dark:border-green-800 bg-green-100 border-green-200"
+            );
+
+        setTimeout(() => {
+            errorMessageEl2.removeClass(
+                "dark:bg-green-400 dark:border-green-800 bg-green-100 border-green-200"
+            );
+            errorMessageEl2
+                .text(msg)
+                .addClass(
+                    "-translate-y-full opacity-0 dark:bg-red-400 dark:border-red-800 bg-red-100 border-red-200"
+                );
         }, 2000);
     }
 
@@ -49,7 +76,7 @@ $(document).ready(function () {
         paid = 0,
         remain = 0,
     } = {}) {
-        console.log(remain);
+        console.log(incomeTax);
         outputIncomeTaxEl.text(incomeTax ? aud.format(incomeTax) : "—");
         outputLevyEl.text(levy ? aud.format(levy) : "—");
         outputTotalEl.text(total ? aud.format(total) : "—");
@@ -159,7 +186,8 @@ $(document).ready(function () {
                 data: JSON.stringify(payload),
                 dataType: "json",
                 success: function (res) {
-                    alert("this is hello");
+                    showSuccessMsg(res.message);
+
                     console.log("Response:", res.data);
 
                     remainingTax.html(res.data.taxLevy - res.data.taxpaid);
