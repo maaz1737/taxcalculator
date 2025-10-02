@@ -6,29 +6,23 @@
     const $openAreaConverterBtn = $("#openPopupAreaConverterNew");
     const $closeAreaConverterBtn = $overlayAreaConverter.find(".close-popup");
 
-    function openModalAreaConverter() {
-        $overlayAreaConverter
-            .removeClass("hidden")
-            .attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModalAreaConverter() {
-        $overlayAreaConverter.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openAreaConverterBtn.on("click", openModalAreaConverter);
-    $closeAreaConverterBtn.on("click", closeModalAreaConverter);
+    $openAreaConverterBtn.on("click", () => {
+        openModal($overlayAreaConverter);
+    });
+    $closeAreaConverterBtn.on("click", () => {
+        closeModal($overlayAreaConverter);
+    });
 
     // Close modal if clicking outside of the modal content
     $overlayAreaConverter.on("click", function (e) {
-        if (e.target === $overlayAreaConverter[0]) closeModalAreaConverter();
+        if (e.target === $overlayAreaConverter[0])
+            closeModal($overlayAreaConverter);
     });
 
     // Close modal with 'Escape' key
     $(window).on("keydown", function (e) {
         if (e.key === "Escape" && !$overlayAreaConverter.hasClass("hidden")) {
-            closeModalAreaConverter();
+            closeModal($overlayAreaConverter);
         }
     });
 

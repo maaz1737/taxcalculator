@@ -136,11 +136,9 @@
 </button>
 <!-- Modal -->
 <div id="sciCalcModal"
-    class="fixed inset-0 z-[80] hidden opacity-0 pointer-events-none transition-opacity duration-200"
+    class="fixed inset-0 z-[10] hidden opacity-0 pointer-events-none transition-opacity duration-200 backdrop-blur-sm flex items-center justify-center"
     role="dialog" aria-modal="true" aria-labelledby="sciCalcTitle" aria-hidden="true">
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-overlay></div>
 
     <!-- Panel -->
     <div class="relative mx-auto my-8 w-[min(960px,95vw)] max-h-[90vh]">
@@ -188,7 +186,7 @@
             </div>
 
             <div id="sciCalc" class="min-h-full flex items-center justify-center px-4 py-10">
-                <div class="w-full max-w-3xl">
+                <div class="w-full max-w-5xl">
                     <div class="rounded-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900 overflow-hidden">
                         <!-- Header / Controls -->
 
@@ -271,601 +269,599 @@
 
 
 <script>
-    (function() {
-        const modal = document.getElementById('sciCalcModal');
-        const overlay = modal.querySelector('[data-overlay]');
-        const openBtn = document.getElementById('openSciCalc');
-        const closeBtn = document.getElementById('closeSciCalc');
-        const firstFocus = document.getElementById('angleMode'); // where we focus on open
+    $(function() {
+        const $modal = $('#sciCalcModal');
+        const $overlay = $modal.find('[data-overlay]');
+        const $openBtn = $('#openSciCalc');
+        const $closeBtn = $('#closeSciCalc');
+        const $firstFocus = $('#angleMode');
 
-        const isOpen = () => !modal.classList.contains('hidden');
+        const isOpen = () => !$modal.hasClass('hidden');
 
         function openModal() {
-            modal.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-            modal.removeAttribute('aria-hidden');
-            document.documentElement.classList.add('overflow-hidden');
-            setTimeout(() => firstFocus?.focus({
-                preventScroll: true
-            }), 0);
+
+            $modal.removeClass('hidden opacity-0 pointer-events-none');
+            $modal.removeAttr('aria-hidden');
+            $('html').addClass('overflow-hidden');
+            setTimeout(() => $firstFocus.trigger('focus'), 0);
         }
 
         function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.setAttribute('aria-hidden', 'true');
-            document.documentElement.classList.remove('overflow-hidden');
-            // after fade, hide
-            setTimeout(() => modal.classList.add('hidden'), 200);
+            $modal.addClass('opacity-0 pointer-events-none');
+            $modal.attr('aria-hidden', 'true');
+            $('html').removeClass('overflow-hidden');
+            setTimeout(() => $modal.addClass('hidden'), 200);
         }
 
-        openBtn?.addEventListener('click', openModal);
-        closeBtn?.addEventListener('click', closeModal);
-        overlay?.addEventListener('click', closeModal);
+        $openBtn.on('click', openModal);
+        $closeBtn.on('click', closeModal);
+        $overlay.on('click', closeModal);
 
         // Close on ESC only when open
-        document.addEventListener('keydown', (e) => {
+        $(document).on('keydown', function(e) {
             if (e.key === 'Escape' && isOpen()) closeModal();
         });
 
-        (() => {
-            // ====== ELEMENTS ======
-            const displayExpr = document.getElementById('displayExpr');
-            const displayValue = document.getElementById('displayValue');
-            const errorMsg = document.getElementById('errorMsg');
-            const angleModeEl = document.getElementById('angleMode');
-            const memIndicator = document.getElementById('memIndicator');
-            const ansIndicator = document.getElementById('ansIndicator');
-            const historyEl = document.getElementById('history');
+        // ====== ELEMENTS ======
+        const $displayExpr = $('#displayExpr');
+        const $displayValue = $('#displayValue');
+        const $errorMsg = $('#errorMsg');
+        const $angleModeEl = $('#angleMode');
+        const $memIndicator = $('#memIndicator');
+        const $ansIndicator = $('#ansIndicator');
+        const $historyEl = $('#history');
 
-            // ====== STATE ======
-            let input = '';
-            let lastAns = 0;
-            let memory = 0;
-            const insStack = []; // tracks insertions as chunks: { len:number, origin:'btn'|'key' }
+        // ====== STATE ======
+        let input = '';
+        let lastAns = 0;
+        let memory = 0;
+        const insStack = []; // tracks insertions as chunks: { len:number, origin:'btn'|'key' }
 
-            // ====== CONSTANTS & HELPERS ======
-            const CONSTANTS = {
-                'pi': Math.PI,
-                'π': Math.PI,
-                'e': Math.E
-            };
-            const PRECEDENCE = {
-                'u-': 5,
-                '!': 5,
-                '%': 5,
-                '^': 4,
-                '*': 3,
-                '/': 3,
-                '+': 2,
-                '-': 2
-            };
-            const RIGHT_ASSOC = {
-                '^': true,
-                'u-': true
-            };
+        // ====== CONSTANTS & HELPERS ======
+        const CONSTANTS = {
+            'pi': Math.PI,
+            'π': Math.PI,
+            'e': Math.E
+        };
+        const PRECEDENCE = {
+            'u-': 5,
+            '!': 5,
+            '%': 5,
+            '^': 4,
+            '*': 3,
+            '/': 3,
+            '+': 2,
+            '-': 2
+        };
+        const RIGHT_ASSOC = {
+            '^': true,
+            'u-': true
+        };
 
-            const isDigit = (c) => /[0-9]/.test(c);
-            const isAlpha = (c) => /[a-zA-Zµπ]/.test(c);
+        const isDigit = (c) => /[0-9]/.test(c);
+        const isAlpha = (c) => /[a-zA-Zµπ]/.test(c);
 
-            function escapeHtml(s) {
-                return (s || '').replace(/[&<>\"']/g, m => ({
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    "\"": "&quot;",
-                    "'": "&#39;"
-                } [m]));
-            }
+        function escapeHtml(s) {
+            return (s || '').replace(/[&<>\"']/g, m => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                "\"": "&quot;",
+                "'": "&#39;"
+            } [m]));
+        }
 
-            function render() {
-                if (displayExpr) displayExpr.textContent = input || '\u00A0';
-            }
+        function render() {
+            if ($displayExpr.length) $displayExpr.text(input || '\u00A0');
+        }
 
-            function formatNum(n) {
-                if (!Number.isFinite(n)) return '∞';
-                const abs = Math.abs(n);
-                if (abs !== 0 && (abs < 1e-6 || abs >= 1e9)) return n.toExponential(10).replace(/0+e/, 'e');
-                return (+n.toFixed(12)).toString();
-            }
+        function formatNum(n) {
+            if (!Number.isFinite(n)) return '∞';
+            const abs = Math.abs(n);
+            if (abs !== 0 && (abs < 1e-6 || abs >= 1e9)) return n.toExponential(10).replace(/0+e/, 'e');
+            return (+n.toFixed(12)).toString();
+        }
 
-            function push(s, origin = 'btn') {
-                input += s;
+        function push(s, origin = 'btn') {
+            input += s;
+            insStack.push({
+                len: s.length,
+                origin
+            });
+            render();
+        }
+
+        function setInput(s, origin = 'set') {
+            input = s || '';
+            insStack.length = 0;
+            if (origin === 'btn') {
                 insStack.push({
-                    len: s.length,
-                    origin
+                    len: input.length,
+                    origin: 'btn'
                 });
-                render();
+            } else {
+                for (let i = 0; i < input.length; i++) insStack.push({
+                    len: 1,
+                    origin: 'key'
+                });
             }
+            render();
+        }
 
-            function setInput(s, origin = 'set') {
-                input = s || '';
-                insStack.length = 0;
-                if (origin === 'btn') {
-                    insStack.push({
-                        len: input.length,
-                        origin: 'btn'
-                    });
-                } else {
-                    for (let i = 0; i < input.length; i++) insStack.push({
-                        len: 1,
-                        origin: 'key'
-                    });
+        function clearAll() {
+            setInput('');
+            if ($displayValue.length) $displayValue.text('0');
+            if ($errorMsg.length) $errorMsg.text('');
+        }
+
+        function delOne() {
+            if (!input.length) return;
+            if (insStack.length) {
+                const {
+                    len
+                } = insStack.pop();
+                input = input.slice(0, -len);
+            } else {
+                input = input.slice(0, -1);
+            }
+            render();
+        }
+
+        // ====== TOKENIZER ======
+        function tokenize(expr) {
+            const tokens = [];
+            let i = 0,
+                prev = null;
+            while (i < expr.length) {
+                let c = expr[i];
+                if (c === ' ') {
+                    i++;
+                    continue;
                 }
-                render();
-            }
 
-            function clearAll() {
-                setInput('');
-                if (displayValue) displayValue.textContent = '0';
-                if (errorMsg) errorMsg.textContent = '';
-            }
-
-            function delOne() {
-                if (!input.length) return;
-                if (insStack.length) {
-                    const {
-                        len
-                    } = insStack.pop();
-                    input = input.slice(0, -len);
-                } else {
-                    input = input.slice(0, -1);
+                // number
+                if (isDigit(c) || (c === '.' && isDigit(expr[i + 1]))) {
+                    let s = c;
+                    i++;
+                    while (i < expr.length && /[0-9.]/.test(expr[i])) s += expr[i++];
+                    tokens.push({
+                        type: 'num',
+                        val: parseFloat(s)
+                    });
+                    prev = 'num';
+                    continue;
                 }
-                render();
-            }
 
-            // ====== TOKENIZER ======
-            function tokenize(expr) {
-                const tokens = [];
-                let i = 0,
-                    prev = null;
-                while (i < expr.length) {
-                    let c = expr[i];
-                    if (c === ' ') {
-                        i++;
-                        continue;
-                    }
+                // constants
+                if (c === 'π') {
+                    tokens.push({
+                        type: 'num',
+                        val: Math.PI
+                    });
+                    i++;
+                    prev = 'num';
+                    continue;
+                }
+                if (c in CONSTANTS) {
+                    tokens.push({
+                        type: 'num',
+                        val: CONSTANTS[c]
+                    });
+                    i++;
+                    prev = 'num';
+                    continue;
+                }
 
-                    // number
-                    if (isDigit(c) || (c === '.' && isDigit(expr[i + 1]))) {
-                        let s = c;
-                        i++;
-                        while (i < expr.length && /[0-9.]/.test(expr[i])) s += expr[i++];
-                        tokens.push({
-                            type: 'num',
-                            val: parseFloat(s)
-                        });
-                        prev = 'num';
-                        continue;
-                    }
+                // identifier (function name)
+                if (isAlpha(c)) {
+                    let s = c;
+                    i++;
+                    while (i < expr.length && /[a-zA-Z0-9_µ]/.test(expr[i])) s += expr[i++];
+                    tokens.push({
+                        type: 'id',
+                        val: s.toLowerCase()
+                    });
+                    prev = 'id';
+                    continue;
+                }
 
-                    // constants
-                    if (c === 'π') {
-                        tokens.push({
-                            type: 'num',
-                            val: Math.PI
-                        });
-                        i++;
-                        prev = 'num';
-                        continue;
-                    }
-                    if (c in CONSTANTS) {
-                        tokens.push({
-                            type: 'num',
-                            val: CONSTANTS[c]
-                        });
-                        i++;
-                        prev = 'num';
-                        continue;
-                    }
+                // parentheses
+                if (c === '(' || c === ')') {
+                    tokens.push({
+                        type: c
+                    });
+                    i++;
+                    prev = c;
+                    continue;
+                }
 
-                    // identifier (function name)
-                    if (isAlpha(c)) {
-                        let s = c;
-                        i++;
-                        while (i < expr.length && /[a-zA-Z0-9_µ]/.test(expr[i])) s += expr[i++];
-                        tokens.push({
-                            type: 'id',
-                            val: s.toLowerCase()
-                        });
-                        prev = 'id';
-                        continue;
-                    }
+                // postfix & percent
+                if (c === '!' || c === '%') {
+                    tokens.push({
+                        type: 'op',
+                        val: c
+                    });
+                    i++;
+                    prev = 'op';
+                    continue;
+                }
 
-                    // parentheses
-                    if (c === '(' || c === ')') {
-                        tokens.push({
-                            type: c
-                        });
-                        i++;
-                        prev = c;
-                        continue;
-                    }
-
-                    // postfix & percent
-                    if (c === '!' || c === '%') {
+                // operators (detect unary -)
+                if ('+-*/^'.includes(c)) {
+                    if (c === '-' && (prev == null || (prev !== 'num' && prev !== ')'))) {
                         tokens.push({
                             type: 'op',
-                            val: c
+                            val: 'u-'
                         });
                         i++;
                         prev = 'op';
                         continue;
                     }
-
-                    // operators (detect unary -)
-                    if ('+-*/^'.includes(c)) {
-                        if (c === '-' && (prev == null || (prev !== 'num' && prev !== ')'))) {
-                            tokens.push({
-                                type: 'op',
-                                val: 'u-'
-                            });
-                            i++;
-                            prev = 'op';
-                            continue;
-                        }
-                        tokens.push({
-                            type: 'op',
-                            val: c
-                        });
-                        i++;
-                        prev = 'op';
-                        continue;
-                    }
-
-                    throw new Error('Unexpected character: ' + c);
+                    tokens.push({
+                        type: 'op',
+                        val: c
+                    });
+                    i++;
+                    prev = 'op';
+                    continue;
                 }
-                return tokens;
-            }
 
-            // ====== SHUNTING-YARD ======
-            function shuntingYard(tokens) {
-                const out = [],
-                    stack = [];
-                for (const t of tokens) {
-                    if (t.type === 'num') {
-                        out.push(t);
-                        continue;
-                    }
-                    if (t.type === 'id') {
-                        stack.push(t);
-                        continue;
-                    } // function name before '('
-                    if (t.type === 'op') {
-                        while (stack.length) {
-                            const top = stack[stack.length - 1];
-                            if (top.type === 'op' && ((RIGHT_ASSOC[t.val] ? PRECEDENCE[t.val] < PRECEDENCE[top.val] : PRECEDENCE[t.val] <= PRECEDENCE[top.val]))) {
-                                out.push(stack.pop());
-                            } else break;
-                        }
-                        stack.push(t);
-                        continue;
-                    }
-                    if (t.type === '(') {
-                        stack.push(t);
-                        continue;
-                    }
-                    if (t.type === ')') {
-                        while (stack.length && stack[stack.length - 1].type !== '(') out.push(stack.pop());
-                        if (!stack.length) throw new Error('Mismatched parentheses');
-                        stack.pop(); // pop '('
-                        // if function on top, pop it to output (unary funcs)
-                        if (stack.length && stack[stack.length - 1].type === 'id') out.push(stack.pop());
-                        continue;
-                    }
+                throw new Error('Unexpected character: ' + c);
+            }
+            return tokens;
+        }
+
+        // ====== SHUNTING-YARD ======
+        function shuntingYard(tokens) {
+            const out = [],
+                stack = [];
+            for (const t of tokens) {
+                if (t.type === 'num') {
+                    out.push(t);
+                    continue;
                 }
-                while (stack.length) {
-                    const x = stack.pop();
-                    if (x.type === '(' || x.type === ')') throw new Error('Mismatched parentheses');
-                    out.push(x);
+                if (t.type === 'id') {
+                    stack.push(t);
+                    continue;
+                } // function name before '('
+                if (t.type === 'op') {
+                    while (stack.length) {
+                        const top = stack[stack.length - 1];
+                        if (top.type === 'op' && ((RIGHT_ASSOC[t.val] ? PRECEDENCE[t.val] < PRECEDENCE[top.val] : PRECEDENCE[t.val] <= PRECEDENCE[top.val]))) {
+                            out.push(stack.pop());
+                        } else break;
+                    }
+                    stack.push(t);
+                    continue;
                 }
-                return out;
+                if (t.type === '(') {
+                    stack.push(t);
+                    continue;
+                }
+                if (t.type === ')') {
+                    while (stack.length && stack[stack.length - 1].type !== '(') out.push(stack.pop());
+                    if (!stack.length) throw new Error('Mismatched parentheses');
+                    stack.pop(); // pop '('
+                    if (stack.length && stack[stack.length - 1].type === 'id') out.push(stack.pop());
+                    continue;
+                }
             }
-
-            // ====== EVALUATOR ======
-            function factorial(n) {
-                if (!Number.isFinite(n) || n < 0) throw new Error('Invalid factorial');
-                if (Math.floor(n) !== n) throw new Error('Factorial only for integers');
-                let r = 1;
-                for (let i = 2; i <= n; i++) r *= i;
-                return r;
+            while (stack.length) {
+                const x = stack.pop();
+                if (x.type === '(' || x.type === ')') throw new Error('Mismatched parentheses');
+                out.push(x);
             }
-            const toRadians = (x) => angleModeEl && angleModeEl.value === 'deg' ? (x * Math.PI / 180) : x;
-            const fromRadians = (x) => angleModeEl && angleModeEl.value === 'deg' ? (x * 180 / Math.PI) : x;
+            return out;
+        }
 
-            function evalRPN(rpn) {
-                const st = [];
-                for (const t of rpn) {
-                    if (t.type === 'num') {
-                        st.push(t.val);
+        // ====== EVALUATOR ======
+        function factorial(n) {
+            if (!Number.isFinite(n) || n < 0) throw new Error('Invalid factorial');
+            if (Math.floor(n) !== n) throw new Error('Factorial only for integers');
+            let r = 1;
+            for (let i = 2; i <= n; i++) r *= i;
+            return r;
+        }
+        const toRadians = (x) => ($angleModeEl.length && $angleModeEl.val() === 'deg') ? (x * Math.PI / 180) : x;
+        const fromRadians = (x) => ($angleModeEl.length && $angleModeEl.val() === 'deg') ? (x * 180 / Math.PI) : x;
+
+        function evalRPN(rpn) {
+            const st = [];
+            for (const t of rpn) {
+                if (t.type === 'num') {
+                    st.push(t.val);
+                    continue;
+                }
+
+                if (t.type === 'op') {
+                    if (t.val === 'u-') {
+                        const a = st.pop();
+                        st.push(-a);
                         continue;
                     }
+                    if (t.val === '!') {
+                        const a = st.pop();
+                        st.push(factorial(a));
+                        continue;
+                    }
+                    if (t.val === '%') {
+                        const a = st.pop();
+                        st.push(a / 100);
+                        continue;
+                    }
+                    const b = st.pop(),
+                        a = st.pop();
+                    switch (t.val) {
+                        case '+':
+                            st.push(a + b);
+                            break;
+                        case '-':
+                            st.push(a - b);
+                            break;
+                        case '*':
+                            st.push(a * b);
+                            break;
+                        case '/':
+                            st.push(a / b);
+                            break;
+                        case '^':
+                            st.push(Math.pow(a, b));
+                            break;
+                    }
+                    continue;
+                }
 
-                    if (t.type === 'op') {
-                        if (t.val === 'u-') {
-                            const a = st.pop();
-                            st.push(-a);
-                            continue;
-                        }
-                        if (t.val === '!') {
-                            const a = st.pop();
-                            st.push(factorial(a));
-                            continue;
-                        }
-                        if (t.val === '%') {
-                            const a = st.pop();
-                            st.push(a / 100);
-                            continue;
-                        }
-                        const b = st.pop(),
+                if (t.type === 'id') {
+                    const fn = t.val;
+                    let a;
+                    switch (fn) {
+                        case 'sin':
+                            a = toRadians(st.pop());
+                            st.push(Math.sin(a));
+                            break;
+                        case 'cos':
+                            a = toRadians(st.pop());
+                            st.push(Math.cos(a));
+                            break;
+                        case 'tan':
+                            a = toRadians(st.pop());
+                            st.push(Math.tan(a));
+                            break;
+                        case 'asin':
                             a = st.pop();
-                        switch (t.val) {
-                            case '+':
-                                st.push(a + b);
-                                break;
-                            case '-':
-                                st.push(a - b);
-                                break;
-                            case '*':
-                                st.push(a * b);
-                                break;
-                            case '/':
-                                st.push(a / b);
-                                break;
-                            case '^':
-                                st.push(Math.pow(a, b));
-                                break;
-                        }
-                        continue;
+                            st.push(fromRadians(Math.asin(a)));
+                            break;
+                        case 'acos':
+                            a = st.pop();
+                            st.push(fromRadians(Math.acos(a)));
+                            break;
+                        case 'atan':
+                            a = st.pop();
+                            st.push(fromRadians(Math.atan(a)));
+                            break;
+                        case 'ln':
+                            a = st.pop();
+                            st.push(Math.log(a));
+                            break;
+                        case 'log':
+                            a = st.pop();
+                            st.push(Math.log10(a));
+                            break;
+                        case 'sqrt':
+                            a = st.pop();
+                            st.push(Math.sqrt(a));
+                            break;
+                        case 'square':
+                            a = st.pop();
+                            st.push(a * a);
+                            break;
+                        case 'recip':
+                            a = st.pop();
+                            st.push(1 / a);
+                            break;
+                        case 'sign':
+                            a = st.pop();
+                            st.push(-a);
+                            break;
+                        default:
+                            throw new Error('Unknown fn: ' + fn);
                     }
-
-                    if (t.type === 'id') {
-                        const fn = t.val;
-                        let a;
-                        switch (fn) {
-                            case 'sin':
-                                a = toRadians(st.pop());
-                                st.push(Math.sin(a));
-                                break;
-                            case 'cos':
-                                a = toRadians(st.pop());
-                                st.push(Math.cos(a));
-                                break;
-                            case 'tan':
-                                a = toRadians(st.pop());
-                                st.push(Math.tan(a));
-                                break;
-                            case 'asin':
-                                a = st.pop();
-                                st.push(fromRadians(Math.asin(a)));
-                                break;
-                            case 'acos':
-                                a = st.pop();
-                                st.push(fromRadians(Math.acos(a)));
-                                break;
-                            case 'atan':
-                                a = st.pop();
-                                st.push(fromRadians(Math.atan(a)));
-                                break;
-                            case 'ln':
-                                a = st.pop();
-                                st.push(Math.log(a));
-                                break;
-                            case 'log':
-                                a = st.pop();
-                                st.push(Math.log10(a));
-                                break;
-                            case 'sqrt':
-                                a = st.pop();
-                                st.push(Math.sqrt(a));
-                                break;
-                            case 'square':
-                                a = st.pop();
-                                st.push(a * a);
-                                break;
-                            case 'recip':
-                                a = st.pop();
-                                st.push(1 / a);
-                                break;
-                            case 'sign':
-                                a = st.pop();
-                                st.push(-a);
-                                break;
-                            default:
-                                throw new Error('Unknown fn: ' + fn);
-                        }
-                        continue;
-                    }
-                    throw new Error('Bad token');
+                    continue;
                 }
-                if (st.length !== 1) throw new Error('Malformed expression');
-                return st[0];
+                throw new Error('Bad token');
             }
+            if (st.length !== 1) throw new Error('Malformed expression');
+            return st[0];
+        }
 
-            // ====== CALCULATE & HISTORY ======
-            function calculate() {
-                try {
-                    if (errorMsg) errorMsg.textContent = '';
-                    const tokens = tokenize(input);
-                    const rpn = shuntingYard(tokens);
-                    const val = evalRPN(rpn);
-                    lastAns = val;
-                    if (ansIndicator) ansIndicator.textContent = formatNum(val);
-                    if (displayValue) displayValue.textContent = formatNum(val);
-                    appendHistory(input, val);
-                } catch (e) {
-                    if (errorMsg) errorMsg.textContent = e.message || 'Error';
-                }
+        // ====== CALCULATE & HISTORY ======
+        function calculate() {
+            try {
+                if ($errorMsg.length) $errorMsg.text('');
+                const tokens = tokenize(input);
+                const rpn = shuntingYard(tokens);
+                const val = evalRPN(rpn);
+                lastAns = val;
+                if ($ansIndicator.length) $ansIndicator.text(formatNum(val));
+                if ($displayValue.length) $displayValue.text(formatNum(val));
+                appendHistory(input, val);
+            } catch (e) {
+                if ($errorMsg.length) $errorMsg.text(e.message || 'Error');
             }
+        }
 
-            function appendHistory(expr, result) {
-                if (!historyEl) return;
-                const row = document.createElement('div');
-                row.className = 'group flex items-start justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800';
-                row.innerHTML = `
-      <div>
-        <div class="text-gray-500 dark:text-gray-400">${escapeHtml(expr)}</div>
-        <div class="font-medium text-gray-900 dark:text-gray-100">${formatNum(result)}</div>
-      </div>
-      <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition">
-        <button class="text-xs text-blue-600 dark:text-blue-400 hover:underline" data-act="use">Use</button>
-        <button class="text-xs text-rose-600 dark:text-rose-400 hover:underline" data-act="del">Delete</button>
-      </div>`;
-                row.addEventListener('click', (e) => {
-                    const act = e.target.getAttribute('data-act');
-                    if (act === 'use') {
-                        setInput(expr);
-                        if (displayValue) displayValue.textContent = '0';
-                    }
-                    if (act === 'del') {
-                        row.remove();
-                    }
-                });
-                historyEl.prepend(row);
-            }
+        function appendHistory(expr, result) {
+            if (!$historyEl.length) return;
+            const $row = $(`
+          <div class="group flex items-start justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+            <div>
+              <div class="text-gray-500 dark:text-gray-400">${escapeHtml(expr)}</div>
+              <div class="font-medium text-gray-900 dark:text-gray-100">${formatNum(result)}</div>
+            </div>
+            <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition">
+              <button class="text-xs text-blue-600 dark:text-blue-400 hover:underline" data-act="use">Use</button>
+              <button class="text-xs text-rose-600 dark:text-rose-400 hover:underline" data-act="del">Delete</button>
+            </div>
+          </div>
+        `);
 
-            // ====== CLICK HANDLER ======
-            document.addEventListener('click', (e) => {
-                const b = e.target.closest('button');
-                if (!b) return;
-
-                // common buttons by id
-                if (b.id === 'btnClear') {
-                    setInput('');
-                    return;
+            $row.on('click', function(e) {
+                const act = $(e.target).attr('data-act');
+                if (act === 'use') {
+                    setInput(expr);
+                    if ($displayValue.length) $displayValue.text('0');
                 }
-                if (b.id === 'btnClearAll') {
-                    clearAll();
-                    return;
-                }
-                if (b.id === 'btnEq') {
-                    calculate();
-                    return;
-                }
-                if (b.id === 'btnClearHist') {
-                    if (historyEl) historyEl.innerHTML = '';
-                    return;
-                }
-
-                const key = b.getAttribute('data-key');
-                const op = b.getAttribute('data-op');
-                const fn = b.getAttribute('data-fn');
-
-                // Keys (digits, constants, memory, DEL)
-                if (key) {
-                    if (key === 'DEL') {
-                        delOne();
-                        return;
-                    }
-
-                    if (key === 'MC') {
-                        memory = 0;
-                        if (memIndicator) memIndicator.textContent = '0';
-                        return;
-                    }
-                    if (key === 'MR') {
-                        push(formatNum(memory));
-                        return;
-                    }
-                    if (key === 'M+') {
-                        const v = parseFloat(displayValue?.textContent || '0') || 0;
-                        memory += v;
-                        if (memIndicator) memIndicator.textContent = formatNum(memory);
-                        return;
-                    }
-                    if (key === 'M-') {
-                        const v = parseFloat(displayValue?.textContent || '0') || 0;
-                        memory -= v;
-                        if (memIndicator) memIndicator.textContent = formatNum(memory);
-                        return;
-                    }
-
-                    if (key === 'pi') {
-                        push('π');
-                        return;
-                    }
-                    if (key === 'e') {
-                        push('e');
-                        return;
-                    }
-
-                    // numeric or parentheses or dot
-                    push(key);
-                    return;
-                }
-
-                // Operators
-                if (op) {
-                    push(op);
-                    return;
-                }
-
-                // Functions
-                if (fn) {
-                    if (fn === 'percent') {
-                        push('%');
-                        return;
-                    }
-                    if (fn === 'pow') {
-                        push('^');
-                        return;
-                    } // xʸ uses ^ operator (no commas needed)
-                    if (fn === 'fact') {
-                        push('!');
-                        return;
-                    } // postfix
-                    if (fn === 'square') {
-                        push('square(');
-                        return;
-                    }
-                    if (fn === 'recip') {
-                        push('recip(');
-                        return;
-                    }
-                    if (fn === 'sign') {
-                        push('sign(');
-                        return;
-                    }
-                    // default unary with parenthesis
-                    if (['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'ln', 'log', 'sqrt'].includes(fn)) {
-                        push(fn + '(');
-                        return;
-                    }
+                if (act === 'del') {
+                    $row.remove();
                 }
             });
 
-            // ====== KEYBOARD HANDLER ======
-            document.addEventListener('keydown', (e) => {
-                if (e.defaultPrevented) return;
-                const k = e.key;
+            $historyEl.prepend($row);
+        }
 
-                // digits, dot, parens as keyboard chunks
-                if (/^[0-9]$/.test(k) || k === '.' || k === '(' || k === ')') {
-                    push(k, 'key');
-                    return;
-                }
+        // ====== CLICK HANDLER ======
+        $(document).on('click', function(e) {
+            const $btn = $(e.target).closest('button');
+            if (!$btn.length) return;
 
-                // ops as keyboard chunks
-                if (k === '+' || k === '-' || k === '*' || k === '/' || k === '^') {
-                    push(k, 'key');
-                    return;
-                }
+            const id = $btn.attr('id');
 
-                if (k === 'Backspace') {
-                    e.preventDefault();
+            // common buttons by id
+            if (id === 'btnClear') {
+                setInput('');
+                return;
+            }
+            if (id === 'btnClearAll') {
+                clearAll();
+                return;
+            }
+            if (id === 'btnEq') {
+                calculate();
+                return;
+            }
+            if (id === 'btnClearHist') {
+                if ($historyEl.length) $historyEl.html('');
+                return;
+            }
+
+            const key = $btn.attr('data-key');
+            const op = $btn.attr('data-op');
+            const fn = $btn.attr('data-fn');
+
+            // Keys (digits, constants, memory, DEL)
+            if (key) {
+                if (key === 'DEL') {
                     delOne();
                     return;
                 }
-                if (k === 'Enter' || k === '=') {
-                    e.preventDefault();
-                    calculate();
+
+                if (key === 'MC') {
+                    memory = 0;
+                    if ($memIndicator.length) $memIndicator.text('0');
                     return;
                 }
-            });
+                if (key === 'MR') {
+                    push(formatNum(memory));
+                    return;
+                }
+                if (key === 'M+') {
+                    const v = parseFloat(($displayValue.text() || '0')) || 0;
+                    memory += v;
+                    if ($memIndicator.length) $memIndicator.text(formatNum(memory));
+                    return;
+                }
+                if (key === 'M-') {
+                    const v = parseFloat(($displayValue.text() || '0')) || 0;
+                    memory -= v;
+                    if ($memIndicator.length) $memIndicator.text(formatNum(memory));
+                    return;
+                }
 
-            // init
-            render();
-        })();
+                if (key === 'pi') {
+                    push('π');
+                    return;
+                }
+                if (key === 'e') {
+                    push('e');
+                    return;
+                }
+
+                // numeric or parentheses or dot
+                push(key);
+                return;
+            }
+
+            // Operators
+            if (op) {
+                push(op);
+                return;
+            }
+
+            // Functions
+            if (fn) {
+                if (fn === 'percent') {
+                    push('%');
+                    return;
+                }
+                if (fn === 'pow') {
+                    push('^');
+                    return;
+                } // xʸ uses ^
+                if (fn === 'fact') {
+                    push('!');
+                    return;
+                } // postfix
+                if (fn === 'square') {
+                    push('square(');
+                    return;
+                }
+                if (fn === 'recip') {
+                    push('recip(');
+                    return;
+                }
+                if (fn === 'sign') {
+                    push('sign(');
+                    return;
+                }
+                if (['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'ln', 'log', 'sqrt'].includes(fn)) {
+                    push(fn + '(');
+                    return;
+                }
+            }
+        });
+
+        // ====== KEYBOARD HANDLER ======
+        $(document).on('keydown', function(e) {
+            if (e.isDefaultPrevented && e.isDefaultPrevented()) return;
+            const k = e.key;
+
+            if (/^[0-9]$/.test(k) || k === '.' || k === '(' || k === ')') {
+                push(k, 'key');
+                return;
+            }
+
+            if (k === '+' || k === '-' || k === '*' || k === '/' || k === '^') {
+                push(k, 'key');
+                return;
+            }
+
+            if (k === 'Backspace') {
+                e.preventDefault();
+                delOne();
+                return;
+            }
+            if (k === 'Enter' || k === '=') {
+                e.preventDefault();
+                calculate();
+                return;
+            }
+        });
+
+        // init
+        render();
     })();
 </script>
+
 
 
 

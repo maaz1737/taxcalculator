@@ -4,29 +4,21 @@
     const $closeLengthConverterBtn =
         $overlayLengthConverter.find(".close-popup");
 
-    function openModalLengthConverter() {
-        $overlayLengthConverter
-            .removeClass("hidden")
-            .attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-
-    function closeModalLengthConverter() {
-        $overlayLengthConverter.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openLengthConverterBtn.on("click", openModalLengthConverter);
-    $closeLengthConverterBtn.on("click", closeModalLengthConverter);
+    $openLengthConverterBtn.on("click", () => {
+        openModal($overlayLengthConverter);
+    });
+    $closeLengthConverterBtn.on("click", () => {
+        closeModal($overlayLengthConverter);
+    });
 
     $overlayLengthConverter.on("click", function (e) {
         if (e.target === $overlayLengthConverter[0])
-            closeModalLengthConverter();
+            closeModal($overlayLengthConverter);
     });
 
     $(window).on("keydown", function (e) {
         if (e.key === "Escape" && !$overlayLengthConverter.hasClass("hidden")) {
-            closeModalLengthConverter();
+            closeModal($overlayLengthConverter);
         }
     });
 

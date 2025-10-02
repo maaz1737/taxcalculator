@@ -26,25 +26,19 @@
     const $closeTimeConverterBtn = $("#closePopupTimeConverter");
     const $overlayTimeConverter = $("#popupTimeConverter");
 
-    function openModal() {
-        $overlayTimeConverter
-            .removeClass("hidden")
-            .attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlayTimeConverter.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openTimeConverterBtn.on("click", openModal);
-    $closeTimeConverterBtn.on("click", closeModal);
+    $openTimeConverterBtn.on("click", () => {
+        openModal($overlayTimeConverter);
+    });
+    $closeTimeConverterBtn.on("click", () => {
+        closeModal($overlayTimeConverter);
+    });
     $overlayTimeConverter.on("click", function (e) {
-        if (e.target === $overlayTimeConverter[0]) closeModal();
+        if (e.target === $overlayTimeConverter[0])
+            closeModal($overlayTimeConverter);
     });
     $(window).on("keydown", function (e) {
         if (e.key === "Escape" && !$overlayTimeConverter.hasClass("hidden"))
-            closeModal();
+            closeModal($overlayTimeConverter);
     });
 
     /* ===========================

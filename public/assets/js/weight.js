@@ -4,29 +4,19 @@
     const $closeWeightConverterBtn = $("#closePopupWeightConverter");
     const $overlayWeightConverter = $("#popupWeightConverter");
 
-    function openModal() {
-        $overlayWeightConverter
-            .removeClass("hidden")
-            .attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlayWeightConverter.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    if ($openWeightConverterBtn.length)
-        $openWeightConverterBtn.on("click", openModal);
-    if ($closeWeightConverterBtn.length)
-        $closeWeightConverterBtn.on("click", closeModal);
-    if ($overlayWeightConverter.length) {
-        $overlayWeightConverter.on("click", function (e) {
-            if (e.target === $overlayWeightConverter[0]) closeModal();
-        });
-    }
+    $openWeightConverterBtn.on("click", () => {
+        openModal($overlayWeightConverter);
+    });
+    $closeWeightConverterBtn.on("click", () => {
+        closeModal($overlayWeightConverter);
+    });
+    $overlayWeightConverter.on("click", function (e) {
+        if (e.target === $overlayWeightConverter[0])
+            closeModal($overlayWeightConverter);
+    });
     $(window).on("keydown", function (e) {
         if (e.key === "Escape" && !$overlayWeightConverter.hasClass("hidden"))
-            closeModal();
+            closeModal($overlayWeightConverter);
     });
 
     const $elValue = $("#weight_value");

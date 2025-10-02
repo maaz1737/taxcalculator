@@ -1,11 +1,24 @@
 $(document).ready(function () {
-    $("#openPopupTaxCalculator").on("click", function () {
-        $("#popupTaxCalculator").removeClass("hidden");
+    let $closeTaxModel = $("#closeTaxModel");
+    let $openPopupTaxCalculator = $("#openPopupTaxCalculator");
+    let $popupTaxCalculator = $("#popupTaxCalculator");
+
+    $openPopupTaxCalculator.on("click", () => {
+        openModal($popupTaxCalculator);
     });
-    $("#closeTaxModel").on("click", function () {
-        $("#popupTaxCalculator").addClass("hidden");
+    $closeTaxModel.on("click", () => {
+        closeModal($popupTaxCalculator);
+    });
+    $popupTaxCalculator.on("click", function (e) {
+        if (e.target === $popupTaxCalculator[0])
+            closeModal($popupTaxCalculator);
     });
 
+    $(window).on("keydown", function (e) {
+        if (e.key === "Escape" && !$popupTaxCalculator.hasClass("hidden")) {
+            closeModal($popupTaxCalculator);
+        }
+    });
     // ---------- Elements (meaningful names) ----------
     const incomeInputEl = $("#annualIncome");
     const levySelectEl = $("#levyPercent");
@@ -30,11 +43,7 @@ $(document).ready(function () {
     });
 
     function showError(msg) {
-        errorMessageEl2
-            .text(msg)
-            .removeClass(
-                "-translate-y-full opacity-0"
-            );
+        errorMessageEl2.text(msg).removeClass("-translate-y-full opacity-0");
 
         setTimeout(() => {
             errorMessageEl2.text(msg).addClass("-translate-y-full opacity-0");
@@ -192,6 +201,8 @@ $(document).ready(function () {
 
                     remainingTax.html(res.data.taxLevy - res.data.taxpaid);
                     paidtax.html(res.data.taxpaid);
+
+                    loadTaxHistory("v1/finance/gettax");
                 },
                 error: function (xhr) {
                     console.error("Status:", xhr.status);
@@ -254,7 +265,7 @@ $(document).ready(function () {
             <span>Remain: ${element.remaining_income}</span>
             <span>Tax: ${element.tax}</span>
             <span>Paid: ${element.taxpaid ?? "—"}</span>
-            <span>Paid: ${remainingTax.toFixed(2) ?? "—"}</span>
+            <span>Remaining Tax: ${remainingTax.toFixed(2) ?? "—"}</span>
             <span class="text-xs text-slate-500">${date}</span>
         </div>
     `;

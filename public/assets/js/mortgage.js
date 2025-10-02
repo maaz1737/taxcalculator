@@ -4,24 +4,20 @@ $(function () {
     const $closeBtn = $("#closePopupMortgageCalculator");
     const $overlay = $("#popupMortgageCalculator");
 
-    function openModal() {
-        $overlay.removeClass("hidden").attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlay.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openBtn.on("click", openModal);
-    $closeBtn.on("click", closeModal);
+    $openBtn.on("click", () => {
+        openModal($overlay);
+    });
+    $closeBtn.on("click", () => {
+        closeModal($overlay);
+    });
 
     $overlay.on("click", function (e) {
-        if (e.target === this) closeModal();
+        if (e.target === this) closeModal($overlay);
     });
 
     $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlay.hasClass("hidden")) closeModal();
+        if (e.key === "Escape" && !$overlay.hasClass("hidden"))
+            closeModal($overlay);
     });
 
     $overlay.addClass("hidden").attr("aria-hidden", "true");
@@ -48,6 +44,7 @@ $(function () {
     const $tint = $("#mortgage_total_interest");
     const $payoff = $("#mortgage_payoff_date");
     const $tbody = $("#mortgage_tableBody");
+    const btnSaveMortgage = $("#btnSaveMortgage");
 
     // ---------- Helpers ----------
     function showError(msg) {
@@ -190,7 +187,8 @@ $(function () {
     // Initial compute
     update();
 
-    $("#btnSaveMortgage").on("click", mortagageSave);
+    btnSaveMortgage.on("click", mortagageSave);
+    const original = btnSaveMortgage.html();
 
     function mortagageSave() {
         let x = payload();
@@ -209,9 +207,17 @@ $(function () {
             success: function (res) {
                 console.log(res);
                 showSuccessMessage(res.message);
+                btnSaveMortgage.text("saving...");
+                setTimeout(() => {
+                    btnSaveMortgage.html(original);
+                }, 2000);
             },
             error: function (xhr) {
                 console.log(xhr);
+                btnSaveMortgage.text("Error x");
+                setTimeout(() => {
+                    btnSaveMortgage.html(original);
+                }, 2000);
                 showError(xhr.responseJSON.message);
             },
         });
@@ -267,8 +273,8 @@ $(function () {
                 "X-CSRF-TOKEN": csrf,
             },
             success: function (res) {
-                showSuccessMessage(res.message);
-                console.log(res.authUserData);
+                // showSuccessMessage(res.message);
+                // console.log(res.authUserData);
                 showMortgageHistory(res.data);
                 pagination(res.dataForPagination.links);
             },

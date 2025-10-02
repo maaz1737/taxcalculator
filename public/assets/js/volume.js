@@ -6,29 +6,22 @@
     const $closeVolumeConverterBtn = $("#closePopupVolumeConverter");
     const $overlayVolumeConverter = $("#popupVolumeConverter");
 
-    function openModal() {
-        $overlayVolumeConverter
-            .removeClass("hidden")
-            .attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlayVolumeConverter.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openVolumeConverterBtn.on("click", openModal);
-    $closeVolumeConverterBtn.on("click", closeModal);
+    $openVolumeConverterBtn.on("click", () => {
+        openModal($overlayVolumeConverter);
+    });
+    $closeVolumeConverterBtn.on("click", () => {
+        closeModal($overlayVolumeConverter);
+    });
 
     // Close modal if clicking outside the content
     $overlayVolumeConverter.on("click", function (e) {
-        if (e.target === $overlayVolumeConverter[0]) closeModal();
+        closeModal($overlayVolumeConverter);
     });
 
     // Close with Escape
     $(window).on("keydown", function (e) {
         if (e.key === "Escape" && !$overlayVolumeConverter.hasClass("hidden"))
-            closeModal();
+            closeModal($overlayVolumeConverter);
     });
 
     /* ===========================

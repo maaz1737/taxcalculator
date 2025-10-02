@@ -145,11 +145,14 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium">Height (cm)</label>
-                                <input name="height_cm" type="number" step="0.1" class="form-control search" />
+                                <input name="height_cm" type="number" step="0.1" class="form-control search search-input" />
                             </div>
                         </div>
                     </form>
                 </div>
+
+
+
 
                 <!-- Macros -->
                 <div id="tab-macros" class="card hidden">
@@ -169,7 +172,7 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium">Fat %</label>
-                                <input name="fat_pct" type="number" value="30" class="form-control search" />
+                                <input name="fat_pct" type="number" value="30" class="form-control search " />
                             </div>
                         </div>
                     </form>
@@ -195,3 +198,7 @@
         </div>
     </div>
 </template>
+
+
+
+<script src="assets/js/filter.js"></script>

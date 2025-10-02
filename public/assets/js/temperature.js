@@ -42,6 +42,24 @@
     const $table = $("#temperature_tableBody");
 
     //=============================
+    // CONVERTER MODAL (open/close)
+    //=============================
+
+    $openConv.on("click", () => {
+        openModal($overlay);
+    });
+    $closeConv.on("click", () => {
+        closeModal($overlay);
+    });
+    $overlay.on("click", function (e) {
+        if (e.target === $overlay[0]) closeModal($overlay);
+    });
+    $(window).on("keydown", function (e) {
+        if (e.key === "Escape" && !$overlay.hasClass("hidden"))
+            closeModal($overlay);
+    });
+
+    //=============================
     // HELPERS
     //=============================
     const csrf = () => $('meta[name="csrf-token"]').attr("content");
@@ -290,26 +308,6 @@
 
     // Load page 1 when opening the sheet
     $btnOpenHistory.on("click", () => loadTemHistory(1));
-
-    //=============================
-    // CONVERTER MODAL (open/close)
-    //=============================
-    function openModal() {
-        $overlay.removeClass("hidden").attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlay.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-    $openConv.on("click", openModal);
-    $closeConv.on("click", closeModal);
-    $overlay.on("click", function (e) {
-        if (e.target === $overlay[0]) closeModal();
-    });
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlay.hasClass("hidden")) closeModal();
-    });
 
     //=============================
     // CONVERSION (update table/result)
