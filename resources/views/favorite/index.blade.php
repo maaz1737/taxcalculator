@@ -1,4 +1,7 @@
-<x-app></x-app>
+<x-app
+    :title="'Favourite Calculator | Save & Access Your Favorite Online Calculators'"
+    :des="'Access and manage all your favorite online calculators in one place. Quickly save, edit, and use calculators for math, finance, tax, and more.'"
+    :key="'favourite calculator, online calculators, save calculators, math tools, finance calculators, tax calculators, quick access calculators'" />
 
 <div class="min-h-[400px] bg-gray-50 dark:bg-slate-900 py-10 px-4">
 
