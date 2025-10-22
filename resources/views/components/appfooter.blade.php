@@ -2,10 +2,10 @@
      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-4">
          <div>
              <div class="flex items-center gap-2 mb-3">
-                 <div class="h-8 w-8 rounded-xl bg-brand/10 text-brand grid place-items-center font-extrabold">≡</div>
-                 <span class="font-extrabold">[BRAND]</span>
+                 <img width="55px" src=" {{ asset('images/staticimages/logo_2.png') }}">
+                 <span class="font-extrabold text-yellow-500 dark:text-yellow-300">QuickCalculateIt</span>
              </div>
-             <p class="text-sm text-slate-600 dark:text-slate-400">Calculate smarter—instantly. Fitness, finance, converters, and more.</p>
+             <p class="text-sm text-slate-600 dark:text-slate-400 ">Calculate smarter—instantly. Fitness, finance, converters, and more.</p>
          </div>
 
          <div>
@@ -58,7 +58,23 @@
      })();
  </script>
 
- @stack('scripts')
+
+ <script src=" {{ asset('js/header.js') }}" defer></script>
+ <script src="{{ asset('js/filter.js') }}" defer></script>
+ <script src=" {{ asset('js/simplecalculator.js') }}" defer></script>
+ <script src=" {{ asset('js/area.js') }}" defer></script>
+ <script src=" {{ asset('js/weight.js') }}" defer></script>
+ <script src=" {{ asset('js/volume.js') }}" defer></script>
+ <script src=" {{ asset('js/temperature.js') }}" defer></script>
+ <script src=" {{ asset('js/time.js') }}" defer></script>
+ <script src=" {{ asset('js/length.js') }}" defer></script>
+ <script src=" {{ asset('js/taxcalculation.js') }}" defer></script>
+ <script src=" {{ asset('js/rent.js') }}" defer></script>
+ <script src=" {{ asset('js/salary.js') }}" defer></script>
+ <script src=" {{ asset('js/mortgage.js') }}" defer></script>
+ <script src=" {{ asset('js/depreciation.js') }}" defer></script>
+ <script src=" {{ asset('js/simplecalculator.js') }}"></script>
+ <script src="{{ asset('js/scientificCalculator.js') }}"></script>
 
 
 

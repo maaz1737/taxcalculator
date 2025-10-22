@@ -79,9 +79,9 @@
     }
 
     // Open the modal when the button is clicked
-    document
-        .getElementById("openPopupRentCalculator")
-        .addEventListener("click", openModal);
+    // document
+    //     .getElementById("openPopupRentCalculator")
+    //     .addEventListener("click", openModal);
 
     // Close the modal when the close button is clicked
     document

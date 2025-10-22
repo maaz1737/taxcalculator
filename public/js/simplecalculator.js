@@ -38,8 +38,13 @@ $(document).ready(function () {
 
     // Button: numbers/operators (NOT equals/clear)
     $(".calc-btn").on("click", function calculation() {
-        const key = $(this).text().trim();
-        if (key === "=" || key === "C") return;
+        let key = $(this).text().trim();
+        if (key === "=" || key === "C" || key === "Del") return;
+
+        key = key
+            .replace(/[−–—]/g, "-")
+            .replace(/[×x·]/gi, "*")
+            .replace(/÷/g, "/");
 
         if (justCalculated) {
             if (isDigitOrDot(key)) {
@@ -86,10 +91,12 @@ $(document).ready(function () {
                 current = current.replace(/\)(\d+)/g, ")*$1");
             }
             result = eval(current);
+            console.log(result);
+
             $screen.text(result);
             justCalculated = true;
         } catch (e) {
-            console.log(current);
+            console.log("current");
             $screen.text("Error");
             result = null;
             justCalculated = false;
@@ -97,23 +104,32 @@ $(document).ready(function () {
     });
 
     // Button: clear
-    $("#btn-clear").on("click", function () {
+    $("#btn-clear").on("click", clear_screen);
+
+    function clear_screen() {
         current = "0";
         result = null;
         justCalculated = false;
         $screen.text("0");
-    });
+    }
 
-    $("#delete").on("click", function () {
-        let input = $("#calc-screen");
+    $("#delete")
+        .off("click")
+        .on("click", function () {
+            let input = $("#calc-screen");
 
-        let value = input.text();
-        if (value.length > 0) {
-            current = value.slice(0, value.length - 1);
-            input.text(current);
-            if (value.length == 1) {
-                input.text("0");
+            let value = input.text().trim();
+            if (value == "Error" || justCalculated === true) {
+                clear_screen();
+                return;
             }
-        }
-    });
+
+            if (value.length > 0 && value != "Error" && value != 0) {
+                current = value.slice(0, value.length - 1);
+                input.text(current);
+                if (value.length == 1) {
+                    input.text("0");
+                }
+            }
+        });
 });

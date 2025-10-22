@@ -1,153 +1,180 @@
-<!doctype html>
-<html lang="en">
+<x-app
+    :title="'Mortgage Calculator – Calculate Your Home Loan | QuickCalculatIt'"
+    :des="'QuickCalculatIt Mortgage Calculator helps you calculate your monthly mortgage payments including interest and principal for easy home financial planning.'"
+    :key="'mortgage calculator, home loan calculator, finance tools, monthly mortgage, QuickCalculatIt'" />
 
-<head>
-    <meta charset="utf-8">
-    <title>Mortgage Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: ui-sans-serif, system-ui, Arial;
-            margin: 0;
-            padding: 24px;
-            background: #f7f7f8;
-        }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+<div class="px-6 sm:px-8 py-8 scroll-area">
+    <div class="container mx-auto max-w-6xl">
+        <header class="mb-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Rent Icon -->
+                <div class="h-10 w-10 rounded-2xl grid place-items-center text-xl bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                    🏠
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Mortgage Calculator</h1>
+                    <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">Calculate your Mortgage.</p>
+                </div>
+            </div>
+            <span class="text-xs px-2 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300">
+                Dark mode ready
+            </span>
+        </header>
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <div id="mortgage_error"
+                class=" absolute top-0 left-0 w-[45%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+            </div>
+            <!-- 🏠 Form Section -->
+            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                <div class="p-6 space-y-5">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Mortgage Details</h2>
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+                    <!-- Inputs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Home Price</label>
+                            <input id="mortgage_price" type="number" value="350000"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Down Payment ($)</label>
+                            <input id="mortgage_down_amount" type="number" value="0"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Term (Years)</label>
+                            <input id="mortgage_years" type="number" value="30"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">APR (%)</label>
+                            <input id="mortgage_apr_percent" type="number" value="7"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Annual Property Tax</label>
+                            <input id="mortgage_annual_property_tax" type="number" value="4200"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Annual Home Insurance</label>
+                            <input id="mortgage_annual_home_insurance" type="number" value="1200"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">PMI (%/yr)</label>
+                            <input id="mortgage_pmi_percent" type="number" placeholder="e.g. 0.8"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">HOA ($/mo)</label>
+                            <input id="mortgage_hoa_monthly" type="number" placeholder="e.g. 200"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Start Date</label>
+                            <input id="mortgage_start_date" type="date"
+                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                        </div>
+                    </div>
+                </div>
 
-        .card {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 4px;
-        }
-
-        input {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        h1 {
-            font-size: 22px;
-            margin: 0 0 12px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            border-top: 1px solid #eee;
-            text-align: right;
-        }
-
-        th:first-child,
-        td:first-child {
-            text-align: left;
-        }
-
-        .error {
-            color: #b91c1c;
-            background: #fee2e2;
-            border: 1px solid #fecaca;
-            padding: 8px 10px;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .result-number {
-            font-size: 28px;
-            font-weight: 700;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h1>Mortgage Calculator</h1>
-
-        <div id="error" class="error"></div>
-
-        <div class="grid">
-            <div class="card">
-                <label>Home Price</label><input id="price" type="number" step="any" value="350000">
-                <label>Down Payment (amount)</label><input id="down_amount" type="number" step="any" value="70000">
-                <label>OR Down Payment (%)</label><input id="down_percent" type="number" step="any" value="">
-                <label>Term (years)</label><input id="years" type="number" value="30">
-                <label>APR (%)</label><input id="apr_percent" type="number" step="any" value="7">
-                <label>Annual Property Tax ($/yr)</label><input id="annual_property_tax" type="number" step="any" value="4200">
-                <label>Annual Home Insurance ($/yr)</label><input id="annual_home_insurance" type="number" step="any" value="1200">
-                <label>PMI (% of loan / yr, optional)</label><input id="pmi_percent" type="number" step="any" value="">
-                <label>HOA ($/mo, optional)</label><input id="hoa_monthly" type="number" step="any" value="">
-                <label>Start Date (YYYY-MM-DD, optional)</label><input id="start_date" type="date" value="">
+                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end">
+                    <button id="btnSaveMortgage"
+                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                        💾 Save
+                    </button>
+                </div>
             </div>
 
-            <div class="card">
-                <div>Monthly Total</div>
-                <div class="result-number" id="monthly_total">—</div>
-                <div style="margin-top:8px;">
-                    <div>P&I: <span id="monthly_PI">—</span></div>
-                    <div>Tax: <span id="monthly_tax">—</span> · Ins: <span id="monthly_ins">—</span></div>
-                    <div>PMI: <span id="monthly_pmi">—</span> · HOA: <span id="monthly_hoa">—</span></div>
-                    <div>Loan: <span id="loan_amount">—</span> · Total Interest: <span id="total_interest">—</span></div>
-                    <div>Payoff: <span id="payoff_date">—</span></div>
+            <!-- 📊 Results Section -->
+            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                <div class="p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Monthly Mortgage Summary</h2>
+
+                    <div class="space-y-4">
+
+                        <!-- Total -->
+                        <div class="rounded-lg bg-indigo-100 dark:bg-indigo-900/40 p-4">
+                            <div class="text-sm text-gray-700 dark:text-gray-200">Total Monthly</div>
+                            <div id="mortgage_monthly_total" class="text-2xl font-semibold text-gray-900 dark:text-white">—</div>
+                        </div>
+
+                        <!-- Principal & Interest -->
+                        <div class="rounded-lg bg-teal-100 dark:bg-teal-900/40 p-4 flex justify-between items-center">
+                            <span class="text-sm font-medium">Principal & Interest</span>
+                            <span id="mortgage_monthly_PI" class="font-semibold text-gray-900 dark:text-white">—</span>
+                        </div>
+
+                        <!-- Taxes & Insurance -->
+                        <div class="rounded-lg bg-yellow-100 dark:bg-yellow-900/40 p-4 flex justify-between items-center">
+                            <span class="text-sm font-medium">Tax & Insurance</span>
+                            <span>
+                                <span id="mortgage_monthly_tax" class="font-semibold text-gray-900 dark:text-white">—</span> ·
+                                <span id="mortgage_monthly_ins" class="font-semibold text-gray-900 dark:text-white">—</span>
+                            </span>
+                        </div>
+
+                        <!-- PMI & HOA -->
+                        <div class="rounded-lg bg-pink-100 dark:bg-pink-900/40 p-4 flex justify-between items-center">
+                            <span class="text-sm font-medium">PMI & HOA</span>
+                            <span>
+                                <span id="mortgage_monthly_pmi" class="font-semibold text-gray-900 dark:text-white">—</span> ·
+                                <span id="mortgage_monthly_hoa" class="font-semibold text-gray-900 dark:text-white">—</span>
+                            </span>
+                        </div>
+
+                        <!-- Loan Details -->
+                        <div class="rounded-lg bg-slate-100 dark:bg-slate-700/40 p-4 text-sm space-y-2">
+                            <div class="flex justify-between">
+                                <span>Loan Amount:</span>
+                                <span id="mortgage_loan_amount" class="font-semibold">—</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Total Interest:</span>
+                                <span id="mortgage_total_interest" class="font-semibold">—</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Payoff Date:</span>
+                                <span id="mortgage_payoff_date" class="font-semibold">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end">
+                    <button id="openHistoryMortgage"
+                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                        🕓 History
+                    </button>
                 </div>
             </div>
         </div>
-
-        <div class="card">
-            <div style="font-weight:600;margin-bottom:8px;">Amortization (first 360 rows for 30y)</div>
-            <div style="overflow:auto;max-height:420px;border:1px solid #eee;border-radius:8px;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Date</th>
-                            <th>Payment</th>
-                            <th>Interest</th>
-                            <th>Principal</th>
-                            <th>Balance</th>
-                            <th>PMI</th>
-                            <th>Tax</th>
-                            <th>Ins</th>
-                            <th>HOA</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
+        <section>
+            <div id="historySheetMortgage" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+                <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">
+                    <div class="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-slate-700">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Mortgage – History</h3>
+                        <button id="closeHistorySheetIdealWeight"
+                            class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
+                            aria-label="Close history">✕</button>
+                    </div>
+                    <div class="p-5 overflow-y-auto max-h-[70vh] scroll-area">
+                        <ol id="historyListMortgage" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
+                        <div class="mt-4" id="mortgage_pagination"></div>
+                    </div>
+                    <div class="px-5 py-3 border-t border-gray-200 dark:border-slate-700 flex justify-end">
+                        <button id="closeHistorySheetIdealWeight2"
+                            class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">
+                            Close
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
+</div>
 
-    <script>
-        const API_MORTGAGE = 'api/v1/finance/mortgage';
-    </script>
-    <script src="assets/js/mortgage.js"></script>
-</body>
-
-</html>
+<x-appfooter></x-appfooter>

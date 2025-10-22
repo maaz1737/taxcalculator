@@ -9,10 +9,8 @@
             </div>
             <div class="mt-3 font-semibold">{{ $f['title'] }}</div>
             <div class="text-sm text-slate-600 dark:text-slate-400">{{ $f['summary'] }}</div>
-            <button  id="{{$f['id']}}" class="mt-4 text-brand text-sm">{{ $f['name'] }} →</button>
+            <button id="{{$f['id']}}" data-modal-target="{{$f['data']}}" class="mt-4 text-brand text-sm">{{ $f['name'] }} →</button>
         </div>
         @endforeach
     </div>
     </section>
-
-

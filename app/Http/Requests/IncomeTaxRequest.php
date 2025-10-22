@@ -10,11 +10,15 @@ class IncomeTaxRequest extends FormRequest
     {
         return true;
     }
-
     public function rules(): array
     {
         return [
-            'income' => ['required', 'numeric', 'min:2'],
+            'income' => ['nullable', 'numeric', 'required_without:'],
+            'yearly_revenue' => ['nullable', 'numeric', 'required_without:income'],
+            'payerType' => ['required', 'string'],
+            'levy' => ['nullable', 'numeric'],
+            'taxpaid' => ['nullable', 'numeric'],
+            'yearly_cost' => ['nullable', 'numeric'],
         ];
     }
 }

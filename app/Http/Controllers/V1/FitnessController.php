@@ -13,7 +13,7 @@ use App\Http\Requests\Fitness\BodyFatRequest;
 use App\Http\Requests\Fitness\IdealRequest;
 use App\Http\Requests\Fitness\MacrosRequest;
 use App\Http\Requests\Fitness\SaveCalcRequest;
-
+use App\Mail\FitnessCalculationResult;
 use App\Services\Fitness\BmiService;
 use App\Services\Fitness\BmrService;
 use App\Services\Fitness\TdeeService;
@@ -23,9 +23,49 @@ use App\Services\Fitness\MacrosService;
 
 use App\Models\Calculation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FitnessController extends Controller
 {
+
+    public function bmi_view()
+    {
+        return view('fitness.bmi');
+    }
+    public function bmr_view()
+    {
+        return view('fitness.bmr');
+    }
+    public function tdee_view()
+    {
+        return view('fitness.tdee');
+    }
+    public function body_fat_view()
+    {
+        return view('fitness.bodyfat');
+    }
+    public function ideal_weight_view()
+    {
+        return view('fitness.idealweight');
+    }
+    public function macros_view()
+    {
+        return view('fitness.macros');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // --- calculators ---
 
     public function bmi(BmiRequest $r, BmiService $svc): JsonResponse
@@ -80,37 +120,51 @@ class FitnessController extends Controller
 
     public function save(SaveCalcRequest $r): JsonResponse
     {
-        $v = $r->validated();
+        if (Auth::check()) {
+            $v = $r->validated();
 
 
-        $calc = Calculation::create([
-            'user_id'   => Auth::id(),
-            'calc_type' => $v['calc_type'],
-            'inputs'    => $v['inputs'],
-            'outputs'   => $v['outputs'],
-        ]);
+            $calc = Calculation::create([
+                'user_id'   => Auth::id(),
+                'calc_type' => $v['calc_type'],
+                'inputs'    => $v['inputs'],
+                'outputs'   => $v['outputs'],
+            ]);
 
-        return response()->json([
-            'ok' => true,
-            'message' => 'Saved',
-            'data' => ['id' => $calc->id]
-        ]);
+            Mail::to(Auth::user()->email)->send(new FitnessCalculationResult($calc));
+
+            return response()->json([
+                'ok' => true,
+                'message' => 'Saved',
+                'data' => ['id' => $calc->id]
+            ]);
+        } else {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Unauthorized User',
+
+            ], 401);
+        }
     }
 
     public function recent(Request $r): JsonResponse
     {
-        $type  = $r->string('type')->toString();
-        $limit = (int) ($r->query('limit', 10));
+
+        $type = $r->string('type')->toString();
 
         $q = Calculation::query()
             ->when($type, fn($qq) => $qq->where('calc_type', $type))
             ->when($r->user(), fn($qq) => $qq->where('user_id', $r->user()->id))
-            ->latest('id')
-            ->limit($limit);
+            ->latest('id');
+
+        // Default pagination (10 per page, or from query)
+        $perPage = (int) $r->query('per_page', 10);
+
+        $data = $q->paginate($perPage, ['id', 'calc_type', 'inputs', 'outputs', 'created_at']);
 
         return response()->json([
             'ok'   => true,
-            'data' => $q->get(['id', 'calc_type', 'inputs', 'outputs', 'created_at'])
+            'data' => $data
         ]);
     }
 }

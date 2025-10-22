@@ -1,113 +1,127 @@
-(() => {
-    const modal = document.getElementById("calcModal");
-    const backdrop = document.getElementById("calcBackdrop");
-    const panel = document.getElementById("calcPanel");
-    const titleEl = document.getElementById("calcTitle");
-    const content = document.getElementById("calcContent");
-    const closeBtn = document.getElementById("calcCloseBtn");
+$(document).ready(function () {
+    const $modal = $("#calcModal");
+    const $backdrop = $("#calcBackdrop");
+    const $panel = $("#calcPanel");
+    const $titleEl = $("#calcTitle");
+    const $content = $("#calcContent");
+    const $closeBtn = $("#calcCloseBtn");
 
-    // Hard-coded demo form (replace this with your own form later)
+    // Demo form HTML (you can replace it with dynamic content later)
     const demoFormHTML = `
-    <form id="demo-bmi" class="space-y-4">
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm font-medium">Height (cm)</label>
-          <input type="number" name="height" placeholder="175" class="mt-1 w-full rounded-lg border border-slate-200 bg-white/70 p-2.5 outline-none focus:ring-2 focus:ring-brand dark:bg-slate-900/60 dark:border-slate-700">
+      <form id="demo-bmi" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium">Height (cm)</label>
+            <input type="number" name="height" placeholder="175" class="mt-1 w-full rounded-lg border border-slate-200 bg-white/70 p-2.5 outline-none focus:ring-2 focus:ring-brand dark:bg-slate-900/60 dark:border-slate-700">
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Weight (kg)</label>
+            <input type="number" name="weight" placeholder="70" class="mt-1 w-full rounded-lg border border-slate-200 bg-white/70 p-2.5 outline-none focus:ring-2 focus:ring-brand dark:bg-slate-900/60 dark:border-slate-700">
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium">Weight (kg)</label>
-          <input type="number" name="weight" placeholder="70" class="mt-1 w-full rounded-lg border border-slate-200 bg-white/70 p-2.5 outline-none focus:ring-2 focus:ring-brand dark:bg-slate-900/60 dark:border-slate-700">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-slate-500">Result: <span id="bmiOut" class="font-semibold text-slate-800 dark:text-slate-100">—</span></div>
+          <button type="submit" class="rounded-xl px-4 py-2 border border-transparent bg-brand text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand">Calculate</button>
         </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="text-sm text-slate-500">Result: <span id="bmiOut" class="font-semibold text-slate-800 dark:text-slate-100">—</span></div>
-        <button type="submit" class="rounded-xl px-4 py-2 border border-transparent bg-brand text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand">Calculate</button>
-      </div>
-    </form>
-    <script>
-      (function(){
-        const f = document.getElementById('demo-bmi');
-        const out = document.getElementById('bmiOut');
-        f.addEventListener('submit', function(e){
-          e.preventDefault();
-          const h = parseFloat(f.height.value)/100;
-          const w = parseFloat(f.weight.value);
-          if(!h || !w){ out.textContent = 'Enter valid numbers'; return; }
-          const bmi = (w/(h*h)).toFixed(1);
-          out.textContent = bmi;
-        });
-      })();
-    <\/script>
-  `;
+      </form>
+    `;
 
+    // ----------------------------
+    // Open Modal
+    // ----------------------------
     function openModal({ title, html }) {
-        titleEl.textContent = title || "Calculator";
-        content.innerHTML = html || demoFormHTML;
+        $titleEl.text(title || "Calculator");
+        $content.html(html || demoFormHTML);
 
-        modal.classList.remove("hidden");
-        // animate in
+        // Prevent body scroll while modal is open
+        $("body").addClass("overflow-hidden");
+
+        $modal.removeClass("hidden");
+
         requestAnimationFrame(() => {
-            backdrop.classList.remove("opacity-0");
-            panel.classList.remove("opacity-0", "scale-95", "translate-y-3");
+            $backdrop.removeClass("opacity-0");
+            $panel.removeClass("opacity-0 scale-95 translate-y-3");
         });
 
-        // focus the first input after animation
         setTimeout(() => {
-            const firstInput = content.querySelector(
-                "input, select, textarea, button"
-            );
-            if (firstInput)
-                firstInput.focus({
-                    preventScroll: true,
-                });
+            const $firstInput = $content
+                .find("input, select, textarea, button")
+                .first();
+            if ($firstInput.length) $firstInput.trigger("focus");
         }, 320);
 
-        // ESC to close
-        document.addEventListener("keydown", escHandler);
-        // basic focus trap
-        document.addEventListener("focus", trapFocus, true);
+        $(document).on("keydown.modal", escHandler);
+        $(document).on("focus.modal", trapFocus, true);
+
+        initDemoForm();
     }
 
     function closeModal() {
-        // animate out
-        backdrop.classList.add("opacity-0");
-        panel.classList.add("opacity-0", "scale-95", "translate-y-3");
+        $backdrop.addClass("opacity-0");
+        $panel.addClass("opacity-0 scale-95 translate-y-3");
+
         setTimeout(() => {
-            modal.classList.add("hidden");
-            content.innerHTML = "";
-            document.removeEventListener("keydown", escHandler);
-            document.removeEventListener("focus", trapFocus, true);
+            $modal.addClass("hidden");
+            $content.empty();
+            $("body").removeClass("overflow-hidden"); // ✅ restore scroll
+            $(document).off("keydown.modal");
+            $(document).off("focus.modal", trapFocus, true);
         }, 300);
     }
 
+    // ----------------------------
+    // Handlers
+    // ----------------------------
     function escHandler(e) {
         if (e.key === "Escape") closeModal();
     }
 
     function trapFocus(e) {
-        if (!modal.contains(e.target)) {
+        if (!$modal[0].contains(e.target)) {
             e.stopPropagation();
-            const focusable = modal.querySelectorAll(
+            const $focusable = $modal.find(
                 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
             );
-            if (focusable.length) focusable[0].focus();
+            if ($focusable.length) $focusable.first().focus();
         }
     }
 
-    // open on any card click
-    document.addEventListener("click", (e) => {
-        const trigger = e.target.closest("[data-open-form]");
-        if (!trigger) return;
+    // ----------------------------
+    // Demo Form Logic
+    // ----------------------------
+    function initDemoForm() {
+        const $form = $("#demo-bmi");
+        const $out = $("#bmiOut");
+
+        $form.on("submit", function (e) {
+            e.preventDefault();
+            const h = parseFloat($form.find("[name=height]").val()) / 100;
+            const w = parseFloat($form.find("[name=weight]").val());
+
+            if (!h || !w) {
+                $out.text("Enter valid numbers");
+                return;
+            }
+
+            const bmi = (w / (h * h)).toFixed(1);
+            $out.text(bmi);
+        });
+    }
+
+    // ----------------------------
+    // Event bindings
+    // ----------------------------
+    $(document).on("click", "[data-open-form]", function (e) {
         e.preventDefault();
-        const title = trigger.getAttribute("data-title") || "Calculator";
-        // If you want to fetch the real form by URL later, use fetch() here.
+        const $trigger = $(this);
+        const title = $trigger.data("title") || "Calculator";
+
         openModal({
             title,
-            html: demoFormHTML,
+            html: demoFormHTML, // replace with AJAX-loaded content if needed
         });
     });
 
-    // close handlers
-    closeBtn.addEventListener("click", closeModal);
-    backdrop.addEventListener("click", closeModal);
-})();
+    $closeBtn.on("click", closeModal);
+    $backdrop.on("click", closeModal);
+});

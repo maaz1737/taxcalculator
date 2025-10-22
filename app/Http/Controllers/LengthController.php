@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Length;
 use Illuminate\Http\Request;
+use App\Mail\CalculationResult;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LengthController extends Controller
 {
@@ -87,6 +89,9 @@ class LengthController extends Controller
                 'result'    => $data['resultValue'],
 
             ]);
+
+            Mail::to(Auth::user()->email)->send(new CalculationResult($record));
+
 
             return response()->json([
                 'ok' => true,

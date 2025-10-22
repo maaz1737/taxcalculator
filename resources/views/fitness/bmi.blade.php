@@ -1,722 +1,448 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app
+    :title="'BMI Calculator – Calculate Your Body Mass Index | QuickCalculatIt'"
+    :des="'QuickCalculatIt BMI Calculator helps you calculate your Body Mass Index easily. Determine if you are underweight, normal, overweight, or obese with accurate results.'"
+    :key="'BMI calculator, body mass index, health calculator, fitness tools, weight management, QuickCalculatIt'" />
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Fitness Calculator</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Minimal styles (no Tailwind required) -->
-    <style>
-        :root {
-            --border: #e5e7eb;
-            --muted: #6b7280;
-            --fg: #111827;
-            --bg: #ffffff;
-            --blue: #2563eb;
-            --green: #059669;
-        }
-
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-            color: var(--fg);
-            background: var(--bg);
-        }
-
-        .wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-
-        .grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        @media (min-width: 900px) {
-            .cols-3 {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .card {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            background: #fff;
-        }
-
-        .row {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .between {
-            justify-content: space-between;
-        }
-
-        .btn {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 6px;
-            background: var(--blue);
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .btn:disabled {
-            opacity: .6;
-            cursor: not-allowed;
-        }
-
-        .muted {
-            color: var(--muted);
-        }
-
-        .headline {
-            font-size: 32px;
-            font-weight: 800;
-            margin: 8px 0;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .input,
-        .select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tab {
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: #fff;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .tab.active {
-            background: #eef2ff;
-            border-color: #c7d2fe;
-        }
-
-        .list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 8px;
-        }
-
-        .list li {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .list li:hover {
-            background: #f9fafb;
-        }
-
-        .g-2 {
-            display: grid;
-            gap: 8px;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .g-3 {
-            display: grid;
-            gap: 8px;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 4px;
-        }
-
-        .truncate {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .success {
-            color: var(--green);
-            font-size: 14px;
-        }
-    </style>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-
-<body>
-    <div class="wrap">
-        <h1 style="font-size:28px; font-weight:800; margin:0 0 12px;">Fitness Calculator</h1>
-
-        <div class="grid cols-3">
-            <!-- LEFT: calculators -->
-            <div class="grid" style="gap:16px">
-                <!-- tabs -->
-                <div class="tabs" id="tabs">
-                    <button class="tab active" data-tab="#tab-bmi">BMI</button>
-                    <button class="tab" data-tab="#tab-bmr">BMR</button>
-                    <button class="tab" data-tab="#tab-tdee">TDEE</button>
-                    <button class="tab" data-tab="#tab-bodyfat">Body Fat</button>
-                    <button class="tab" data-tab="#tab-ideal">Ideal Weight</button>
-                    <button class="tab" data-tab="#tab-macros">Macros</button>
+<div class="px-6 sm:px-8 py-8 scroll-area">
+    <div class="container mx-auto max-w-6xl">
+        <header class="mb-10 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-2xl grid place-items-center text-xl 
+                    bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
+                    ⚖️
                 </div>
-
-                <!-- result card -->
-                <div class="card">
-                    <div class="muted" style="font-size:12px; text-transform:uppercase;">Result</div>
-                    <div id="headline" class="headline">—</div>
-                    <div id="breakdown" style="font-size:14px;"></div>
-                    <div class="row" style="margin-top:8px; gap:12px;">
-                        <button id="saveBtn" class="btn">Save</button>
-                        <span id="saveMsg" class="success hidden">Saved</span>
-                    </div>
+                <div>
+                    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">BMI Calculator</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Calculate your Body Mass Index to determine your weight category and health status.</p>
                 </div>
+            </div>
+        </header>
 
-                <!-- tab contents -->
-                <div id="tab-bmi" class="card">
-                    <form id="form-bmi" class="grid" style="gap:8px">
+        <!-- BMI Calculator Root -->
+        <div id="calculatorRoot" class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mt-4">
+            <div id="bmi_error"
+                class=" absolute top-0 left-0 w-[45%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
+                transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
+            </div>
+            <!-- BMI Form -->
+            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
+                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                <div class="p-6 space-y-5">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">BMI Calculator</h2>
+                    <form id="form-bmi" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label>Unit</label>
-                            <select name="unit" class="select">
-                                <option value="metric">Metric (kg, m)</option>
-                                <option value="imperial">Imperial (lb, in)</option>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height</label>
+                            <input name="height" value="0" type="number" placeholder="e.g. 170" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <p class="height_error text-sm text-red-500 mt-2"></p>
+
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Weight</label>
+                            <input name="weight" value="0" type="number" placeholder="e.g. 65" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <p class="weight_error text-sm text-red-500 mt-2"></p>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Unit System</label>
+                            <select name="unit" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                                <option value="metric">Metric (kg, cm)</option>
+                                <option value="imperial">Imperial (lbs, in)</option>
                             </select>
                         </div>
-                        <div class="g-2">
-                            <div>
-                                <label>Weight</label>
-                                <input name="weight" type="number" step="0.1" class="input" />
-                            </div>
-                            <div>
-                                <label>Height</label>
-                                <input name="height" type="number" step="0.01" class="input" />
-                            </div>
-                        </div>
                     </form>
                 </div>
 
-                <div id="tab-bmr" class="card hidden">
-                    <form id="form-bmr" class="grid" style="gap:8px">
-                        <div class="g-2">
-                            <div>
-                                <label>Sex</label>
-                                <select name="sex" class="select">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Age</label>
-                                <input name="age" type="number" class="input" />
-                            </div>
-                        </div>
-                        <div class="g-2">
-                            <div>
-                                <label>Weight (kg)</label>
-                                <input name="weight_kg" type="number" step="0.1" class="input" />
-                            </div>
-                            <div>
-                                <label>Height (cm)</label>
-                                <input name="height_cm" type="number" step="0.1" class="input" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="tab-tdee" class="card hidden">
-                    <form id="form-tdee" class="grid" style="gap:8px">
-                        <div class="g-2">
-                            <div>
-                                <label>BMR</label>
-                                <input name="bmr" type="number" class="input" />
-                            </div>
-                            <div>
-                                <label>Activity</label>
-                                <select name="activity" class="select">
-                                    <option value="sedentary">Sedentary</option>
-                                    <option value="light">Light</option>
-                                    <option value="moderate">Moderate</option>
-                                    <option value="active">Active</option>
-                                    <option value="very">Very Active</option>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="tab-bodyfat" class="card hidden">
-                    <form id="form-bodyfat" class="grid" style="gap:8px">
-                        <div class="g-2">
-                            <div>
-                                <label>Sex</label>
-                                <select name="sex" class="select">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Height (cm)</label>
-                                <input name="height_cm" type="number" step="0.1" class="input" />
-                            </div>
-                        </div>
-                        <div class="g-3">
-                            <div>
-                                <label>Waist (cm)</label>
-                                <input name="waist_cm" type="number" step="0.1" class="input" />
-                            </div>
-                            <div>
-                                <label>Neck (cm)</label>
-                                <input name="neck_cm" type="number" step="0.1" class="input" />
-                            </div>
-                            <div>
-                                <label>Hip (cm) <span class="muted">(for female)</span></label>
-                                <input name="hip_cm" type="number" step="0.1" class="input" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="tab-ideal" class="card hidden">
-                    <form id="form-ideal" class="grid" style="gap:8px">
-                        <div class="g-2">
-                            <div>
-                                <label>Sex</label>
-                                <select name="sex" class="select">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Height (cm)</label>
-                                <input name="height_cm" type="number" step="0.1" class="input" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="tab-macros" class="card hidden">
-                    <form id="form-macros" class="grid" style="gap:8px">
-                        <div>
-                            <label>Calories</label>
-                            <input name="calories" type="number" class="input" />
-                        </div>
-                        <div class="g-3">
-                            <div>
-                                <label>Carbs %</label>
-                                <input name="carb_pct" type="number" value="50" class="input" />
-                            </div>
-                            <div>
-                                <label>Protein %</label>
-                                <input name="protein_pct" type="number" value="20" class="input" />
-                            </div>
-                            <div>
-                                <label>Fat %</label>
-                                <input name="fat_pct" type="number" value="30" class="input" />
-                            </div>
-                        </div>
-                    </form>
+                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-200 dark:bg-gray-900/50 rounded-b-2xl">
+                    <button id="saveBtn" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
+                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
+                            dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
+                            dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">💾 Save</button>
+                    <span id="saveMsg" class="text-green-600 hidden">Saved</span>
                 </div>
             </div>
 
-            <!-- RIGHT: recent -->
-            <aside class="card">
-                <div class="row between" style="margin-bottom:8px;">
-                    <h3 style="margin:0;">Recent</h3>
-                    <select id="recentType" class="select" style="max-width:160px;">
-                        <option value="">All</option>
-                        <option value="bmi">BMI</option>
-                        <option value="bmr">BMR</option>
-                        <option value="tdee">TDEE</option>
-                        <option value="body-fat">Body Fat</option>
-                        <option value="ideal">Ideal</option>
-                        <option value="macros">Macros</option>
-                    </select>
+            <!-- BMI Result -->
+            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
+                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                <div class="p-6 space-y-5">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">BMI Result</h2>
+                    <div class="rounded-lg bg-indigo-100 dark:bg-indigo-900/40 p-4">
+                        <div class="text-sm text-gray-700 dark:text-gray-200">Your BMI</div>
+                        <div id="headlines" class="text-2xl font-semibold text-gray-900 dark:text-white">—</div>
+                    </div>
+
+                    <div class="rounded-lg bg-teal-100 dark:bg-teal-900/40 p-4 flex justify-between items-center">
+                        <span class="text-sm font-medium">BMI input</span>
+                        <span id="breakdown" class="font-semibold text-gray-900 text-sm dark:text-white">—</span>
+                    </div>
                 </div>
-                <ul id="recentList" class="list"></ul>
-            </aside>
+                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-200 dark:bg-gray-900/50 rounded-b-2xl">
+                    <button id="openHistoryBmi" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
+                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
+                            focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
+                            dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
+                            dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                        🕓 History
+                    </button>
+                </div>
+            </div>
+
         </div>
-    </div>
+        <div
+            class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Understanding Your BMI</h2>
 
-    <script>
-        // ------------------------------
-        // jQuery CSRF for Laravel (POST/PUT/DELETE)
-        // ------------------------------
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        });
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Body Mass Index (BMI)</strong> is a simple measurement that helps you understand if your weight is healthy for your height.
+                    It’s commonly used by health professionals to classify underweight, normal weight, overweight, and obesity in adults.
+                </p>
 
-        // ------------------------------
-        // Small helpers
-        // ------------------------------
-        const API = {
-            bmi: '/api/v1/fitness/bmi',
-            bmr: '/api/v1/fitness/bmr',
-            tdee: '/api/v1/fitness/tdee',
-            bodyfat: '/api/v1/fitness/body-fat',
-            ideal: '/api/v1/fitness/ideal',
-            macros: '/api/v1/fitness/macros',
-            save: '/api/v1/fitness/save',
-            recent: '/api/v1/fitness/recent',
-        };
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Metric Formula:</strong> BMI = weight (kg) ÷ [height (m)]² <br>
+                    <strong>Imperial Formula:</strong> BMI = 703 × weight (lbs) ÷ [height (in)]²
+                </p>
 
-        function debounce(fn, wait = 600) {
-            let t;
-            return (...a) => {
-                clearTimeout(t);
-                t = setTimeout(() => fn(...a), wait);
-            };
-        }
+                <div>
+                    <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-1">BMI Categories:</h3>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                        <li>Underweight: &lt; 18.5</li>
+                        <li>Normal: 18.5 – 24.9</li>
+                        <li>Overweight: 25 – 29.9</li>
+                        <li>Obese: ≥ 30</li>
+                    </ul>
+                </div>
 
-        function setSaveEnabled(on) {
-            $('#saveBtn').prop('disabled', !on);
-        }
-
-        function clearErrors($form) {
-            $form.find('.err').remove();
-            $form.find('.input, .select').removeClass('input-error');
-        }
-
-        function renderErrors($form, errors = {}) {
-
-            clearErrors($form);
-            Object.entries(errors).forEach(([name, msgs]) => {
-                // Field name may be 'hip_cm' etc. Try exact match
-                const $field = $form.find(`[name="${name}"]`);
-                if ($field.length) {
-                    $field.addClass('input-error')
-                        .after(`<div class="err" style="color:#b91c1c;font-size:12px;margin-top:4px;">${msgs[0]}</div>`);
-                }
-            });
-        }
-
-        const show = (headline, lines = []) => {
-            $('#headline').text(headline || '—');
-            $('#breakdown').html((lines || []).map(l => `<div>• ${l}</div>`).join(''));
-        };
-
-        function tabIdFor(type) {
-            switch (type) {
-                case 'bmi':
-                    return '#tab-bmi';
-                case 'bmr':
-                    return '#tab-bmr';
-                case 'tdee':
-                    return '#tab-tdee';
-                case 'body-fat':
-                    return '#tab-bodyfat';
-                case 'ideal':
-                    return '#tab-ideal';
-                case 'macros':
-                    return '#tab-macros';
-                default:
-                    return '#tab-bmi';
-            }
-        }
-
-        function activateTabById(id) {
-            // buttons
-            $('.tab').removeClass('active');
-            $(`.tab[data-tab="${id}"]`).addClass('active');
-
-            // panes
-            ['#tab-bmi', '#tab-bmr', '#tab-tdee', '#tab-bodyfat', '#tab-ideal', '#tab-macros']
-            .forEach(pid => $(pid).addClass('hidden'));
-            $(id).removeClass('hidden');
-
-            // reset result
-            show('—', []);
-            setSaveEnabled(false);
-        }
-
-        // ------------------------------
-        // Tab click (no reload)
-        // ------------------------------
-        $(document).on('click', '.tab', function() {
-            activateTabById($(this).data('tab'));
-        });
-
-        // ------------------------------
-        // Generic AJAX binder for forms
-        // ------------------------------
-        const bind = (formId, url, render) => {
-            const $f = $(formId);
-            const run = debounce(() => {
-                clearErrors($f);
-                const data = Object.fromEntries(new FormData($f[0]).entries());
-
-                // Visual: disable form during request
-                $f.find('input, select, button').prop('disabled', true);
-
-                $.post(url, data)
-                    .done(res => {
-                        if (!res || !res.ok) return;
-
-                        // enable Save
-                        window.currentCalcPayload = {
-                            calc_type: url.split('/').pop(), // e.g. 'bmi','bmr','tdee','body-fat','ideal','macros'
-                            inputs: res.inputs || data,
-                            outputs: res.data
-                        };
-                        setSaveEnabled(true);
-
-                        // Custom render for that calculator
-                        render(res.data, res.inputs || data);
-                    })
-                    .fail(xhr => {
-                        // 422 validation
-                        if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
-                            renderErrors($f, xhr.responseJSON.errors);
-                            show('—', ['Fix the highlighted fields.']);
-                            setSaveEnabled(false);
-                        } else {
-                            show('—', ['Something went wrong. Please try again.']);
-                            setSaveEnabled(false);
-                        }
-                    })
-                    .always(() => {
-                        $f.find('input, select, button').prop('disabled', false);
-                    });
-            }, 600);
-
-            // Bind inputs
-            $f.on('input change', run);
-        };
-
-        // ------------------------------
-        // Calculator-specific renderers
-        // ------------------------------
-        bind('#form-bmi', API.bmi, (d, i) => {
-            show(`${d.bmi}`, [`Category: ${d.category}`, `Unit: ${i.unit}`]);
-        });
-
-        bind('#form-bmr', API.bmr, (d, i) => {
-            show(`${d.bmr} kcal/day`, [
-                `Sex: ${i.sex}`,
-                `Wt: ${i.weight_kg}kg`,
-                `Ht: ${i.height_cm}cm`,
-                `Age: ${i.age}`
-            ]);
-            // convenience: push BMR into TDEE form
-            $('#form-tdee [name="bmr"]').val(d.bmr).trigger('input');
-        });
-
-        bind('#form-tdee', API.tdee, (d, i) => {
-            show(`${d.tdee} kcal/day`, [`Activity: ${i.activity}`]);
-        });
-
-        bind('#form-bodyfat', API.bodyfat, (d, i) => {
-            show(`${d.body_fat_pct}%`, [`Method: US Navy`]);
-        });
-
-        bind('#form-ideal', API.ideal, (d, i) => {
-            show(`${d.ideal_weight_kg} kg`, [`Devine formula`]);
-        });
-
-        bind('#form-macros', API.macros, (d, i) => {
-
-            console.log('macros', d, i);
-            show(`${i.calories} kcal`, [
-                `Carbs: ${d.carbs_g} g`,
-                `Protein: ${d.protein_g} g`,
-                `Fat: ${d.fat_g} g`
-            ]);
-        });
-
-        (function() {
-            const $form = $('#form-macros');
-            const $c = $form.find('[name="carb_pct"]');
-            const $p = $form.find('[name="protein_pct"]');
-            const $f = $form.find('[name="fat_pct"]');
-            let lock = false;
-            const clamp = n => Math.max(0, Math.min(100, Math.round(parseFloat(n || 0))));
-
-            function rebalance() {
-                if (lock) return;
-                lock = true;
-                const c = clamp($c.val()),
-                    p = clamp($p.val());
-                const f = clamp(100 - c - p);
-                $c.val(c);
-                $p.val(p);
-                $f.val(f).trigger('input'); // kicks your AJAX
-                lock = false;
-            }
-
-            function guardFat() {
-                if (lock) return;
-                lock = true;
-                const c = clamp($c.val()),
-                    p = clamp($p.val());
-                const maxF = clamp(100 - c - p);
-                let f = clamp($f.val());
-                if (f > maxF) {
-                    $f.val(maxF).trigger('input');
-                }
-                lock = false;
-            }
-
-            $c.on('input', rebalance);
-            $p.on('input', rebalance);
-            $f.on('input', guardFat);
-        })();
-
-        // ------------------------------
-        // Save snapshot (AJAX)
-        // ------------------------------
-        $('#saveBtn').on('click', function() {
-            const p = window.currentCalcPayload;
-            if (!p) return;
-
-            const validTypes = ['bmi', 'bmr', 'tdee', 'body-fat', 'ideal', 'macros'];
-            if (!validTypes.includes(p.calc_type)) {
-                if (p.calc_type === 'bodyfat') p.calc_type = 'body-fat';
-            }
-
-            $.ajax({
-                    url: '/api/v1/fitness/save',
-                    method: 'POST',
-                    data: p,
-                    dataType: 'json'
-                })
-                .done(res => {
-                    $('#saveMsg').text(res.message || 'Saved').removeClass('hidden');
-                    setTimeout(() => $('#saveMsg').addClass('hidden'), 1500);
-                    loadRecent($('#recentType').val());
-                })
-                .fail(xhr => {
-                    console.error('SAVE FAILED', {
-                        status: xhr.status,
-                        statusText: xhr.statusText,
-                        response: xhr.responseText
-                    });
-                    let msg = 'Failed';
-                    try {
-                        const j = xhr.responseJSON || JSON.parse(xhr.responseText || '{}');
-                        if (j.message) msg = j.message;
-                        if (j.errors) msg += ' • ' + Object.values(j.errors).flat().join(' ');
-                    } catch (e) {}
-                    $('#saveMsg').text(msg).removeClass('hidden');
-                    setTimeout(() => $('#saveMsg').addClass('hidden'), 2500);
-                });
-        });
-
-
-        // ------------------------------
-        // Recent (AJAX list + prefill on click)
-        // ------------------------------
-        function loadRecent(type = '') {
-            const params = new URLSearchParams({
-                limit: 10
-            });
-            if (type) params.set('type', type);
-
-            $.getJSON(`${API.recent}?${params.toString()}`, function(res) {
-                const $list = $('#recentList').empty();
-                if (!res || !res.ok || !res.data.length) {
-                    $list.append('<li class="muted">No recent calculations.</li>');
-                    return;
-                }
-                res.data.forEach(it => {
-                    const dt = new Date(it.created_at).toLocaleString();
-                    const title = (it.calc_type || '').toUpperCase();
-                    const prev = $('<div/>').text(JSON.stringify(it.outputs)).html(); // escape
-                    const vari = renderRecentItem(it);
-
-                    const $li = $(`
-          <li>
-            <div class="row between" style="gap:8px;">
-              <span style="font-weight:600">${title}</span>
-              <span class="muted" style="font-size:12px;">${dt}</span>
+                <p class="text-gray-700 dark:text-gray-300">
+                    Keep in mind that BMI doesn’t measure body fat directly, so athletes or muscular individuals may have a high BMI even though they are healthy.
+                </p>
             </div>
-            <div class="truncate" title="${prev}">${vari}</div>
-          </li>
-        `);
-                    // Prefill when clicked
-                    $li.on('click', () => {
-                        const paneId = tabIdFor(it.calc_type);
-                        activateTabById(paneId);
+        </div>
+        <section>
+            <div id="HistorySheetBmi" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+                <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">
+                    <div class="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-slate-700">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">BMI – History</h3>
+                        <button id="closeHistorySheetBmi"
+                            class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
+                            aria-label="Close history">✕</button>
+                    </div>
+                    <div class="p-5 overflow-y-auto max-h-[70vh] scroll-area">
+                        <ol id="historyListBmi" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
+                        <div class="mt-4" id="BmiPagination"></div>
+                    </div>
+                    <div class="px-5 py-3 border-t border-gray-200 dark:border-slate-700 flex justify-end">
+                        <button id="closeHistorySheetBmi2"
+                            class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="{{ asset('js/fitness_function.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        const $form = $("#form-bmi");
+        const $headline = $("#headlines");
+        const $breakdown = $("#breakdown");
+        const bmi_error = $("#bmi_error");
+        let bmiSave = $("#saveBtn");
+        const original = bmiSave.html();
 
-                        const $form = $(`${paneId} form`);
-                        // Fill inputs generically
-                        Object.entries(it.inputs || {}).forEach(([k, v]) => {
-                            const $field = $form.find(`[name="${k}"]`);
-                            if ($field.is('select')) $field.val(v);
-                            else $field.val(v);
-                        });
-                        // Trigger an input event to recompute
-                        $form.find('input, select').first().trigger('input');
-                    });
-                    $list.append($li);
-                });
-            }).fail(() => {
-                const $list = $('#recentList').empty();
-                $list.append('<li class="muted">Failed to load recent.</li>');
+        let payload = {};
+        const showResult = (headline, breakdown = []) => {
+            $("#headlines").empty();
+            $("#headlines").html(headline || "—");
+            $("#breakdown").html(breakdown.map(b => `<div>• ${b}</div>`).join(""));
+        };
+
+
+        function btnChange(status = 1) {
+            if (status === 0) {
+                bmiSave.disabled = true;
+                bmiSave.addClass("opacity-70", "cursor-wait");
+                bmiSave.html(`
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10h-2a8 8 0 1 1-8-8V2z"/></svg>
+        Saving...
+      `);
+            } else if (status === 1) {
+                bmiSave.removeClass(
+                    "opacity-70",
+                    "cursor-wait"
+                );
+                bmiSave.html("✔ Saved");
+                setTimeout(() => {
+                    bmiSave.disabled = false;
+                    bmiSave.html(original);
+                }, 2000)
+            } else if (status === 2) {
+                bmiSave.removeClass(
+                    "opacity-70",
+                    "cursor-wait"
+                );
+                bmiSave.html("Error ✗");
+                setTimeout(() => {
+                    bmiSave.disabled = false;
+                    bmiSave.html(original);
+                }, 2000)
+            }
+        }
+
+
+        function calculateBMI() {
+            const formData = $form.serialize();
+            $.ajax({
+                url: "/v1/fitness/bmi",
+                method: "POST",
+                dataType: "json",
+                data: formData,
+                success: function(d) {
+                    const i = d.inputs || {};
+                    const result = d.data || {};
+
+                    payload = {
+                        inputs: i,
+                        outputs: d.data,
+                    }
+
+                    // dynamically change display units based on selected category
+                    let weightLabel = "kg";
+                    let heightLabel = "cm";
+
+                    if (i.unit && i.unit.toLowerCase() === "imperial") {
+                        weightLabel = "lb";
+                        heightLabel = "ft/in";
+                    }
+
+                    showResult(
+                        `
+                <div class="text-xl font-bold text-blue-600">
+                    BMI : ${result.bmi}
+                </div>
+                <div class="text-sm text-gray-500 mt-2">
+                    <div><strong>Unit:</strong> ${result.unit}</div>
+                    <div><strong>Category:</strong> ${result.category}</div>
+                    <div><strong>Advice:</strong> ${result.advice}</div>
+                </div>
+                `,
+                        [
+                            `Unit system: ${i.unit}`,
+                            `Height: ${i.height} ${heightLabel}`,
+                            `Weight: ${i.weight} ${weightLabel}`
+                        ]
+                    );
+                    input_error({})
+                },
+                error: function(xhr) {
+                    try {
+                        const res = JSON.parse(xhr.responseText);
+                        console.log(res);
+                        input_error(res.errors);
+
+                    } catch (e) {
+                        console.error("Response Text:", xhr.responseText);
+                    }
+                }
+
             });
         }
 
-        $('#recentType').on('change', function() {
-            loadRecent(this.value);
-        });
 
-        // ------------------------------
-        // Init
-        // ------------------------------
-        $(function() {
-            // default tab visible; ensure others hidden (in case SSR classes changed)
-            ['#tab-bmr', '#tab-tdee', '#tab-bodyfat', '#tab-ideal', '#tab-macros'].forEach(id => $(id).addClass('hidden'));
-            setSaveEnabled(false);
-            loadRecent();
-        });
+        $form.on("input change", calculateBMI);
+        calculateBMI()
 
-
-        function renderRecentItem(it) {
-            const type = it.outputs || {};
-            switch (it.calc_type) {
-                case 'bmi':
-                    return type.bmi ?? '';
-                case 'bmr':
-                    return (type.bmr ?? '') + ' kcal/day';
-                case 'tdee':
-                    return (type.tdee ?? '') + ' kcal/day';
-                case 'body-fat':
-                    return (type.body_fat_pct ?? '') + '%';
-                case 'ideal':
-                    return (type.ideal_weight_kg ?? '') + ' kg';
-                case 'macros':
-                    return (type.calories ?? '') + ' kcal';
-                default:
-                    return '';
-            }
+        function input_error(res) {
+            $('.height_error').text(res.height || '');
+            $('.weight_error').text(res.weight || '');
         }
-    </script>
 
-</body>
 
-</html>
+
+
+        $("#saveBtn").on("click", function() {
+            if (!payload) return;
+            btnChange(0);
+            payload.calc_type = 'bmi';
+            $.post("/v1/fitness/save", payload)
+                .done(res => {
+                    showSuccessMessage(bmi_error, res.message)
+                    btnChange(1);
+                    payload = {};
+                })
+                .fail((xhr) => {
+                    if (xhr.status == 401) {
+                        showErrors(bmi_error, xhr.responseJSON.message)
+                    }
+                    btnChange(2);
+                });
+        });
+    });
+
+    let openHistoryBmi = $("#openHistoryBmi");
+    let HistorySheetBmi = $("#HistorySheetBmi");
+    let closeHistorySheetBmi = $("#closeHistorySheetBmi");
+    let historyListBmi = $("#historyListBmi");
+    let BmiPagination = $("#BmiPagination");
+    let closeHistorySheetBmi2 = $("#closeHistorySheetBmi2");
+
+    openHistoryBmi.on("click", function() {
+        show(HistorySheetBmi);
+        loadRecents('/v1/fitness/recent', 'bmi');
+    });
+    closeHistorySheetBmi2.on("click", function() {
+        hide(HistorySheetBmi);
+    });
+    closeHistorySheetBmi.on("click", function() {
+        hide(HistorySheetBmi);
+    });
+
+
+
+    function loadRecents(url, type = "") {
+        const params = new URLSearchParams({
+            per_page: 5,
+        });
+        if (type) params.set("type", type);
+        const new_url = url.replace(/^\/?fitness\/?/i, "");
+        $.ajax({
+                url: new_url,
+                method: "get",
+                dataType: "json",
+                data: {
+                    per_pagr: 5,
+                    type: type,
+                },
+                success: function(response) {
+                    return response;
+                },
+            })
+            .done((res) => {
+                console.log(res);
+                historyListBmi.empty();
+
+                show_data_lists(res.data.data);
+                paginations(res.data.links);
+            })
+            .fail(() =>
+                historyListBmi
+                .empty()
+                .append('<li class="muted">Failed to load recent.</li>')
+            );
+    };
+
+    function show_data_lists(response) {
+        if (!response.length) {
+            historyListBmi.append(
+                '<li class="muted">No recent calculations.</li>'
+            );
+            return;
+        }
+        response.forEach((item) => {
+            const li = document.createElement("li");
+            li.className =
+                "p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm";
+
+            const i = item.inputs || {};
+            const o = item.outputs || {};
+
+            // Convert height and weight display based on unit
+            let heightDisplay = "";
+            let weightDisplay = "";
+
+            if (i.unit === "metric") {
+                heightDisplay = `${i.height} cm`;
+                weightDisplay = `${i.weight} kg`;
+            } else if (i.unit === "imperial") {
+                // You can adjust these conversions as you like
+                const heightFeet = (i.height / 12).toFixed(1); // assuming inches to feet
+                const weightLbs = i.weight; // usually already in lbs
+                heightDisplay = `${heightFeet} ft/in`;
+                weightDisplay = `${weightLbs} lbs`;
+            } else {
+                heightDisplay = i.height || "-";
+                weightDisplay = i.weight || "-";
+            }
+
+            li.innerHTML = `
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-semibold text-gray-900 dark:text-white">
+                #${item.id} – ${item.calc_type.toUpperCase()}
+            </h3>
+            <span class="text-xs text-gray-500 dark:text-gray-400">
+                ${new Date(item.created_at).toLocaleString()}
+            </span>
+        </div>
+
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+            <p><strong>Height:</strong> ${heightDisplay}</p>
+            <p><strong>Weight:</strong> ${weightDisplay}</p>
+            <p><strong>Unit:</strong> ${o.unit}</p>
+            <div class="mt-3 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 p-3">
+                <p><strong>BMI:</strong> <span class="font-semibold">${o.bmi}</span></p>
+                <p><strong>Category:</strong> 
+                    <span class="font-medium ${
+                        o.category === "Obese"
+                            ? "text-red-600 dark:text-red-400"
+                            : o.category === "Overweight"
+                            ? "text-yellow-600 dark:text-yellow-400"
+                            : "text-green-600 dark:text-green-400"
+                    }">${o.category}</span>
+                </p>
+                <p><strong>Advice:</strong> ${o.advice}</p>
+            </div>
+        </div>
+    `;
+
+            historyListBmi.append(li);
+        });
+
+    }
+
+    function paginations(links) {
+        BmiPagination.empty();
+        if (links.length <= 3) {
+            return 0;
+        }
+
+        links.forEach((link, i) => {
+            let label = link.label ?? String(i + 1);
+            if (i === 0) label = "«";
+            else if (i === links.length - 1) label = "»";
+            else {
+                label = $("<span>").html(label).text().trim();
+            }
+
+            const $a = $("<a>", {
+                text: label,
+                href: link.url || "#",
+                target: "_self",
+                "aria-label": label,
+            }).addClass(
+                "page-btn py-2 mx-1 px-4 text-sm rounded-md border border-slate-300 dark:border-slate-700 "
+            );
+
+            if (link.active) {
+                $a.addClass("bg-black text-white dark:bg-white dark:text-black");
+            }
+
+            if (!link.url) {
+                $a.removeAttr("href")
+                    .addClass(
+                        "opacity-50 cursor-not-allowed bg-white text-black dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                    )
+                    .attr("aria-disabled", "true");
+            } else {
+                $a.on("click", (e) => {
+                    e.preventDefault();
+                    loadRecents(link.url);
+                });
+            }
+
+            BmiPagination.append($a);
+        });
+    }
+</script>
+<x-appfooter></x-appfooter>

@@ -29,6 +29,9 @@
                 <div id="tab-bmi" class="card">
                     <form id="form-bmi" class="space-y-3">
                         <div>
+                            <input type="hidden" id="bmi" name="bmi" value="bmi">
+                        </div>
+                        <div>
                             <label class="block text-sm font-medium">Unit</label>
                             <select name="unit" class="form-control bmiselect">
                                 <option value="metric">Metric (kg, m)</option>
@@ -51,6 +54,9 @@
                 <!-- BMR -->
                 <div id="tab-bmr" class="card hidden">
                     <form id="form-bmr" class="space-y-3">
+                        <div>
+                            <input type="hidden" id="bmr" name="bmr" value="bmr">
+                        </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-sm font-medium">Sex</label>
@@ -80,6 +86,9 @@
                 <!-- TDEE -->
                 <div id="tab-tdee" class="card hidden">
                     <form id="form-tdee" class="space-y-3">
+                        <div>
+                            <input type="hidden" id="tdee" name="tdee" value="tdee">
+                        </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-sm font-medium">BMR</label>
@@ -102,6 +111,9 @@
                 <!-- Body Fat -->
                 <div id="tab-bodyfat" class="card hidden">
                     <form id="form-bodyfat" class="space-y-3">
+                        <div>
+                            <input type="hidden" id="body-fat" name="body-fat" value="body-fat">
+                        </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-sm font-medium">Sex</label>
@@ -135,6 +147,9 @@
                 <!-- Ideal Weight -->
                 <div id="tab-ideal" class="card hidden">
                     <form id="form-ideal" class="space-y-3">
+                        <div>
+                            <input type="hidden" id="ideal" name="ideal" value="ideal">
+                        </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-sm font-medium">Sex</label>
@@ -145,7 +160,7 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium">Height (cm)</label>
-                                <input name="height_cm" type="number" step="0.1" class="form-control search search-input" />
+                                <input name="height_cm" type="number" step="0.1" class="form-control search" />
                             </div>
                         </div>
                     </form>
@@ -157,6 +172,9 @@
                 <!-- Macros -->
                 <div id="tab-macros" class="card hidden">
                     <form id="form-macros" class="space-y-3">
+                        <div>
+                            <input type="hidden" id="macros" name="macros" value="macros">
+                        </div>
                         <div>
                             <label class="block text-sm font-medium">Calories</label>
                             <input name="calories" type="number" class="form-control search" />
@@ -197,8 +215,5 @@
             </aside>
         </div>
     </div>
+    <script src="assets/js/filter.js"></script>
 </template>
-
-
-
-<script src="assets/js/filter.js"></script>

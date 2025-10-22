@@ -14,6 +14,11 @@ use App\Services\Finance\RentService;
 use App\Http\Requests\MortgageRequest;
 use App\Http\Requests\IncomeTaxRequest;
 use App\Http\Requests\RentRequest;
+use App\Mail\DepreciationCalculationResult;
+use App\Mail\MortgageCalculationResult;
+use App\Mail\RentCalculationResult;
+use App\Mail\SalaryCalculationResult;
+use App\Mail\TaxCalculationResult;
 use App\Models\Depreciation;
 use App\Models\Mortgage;
 use App\Models\RentCalculation;
@@ -24,6 +29,7 @@ use App\Services\Finance\IncomeTaxService;
 use App\Services\Finance\DepreciationService;
 use App\Services\Finance\RentAffordabilityService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class FinanceController extends Controller
 {
@@ -37,7 +43,7 @@ class FinanceController extends Controller
     {
 
         if (Auth::check()) {
-            Mortgage::create([
+            $mortgageCreated =  Mortgage::create([
                 "price" => $request->price,
                 "down_amount" => $request->down_amount,
                 "years" => $request->years,
@@ -51,6 +57,7 @@ class FinanceController extends Controller
             ]);
 
 
+            Mail::to(Auth::user()->email)->send(new MortgageCalculationResult($mortgageCreated));
 
             return response()->json([
 
@@ -120,38 +127,60 @@ class FinanceController extends Controller
 
         if (Auth::check()) {
 
-            $tax =  $svc->calculateIncomeTaxResident($r->income);
+            if ($r['payerType'] == 'individual') {
+                $tax = $svc->calculateIncomeTaxResident($r->income);
+                $levy = $svc->calculateMedicareLevy($r->income, $r->levy);
+                $taxLevy = $tax + $levy;
+                $taxpaid = $r->taxpaid;
+                $remaining = $r->income - $taxLevy;
 
-            $levy =  $svc->calculateMedicareLevy($r->income, $r->levy);
-
-            $taxLevy = $tax +  $levy;
-
-            $taxpaid = $r->taxpaid;
-
-            $remaining = $r->income - $taxLevy;
-
-            TaxCollection::create([
-                'total_income' => $r['income'],
-                'user_id' => Auth::id(),
-                'levy' =>    $levy,
-                'tax' => $tax,
-                'taxpaid' => $taxpaid,
-                'remaining_income' => $remaining
-            ]);
-
-            return response()->json([
-                'message' => 'Your record is addded',
-                'ok' => true,
-                'data' => [
-                    'tax' => $tax,
+                $taxcreated = TaxCollection::create([
+                    'total_income' => $r['income'],
+                    'user_id' => Auth::id(),
                     'levy' => $levy,
-                    'taxLevy' => $taxLevy,
-                    'remaining' => $remaining,
+                    'tax' => $tax,
                     'taxpaid' => $taxpaid,
+                    'remaining_income' => $remaining,
+                    'payerType' => $r->payerType
+                ]);
 
-                ]
-            ], 200);
+                Mail::to(Auth::user()->email)->send(new TaxCalculationResult($taxcreated));
+
+                return response()->json([
+                    'message' => 'Your record is added',
+                    'ok' => true,
+                    'data' => [
+                        'tax' => $tax,
+                        'levy' => $levy,
+                        'taxLevy' => $taxLevy,
+                        'remaining' => $remaining,
+                        'taxpaid' => $taxpaid,
+                    ]
+                ], 200);
+            } else {
+                $companyTax = $svc->calculateIncomeTaxNonIndividual($r->yearly_revenue, $r->yearly_cost);
+                $remaining = $companyTax['taxPayable'] - $r['taxpaid'];
+
+                $taxcreated = TaxCollection::create([
+                    'total_income' => $companyTax['revenue'],
+                    'user_id' => Auth::id(),
+                    'tax' => $companyTax['taxPayable'],
+                    'taxpaid' => $r['taxpaid'],
+                    'cost' => $r['yearly_cost'],
+                    'remaining_income' => $remaining,
+                    'payerType' => $r->payerType
+                ]);
+
+                Mail::to(Auth::user()->email)->send(new TaxCalculationResult($taxcreated));
+
+                return response()->json([
+                    'message' => 'Your record is added',
+                    'ok' => true,
+                    'data' => []
+                ], 200);
+            }
         }
+
         return response()->json([
             'message' => 'please login first',
             'ok' => false,
@@ -201,7 +230,7 @@ class FinanceController extends Controller
             $in = $request->all();
 
 
-            SalleryCalculation::create([
+            $salarycreated = SalleryCalculation::create([
                 'annual_amount' => round($in['annual_amount'], 2),
                 'after_tax' =>  round($in['after_tax'], 2),
                 'user_id' => Auth::id(),
@@ -214,6 +243,8 @@ class FinanceController extends Controller
                 'tax' =>  round($in['tax'], 2),
 
             ]);
+
+            Mail::to(Auth::user()->email)->send(new SalaryCalculationResult($salarycreated));
 
             return response()->json([
                 'message' => 'your data inserted successfully',
@@ -254,7 +285,7 @@ class FinanceController extends Controller
 
         if (Auth::check()) {
 
-            RentCalculation::create([
+            $rentcreated =  RentCalculation::create([
                 'monthly_income' => $input['monthly_income'],
                 'user_id' => Auth::id(),
                 'monthly_debts' => $input['monthly_debts'],
@@ -265,7 +296,7 @@ class FinanceController extends Controller
                 'target_savings' => $input['saving_target'],
             ]);
 
-
+            Mail::to(Auth::user()->email)->send(new RentCalculationResult($rentcreated));
 
             return response()->json([
                 'message' => 'Data inserted successfully.',
@@ -294,12 +325,12 @@ class FinanceController extends Controller
         ], 200);
     }
 
-    public function depreciationSave(Request $request)
+    public function depreciationSave(Request $request, DepreciationService $dep)
     {
 
 
         if (Auth::check()) {
-            Depreciation::create([
+            $depreciationcreated =  Depreciation::create([
                 'cost' => $request['inputs']['cost'],
                 'user_id' => Auth::user()->id,
                 'salvage' => $request['inputs']['salvage_value'],
@@ -308,6 +339,21 @@ class FinanceController extends Controller
                 'ddb_switch_to_sl' => $request['inputs']['ddb_switch_to_sl'],
                 'round' => $request['inputs']['round']
             ]);
+
+
+            $yearly =  $dep->schedule([
+                "cost" => $depreciationcreated['cost'],
+                "salvage_value" => $depreciationcreated['salvage'],
+                "method" => $depreciationcreated['method'],
+                "life_years" => $depreciationcreated['years'],
+                "ddb_switch_to_sl" => $depreciationcreated['ddb_switch_to_sl'],
+                "round" => $depreciationcreated['round'],
+            ]);
+
+
+            Mail::to(Auth::user()->email)->send(new DepreciationCalculationResult($depreciationcreated, $yearly));
+
+
             return response()->json([
 
                 'message' => 'you data inserted successfully',

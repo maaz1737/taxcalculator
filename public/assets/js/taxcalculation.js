@@ -39,7 +39,7 @@ $(document).ready(function () {
     const aud = new Intl.NumberFormat("en-AU", {
         style: "currency",
         currency: "AUD",
-        maximumFractionDigits: 0,
+        maximumFractionDigits: 2,
     });
 
     function showError(msg) {
@@ -85,7 +85,7 @@ $(document).ready(function () {
         paid = 0,
         remain = 0,
     } = {}) {
-        console.log(incomeTax);
+        console.log($("#payerType").val());
         outputIncomeTaxEl.text(incomeTax ? aud.format(incomeTax) : "—");
         outputLevyEl.text(levy ? aud.format(levy) : "—");
         outputTotalEl.text(total ? aud.format(total) : "—");
@@ -105,6 +105,7 @@ $(document).ready(function () {
     function calculateIncomeTaxResident(income) {
         let tax = 0;
 
+        // --- Base Tax Calculation ---
         if (income <= 18200) {
             tax = 0;
         } else if (income <= 45000) {
@@ -117,45 +118,81 @@ $(document).ready(function () {
             tax = 51638 + (income - 190000) * 0.45;
         }
 
-        return tax;
+        // --- LITO (Low Income Tax Offset) ---
+        let lito = 0;
+        if (income <= 37500) {
+            lito = 700;
+        } else if (income <= 45000) {
+            lito = 700 - 0.05 * (income - 37500);
+        } else if (income < 66667) {
+            lito = 325 - 0.015 * (income - 45000);
+        } else {
+            lito = 0;
+        }
+
+        // --- Apply Offset ---
+        const finalTax = Math.max(0, tax - lito);
+
+        return finalTax;
     }
 
     function calculateMedicareLevy(income, levyPercent) {
         if (!levyPercent) return 0;
         return income * (levyPercent / 100);
     }
+    function calculateIncomeTaxNonIndividual(revenue, cost) {
+        const taxableIncome = Math.max(0, revenue - cost);
+        const taxRate = taxableIncome < 50000000 ? 0.25 : 0.3;
+        const taxPayable = taxableIncome * taxRate;
+
+        return {
+            revenue: revenue,
+            cost: cost,
+            taxableIncome: taxableIncome,
+            entityType:
+                taxableIncome < 50000000
+                    ? "Base Rate Entity"
+                    : "Full Rate Entity",
+            taxRate: taxRate * 100 + "%",
+            taxPayable: taxPayable,
+        };
+    }
 
     // ---------- Events ----------
     $(".change").on("input", function (e) {
         e.preventDefault();
         clearError();
+        //sdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 
-        const rawIncome = Number(incomeInputEl.val());
-        const levyPercent = Number(levySelectEl.val());
+        if ($("#payerType").val() !== "company") {
+            const rawIncome = Number(incomeInputEl.val());
+            const levyPercent = Number(levySelectEl.val());
 
-        if (!Number.isFinite(rawIncome) || rawIncome < 0) {
-            showError("Please enter a valid non-negative income amount.");
-            setOutputs({});
-            return;
+            if (!Number.isFinite(rawIncome) || rawIncome < 0) {
+                showError("Please enter a valid non-negative income amount.");
+                setOutputs({});
+                return;
+            }
+
+            const incomeTax = calculateIncomeTaxResident(rawIncome);
+            const levy = Number.isFinite(levyPercent)
+                ? calculateMedicareLevy(rawIncome, levyPercent)
+                : 0;
+            const total = incomeTax + levy;
+            const remaining = rawIncome - total;
+            const paid = taxpaid.val();
+            const remain = total - paid;
+            setOutputs({
+                incomeTax,
+                levy,
+                total,
+                remaining,
+                paid,
+                remain,
+            });
+        } else {
+            console.log("company");
         }
-
-        const incomeTax = calculateIncomeTaxResident(rawIncome);
-        const levy = Number.isFinite(levyPercent)
-            ? calculateMedicareLevy(rawIncome, levyPercent)
-            : 0;
-        const total = incomeTax + levy;
-        const remaining = rawIncome - total;
-        const paid = taxpaid.val();
-        const remain = total - paid;
-
-        setOutputs({
-            incomeTax,
-            levy,
-            total,
-            remaining,
-            paid,
-            remain,
-        });
     });
 
     btnClearEl.on("click", function () {

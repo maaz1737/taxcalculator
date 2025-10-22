@@ -15,7 +15,6 @@
             <div id="rent-message"
                 class="absolute top-2 left-12 w-[40%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
-                ddd
             </div>
         </div>
 
@@ -87,7 +86,15 @@
 
                         <button type="submit"
                             id="save-rent"
-                            class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                            class="inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4"
+                                viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path d="M3 7a2 2 0 0 1 2-2h9l5 5v7a2 2 0 0 1-2 2h-2v-6H7v6H5a2 2 0 0 1-2-2V7Z" />
+                                <path d="M9 5h4v4H9z" />
+                            </svg>
                             Save
                         </button>
                         <span id="saving" class="text-sm ml-3 hidden">Saving...</span>
@@ -159,213 +166,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    (function($) {
-        function historyInit(openBtnId, sheetId) {
-            const $open = $('#' + openBtnId);
-            const $sheet = $('#' + sheetId);
-            if (!$open.length || !$sheet.length) return;
-
-            if ($sheet.data('bound') === '1') return;
-            $sheet.data('bound', '1');
-
-            const $closeBtns = $sheet.find('[id^="close"], [data-close], .js-close-sheet');
-
-            const hide = () => {
-                $sheet.addClass('pointer-events-none opacity-0 translate-y-full');
-                $(document).off('keydown.historySheet');
-            };
-
-            const show = () => {
-                $sheet.removeClass('pointer-events-none opacity-0 translate-y-full');
-                $(document).one('keydown.historySheet', function(e) {
-                    if (e.key === 'Escape') hide();
-                });
-                // TODO: load history items here if needed
-                // fillHistory();
-            };
-
-            $open.on('click', function(e) {
-                e.preventDefault();
-                show();
-            });
-
-            $closeBtns.on('click', hide);
-
-            // expose helpers if you need to call later
-            $sheet.data('showSheet', show);
-            $sheet.data('hideSheet', hide);
-        }
-
-        $(function() {
-            historyInit('openHistoryRent', 'historySheetRent');
-        });
-    })(jQuery);
-
-
-    let historyListRent = $('#historyListRent');
-
-    $('#openHistoryRent').on('click', function() {
-
-        rent_history('v1/finance/rentHistory')
-
-    });
-
-    function rent_history(url) {
-
-        $.ajax({
-            url: url,
-            method: "get",
-            contentType: "application/json",
-            dataType: "json",
-            success: function(res) {
-                render(res.data.data);
-
-                pagination(res.data);
-            },
-            error: function(e) {
-                console.log(e)
-            }
-
-        });
-    }
-
-    function pagination(data) {
-
-        if (data.from == data.last_page) return;
-
-        let links = data.links;
-
-        $('#button_container').empty();
-
-
-
-        links.forEach((link, i) => {
-            let label = link.label ?? String(i + 1);
-            if (i === 0) label = "Previous";
-            else if (i === links.length - 1) label = "Next";
-            else {
-                label = $("<span>").html(label).text().trim();
-            }
-
-            const $a = $("<a>", {
-                text: label,
-                href: link.url || "#",
-                target: "_self",
-                "aria-label": label,
-            }).addClass(
-                "inline-flex mx-1 items-center justify-center min-w-8 h-8 px-2 rounded-md text-sm " +
-                "text-gray-700 dark:text-gray-200 hover:bg-gray-900 hover:text-white"
-            );
-
-            if (link.active) {
-                $a.addClass(
-                    "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-                );
-            }
-
-            if (!link.url) {
-                $a.removeAttr("href")
-                    .addClass("opacity-50 cursor-not-allowed")
-                    .attr("aria-disabled", "true");
-            } else {
-                $a.on("click", (e) => {
-                    e.preventDefault();
-                    rent_history(link.url);
-                });
-            }
-
-            $('#button_container').append($a);
-        });
-
-
-
-    }
-
-
-    // helpers
-    function fmtMoney(n) {
-        const num = Number(n ?? 0);
-        if (Number.isNaN(num)) return String(n ?? '');
-        return new Intl.NumberFormat(undefined, {
-            style: 'currency',
-            currency: 'USD',
-            maximumFractionDigits: 2
-        }).format(num);
-    }
-
-    function fmtDate(d) {
-        if (!d) return '';
-        const dt = new Date(d);
-        return isNaN(dt) ? String(d) : dt.toLocaleString();
-    }
-
-    function escapeHtml(s) {
-        return String(s ?? '')
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-    }
-
-    // assumes: const historyListRent = $('#historyListRent'); // UL/OL
-    function render(data) {
-        const frag = $(document.createDocumentFragment());
-
-        historyListRent.empty();
-
-        (data || []).forEach(el => {
-            const income = fmtMoney(el.monthly_income);
-            const debts = fmtMoney(el.monthly_debts);
-            const savings = fmtMoney(el.target_savings);
-            const ins = fmtMoney(el.insurance_monthly);
-            const created = fmtDate(el.created_at);
-            const rule = escapeHtml(el.rule);
-
-            const $li = $('<li/>', {
-                class: 'group rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3 sm:p-4 mb-2 shadow-sm hover:shadow transition'
-            });
-
-            const html = `
-      <div class="flex items-start justify-between gap-3">
-        <div>
-          <div class="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">Monthly Income</div>
-          <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">${income}</div>
-        </div>
-
-        <div class="flex items-center gap-2 shrink-0">
-          <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${rule =='dti_36' ? 'dti_36' : rule =='30_percent' ? '30%':`${rule}%`}</span>
-          <time class="text-xs text-slate-500">${created}</time>
-          <button type="button" class="opacity-0 group-hover:opacity-100 transition text-slate-500 hover:text-slate-900 dark:hover:text-white" data-remove title="Remove">✕</button>
-        </div>
-      </div>
-
-      <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
-        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2">
-          <div class="text-[11px] text-slate-500">Monthly Debts</div>
-          <div class="font-medium">${debts}</div>
-        </div>
-
-        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2">
-          <div class="text-[11px] text-slate-500">Target Savings</div>
-          <div class="font-medium">${savings}</div>
-        </div>
-
-        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2">
-          <div class="text-[11px] text-slate-500">Insurance (Monthly)</div>
-          <div class="font-medium">${ins}</div>
-        </div>
-      </div>
-    `;
-
-            $li.html(html);
-            frag.append($li[0]);
-        });
-
-        historyListRent.append(frag);
-    }
-
-
-    $(document).on('click', '[data-remove]', function() {
-        $(this).closest('li').remove();
-    });
-</script>

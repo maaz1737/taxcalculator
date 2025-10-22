@@ -92,7 +92,7 @@
 
                 @endauth
 
-                <button id="btnSaveTemperature" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                <button id="btnSaveTemperature" class="inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
                     <!-- disk icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M3 7a2 2 0 0 1 2-2h9l5 5v7a2 2 0 0 1-2 2h-2v-6H7v6H5a2 2 0 0 1-2-2V7Z" />
@@ -116,7 +116,7 @@
         <!-- Sheet body -->
         <div class="p-5 scroll-area overflow-y-auto max-h-[70vh]">
             <ol id="temperatureHistoryList" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
-            <div id="temPager" class="flex flex-wrap items-center gap-2 mt-3">
+            <div id="temPager" class="flex flex-wrap items-center gap-2 my-2">
                 <button id="temPrev" class="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 disabled:opacity-50">«</button>
 
                 <!-- numbered page buttons will be injected here -->
@@ -126,13 +126,10 @@
 
 
             </div>
-
+            <div class="px-5 py-2 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                <button id="closeTemperatureHistory2" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">Close</button>
+            </div>
         </div>
     </div>
-</div>
 
-
-<!-- Sheet footer -->
-<div class="px-5 py-3 border-t border-slate-200 dark:border-slate-700 flex justify-end">
-    <button id="closeTemperatureHistory2" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">Close</button>
 </div>

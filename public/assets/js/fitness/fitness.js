@@ -399,6 +399,7 @@
         titleEl.textContent = "Fitness Calculator";
         contentEl.innerHTML = "";
         contentEl.appendChild(tpl.content.cloneNode(true));
+        $("body").addClass("overflow-hidden");
         modal.classList.remove("hidden");
         requestAnimationFrame(() => {
             backdrop.classList.remove("opacity-0");
@@ -421,6 +422,7 @@
     function closeModal() {
         backdrop.classList.add("opacity-0");
         panel.classList.add("opacity-0", "scale-95", "translate-y-3");
+        $("body").css("overflow", "");
         setTimeout(() => {
             modal.classList.add("hidden");
             contentEl.innerHTML = "";

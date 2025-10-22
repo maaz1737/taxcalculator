@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Mail\CalculationResult;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -20,7 +22,6 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             // regenerate session to prevent fixation
             $request->session()->regenerate();
-
             return redirect()->route('home');
         }
 

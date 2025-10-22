@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $slot  }}</title>
+    <meta name="description" content="{{ $des }}">
+    <meta name="keywords" content="{{ $key }}">
+
+    <title>{{ $title  }}</title>
 
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -326,7 +329,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
 
-
+    <script>
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content"),
+            },
+        });
+    </script>
 
     <script>
         tailwind.config = {
@@ -367,19 +378,58 @@
             <div class="flex items-center gap-3">
                 <!-- LOGO -->
                 <a href="{{ url('/') }}" class="flex items-center gap-2">
-                    <div class="h-8 w-8 rounded-xl bg-brand/10 text-brand grid place-items-center font-extrabold">≡</div>
-                    <span class="font-extrabold tracking-tight text-head dark:text-white">[BRAND]</span>
+                    <div class="text-brand grid place-items-center font-extrabold">
+                        <img width="55px" src=" {{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
+                    </div>
+                    <span class="font-extrabold tracking-tight text-head dark:text-white"></span>
                 </a>
                 <!-- Nav -->
-                <nav class="hidden md:flex items-center gap-4 text-sm">
+                <style>
+                    .dropdown-content {
+                        display: none;
+                    }
+
+                    .show {
+                        display: block;
+                    }
+
+                    #categories-menu {
+                        z-index: 50;
+                        background-color: white;
+                        color: black;
+                        transition: all 0.2s ease-in-out;
+                    }
+
+                    #categories-btn.active #caret-icon {
+                        transform: rotate(180deg);
+                    }
+                </style>
+                <nav class="hidden md:flex items-center gap-4 text-sm relative">
                     <a href="{{ url('/') }}" class="hover:text-brand transition">Home</a>
                     <a href="{{ url('/calculators') }}" class="hover:text-brand transition">Calculators</a>
-                    <a href="{{ url('/categories') }}" class="hover:text-brand transition">Categories</a>
-                    <a href="{{ url('/favorites') }}" class="hover:text-brand transition">Favorites</a>
+
+                    <div class="relative">
+                        <button id="categories-btn" class="hover:text-brand transition flex items-center gap-1">
+                            Categories
+                            <svg class="w-4 h-4 transition-transform" id="caret-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div id="categories-menu"
+                            class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-md hidden">
+                            <a href="{{ route('tax.finance') }}" class="block px-4 py-2 hover:bg-gray-100">Finance & Tax</a>
+                            <a href="{{ route('math.measurement') }}" class="block px-4 py-2 hover:bg-gray-100">Math & Measurement</a>
+                            <a href="{{ route('health.fitness') }}" class="block px-4 py-2 hover:bg-gray-100">Health & Fitness</a>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('favorites.calculators') }}" class="hover:text-brand transition">Favorites</a>
                     <a href="{{ url('/history') }}" class="hover:text-brand transition">History</a>
                     <a href="{{ url('/docs') }}" class="hover:text-brand transition">Docs</a>
                     <a href="{{ url('/pricing') }}" class="hover:text-brand transition">Pricing</a>
                 </nav>
+
             </div>
 
             <!-- Search + actions -->
@@ -409,3 +459,4 @@
             </div>
         </div>
     </header>
+    <x-simplecalculator />

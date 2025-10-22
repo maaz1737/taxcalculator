@@ -15,11 +15,13 @@ return new class extends Migration
         Schema::create('tax_collections', function (Blueprint $table) {
             $table->id();
             $table->string('total_income');
+            $table->string('cost')->nullable();
             $table->foreignIdFor(User::class);
             $table->string('levy')->nullable();
             $table->string('taxpaid')->nullable();
             $table->string('tax');
             $table->string('remaining_income');
+            $table->string('payerType');
             $table->timestamps();
         });
     }

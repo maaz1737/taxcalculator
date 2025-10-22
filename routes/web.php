@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
+use App\Http\Controllers\FavoriteCalculatorsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LengthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\V1\FinanceController as F;
 use App\Http\Controllers\V1\FitnessController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\SimpleCalculatorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,49 +27,36 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-// Route::view('/', 'length.index')->name('length');
+Route::view('/length', 'length.index')->name('length');
 Route::view('/area', 'area.area')->name('area');
 Route::view('/weight', 'weight.weight')->name('weight');
 Route::view('/temperature', 'temperature.temperature')->name('temperature');
 Route::view('/time', 'time.time')->name('time');
 Route::view('/volume', 'volume.volume')->name('volume');
-Route::view('/mortgage', 'finance/mortgage')->name('page.mortgage');
+Route::view('/mortgage', 'finance/mortgage')->name('finance.mortgage');
 Route::view('/auto', 'finance/auto')->name('page.auto');
 Route::view('/loan', 'finance/loan')->name('page.loan');
-Route::view('/rent', 'finance/rent')->name('page.rent');
-Route::view('/tax', 'finance/tax')->name('page.tax');
-Route::view('/salary', 'finance/salary')->name('page.salary');
-Route::view('/depreciation', 'finance/depreciation')->name('page.depreciation');
-
-Route::view('/rent', 'finance.rent')->name('finance.rent');
-
+Route::view('/tax/calculation/calculator', 'finance/income-tax')->name('finance.tax');
+Route::view('/depreciation', 'finance/depreciation')->name('finance.depreciation');
+Route::view('/rent/calculation/calculator', 'finance.rent')->name('finance.rent');
 Route::view('/income-tax', 'finance.income-tax')->name('finance.income_tax');
 
-Route::view('/salary', 'finance.salary')->name('finance.salary');
+Route::view('/salary/calculation/calculator', 'finance.salary')->name('finance.salary');
 Route::prefix('fitness')->group(function () {
-    Route::view('/', 'fitness.index')->name('fitness.index');
-    Route::view('/bmi', 'fitness.bmi')->name('fitness.bmi');
-    // Add other pages as you build them:
-    // Route::view('/bmr-tdee', 'fitness.bmr_tdee')->name('fitness.bmr_tdee');
-    // Route::view('/bodyfat', 'fitness.bodyfat')->name('fitness.bodyfat');
-    // Route::view('/one-rep-max', 'fitness.orm')->name('fitness.orm');
-    // Route::view('/heart-rate', 'fitness.hr')->name('fitness.hr');
-    // Route::view('/calories', 'fitness.calories')->name('fitness.calories');
-    // Route::view('/water', 'fitness.water')->name('fitness.water');
+
+    Route::get('/bmi-calculator', [FitnessController::class, 'bmi_view'])->name('fitness.bmi');
+    Route::get('/bmr-calculator', [FitnessController::class, 'bmr_view'])->name('fitness.bmr');
+    Route::get('/tdee-calculator', [FitnessController::class, 'tdee_view'])->name('fitness.tdee');
+    Route::get('/body-fat-calculator', [FitnessController::class, 'body_fat_view'])->name('fitness.bodyfat');
+    Route::get('/ideal-weight-calculator', [FitnessController::class, 'ideal_weight_view'])->name('fitness.ideal');
+    Route::get('/macros-calculator', [FitnessController::class, 'macros_view'])->name('fitness.macros');
 });
 
 
-Route::get('/v1/calculations/recent', [FitnessController::class, 'recent']);
+Route::post('/v1/calculations/recent', [FitnessController::class, 'recent']);
 
 
-Route::view('/ss', 'scientificcalculator')->name('scientificcalculator');
-
-
-
-
-
-
-
+Route::view('/scientific/calculator', 'scientificcalculator')->name('scientificcalculator');
 Route::get('/convert', [ConvertController::class, 'convert'])->name('api.convert');
 Route::get('/convert/table', [ConvertController::class, 'table'])->name('api.convert.table');
 
@@ -85,7 +75,6 @@ Route::prefix('v1/finance')->as('v1.finance.')->group(function () {
     // Route::post('loan',          [F::class, 'loan'])->name('loan');                     
     Route::post('rent',          [F::class, 'rent'])->name('rent');
     Route::post('/rentsave',          [F::class, 'rent_save'])->name('rent_save');
-    Route::get('/rentHistory',          [F::class, 'rentHistory'])->name('rentHistory');
     Route::post('/income-tax', [F::class, 'tax'])->name('api.finance.income_tax');
     Route::post('/salary', [F::class, 'salary'])->name('api.finance.salary');
     Route::post('/salarysave', [F::class, 'save_salary'])->name('api.finance.save_salary');
@@ -93,10 +82,14 @@ Route::prefix('v1/finance')->as('v1.finance.')->group(function () {
     Route::post('depreciation',  [F::class, 'depreciation'])->name('depreciation');
     Route::post('depreciationsave',  [F::class, 'depreciationSave'])->name('depreciationSave');
     Route::get('/DepreciationHistory',  [F::class, 'DepreciationHistory'])->name('DepreciationHistory');
-
-    Route::get('/gettax', [F::class, 'getTax']);
 });
 
+
+
+// fixed routes with all problem solved 
+
+Route::get('/rent/calculation/calculator/rentHistory', [F::class, 'rentHistory'])->name('rentHistory');
+Route::get('/gettax', [F::class, 'getTax']);
 
 
 Route::prefix('v1/fitness')->as('v1.fitness.')->group(function () {
@@ -112,21 +105,19 @@ Route::prefix('v1/fitness')->as('v1.fitness.')->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/lenghts', [LengthController::class, 'index'])->name('api.lenghts.index');
-
-
     Route::post('v1/fitness/save',      [FitnessController::class, 'save'])->name('api.fitness.save');
     Route::get('v1/fitness/recent',     [FitnessController::class, 'recent'])->name('api.fitness.recent');
 });
-
-
 Route::post('/lenghtsave', [LengthController::class, 'store'])
     ->name('lenghtsave');
-
-
-
-
-
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
+Route::post('save/history', [SimpleCalculatorController::class, 'store'])->name('save.scientific.history');
+Route::get('/get/history', [SimpleCalculatorController::class, 'index'])->name('get.scientific.history');
+Route::post('delete/history', [SimpleCalculatorController::class, 'destory'])->name('delete.scientific.history');
+Route::get('tax/finance', [CategoryController::class, 'TaxFinance'])->name('tax.finance');
+Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->name('math.measurement');
+Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');
+Route::get('favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
+Route::post('/favorites/calculators/store', [FavoriteCalculatorsController::class, 'store'])->name('favorites.calculators.store');
