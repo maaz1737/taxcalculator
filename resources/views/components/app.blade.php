@@ -406,7 +406,7 @@
                 </style>
                 <nav class="hidden md:flex items-center gap-4 text-sm relative">
                     <a href="{{ url('/') }}" class="hover:text-brand transition">Home</a>
-                    <a href="{{ url('/calculators') }}" class="hover:text-brand transition">Calculators</a>
+                    <a href="/" class="hover:text-brand transition">Calculators</a>
 
                     <div class="relative">
                         <button id="categories-btn" class="hover:text-brand transition flex items-center gap-1">
@@ -425,9 +425,9 @@
                     </div>
 
                     <a href="{{ route('favorites.calculators') }}" class="hover:text-brand transition">Favorites</a>
-                    <a href="{{ url('/history') }}" class="hover:text-brand transition">History</a>
-                    <a href="{{ url('/docs') }}" class="hover:text-brand transition">Docs</a>
-                    <a href="{{ url('/pricing') }}" class="hover:text-brand transition">Pricing</a>
+                    <a href="/" class="hover:text-brand transition">History</a>
+                    <a href="/" class="hover:text-brand transition">Docs</a>
+                    <a href="/" class="hover:text-brand transition">Pricing</a>
                 </nav>
 
             </div>

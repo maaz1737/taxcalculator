@@ -113,9 +113,9 @@ Route::post('/lenghtsave', [LengthController::class, 'store'])
     ->name('lenghtsave');
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
-Route::post('scientific/save/history', [SimpleCalculatorController::class, 'store'])->name('save.scientific.history');
-Route::get('scientific/get/history', [SimpleCalculatorController::class, 'index'])->name('get.scientific.history');
-Route::post('scientific/delete/history', [SimpleCalculatorController::class, 'destory'])->name('delete.scientific.history');
+Route::post('/save/history', [SimpleCalculatorController::class, 'store'])->name('save.scientific.history');
+Route::get('/get/history', [SimpleCalculatorController::class, 'index'])->name('get.scientific.history');
+Route::post('/delete/history', [SimpleCalculatorController::class, 'destory'])->name('delete.scientific.history');
 Route::get('tax/finance', [CategoryController::class, 'TaxFinance'])->name('tax.finance');
 Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->name('math.measurement');
 Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');

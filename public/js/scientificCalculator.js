@@ -438,7 +438,7 @@ $(function () {
 
     function appendHistory(expr, result) {
         $.ajax({
-            url: "get/history",
+            url: "/get/history",
             method: "get",
             contentType: "application/json",
             dataType: "json",
@@ -513,7 +513,7 @@ $(function () {
 
     function save_history(data) {
         return $.ajax({
-            url: "save/history",
+            url: "/save/history",
             method: "POST",
             data: JSON.stringify(data || {}),
             contentType: "application/json",
@@ -531,7 +531,7 @@ $(function () {
 
     $btnClearHist.on("click", function () {
         $.ajax({
-            url: "delete/history",
+            url: "/delete/history",
             method: "POST",
             contentType: "application/json",
             dataType: "json",
