@@ -51,7 +51,7 @@
     dark:from-slate-800 dark:via-slate-850 dark:to-slate-800 
     shrink-0 rounded-t-xl transition-all duration-300">
 
-                <div id="displayExpr" class="text-right text-sm text-gray-500 dark:text-gray-300 h-4">&nbsp;</div>
+                <div id="displayExpr" class="text-right text-lg text-gray-900 tracking-widest dark:text-gray-300 h-4">&nbsp;</div>
 
                 <div id="displayValue"
                     class="mt-1 text-right text-2xl sm:text-3xl font-bold tracking-tight 
