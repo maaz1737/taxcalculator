@@ -19,7 +19,7 @@
 
             <!-- Header -->
             <div class="flex items-center justify-between px-4 sm:px-6 py-2 
-                bg-gradient-to-r from-slate-100 via-white to-slate-100 
+                bg-gradient-to-r from-slate-200 to-slate-100  to-slate-200 
                 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900
                 border-b border-slate-200/60 dark:border-slate-700/60">
 
