@@ -10,6 +10,8 @@ use App\Http\Controllers\V1\FinanceController as F;
 use App\Http\Controllers\V1\FitnessController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\SimpleCalculatorController;
+use App\Http\Controllers\StripeController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -121,3 +123,11 @@ Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->
 Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');
 Route::get('favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
 Route::post('/favorites/calculators/store', [FavoriteCalculatorsController::class, 'store'])->name('favorites.calculators.store');
+
+
+
+
+Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
+Route::get('/success', [StripeController::class, 'success']);
+Route::get('/cancel', [StripeController::class, 'cancel']);
