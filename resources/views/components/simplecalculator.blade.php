@@ -70,7 +70,7 @@
 </style>
 
 <div id="draggableIcon"
-    class="fixed bottom-[45%] right-5 w-64 z-[65] cursor-move select-none">
+    class="fixed bottom-[45%] right-5 w-64 z-[65] cursor-move select-none hidden sm:block">
 
     <!-- minimize -->
     <div class="relative">
