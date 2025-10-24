@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use App\Mail\CalculationResult;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -34,17 +35,29 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/login');
     }
-    public function registerPost(UserRequest $request)
+    public function registerPost(Request $request)
     {
 
 
-        User::create([
-            'name' => $request->name,
-            'password' => $request->password,
-            'email' => $request->email,
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        return redirect()->route('home');
+        // 2. Create the user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // 'email_verified_at' is NULL by default, which is what we want
+        ]);
+
+        $user->sendEmailVerificationNotification();
+
+        Auth::login($user);
+
+        // 5. Redirect to the verification notice page (next step)
+        return redirect()->route('verification.notice');
     }
 }

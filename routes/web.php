@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
 use App\Http\Controllers\FavoriteCalculatorsController;
@@ -24,10 +25,20 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+
+
+
+Route::get('/email/verify', [VerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [VerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
 Route::post('/register', [UserController::class, 'registerPost'])->name('registerPost');
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/logout', [UserController::class, 'logout']);
+
 
 Route::view('/length', 'length.index')->name('length');
 Route::view('/area', 'area.area')->name('area');
@@ -43,9 +54,9 @@ Route::view('/depreciation', 'finance/depreciation')->name('finance.depreciation
 Route::view('/rent/calculation/calculator', 'finance.rent')->name('finance.rent');
 Route::view('/income-tax', 'finance.income-tax')->name('finance.income_tax');
 
+
 Route::view('/salary/calculation/calculator', 'finance.salary')->name('finance.salary');
 Route::prefix('fitness')->group(function () {
-
     Route::get('/bmi-calculator', [FitnessController::class, 'bmi_view'])->name('fitness.bmi');
     Route::get('/bmr-calculator', [FitnessController::class, 'bmr_view'])->name('fitness.bmr');
     Route::get('/tdee-calculator', [FitnessController::class, 'tdee_view'])->name('fitness.tdee');
@@ -71,27 +82,28 @@ Route::get('/convert/table', [ConvertController::class, 'table'])->name('api.con
 
 Route::prefix('v1/finance')->as('v1.finance.')->group(function () {
     Route::post('mortgage',      [F::class, 'mortgage'])->name('mortgage');
-    Route::post('mortgagesave',      [F::class, 'mortgage_save'])->name('mortgagesave');
-    Route::post('mortgageHistory',      [F::class, 'mortgageHistory'])->name('mortgageHistory');
+    Route::post('mortgagesave',      [F::class, 'mortgage_save'])->middleware(['auth', 'verified'])->name('mortgagesave');
+    Route::post('mortgageHistory',      [F::class, 'mortgageHistory'])->middleware(['auth', 'verified'])->name('mortgageHistory');
     // Route::post('auto',          [F::class, 'auto'])->name('auto');                    
     // Route::post('loan',          [F::class, 'loan'])->name('loan');                     
     Route::post('rent',          [F::class, 'rent'])->name('rent');
-    Route::post('/rentsave',          [F::class, 'rent_save'])->name('rent_save');
-    Route::post('/income-tax', [F::class, 'tax'])->name('api.finance.income_tax');
+    Route::post('/rentsave',          [F::class, 'rent_save'])->middleware(['auth', 'verified'])->name('rent_save');
+    Route::post('/income-tax', [F::class, 'tax'])->middleware(['auth', 'verified'])->name('api.finance.income_tax');
     Route::post('/salary', [F::class, 'salary'])->name('api.finance.salary');
-    Route::post('/salarysave', [F::class, 'save_salary'])->name('api.finance.save_salary');
-    Route::get('/salaryhistory', [F::class, 'salaryhistory'])->name('api.finance.salaryhistory');
+    Route::post('/salarysave', [F::class, 'save_salary'])->middleware(['auth', 'verified'])->name('api.finance.save_salary');
+    Route::get('/salaryhistory', [F::class, 'salaryhistory'])->middleware(['auth', 'verified'])->name('api.finance.salaryhistory');
     Route::post('depreciation',  [F::class, 'depreciation'])->name('depreciation');
-    Route::post('depreciationsave',  [F::class, 'depreciationSave'])->name('depreciationSave');
-    Route::get('/DepreciationHistory',  [F::class, 'DepreciationHistory'])->name('DepreciationHistory');
+    Route::post('depreciationsave',  [F::class, 'depreciationSave'])->middleware(['auth', 'verified'])->name('depreciationSave');
+    Route::get('/DepreciationHistory',  [F::class, 'DepreciationHistory'])->middleware(['auth', 'verified'])->name('DepreciationHistory');
 });
 
 
 
 // fixed routes with all problem solved 
 
-Route::get('/rent/calculation/calculator/rentHistory', [F::class, 'rentHistory'])->name('rentHistory');
-Route::get('/gettax', [F::class, 'getTax']);
+Route::get('/rent/calculation/calculator/rentHistory', [F::class, 'rentHistory'])->middleware(['auth', 'verified'])->name('rentHistory');
+
+Route::get('/gettax', [F::class, 'getTax'])->middleware(['auth', 'verified']);
 
 
 Route::prefix('v1/fitness')->as('v1.fitness.')->group(function () {
@@ -106,23 +118,32 @@ Route::prefix('v1/fitness')->as('v1.fitness.')->group(function () {
 
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/lenghts', [LengthController::class, 'index'])->name('api.lenghts.index');
     Route::post('v1/fitness/save',      [FitnessController::class, 'save'])->name('api.fitness.save');
     Route::get('v1/fitness/recent',     [FitnessController::class, 'recent'])->name('api.fitness.recent');
+
+
+
+    //scientific calculator routes
+    Route::post('/save/history', [SimpleCalculatorController::class, 'store'])->name('save.scientific.history');
+    Route::get('/get/history', [SimpleCalculatorController::class, 'index'])->name('get.scientific.history');
+    Route::post('/delete/history', [SimpleCalculatorController::class, 'destory'])->name('delete.scientific.history');
 });
-Route::post('/lenghtsave', [LengthController::class, 'store'])
+Route::post('/lenghtsave', [LengthController::class, 'store'])->middleware(['auth', 'verified'])
     ->name('lenghtsave');
+
+
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
-Route::post('/save/history', [SimpleCalculatorController::class, 'store'])->name('save.scientific.history');
-Route::get('/get/history', [SimpleCalculatorController::class, 'index'])->name('get.scientific.history');
-Route::post('/delete/history', [SimpleCalculatorController::class, 'destory'])->name('delete.scientific.history');
 Route::get('tax/finance', [CategoryController::class, 'TaxFinance'])->name('tax.finance');
 Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->name('math.measurement');
 Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');
-Route::get('favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
+Route::get('/favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
 Route::post('/favorites/calculators/store', [FavoriteCalculatorsController::class, 'store'])->name('favorites.calculators.store');
+
+
+
 
 
 
