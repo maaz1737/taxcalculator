@@ -28,9 +28,19 @@ Route::get('/register', function () {
 
 
 
-Route::get('/email/verify', [VerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', [VerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// In routes/web.php
+
+// 1. Verification Notice (Controller constructor handles 'auth')
+Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'signedVerify'])
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+// 3. Resend Action
+Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
+    ->middleware(['throttle:6,1'])
+    ->name('verification.send');
 
 
 

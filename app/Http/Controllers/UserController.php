@@ -50,14 +50,12 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'email_verified_at' is NULL by default, which is what we want
         ]);
 
         $user->sendEmailVerificationNotification();
 
         Auth::login($user);
 
-        // 5. Redirect to the verification notice page (next step)
         return redirect()->route('verification.notice');
     }
 }
