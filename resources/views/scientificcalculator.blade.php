@@ -19,7 +19,7 @@
 
             <!-- Header -->
             <div class="flex items-center justify-between px-4 sm:px-6 py-2 
-                bg-gradient-to-r from-slate-100 via-white to-slate-100 
+                bg-gradient-to-r from-slate-200 to-slate-100  to-slate-200 
                 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900
                 border-b border-slate-200/60 dark:border-slate-700/60">
 
@@ -47,11 +47,11 @@
 
             <!-- Display -->
             <div class="px-4 sm:px-6 pt-3 pb-2 
-    bg-gradient-to-r from-gray-100 via-gray-50 to-gray-200 
+    bg-gradient-to-r from-gray-400 via-gray-400 to-gray-400 
     dark:from-slate-800 dark:via-slate-850 dark:to-slate-800 
     shrink-0 rounded-t-xl transition-all duration-300">
 
-                <div id="displayExpr" class="text-right text-lg text-gray-900 tracking-widest dark:text-gray-300 h-4">&nbsp;</div>
+                <div id="displayExpr" class="text-right text-lg text-gray-100  tracking-widest dark:text-gray-300 h-4">&nbsp;</div>
 
                 <div id="displayValue"
                     class="mt-1 text-right text-2xl sm:text-3xl font-bold tracking-tight 
@@ -59,10 +59,10 @@
                     0
                 </div>
 
-                <div class="flex justify-between mt-1 text-xs text-gray-500 dark:text-gray-300">
+                <div class="flex justify-between mt-1 text-sm text-gray-100 dark:text-gray-300">
                     <div>
-                        Mem: <span id="memIndicator" class="text-indigo-500 dark:text-indigo-400 font-medium">0</span> |
-                        Ans: <span id="ansIndicator" class="text-emerald-500 dark:text-emerald-400 font-medium">0</span>
+                        Mem: <span id="memIndicator" class="text-indigo-200 dark:text-indigo-400 font-medium">0</span> |
+                        Ans: <span id="ansIndicator" class="text-lime-200 dark:text-emerald-400 font-medium">0</span>
                     </div>
                     <div id="errorMsg" class="text-rose-500 font-medium"></div>
                 </div>
