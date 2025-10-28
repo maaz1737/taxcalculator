@@ -36,47 +36,47 @@
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Home Price</label>
                             <input id="mortgage_price" type="number" value="350000"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class=" search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Down Payment ($)</label>
                             <input id="mortgage_down_amount" type="number" value="0"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class=" search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Term (Years)</label>
                             <input id="mortgage_years" type="number" value="30"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">APR (%)</label>
                             <input id="mortgage_apr_percent" type="number" value="7"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Annual Property Tax</label>
                             <input id="mortgage_annual_property_tax" type="number" value="4200"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Annual Home Insurance</label>
                             <input id="mortgage_annual_home_insurance" type="number" value="1200"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">PMI (%/yr)</label>
                             <input id="mortgage_pmi_percent" type="number" placeholder="e.g. 0.8"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">HOA ($/mo)</label>
                             <input id="mortgage_hoa_monthly" type="number" placeholder="e.g. 200"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Start Date</label>
                             <input id="mortgage_start_date" type="date"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         </div>
                     </div>
                 </div>

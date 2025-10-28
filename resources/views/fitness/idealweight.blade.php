@@ -46,7 +46,7 @@
                     <div>
                         <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height (cm)</label>
                         <input name="height_cm" type="number" placeholder="e.g. 170"
-                            class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                            class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
                                 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         <p class="input_errors text-sm text-red-500 mt-2"></p>
                     </div>

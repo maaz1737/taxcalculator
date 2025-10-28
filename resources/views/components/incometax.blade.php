@@ -42,7 +42,7 @@
                                     min="0"
                                     step="1"
                                     placeholder="e.g. 45000"
-                                    class="income mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
+                                    class=" search income mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
                                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Enter income after deductions.</p>
                             </div>
                             <div class="mb-4" class='hidden' id="total_revenue">
@@ -55,7 +55,7 @@
                                     value="0"
                                     step="1"
                                     placeholder="e.g. 45000"
-                                    class=" income mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
+                                    class="search income mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
                                 <p class="mt-1 text-xs text-gray-500">Enter genrated revenue .</p>
                             </div>
                             <div class="mb-4" class='hidden' id="total_cost">
@@ -68,7 +68,7 @@
                                     step="1"
                                     value="0"
                                     placeholder="e.g. 45000"
-                                    class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
+                                    class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
                                 <p class="mt-1 text-xs text-gray-500">Enter Cost.</p>
                             </div>
                             <div class="mb-4" class='hidden' id="wrapper_levy">
@@ -77,6 +77,7 @@
                                     id="levyPercent"
                                     name="levy"
                                     class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" <option value="" selected>No levy</option>
+                                    <option value="0">0%</option>
                                     <option value="1.5">1.5%</option>
                                     <option value="2">2%</option>
                                     <option value="3">3%</option>
@@ -93,7 +94,7 @@
                                     min="0"
                                     step="1"
                                     placeholder="e.g. 10000"
-                                    class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
+                                    class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required />
                                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Paid tax.</p>
                             </div>
 
@@ -134,15 +135,16 @@
                                     <div id="outTotal" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
                                 <div class="rounded-lg border border-slate-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400">Remaining (take-home)</div>
+                                    <div class="text-gray-500 dark:text-gray-400">Income After Tax
+                                    </div>
                                     <div id="outRemaining" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
                                 <div class="rounded-lg border border-slate-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400">Tax paid</div>
+                                    <div class="text-gray-500 dark:text-gray-400">tax paid on your income</div>
                                     <div id="paidtax" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
                                 <div class="rounded-lg border border-slate-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400" id="remainingContent">Remaining Tax</div>
+                                    <div class="text-gray-500 dark:text-gray-400" id="remainingContent">Tax Payable</div>
                                     <div id="remainingTax" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
 
@@ -165,7 +167,7 @@
                                 </div>
 
                                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400">Taxable Income</div>
+                                    <div class="text-gray-500 dark:text-gray-400">total taxable income</div>
                                     <div id="taxable_amount_result" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
 
@@ -175,12 +177,12 @@
                                 </div>
 
                                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400">Tax Paid</div>
+                                    <div class="text-gray-500 dark:text-gray-400">tax paid on your income</div>
                                     <div id="paid_tax" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
 
                                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                                    <div class="text-gray-500 dark:text-gray-400" id="remaining_text">Remaining Tax</div>
+                                    <div class="text-gray-500 dark:text-gray-400" id="remaining_text">Tax Payable</div>
                                     <div id="remaining_tax" class="font-semibold text-gray-900 dark:text-white">—</div>
                                 </div>
                             </div>

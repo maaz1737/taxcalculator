@@ -102,18 +102,18 @@ $(document).ready(function () {
         paid = 0,
         remain = 0,
     } = {}) {
-        outputIncomeTaxEl.text(incomeTax ? aud.format(incomeTax) : "—");
-        outputLevyEl.text(levy ? aud.format(levy) : "—");
-        outputTotalEl.text(total ? aud.format(total) : "—");
-        outputRemainingEl.text(remaining ? aud.format(remaining) : "—");
-        paidtax.html(paid ? aud.format(paid) : "—");
+        outputIncomeTaxEl.text(incomeTax ? aud.format(incomeTax) : "0");
+        outputLevyEl.text(levy ? aud.format(levy) : "0");
+        outputTotalEl.text(total ? aud.format(total) : "0");
+        outputRemainingEl.text(remaining ? aud.format(remaining) : "0");
+        paidtax.html(paid > 0 ? aud.format(paid) : "0");
 
         if (remain < 0) {
-            remainingTax.html(remain ? aud.format(Math.abs(remain)) : "—");
-            remainingContent.text("Pay You Back");
+            remainingTax.html(remain ? aud.format(Math.abs(remain)) : "0");
+            remainingContent.text("Tax Refund");
         } else {
-            remainingTax.html(remain ? aud.format(remain) : "—");
-            remainingContent.text("Remaing Tax");
+            remainingTax.html(remain ? aud.format(remain) : "0");
+            remainingContent.text("Tax Payable");
         }
     }
 
@@ -219,8 +219,7 @@ $(document).ready(function () {
             total_payable_result.text(x.taxPayable);
             paid_tax.text(paid);
 
-            let new_value =
-                remaining_tax < 0 ? "pay you back" : "Remaining Tax";
+            let new_value = remaining_tax < 0 ? "Tax Refund" : "Tax Payable";
             $("#remaining_text").text(new_value);
             $("#remaining_tax").text(Math.abs(remaining_tax));
         }
@@ -397,7 +396,7 @@ $(document).ready(function () {
         element.tax
     }</span></div>
     <div><span class="font-semibold">Paid:</span> <span class="font-medium">${
-        element.taxpaid ?? "—"
+        element.taxpaid ?? "0"
     }</span></div>
     ${
         remainingTax.toFixed(2) < 0

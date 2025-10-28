@@ -38,7 +38,7 @@
                     <div class="sm:col-span-2">
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Cost</label>
                         <input id="costDepreciation" type="number" step="any" value="10000"
-                            class="w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
+                            class="search w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
                     </div>
 
                     <div class="sm:col-span-2">
@@ -54,13 +54,13 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Salvage Value</label>
                         <input id="salvageValueDepreciation" type="number" step="any" value="1000"
-                            class="w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
+                            class="search w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Life (years)</label>
                         <input id="lifeYearsDepreciation" type="number" value="5" min="1"
-                            class="w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
+                            class="search w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
                     </div>
 
                     <div>
@@ -75,7 +75,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Rounding (decimals)</label>
                         <input id="roundDepreciation" type="number" min="0" max="4" value="2"
-                            class="w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
+                            class="search w-full p-3 border border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400">
                     </div>
                 </div>
             </div>

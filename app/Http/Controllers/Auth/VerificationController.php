@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ class VerificationController extends Controller
         return view('auth.verify-email');
     }
 
+
+
     public function signedVerify(Request $request, $id, $hash)
     {
         $user = \App\Models\User::findOrFail($id);
@@ -42,6 +45,7 @@ class VerificationController extends Controller
 
         // Optionally, log them in automatically
         Auth::login($user);
+
 
         return redirect()->route('home')->with('status', 'Your email has been successfully verified!');
     }

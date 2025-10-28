@@ -39,7 +39,7 @@
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">BMR (cal/day)</label>
                             <input name="bmr" id="tdee_bmr" type="number" placeholder="e.g. 1600"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             <p class="input_error text-sm text-red-500 mt-2"></p>
                         </div>
                         <div>

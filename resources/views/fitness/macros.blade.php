@@ -36,25 +36,25 @@
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Calories (kcal)</label>
                                 <input id="macros_calories" type="number" placeholder="e.g. 2000"
-                                    class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Carbs %</label>
                                 <input id="macros_carb_pct" type="number" value="50"
-                                    class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Protein %</label>
                                 <input id="macros_protein_pct" type="number" value="20"
-                                    class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Fat %</label>
                                 <input id="macros_fat_pct" type="number" value="30"
-                                    class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                         </div>

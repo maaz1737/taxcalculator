@@ -40,7 +40,7 @@
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Monthly Income</label>
                         <input type="number" step="0.01" name="monthly_income" id="monthly_income"
                             value="6000"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required>
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40" required>
                     </div>
                     <!-- 
                     <div class="flex items-center gap-2">
@@ -51,7 +51,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Monthly Debts</label>
                         <input type="number" step="0.01" id="monthly_debts" value="500"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
                     </div>
 
                     <div>
@@ -67,25 +67,25 @@
                     <div id="custom_percent_wrap" class="hidden">
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Custom Percent (%)</label>
                         <input type="number" step="0.01" id="custom_percent" placeholder="e.g., 33"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Utilities (Monthly)</label>
                         <input type="number" step="0.01" id="utilities_monthly" value="300"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Renter’s Insurance (Monthly)</label>
                         <input type="number" step="0.01" id="insurance_monthly" value="0"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Target Savings (%)</label>
                         <input type="number" step="0.1" id="target_savings_percent" value="10"
-                            class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
+                            class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40">
                     </div>
 
                     <div class="flex items-center gap-2">

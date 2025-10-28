@@ -36,7 +36,7 @@
 
         <!-- Display -->
         <div class="px-4 pt-4 pb-2">
-            <div class="text-right text-xs text-gray-500 dark:text-gray-400 h-5" id="displayExpr">&nbsp;</div>
+            <div class="text-right text-lg tracking-widest text-gray-500 dark:text-gray-400 h-5" id="displayExpr">&nbsp;</div>
             <div class="mt-1 text-right text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white leading-tight select-text"
                 id="displayValue">0</div>
             <div class="flex items-center justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">

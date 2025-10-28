@@ -433,14 +433,14 @@
             </div>
 
             <!-- Search + actions -->
-            <div class="flex items-center gap-3">
+            <div class="relative flex items-center gap-3">
                 <form action="{{ url('/search') }}" method="GET" class="hidden lg:block">
                     <div class="relative">
                         <input id="searchs" type="text" placeholder="Search calculators…" class=" search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
                         <span class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span>
                     </div>
                 </form>
-
+                <div id="suggestions" class="hidden absolute left-2 top-10 bg-white border border-1px border-black text-gray-700">suggestions</div>
                 <!-- Theme toggle -->
                 <button id="themeToggle" type="button" class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
                     🌙

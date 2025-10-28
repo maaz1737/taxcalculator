@@ -48,7 +48,7 @@
                 step="1"
                 value="0"
                 placeholder="e.g. 45000"
-                class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
+                class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
                 required />
             <p class="mt-1 text-xs text-gray-500">Enter income after deductions.</p>
         </div>
@@ -62,7 +62,7 @@
                 value="0"
                 step="1"
                 placeholder="e.g. 45000"
-                class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
+                class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
                 required />
             <p class="mt-1 text-xs text-gray-500">Enter genrated revenue .</p>
         </div>
@@ -76,7 +76,7 @@
                 step="1"
                 value="0"
                 placeholder="e.g. 45000"
-                class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
+                class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
                 required />
             <p class="mt-1 text-xs text-gray-500">Enter Cost.</p>
         </div>
@@ -104,7 +104,7 @@
                 value="0"
                 step="1"
                 placeholder="e.g. 12000"
-                class="mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
+                class="search mt-1 change w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
                 required />
             <p class="mt-1 text-xs text-gray-500">PAYG withheld or total tax already paid.</p>
         </div>
@@ -135,7 +135,11 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Income tax</div>
+                    <div class="text-gray-500 dark:text-gray-400">Income After Tax</div>
+                    <div id="outRemaining" class="font-semibold text-gray-900 dark:text-white">—</div>
+                </div>
+                <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
+                    <div class="text-gray-500 dark:text-gray-400">Total Income Tax</div>
                     <div id="outIncomeTax" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
@@ -143,19 +147,16 @@
                     <div id="outLevy" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Total payable</div>
+                    <div class="text-gray-500 dark:text-gray-400">Total Tax ( tax + levy)</div>
                     <div id="outTotal" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
+
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Remaining (take-home)</div>
-                    <div id="outRemaining" class="font-semibold text-gray-900 dark:text-white">—</div>
-                </div>
-                <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Tax paid</div>
+                    <div class="text-gray-500 dark:text-gray-400">Tax Paid on Your Income</div>
                     <div id="paidtax" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400" id="remainingContent">Remaining tax</div>
+                    <div class="text-gray-500 dark:text-gray-400" id="remainingContent">Tax Payable</div>
                     <div id="remainingTax" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
             </div>
@@ -173,19 +174,19 @@
                     <div id="annual_revenue_result" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Taxable Amount</div>
+                    <div class="text-gray-500 dark:text-gray-400">Total Taxable Income</div>
                     <div id="taxable_amount_result" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Total Payable</div>
+                    <div class="text-gray-500 dark:text-gray-400">Total Tax</div>
                     <div id="total_payable_result" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400">Tax paid</div>
+                    <div class="text-gray-500 dark:text-gray-400">Tax Paid On Your Income</div>
                     <div id="paid_tax" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
                 <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-3">
-                    <div class="text-gray-500 dark:text-gray-400" id="remaining_text">Remaining tax</div>
+                    <div class="text-gray-500 dark:text-gray-400" id="remaining_text">Tax Payable</div>
                     <div id="remaining_tax" class="font-semibold text-gray-900 dark:text-white">—</div>
                 </div>
             </div>

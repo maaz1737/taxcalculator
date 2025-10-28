@@ -52,33 +52,32 @@
 
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Amount</label>
-                    <input type="number" step="0.01" id="amount" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="6000" style="border: 1px solid #334155;" required>
+                    <input type="number" step="0.01" id="amount" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="6000" style="border: 1px solid #334155;" required>
                     <p class="text-xs text-gray-500 mt-1">Gross if Gross→Net; Target Net if Net→Gross.</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-6 mt-3">
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Hours / Week</label>
-                        <input type="number" step="0.1" id="hours_per_week" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="40" style="border: 1px solid #334155;">
+                        <input type="number" step="0.1" id="hours_per_week" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="40" style="border: 1px solid #334155;">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Weeks / Year</label>
-                        <input type="number" step="0.1" id="weeks_per_year" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="52">
+                        <input type="number" step="0.1" id="weeks_per_year" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="52">
                     </div>
                 </div>
-
                 <div class="grid grid-cols-3 gap-6 mt-3">
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Country</label>
-                        <input type="text" id="country_code" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="US">
+                        <input type="text" id="country_code" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="AUS">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Region</label>
-                        <input type="text" id="region_code" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" placeholder="CA / ON / PK-ISB">
+                        <input type="text" id="region_code" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" placeholder="CA / ON / PK-ISB">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Tax Year</label>
-                        <input type="number" id="tax_year" class="w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="2024">
+                        <input type="number" id="tax_year" class="search w-full border border-slate-600 rounded-xl p-3 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400" value="2025">
                     </div>
                 </div>
 

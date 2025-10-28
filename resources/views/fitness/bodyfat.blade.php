@@ -44,26 +44,26 @@
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Height (cm)</label>
-                            <input name="height_cm" type="number" placeholder="e.g. 170" class="input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="height_cm" type="number" placeholder="e.g. 170" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="height_error text-sm text-red-500 mt-2"></p>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Waist (cm)</label>
-                            <input name="waist_cm" type="number" placeholder="e.g. 80" class="input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="waist_cm" type="number" placeholder="e.g. 80" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="waist_error text-sm text-red-500 mt-2"></p>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Neck (cm)</label>
-                            <input name="neck_cm" type="number" placeholder="e.g. 40" class="input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="neck_cm" type="number" placeholder="e.g. 40" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="neck_error text-sm text-red-500 mt-2"></p>
 
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Hip (cm) – Female only</label>
-                            <input name="hip_cm" type="number" placeholder="e.g. 95" class="input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="hip_cm" type="number" placeholder="e.g. 95" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="hip_error text-sm text-red-500 mt-2"></p>
                         </div>
                     </div>

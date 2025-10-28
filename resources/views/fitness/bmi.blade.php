@@ -32,13 +32,13 @@
                     <form id="form-bmi" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height</label>
-                            <input name="height" value="0" type="number" placeholder="e.g. 170" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="height" value="0" type="number" placeholder="e.g. 170" class="search w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="height_error text-sm text-red-500 mt-2"></p>
 
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Weight</label>
-                            <input name="weight" value="0" type="number" placeholder="e.g. 65" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="weight" value="0" type="number" placeholder="e.g. 65" class="search w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="weight_error text-sm text-red-500 mt-2"></p>
                         </div>
                         <div class="sm:col-span-2">

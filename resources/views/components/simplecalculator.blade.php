@@ -70,7 +70,7 @@
 </style>
 
 <div id="draggableIcon"
-    class="fixed bottom-[45%] right-5 w-64 z-[65] cursor-move select-none hidden sm:block">
+    class="fixed bottom-[0%] right-1 w-64 z-[65] cursor-move select-none hidden sm:block">
 
     <!-- minimize -->
     <div class="relative">
@@ -142,7 +142,7 @@
                         <button class="calc-btn w-10 h-10 rounded-full shadow bg-sky-100 text-slate-900 font-bold dark:bg-slate-700 dark:text-slate-100" id="btn-open">(</button>
                         <button class="calc-btn w-10 h-10 rounded-full shadow bg-sky-100 text-slate-900 font-bold dark:bg-slate-700 dark:text-slate-100" id="btn-close">)</button>
 
-                        
+
                         <!-- dot -->
                         <button class="calc-btn w-10 h-10 rounded-full shadow bg-sky-100 text-slate-900 font-bold dark:bg-slate-700 dark:text-slate-100" id="btn-dot">.</button>
                         <button></button>

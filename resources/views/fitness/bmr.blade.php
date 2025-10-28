@@ -40,18 +40,18 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Age</label>
-                            <input name="age" type="number" placeholder="e.g. 25" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="age" type="number" placeholder="e.g. 25" class="search w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
                             <p class="age_error text-sm text-red-500 mt-2"></p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Weight (kg)</label>
-                            <input name="weight_kg" type="number" step="0.1" placeholder="e.g. 70" class="w-full dark:bg-slate-900 rounded-xl border px-3 py-2.5">
+                            <input name="weight_kg" type="number" step="0.1" placeholder="e.g. 70" class="search w-full dark:bg-slate-900 rounded-xl border px-3 py-2.5">
                             <p class="weight_error text-sm text-red-500 mt-2"></p>
 
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height (cm)</label>
-                            <input name="height_cm" type="number" step="0.1" placeholder="e.g. 175" class="w-full dark:bg-slate-900 rounded-xl border px-3 py-2.5">
+                            <input name="height_cm" type="number" step="0.1" placeholder="e.g. 175" class="search w-full dark:bg-slate-900 rounded-xl border px-3 py-2.5">
                             <p class="height_error text-sm text-red-500 mt-2"></p>
 
                         </div>
