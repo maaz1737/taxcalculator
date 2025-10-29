@@ -70,7 +70,7 @@
 
     .try {
         width: 50vw;
-        height: 70vh;
+        height: 75vh;
     }
 
     /* Backdrop when calculator is enlarged */
@@ -278,16 +278,16 @@
 
     function bigFun() {
         if (!isBig) {
-            // ✅ Create backdrop
+
             backdrop = document.createElement("div");
             backdrop.classList.add("backdrop");
             document.body.appendChild(backdrop);
             minimize.removeClass('block').addClass('hidden');
-            // ✅ Enlarge calculator first
+
             $(icon).removeClass("w-64").addClass("try");
 
             setTimeout(() => {
-                // now safe to center after transition/resize
+
                 const centerX = window.innerWidth / 2 - icon.offsetWidth / 2;
                 const centerY = window.innerHeight / 2 - icon.offsetHeight / 2;
                 icon.style.left = centerX + "px";
@@ -295,12 +295,12 @@
                 icon.style.position = "fixed";
             }, 300);
 
-            // ✅ Disable drag and scroll
+            $('.calc-btn').addClass('h-14 w-14').removeClass('h-10 w-10');
             disableDrag = true;
             document.body.style.overflow = "hidden";
             isBig = true;
         } else {
-            // ✅ Remove backdrop and restore
+
             if (backdrop) {
                 backdrop.remove();
                 backdrop = null;
@@ -311,6 +311,7 @@
             icon.style.left = "";
             icon.style.top = "";
             icon.style.position = "";
+            $('.calc-btn').addClass('h-10 w-10').removeClass('h-14 w-14');
 
             disableDrag = false;
             document.body.style.overflow = "auto";
