@@ -4,7 +4,7 @@
     :key="'volume converter, liters to gallons, milliliters to cups, liquid converter, QuickCalculatIt'" />
 
 
-    <div class="min-h-screen bg-gray-50 dark:bg-slate-900 py-10">
+<div class="min-h-screen bg-gray-50 dark:bg-slate-900 py-10">
     <div class="container mx-auto max-w-5xl px-4">
 
         {{-- Header --}}
@@ -16,7 +16,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">Convert between mL, L, m³, teaspoons, cups, pints, gallons, and more.</p>
                 </div>
             </div>
-            <span class="text-xs px-2 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300">
+            <span class="hidden sm:block text-xs px-2 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300">
                 Dark mode ready
             </span>
         </div>
@@ -103,7 +103,7 @@
         </div>
 
         {{-- Result Display --}}
-        <div class="mt-4 rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+        <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center justify-between rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
 
             <div class="flex items-center justify-between">
                 <div>
@@ -113,15 +113,14 @@
                         <span id="volume_toUnit" class="text-sm text-gray-500 dark:text-gray-400">tsp</span>
                     </div>
                 </div>
-                <button id="btnOpenVolumeHistory"
-                    class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
+            </div>
+            <button id="btnOpenVolumeHistory"
+                class="inline-flex w-[110px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
             text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300
             dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900
             shadow-sm transition">
-                    🕓 History
-                </button>
-            </div>
-
+                🕓 History
+            </button>
         </div>
 
         {{-- Conversion Table --}}

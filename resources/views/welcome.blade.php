@@ -10,7 +10,10 @@
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-head dark:text-white">
-                    Calculate smarter—instantly
+                    QuickCalculateIt
+                </h1>
+                <h1 class="text-xl md:text-2xl mt-2 font-extrabold tracking-tight text-slate-600 dark:text-slate-200">
+                    Calculate smarter instantly
                 </h1>
                 <p class="mt-3 text-slate-600 dark:text-slate-400">
                     All your Fitness, Finance, Health, and Utility calculators in one fast, beautiful place.

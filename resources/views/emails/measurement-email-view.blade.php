@@ -26,7 +26,7 @@
         .header {
             background: linear-gradient(135deg, #2563eb, #3b82f6);
             color: white;
-            padding: 24px;
+            padding: 50px;
             text-align: center;
         }
 
@@ -156,7 +156,7 @@
 
     <div class="container">
         <div class="header flex items-center">
-            <img width='40px' src="{{ $message->embed(public_path('images/staticimages/logo_2.png')) }}" alt="Logo">
+            <img width='50px' src=" http://quickcalculateit.com/images/staticimages/logo_2.png" alt="Logo">
             <h1>Quick Calculate It</h1>
         </div>
 
@@ -181,7 +181,7 @@
 
         <div class="footer">
             <p>Thank you for using <strong>QuickCalculateIt</strong> 💡</p>
-            <p><a href="{{ url('/') }}">Visit Website</a></p>
+            <p><a href="quickcalculateit.com/">Visit Website</a></p>
         </div>
     </div>
 </body>

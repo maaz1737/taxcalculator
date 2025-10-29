@@ -374,12 +374,12 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-40 border-b border-white/10 bg-white/70 backdrop-blur-md dark:bg-slate-900/70">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <!-- LOGO -->
                 <a href="{{ url('/') }}" class="flex items-center gap-2">
                     <div class="text-brand grid place-items-center font-extrabold">
-                        <img width="55px" src=" {{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
+                        <img width="65px" src=" {{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
                     </div>
                     <span class="font-extrabold tracking-tight text-head dark:text-white"></span>
                 </a>
@@ -405,11 +405,11 @@
                     }
                 </style>
                 <nav class="hidden md:flex items-center gap-4 text-sm relative">
-                    <a href="{{ url('/') }}" class="hover:text-brand transition">Home</a>
-                    <a href="/" class="hover:text-brand transition">Calculators</a>
+                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white ">Home</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
 
                     <div class="relative">
-                        <button id="categories-btn" class="hover:text-brand transition flex items-center gap-1">
+                        <button id="categories-btn" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">
                             Categories
                             <svg class="w-4 h-4 transition-transform" id="caret-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -417,17 +417,17 @@
                         </button>
 
                         <div id="categories-menu"
-                            class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-md hidden">
+                            class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
                             <a href="{{ route('tax.finance') }}" class="block px-4 py-2 hover:bg-gray-100">Finance & Tax</a>
                             <a href="{{ route('math.measurement') }}" class="block px-4 py-2 hover:bg-gray-100">Math & Measurement</a>
                             <a href="{{ route('health.fitness') }}" class="block px-4 py-2 hover:bg-gray-100">Health & Fitness</a>
                         </div>
                     </div>
 
-                    <a href="{{ route('favorites.calculators') }}" class="hover:text-brand transition">Favorites</a>
-                    <a href="/" class="hover:text-brand transition">History</a>
-                    <a href="/" class="hover:text-brand transition">Docs</a>
-                    <a href="/" class="hover:text-brand transition">Pricing</a>
+                    <a href="{{ route('favorites.calculators') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Favorites</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">History</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Docs</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
                 </nav>
 
             </div>
@@ -440,7 +440,7 @@
                         <span class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span>
                     </div>
                 </form>
-                <div id="suggestions" class="hidden absolute left-2 top-10 bg-white border border-1px border-black text-gray-700">suggestions</div>
+                <div id="suggestions" class="hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
                 <!-- Theme toggle -->
                 <button id="themeToggle" type="button" class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
                     🌙

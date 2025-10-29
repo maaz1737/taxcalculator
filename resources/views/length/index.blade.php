@@ -16,7 +16,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">Convert between mm, cm, m, km, inches, feet, yards, and miles.</p>
                 </div>
             </div>
-            <span class="text-xs px-2 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300">
+            <span class="hidden sm:block text-xs px-2 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300">
                 Dark mode ready
             </span>
         </div>
@@ -82,8 +82,8 @@
         </div>
 
         {{-- Result --}}
-        <div class="mt-5 rounded-2xl border border-gray-200 bg-gradient-to-b from-white/90 to-gray-50/70 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm backdrop-blur px-5 py-5">
-            <div class="flex items-center justify-between mb-3">
+        <div class="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center justify-between rounded-2xl border border-gray-200 bg-gradient-to-b from-white/90 to-gray-50/70 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm backdrop-blur px-5 py-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center justify-between mb-3">
                 <div>
                     <div class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Result</div>
                     <div class="mt-1 flex items-baseline gap-2">
@@ -92,14 +92,15 @@
                     </div>
                 </div>
 
-                <button id="openHistory"
-                    class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
+
+            </div>
+            <button id="openHistory"
+                class="inline-flex w-[110px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
             text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300
             dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900
             shadow-sm transition">
-                    🕓 History
-                </button>
-            </div>
+                🕓 History
+            </button>
         </div>
 
 

@@ -107,7 +107,7 @@
 <body>
     <div class="email-wrapper">
         <div class="header">
-            <img src="{{ $message->embed(public_path('images/staticimages/logo_2.png')) }}" alt="QuickCalculateIt Logo">
+            <img src="http://quickcalculateit.com/images/staticimages/logo_2.png" alt="QuickCalculateIt Logo">
             <h1>Mortgage Calculation Summary</h1>
         </div>
 
@@ -157,7 +157,7 @@
 
         <div class="footer">
             <p>Thank you for using <strong>QuickCalculateIt</strong> 💡</p>
-            <p><a href="{{ url('/') }}">Visit Website</a></p>
+            <p><a href="quickcalculateit.com/">Visit Website</a></p>
         </div>
     </div>
 </body>

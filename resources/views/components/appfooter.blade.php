@@ -2,7 +2,7 @@
      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-4">
          <div>
              <div class="flex items-center gap-2 mb-3">
-                 <img width="55px" src=" {{ asset('images/staticimages/logo_2.png') }}">
+                 <img width="65px" src=" {{ asset('images/staticimages/logo_2.png') }}">
                  <span class="font-extrabold text-yellow-500 dark:text-yellow-300">QuickCalculateIt</span>
              </div>
              <p class="text-sm text-slate-600 dark:text-slate-400 ">Calculate smarter—instantly. Fitness, finance, converters, and more.</p>
