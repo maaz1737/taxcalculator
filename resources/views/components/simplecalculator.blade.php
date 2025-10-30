@@ -83,6 +83,12 @@
     }
 </style>
 
+<div class="relative">
+    <button id="small-icon"
+        class="fixed bottom-2 block sm:hidden right-[4%] text-[24px] px-1 py-1 text-black dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none"
+        aria-label="Close" style="z-index: 9999999999999 !important;"><img width="60px" src="http://quickcalculateit.com/images/staticimages/logo_2.png" alt=""></button>
+</div>
+
 <div class="relative outer">
     <div id="draggableIcon"
         class="fixed bottom-[0%] right-1 w-64 z-[65] cursor-move select-none hidden sm:block">
@@ -112,7 +118,7 @@
                 <!-- Screen (with orange C inside) -->
                 <div class="relative mb-4">
                     <button id="btn-clear"
-                        class="absolute left-2 top-2 w-10 h-10 rounded-lg shadow
+                        class="calc-btn absolute left-2 top-2 w-10 h-10 rounded-lg shadow
                        bg-orange-400 text-white  font-bold
                        hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300">
                         C
@@ -206,6 +212,82 @@
 </div>
 
 
+<div id="bigCalculator"
+    class="fixed z-[65] hidden w-[90vw] sm:w-[75vw] lg:w-[55vw] max-w-[550px] 
+           h-[80vh] bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-2xl p-4 
+           overflow-hidden flex flex-col justify-between"
+    style="top:50%; left:50%; transform:translate(-50%, -50%)">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-3 px-1">
+        <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Big Calculator</h2>
+        <button id="closeBigCalc"
+            class="px-2 text-[22px] hidden sm:block text-black dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none"
+            aria-label="Close">×</button>
+        <button id="smallclose"
+            class="px-2 text-[22px] block sm:hidden text-black dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none"
+            aria-label="Close">×</button>
+    </div>
+
+    <!-- Screen -->
+    <div class="relative mb-4 flex-shrink-0">
+        <button id="btn-clear"
+            class="calc-btn absolute left-2 top-2 w-10 h-10 sm:w-12 sm:h-12 rounded-lg shadow 
+                   bg-orange-400 text-white font-bold hover:bg-orange-500 
+                   focus:ring-2 focus:ring-orange-300">C</button>
+        <div id="bigCalcScreen"
+            class="h-14 sm:h-16 w-full rounded-xl pl-14 pr-3 flex items-center justify-end overflow-hidden
+                   text-right text-xl sm:text-2xl font-semibold bg-sky-50 text-slate-900
+                   dark:bg-slate-900 dark:text-slate-50 shadow-inner">
+            0
+        </div>
+    </div>
+
+    <!-- Keypad -->
+    <div class="grid grid-cols-4 gap-3 sm:gap-4 mt-auto">
+        <!-- Numbers -->
+        <div class="col-span-3 w-full">
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 place-items-center">
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">7</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">8</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">9</button>
+
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">4</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">5</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">6</button>
+
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">1</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">2</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">3</button>
+
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">0</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">(</button>
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">)</button>
+
+                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">.</button>
+                <button id="btn-equals-big"
+                    class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 text-white text-xl font-bold hover:bg-emerald-600 shadow">=</button>
+                <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">÷</button>
+            </div>
+        </div>
+
+        <!-- Operators -->
+        <div class="col-span-1 flex flex-col gap-3 sm:gap-4 items-center justify-between">
+            <button id="delete-big" class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-300 text-gray-900 font-semibold hover:bg-amber-400">Del</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">Ac</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">×</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">−</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">+</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 
 <script>
@@ -239,6 +321,7 @@
 
     let minimize = $("#minimize");
     let calculator = $(".hide");
+    let closeBigCalc = $("#closeBigCalc");
 
     function miniFun() {
         const calculatorIconHtml =
@@ -273,170 +356,51 @@
     minimize.on("click", miniFun);
 
     let bigBtn = $("#bigger");
+    let bigCalculator = $("#bigCalculator");
     let isBig = false;
     let backdrop;
 
     function bigFun() {
-        if (!isBig) {
 
-            backdrop = document.createElement("div");
-            backdrop.classList.add("backdrop");
-            document.body.appendChild(backdrop);
-            minimize.removeClass('block').addClass('hidden');
+        console.log('data');
+        if (bigCalculator.hasClass('hidden')) {
+            bigCalculator.removeClass('hidden').addClass('block');
+            icon.style.display = 'none';
+            $('body').css('overflow', 'hidden');
+            backdrop = $('<div class="fixed inset-0 bg-black/40 backdrop-blur-md z-[60]"></div>');
+            $('body').append(backdrop);
 
-            $(icon).removeClass("w-64").addClass("try");
-
-            setTimeout(() => {
-
-                const centerX = window.innerWidth / 2 - icon.offsetWidth / 2;
-                const centerY = window.innerHeight / 2 - icon.offsetHeight / 2;
-                icon.style.left = centerX + "px";
-                icon.style.top = centerY + "px";
-                icon.style.position = "fixed";
-            }, 300);
-
-            $('.calc-btn').addClass('h-14 w-14').removeClass('h-10 w-10');
-            disableDrag = true;
-            document.body.style.overflow = "hidden";
-            isBig = true;
-        } else {
-
-            if (backdrop) {
-                backdrop.remove();
-                backdrop = null;
-            }
-            minimize.removeClass('hidden').addClass('block');
-
-            $(icon).removeClass("try").addClass("w-64");
-            icon.style.left = "";
-            icon.style.top = "";
-            icon.style.position = "";
-            $('.calc-btn').addClass('h-10 w-10').removeClass('h-14 w-14');
-
-            disableDrag = false;
-            document.body.style.overflow = "auto";
-            isBig = false;
         }
     }
 
 
-    window.addEventListener("resize", () => {
-        if (disableDrag && isBig) {
-            const centerX = window.innerWidth / 2 - icon.offsetWidth / 2;
-            const centerY = window.innerHeight / 2 - icon.offsetHeight / 2;
-            icon.style.left = centerX + "px";
-            icon.style.top = centerY + "px";
+    $('#small-icon').on('click', bigFun);
+
+
+    closeBigCalc.on('click', function() {
+        if (bigCalculator.hasClass('block')) {
+            bigCalculator.removeClass('block').addClass('hidden');
+            icon.style.display = 'block'
+            $('body').css('overflow', '');
+            if (backdrop) {
+                backdrop.remove();
+                backdrop = null;
+            }
+
+        }
+    });
+
+    $('#smallclose').on('click', function() {
+        if (bigCalculator.hasClass('block')) {
+            bigCalculator.removeClass('block').addClass('hidden');
+            $('body').css('overflow', '');
+            if (backdrop) {
+                backdrop.remove();
+                backdrop = null;
+            }
+
         }
     });
 
     bigBtn.on("click", bigFun);
-
-
-
-
-    // let large = false;
-    // let minimized = false;
-
-    // function applySizeFromState() {
-
-    //     $("#draggableIcon").removeClass("w-[40vw] h-[60vh]");
-    //     $("#calc-screen").removeClass("h-16");
-    //     $(".calc-btn").removeClass("px-1 py-1 mx-4 my-2");
-
-    //     if (large) {
-
-    //         $("#draggableIcon").addClass("w-[40vw] h-[60vh]");
-    //         $("#calc-screen").addClass("h-16");
-    //         $(".calc-btn").addClass("px-1 py-1 mx-4 my-1");
-    //         $("#bigger").text("✕");
-    //         $('.calc-btn').removeClass('h-10 w-10');
-    //         $('.calc-btn').addClass('h-16 w-16');
-    //         $('#minimize').css({
-    //             right: '2%'
-    //         });
-
-    //     } else {
-    //         $('#minimize').css({
-    //             right: '5%'
-    //         });
-    //         $("#bigger").text("⛶");
-    //         $('.calc-btn').removeClass('h-16 w-16');
-
-    //         $('.calc-btn').addClass('h-10 w-10');
-
-
-    //     }
-    // }
-
-    // $('#bigger').on('click', function() {
-
-    //     large = !large;
-    //     applySizeFromState();
-    // });
-
-    // $('#minimize').on('click', function() {
-    //     const $popup = $(".hide");
-
-    //     if ($popup.is(":visible")) {
-
-    //         minimized = true;
-    //         $popup.slideUp(300);
-
-    //         $(this).text("open calculator").css({
-    //             top: '0%',
-    //             right: '50%',
-    //             transform: 'translate(50%,-10%)',
-    //             position: 'absolute',
-    //             fontSize: '16px'
-    //         });
-    //         $(this).addClass('text-white');
-    //         //   $(this).html('<img src="assets/images/calculator-icon-png.webp" alt="open">').css({
-    //         //                     top: '',
-    //         //                     right: '',
-    //         //                     transform: '',
-    //         //                     position: 'absolute',
-    //         //                     width: '200px',
-    //         //                     height: '200px'
-    //         //                 });
-
-    //         $("#draggableIcon").css({
-    //             backgroundColor: "#0740a8ff",
-    //             borderRadius: '10px',
-    //             height: '50px',
-    //             width: '300px'
-    //         });
-
-    //     } else {
-
-    //         minimized = false;
-    //         $popup.slideDown(300);
-
-    //         $(this).css({
-    //             top: '',
-    //             right: '',
-    //             transform: 'none',
-    //         });
-
-    //         $(this).text("-").css({
-    //             right: '4%',
-    //             top: '13px',
-    //             fontSize: '22px'
-
-
-    //         });
-
-    //         $(this).removeClass('text-white');
-    //         $(this).addClass('text-dark dark:text-white');
-
-    //         $("#draggableIcon").css({
-    //             backgroundColor: "",
-    //             borderRadius: "",
-    //             height: "",
-    //             width: ""
-    //         });
-
-
-    //         applySizeFromState();
-    //     }
-    // });
 </script>

@@ -39,8 +39,11 @@ $(document).ready(function () {
     // Button: numbers/operators (NOT equals/clear)
     $(".calc-btn").on("click", function calculation() {
         let key = $(this).text().trim();
-        if (key === "=" || key === "C" || key === "Del") return;
-
+        if (key == "Ac" || key == "C") {
+            $screen.text("0");
+            current = "0";
+        }
+        if (["=", "C", "Del", "Ac"].includes(key)) return;
         key = key
             .replace(/[−–—]/g, "-")
             .replace(/[×x·]/gi, "*")
@@ -131,5 +134,118 @@ $(document).ready(function () {
                     input.text("0");
                 }
             }
+        });
+});
+
+$(document).ready(function () {
+    let current = "0";
+    let result = null;
+    let justCalculated = false;
+    let backdrop;
+
+    const $screen = $("#bigCalcScreen");
+    const $bigCalculator = $("#bigCalculator");
+
+    // ---- Helpers ----
+    const isOperator = (t) => /^[+\-*/%]$/.test(t);
+    const isDigitOrDot = (t) => /^(\d|\.)$/.test(t);
+
+    // ---- Button: Numbers / Operators ----
+    $(".calc-btn").on("click", function () {
+        let key = $(this).text().trim();
+
+        if (key == "Ac" || key == "C") {
+            $screen.text("0");
+            current = "0";
+        }
+        if (["=", "C", "Del", "Ac"].includes(key)) return;
+        key = key
+            .replace(/[−–—]/g, "-")
+            .replace(/[×x·]/gi, "*")
+            .replace(/÷/g, "/");
+
+        if (justCalculated) {
+            if (isDigitOrDot(key)) {
+                current = key === "." ? "0." : key;
+                result = null;
+            } else if (isOperator(key)) {
+                const base = result !== null ? String(result) : current;
+                current = base + key;
+            }
+            justCalculated = false;
+            $screen.text(current);
+            return;
+        }
+
+        if (current === "0") {
+            if (isDigitOrDot(key)) {
+                current = key === "." ? "0." : key;
+            } else if (isOperator(key)) {
+                current = "0" + key;
+            }
+        } else {
+            if (isOperator(key) && isOperator(current.slice(-1))) {
+                current = current.slice(0, -1) + key;
+            } else {
+                current += key;
+            }
+        }
+
+        $screen.text(current);
+    });
+
+    // ---- Button: Equals ----
+    $("#btn-equals-big").on("click", function () {
+        const regexDot = /.*\(/;
+        const regexClose = /.*\)/;
+
+        if (isOperator(current.slice(-1))) current = current.slice(0, -1);
+
+        try {
+            if (regexDot.test(current)) {
+                current = current.replace(/(\d+)\(/g, "$1*(");
+            }
+            if (regexClose.test(current)) {
+                current = current.replace(/\)(\d+)/g, ")*$1");
+            }
+            result = eval(current);
+            $screen.text(result);
+            justCalculated = true;
+        } catch (e) {
+            $screen.text("Error");
+            result = null;
+            justCalculated = false;
+        }
+    });
+
+    // ---- Button: Clear ----
+    $("#btn-clear").on("click", function () {
+        current = "0";
+        result = null;
+        justCalculated = false;
+        $screen.text("0");
+    });
+
+    // ---- Button: Delete ----
+    $("#delete-big")
+        .off("click")
+        .on("click", function () {
+            let value = $screen.text().trim();
+
+            if (value === "Error" || justCalculated) {
+                current = "0";
+                result = null;
+                justCalculated = false;
+                $screen.text("0");
+                return;
+            }
+
+            if (value.length > 1) {
+                current = value.slice(0, -1);
+            } else {
+                current = "0";
+            }
+
+            $screen.text(current);
         });
 });
