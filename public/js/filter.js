@@ -26,6 +26,8 @@ $(".search-input").on("input", function () {
 // this is code to delete a single letter in this input and if that is filter input its also call the filter function
 $(".search,.search-input").on("keydown", function (e) {
     let inputval = $(this).val();
+    console.log(inputval);
+
     if (e.keyCode == 8) {
         inputval = inputval.slice(0, inputval.length - 1);
         $(this).val(inputval);
@@ -461,56 +463,49 @@ const calculators = [
     },
 ];
 
-const input = document.getElementById("searchs");
-const suggestionsBox = document.getElementById("suggestions");
-
 function suggestions() {
-    const query = input.value.toLowerCase();
-    suggestionsBox.innerHTML = "";
+    const $input = $(this);
+    const $wrapper = $input.closest("#testing, .search-wrapper");
+    const $suggestionsBox = $wrapper.find(".suggestion");
 
-    if (query === "") {
-        suggestionsBox.style.display = "none";
-        return;
-    }
+    const query = $input.val().toLowerCase().trim();
+    $suggestionsBox.empty();
 
-    // Find matching calculators
+    if (!query) return $suggestionsBox.hide();
+
     const matches = calculators.filter((calc) =>
-        calc.keywords.some((keyword) => keyword.includes(query))
+        calc.keywords.some((keyword) => keyword.toLowerCase().includes(query))
     );
 
-    if (matches.length === 0) {
-        suggestionsBox.style.display = "none";
-        return;
-    }
+    if (!matches.length) return $suggestionsBox.hide();
 
     const url = new URL(window.location);
 
-    matches.forEach((calc) => {
-        const link = document.createElement("a");
-        link.textContent = calc.name;
+    $.each(matches, function (_, calc) {
+        const $link = $("<a></a>")
+            .text(calc.name)
+            .attr("href", url.origin + calc.route)
+            .css({
+                padding: "5px",
+                display: "block",
+                cursor: "pointer",
+            })
+            .on("click", function (e) {
+                $input.val(calc.name);
+                $suggestionsBox.hide();
+                history.replaceState(null, "", calc.route);
+                console.log("Open calculator:", calc.name);
+            });
 
-        // Create a clean URL using origin (domain only)
-        link.href = url.origin + calc.route;
-
-        link.style.padding = "5px";
-        link.style.display = "block";
-        link.style.cursor = "pointer";
-
-        link.addEventListener("click", (e) => {
-            input.value = calc.name;
-            suggestionsBox.style.display = "none";
-
-            // Push new URL to browser without reloading
-            history.replaceState(null, "", calc.route);
-
-            console.log("Open calculator:", calc.name);
-            // You can now show the correct calculator here if needed
-        });
-
-        suggestionsBox.appendChild(link);
+        $suggestionsBox.append($link);
     });
 
-    suggestionsBox.style.display = "block";
+    $suggestionsBox.show();
 }
+$(document).on("input keyup", ".sea", suggestions);
 
-input.addEventListener("input", suggestions);
+$(document).on("click", function (e) {
+    if (!$(e.target).closest(".sea, .suggestion").length) {
+        $(".suggestion").empty().hide();
+    }
+});

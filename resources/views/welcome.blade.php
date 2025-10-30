@@ -19,7 +19,7 @@
                     All your Fitness, Finance, Health, and Utility calculators in one fast, beautiful place.
                 </p>
                 <div class="mt-6 flex gap-3">
-                    <a href="{{ url('/calculators') }}" class="rounded-xl bg-brand px-5 py-3 text-white font-semibold hover:bg-blue-600 transition">Browse Calculators</a>
+                    <a id="browse-cal" href="" class="rounded-xl bg-brand px-5 py-3 text-white font-semibold hover:bg-blue-600 transition">Browse Calculators</a>
                     <a href="{{ url('/builder') }}" class="rounded-xl border border-slate-200 px-5 py-3 hover:border-brand/30 hover:bg-white transition dark:border-slate-700 dark:hover:bg-slate-800">Create Your Own</a>
                 </div>
             </div>
@@ -140,6 +140,40 @@
 
 
 </main>
+
+
+
+<script>
+    let $backdrop, $newSearchBox;
+
+    $('#browse-cal').on('click', function(e) {
+        e.preventDefault();
+
+        // Stop if form hidden
+        if (!$('#testing form').is(':visible')) return;
+
+        // Add backdrop
+        if (!$backdrop) {
+            $backdrop = $('<div class="fixed inset-0 bg-black/40 backdrop-blur-md z-[60]"></div>');
+            $('body').append($backdrop);
+        }
+        $('#testing2').removeClass('hidden').addClass('block');
+    });
+
+    // close handler for popup
+    $('.close-x').on('click', function() {
+        $('#testing2').removeClass('block').addClass('hidden');
+        if ($backdrop) {
+            $backdrop.remove();
+            $backdrop = null;
+        }
+        if ($newSearchBox) {
+            $newSearchBox.remove();
+            $newSearchBox = null;
+        }
+    });
+</script>
+
 
 
 

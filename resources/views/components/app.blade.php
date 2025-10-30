@@ -434,14 +434,15 @@
 
             <!-- Search + actions -->
             <div class="relative flex items-center gap-3">
-                <form action="{{ url('/search') }}" method="GET" class="hidden lg:block">
-                    <div class="relative">
-                        <input id="searchs" type="text" placeholder="Search calculators…" class=" search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
-                        <span class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span>
-                    </div>
-                </form>
-                <div id="suggestions" class="hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
-                <!-- Theme toggle -->
+                <div id="testing" class="">
+                    <form action="{{ url('/search') }}" method="GET" class="hidden lg:block">
+                        <div class="relative">
+                            <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
+                            <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span>
+                        </div>
+                    </form>
+                    <div id="suggestions" class="suggestion hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
+                </div> <!-- Theme toggle -->
                 <button id="themeToggle" type="button" class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
                     🌙
                 </button>
@@ -459,4 +460,14 @@
             </div>
         </div>
     </header>
+    <div id="testing2" class="search-wrapper hidden fixed top-[40vh] left-1/2 -translate-x-1/2 z-[1000000] bg-white/90 dark:bg-slate-800 p-4 rounded-2xl shadow-xl">
+        <form action="/search" method="GET" class="hidden lg:block">
+            <div class="relative">
+                <input id="hello" type="text" placeholder="Search calculators…"
+                    class="sea search w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
+                <span class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500 close-x">X</span>
+            </div>
+        </form>
+        <div class="suggestion hidden rounded-lg absolute left-2 top-16 bg-gray-100 border border-gray-900 text-gray-700"></div>
+    </div>
     <x-simplecalculator />
