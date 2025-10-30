@@ -95,7 +95,7 @@
         </div>
 
         <!-- outer bezel -->
-        <div class="popup-content hide block w-full h-full p-3 sm:p-4 rounded-2xl shadow-2xl
+        <div class="popup-content hide block w-full  p-3 sm:p-4 rounded-2xl shadow-2xl
               bg-gray-400/90 dark:bg-gray-700/90">
             <!-- inner plate -->
             <div class="rounded-2xl p-4 shadow-inner
@@ -127,7 +127,7 @@
                 </div>
 
                 <!-- Keypad -->
-                <div class="grid grid-cols-4 gap-3">
+                <div class="grid grid-cols-4  gap-3">
                     <!-- LEFT: numbers -->
                     <div class="col-span-3">
                         <div class="grid grid-cols-3 gap-3">
