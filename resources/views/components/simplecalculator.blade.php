@@ -274,7 +274,7 @@
         <!-- Operators -->
         <div class="col-span-1 flex flex-col gap-3 sm:gap-4 items-center justify-between">
             <button id="delete-big" class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-300 text-gray-900 font-semibold hover:bg-amber-400">Del</button>
-            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">Ac</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-500 text-emerald-950 font-extrabold hover:bg-red-600 dark:bg-red-500 dark:text-emerald-50">Ac</button>
             <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">×</button>
             <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">−</button>
             <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">+</button>
