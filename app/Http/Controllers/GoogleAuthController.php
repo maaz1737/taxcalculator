@@ -17,7 +17,7 @@ class GoogleAuthController extends Controller
     public function redirect()
     {
         return Socialite::driver('google')
-            ->scopes(['openid', 'profile', 'email']) 
+            ->scopes(['openid', 'profile', 'email'])
             ->redirect();
     }
 
@@ -35,7 +35,7 @@ class GoogleAuthController extends Controller
                 'email_verified_at' => now(),
 
             ]);
-        } 
+        }
         // else {
         //     $user->update([
         //         'google_id'     => $user->google_id ?: $googleUser->getId(),
@@ -45,6 +45,6 @@ class GoogleAuthController extends Controller
 
         Auth::login($user, remember: false);
 
-        return redirect()->intended('/'); 
+        return redirect()->route('home');
     }
 }
