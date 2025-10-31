@@ -242,7 +242,9 @@
                 if (xhr.status == 401) {
                     showErrors(bmrError, 'Unauthorized user');
                 }
-
+                if (xhr.status == 402) {
+                    window.location.href = '/checkout';
+                }
             })
     });
 

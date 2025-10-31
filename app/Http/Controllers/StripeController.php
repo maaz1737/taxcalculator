@@ -53,7 +53,7 @@ class StripeController extends Controller
             'is_active' => true,
         ]);
 
-        return 'successfully created';
+        return redirect()->route('home');
     }
 
     public function cancel()

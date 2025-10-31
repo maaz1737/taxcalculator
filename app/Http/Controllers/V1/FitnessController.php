@@ -22,6 +22,8 @@ use App\Services\Fitness\IdealWeightService;
 use App\Services\Fitness\MacrosService;
 
 use App\Models\Calculation;
+use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -120,6 +122,20 @@ class FitnessController extends Controller
 
     public function save(SaveCalcRequest $r): JsonResponse
     {
+
+        $userId = Auth::id();
+
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
         if (Auth::check()) {
             $v = $r->validated();
 

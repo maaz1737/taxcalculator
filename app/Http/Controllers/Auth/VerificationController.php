@@ -34,7 +34,6 @@ class VerificationController extends Controller
         if (! hash_equals(sha1($user->getEmailForVerification()), (string) $hash)) {
             abort(403, 'Invalid verification link.');
         }
-
         // If already verified
         if ($user->hasVerifiedEmail()) {
             return redirect()->route('home')->with('status', 'Email already verified.');

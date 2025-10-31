@@ -245,7 +245,9 @@
                     showErrors(tdeeError, xhr.responseJSON.message)
                 }
                 btnChange(2);
-
+                if (xhr.status == 402) {
+                    window.location.href = '/checkout';
+                }
             });
     });
 

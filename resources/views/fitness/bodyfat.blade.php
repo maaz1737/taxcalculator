@@ -285,6 +285,9 @@
                     if (xhr.status == 401) {
                         showErrors(bodyfatError, xhr.responseJSON.message)
                     }
+                    if (xhr.status == 402) {
+                        window.location.href = '/checkout';
+                    }
                 });
         });
         let openHistoryBodyFat = $('#openHistoryBodyFat');
