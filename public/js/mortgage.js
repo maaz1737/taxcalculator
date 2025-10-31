@@ -219,6 +219,10 @@ $(function () {
                     btnSaveMortgage.html(original);
                 }, 2000);
                 showError(xhr.responseJSON.message);
+
+                if (xhr.status == 402) {
+                    window.location.href = "/checkout";
+                }
             },
         });
     }

@@ -39,7 +39,7 @@
                 class="text-xs sm:text-sm text-slate-700 dark:text-slate-400 hover:text-indigo-400 transition-all duration-200">
                 {{ __('Logout') }}
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+            <form id="logout-form" action="{{ route('logout') }}" method="get" class="hidden">
                 @csrf
             </form>
         </div>

@@ -299,6 +299,9 @@ $(document).ready(function () {
                     }, 2000);
                     let msg = JSON.parse(xhr.responseText);
                     showError(msg.message);
+                    if (xhr.status == 402) {
+                        window.location.href = "/checkout";
+                    }
                 },
             });
         });
@@ -337,8 +340,6 @@ $(document).ready(function () {
 
                 let data = res.data.data;
                 HistoryListTax.html("");
-
-                console.log(res);
 
                 data.forEach((element) => {
                     let date = new Date(element.created_at).toUTCString();

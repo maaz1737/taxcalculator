@@ -361,8 +361,6 @@
     let backdrop;
 
     function bigFun() {
-
-        console.log('data');
         if (bigCalculator.hasClass('hidden')) {
             bigCalculator.removeClass('hidden').addClass('block');
             icon.style.display = 'none';

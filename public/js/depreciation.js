@@ -176,6 +176,9 @@ $(function () {
                     if (!res.ok) {
                         errorDepreciation(e.responseJSON.message);
                     }
+                    if (e.status == 402) {
+                        window.location.href = "/checkout";
+                    }
                 },
             });
         });

@@ -40,6 +40,8 @@ class StripeController extends Controller
     public function success(Request $request)
     {
         $user = Auth::user();
+
+
         // Store payment record
         Payment::create([
             'user_id' => $user->id,

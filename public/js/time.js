@@ -230,6 +230,9 @@
                     <path d="M9 5h4v4H9z" />
                 </svg> Save`);
             }, 2000);
+            if (e.status == 402) {
+                window.location.href = "/checkout";
+            }
         } finally {
             $btnSaveTime.prop("disabled", false);
         }

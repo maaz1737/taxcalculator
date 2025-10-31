@@ -142,6 +142,9 @@ $(document).ready(function () {
                         setTimeout(() => {
                             $saveSalary.html(logo + " Save");
                         }, 2000);
+                        if (e.status == 402) {
+                            window.location.href = "/checkout";
+                        }
                     },
                 });
             })

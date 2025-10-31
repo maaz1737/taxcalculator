@@ -221,7 +221,10 @@
             setTimeout(() => {
                 $btnSaveVolume.html(original);
                 // window.location.href = "/login";
-            }, 1000);
+            }, 1500);
+            if (e.status == 402) {
+                window.location.href = "/checkout";
+            }
         } finally {
             $btnSaveVolume.prop("disabled", false);
         }
@@ -245,7 +248,6 @@
                 ? res
                 : [];
 
-            console.log(res);
             pagination(res.links);
             $volumeHistoryList.empty();
 

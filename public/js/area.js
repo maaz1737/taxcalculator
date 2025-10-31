@@ -218,6 +218,9 @@
 
             $btnSaveArea.html("Error ✗");
             setTimeout(() => $btnSaveArea.html(logo + " Save"), 2000);
+            if (e.status == 402) {
+                window.location.href = "/checkout";
+            }
         }
     });
 

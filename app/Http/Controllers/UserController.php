@@ -23,6 +23,11 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             // regenerate session to prevent fixation
             $request->session()->regenerate();
+
+            if (!Auth::user()->verified) {
+                return redirect()->route('verification.notice');
+            }
+
             return redirect()->route('home');
         }
 

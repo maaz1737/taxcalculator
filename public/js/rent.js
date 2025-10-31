@@ -249,6 +249,9 @@
                         setTimeout(() => {
                             $(this).html(logo + " save");
                         }, 2000);
+                        if (data.status == 402) {
+                            window.location.href = "/checkout";
+                        }
                         throw new Error(`${data.status} ${errText}`);
                     }
 

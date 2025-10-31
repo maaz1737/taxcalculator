@@ -167,6 +167,9 @@
                 showError(xhr.responseJSON.message);
                 $btnSave.html("Error ✗");
                 setTimeout(() => $btnSave.html(original), 1000);
+                if (xhr.status == 402) {
+                    window.location.href = "/checkout";
+                }
             })
             .always(() => {
                 $btnSave.prop("disabled", false);

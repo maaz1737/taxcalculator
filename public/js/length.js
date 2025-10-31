@@ -72,6 +72,7 @@
 
     function postJson(url, payload) {
         const token = $('meta[name="csrf-token"]').attr("content");
+
         return $.ajax({
             url: url,
             method: "POST",
@@ -82,9 +83,21 @@
                 Accept: "application/json",
                 ...(token ? { "X-CSRF-TOKEN": token } : {}),
             },
-        }).catch(async (xhr) => {
-            const txt = xhr.responseText || "HTTP " + xhr.status;
-            throw new Error(txt);
+        }).catch((xhr) => {
+            // Parse Laravel’s JSON response if possible
+            let message = "Unknown error";
+            try {
+                const res = JSON.parse(xhr.responseText);
+                message = res.message || message;
+            } catch (err) {
+                message = xhr.responseText;
+            }
+
+            // Preserve status code + message
+            const error = new Error(message);
+            error.status = xhr.status;
+            error.response = xhr.responseJSON || null;
+            throw error;
         });
     }
 
@@ -193,7 +206,6 @@
                 }
 
                 function pagination(links) {
-
                     $length_pagination = $("#length_pagination");
 
                     $length_pagination.empty();
@@ -286,6 +298,9 @@
                 $elSave.html(original);
                 // window.location.href = "/login";
             }, 1000);
+            if (e.status == 402) {
+                window.location.href = "/checkout";
+            }
         } finally {
             $elSave.prop("disabled", false);
         }

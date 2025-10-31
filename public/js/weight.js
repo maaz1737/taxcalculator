@@ -224,6 +224,9 @@
             setTimeout(() => {
                 $SaveWeight.html(original);
             }, 3000);
+            if (e.status == 402) {
+                window.location.href = "/checkout";
+            }
         } finally {
             $SaveWeight.prop("disabled", false);
         }

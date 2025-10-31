@@ -21,6 +21,7 @@ use App\Mail\SalaryCalculationResult;
 use App\Mail\TaxCalculationResult;
 use App\Models\Depreciation;
 use App\Models\Mortgage;
+use App\Models\Payment;
 use App\Models\RentCalculation;
 use App\Services\Finance\SalaryService;
 use App\Services\Finance\AutoLoanService;
@@ -41,6 +42,20 @@ class FinanceController extends Controller
 
     public function mortgage_save(MortgageRequest $request)
     {
+
+        $userId = Auth::id();
+
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
 
         if (Auth::check()) {
             $mortgageCreated =  Mortgage::create([
@@ -124,7 +139,19 @@ class FinanceController extends Controller
     public function tax(IncomeTaxRequest $r, IncomeTaxService $svc)
     {
 
+        $userId = Auth::id();
 
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
         if (Auth::check()) {
 
             if ($r['payerType'] == 'individual') {
@@ -219,6 +246,18 @@ class FinanceController extends Controller
     public function save_salary(Request $request, SalaryService $svc)
     {
 
+        $userId = Auth::id();
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
         if (Auth::check()) {
             $request->validate([
                 'annual_amount' => ['required', 'numeric', 'min:2'],
@@ -274,6 +313,19 @@ class FinanceController extends Controller
     function rent_save(RentRequest $request)
     {
 
+        $userId = Auth::id();
+
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
 
         $reques = $request->all();
         $req = $request->validated();
@@ -328,6 +380,19 @@ class FinanceController extends Controller
     public function depreciationSave(Request $request, DepreciationService $dep)
     {
 
+        $userId = Auth::id();
+
+        $hasExpiredPayment = Payment::where('user_id', $userId)
+            ->latest()
+            ->first()?->end_date < Carbon::now();
+
+        if ($hasExpiredPayment) {
+
+            return response()->json([
+                'message' => 'Pay to use extra benefits',
+                'ok' => false
+            ], 402);
+        }
 
         if (Auth::check()) {
             $depreciationcreated =  Depreciation::create([

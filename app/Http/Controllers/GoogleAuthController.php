@@ -45,6 +45,10 @@ class GoogleAuthController extends Controller
 
         Auth::login($user, remember: false);
 
+        if (!Auth::user()->verified) {
+            return redirect()->route('verification.notice');
+        }
+
         return redirect()->route('home');
     }
 }
