@@ -16,11 +16,12 @@
         <p class="text-gray-500 text-center mt-2">Login to your account</p>
 
         <!-- Google Button -->
-        <a href="/auth/google"
+        <a href="/auth/google/redirect"
             class="mt-6 flex items-center justify-center gap-2 w-full px-4 py-2 border rounded-lg bg-white text-gray-700 font-medium shadow-sm hover:bg-gray-50 transition">
             <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5" alt="Google" />
             Continue with Google
         </a>
+
 
         <!-- Divider -->
         <div class="flex items-center my-6">
