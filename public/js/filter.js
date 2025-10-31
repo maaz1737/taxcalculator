@@ -509,3 +509,36 @@ $(document).on("click", function (e) {
         $(".suggestion").empty().hide();
     }
 });
+
+let $backdrop, $newSearchBox;
+
+$("#browse-cal").on("click", function (e) {
+    e.preventDefault();
+
+    // Stop if form hidden
+    // if (!$('#testing form').is(':visible')) return;
+    // Add backdrop
+    if (!$backdrop) {
+        $backdrop = $(
+            '<div class="fixed inset-0 bg-black/40 backdrop-blur-md z-[60]"></div>'
+        );
+        $("body").append($backdrop);
+    }
+    $("#testing2").removeClass("hidden").addClass("block");
+    $("#testing2").find("input").focus();
+});
+
+// close handler for popup
+$(".close-x").on("click", function () {
+    $("#testing2").removeClass("block").addClass("hidden");
+    $("#testing2").find("input").val("");
+
+    if ($backdrop) {
+        $backdrop.remove();
+        $backdrop = null;
+    }
+    if ($newSearchBox) {
+        $newSearchBox.remove();
+        $newSearchBox = null;
+    }
+});
