@@ -374,15 +374,16 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-40 border-b border-white/10 bg-white/70 backdrop-blur-md dark:bg-slate-900/70">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
+        <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Left Section: Logo + Nav -->
+            <div class="flex items-center gap-4 flex-shrink-0">
                 <!-- LOGO -->
-                <a href="{{ url('/') }}" class="flex items-center gap-2">
+                <a href="{{ url('/') }}" class="flex items-center gap-2 min-w-[70px]">
                     <div class="text-brand grid place-items-center font-extrabold">
-                        <img width="65px" src=" {{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
+                        <img class="w-[55px] sm:w-[65px] object-contain" src="{{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
                     </div>
-                    <span class="font-extrabold tracking-tight text-head dark:text-white"></span>
                 </a>
+
                 <!-- Nav -->
                 <style>
                     .dropdown-content {
@@ -394,7 +395,7 @@
                     }
 
                     #categories-menu {
-                        z-index: 50;
+                        z-index: 50 !important;
                         background-color: white;
                         color: black;
                         transition: all 0.2s ease-in-out;
@@ -404,8 +405,9 @@
                         transform: rotate(180deg);
                     }
                 </style>
-                <nav class="hidden md:flex items-center gap-4 text-sm relative">
-                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white ">Home</a>
+
+                <nav class="hidden md:flex items-center gap-2 text-sm relative flex-wrap">
+                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Home</a>
                     <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
 
                     <div class="relative">
@@ -417,7 +419,7 @@
                         </button>
 
                         <div id="categories-menu"
-                            class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
+                            class="absolute  top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
                             <a href="{{ route('tax.finance') }}" class="block px-4 py-2 hover:bg-gray-100">Finance & Tax</a>
                             <a href="{{ route('math.measurement') }}" class="block px-4 py-2 hover:bg-gray-100">Math & Measurement</a>
                             <a href="{{ route('health.fitness') }}" class="block px-4 py-2 hover:bg-gray-100">Health & Fitness</a>
@@ -425,25 +427,22 @@
                     </div>
 
                     <a href="{{ route('favorites.calculators') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Favorites</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">History</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Docs</a>
                     <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
                 </nav>
-
             </div>
 
-            <!-- Search + actions -->
-            <div class="relative flex items-center gap-3">
+            <!-- Right Section: Search + Actions -->
+            <div class="flex items-center gap-2 flex-shrink-0 relative">
                 <div id="testing" class="">
-                    <form action="{{ url('/search') }}" method="GET" class="hidden lg:block">
-                        <div class="relative">
-                            <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
-                            <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span>
-                        </div>
+                    <form action="{{ url('/search') }}" method="GET" class="hidden xl:block">
+                        <div class="relative"> <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" /> <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span> </div>
                     </form>
                     <div id="suggestions" class="suggestion hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
-                </div> <!-- Theme toggle -->
-                <button id="themeToggle" type="button" class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
+                </div>
+
+                <!-- Theme toggle -->
+                <button id="themeToggle" type="button"
+                    class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
                     🌙
                 </button>
 
@@ -451,17 +450,22 @@
                 <a href="{{ route('login') }}" class="rounded-xl bg-brand px-4 py-2 text-white text-sm hover:bg-blue-600 transition">
                     Login
                 </a>
+                <a href="{{ route('register') }}" class="rounded-xl bg-green-700 px-4 py-2 text-white text-sm hover:bg-green-600 transition">
+                    Register
+                </a>
                 @endguest
 
                 @auth
-                <a href="{{ url('/logout') }}" class="rounded-xl bg-brand px-4 py-2 text-white text-sm hover:bg-blue-600 transition">Logout</a>
+                <a href="{{ url('/logout') }}" class="rounded-xl bg-brand px-4 py-2 text-white text-sm hover:bg-blue-600 transition">
+                    Logout
+                </a>
                 @endauth
-
             </div>
         </div>
     </header>
+
     <div id="testing2" class="search-wrapper hidden fixed top-[40vh] left-1/2 -translate-x-1/2 z-[1000000] bg-white/90 dark:bg-slate-800 p-4 rounded-2xl shadow-xl">
-        <form action="/search" method="GET" class="hidden lg:block">
+        <form action="/search" method="GET" class="block">
             <div class="relative">
                 <input id="hello" type="text" placeholder="Search calculators…"
                     class="sea search w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />

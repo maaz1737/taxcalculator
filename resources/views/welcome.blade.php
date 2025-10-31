@@ -150,8 +150,7 @@
         e.preventDefault();
 
         // Stop if form hidden
-        if (!$('#testing form').is(':visible')) return;
-
+        // if (!$('#testing form').is(':visible')) return;
         // Add backdrop
         if (!$backdrop) {
             $backdrop = $('<div class="fixed inset-0 bg-black/40 backdrop-blur-md z-[60]"></div>');
