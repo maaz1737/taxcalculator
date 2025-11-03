@@ -33,7 +33,7 @@
          <div>
              <h4 class="mb-3 font-semibold">Newsletter</h4>
              <form class="space-y-2">
-                 <input type="email" placeholder="you@example.com" class="w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700">
+                 <input type="email" placeholder="you@example.com" class="w-full search rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700">
                  <button class="w-full rounded-xl bg-brand px-4 py-2 text-white text-sm hover:bg-blue-600 transition">Subscribe</button>
              </form>
              <div class="mt-4 text-xs text-slate-500">&copy; {{ date('Y') }} [BRAND]. All rights reserved.</div>

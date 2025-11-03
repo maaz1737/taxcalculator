@@ -1,4 +1,4 @@
-<x-app :title="'Online Calculators for Finance, Health & Everyday Math | QuickCalculatIt'"
+<x-app :title="'Online Calculators for Finance, Health & Everyday Math | QuickCalculateIt'"
     :des="'QuickCalculatIt – Free online calculators for finance, health, fitness, and everyday math. Calculate taxes, BMI, TDEE, body fat, ideal weight, conversions, and more easily and accurately.'"
     :key="'online calculators, free calculators, finance calculator, tax calculator, salary calculator, BMI calculator, TDEE calculator, body fat calculator, ideal weight calculator, conversions, math tools, QuickCalculatIt'" />
 
@@ -20,7 +20,7 @@
                 </p>
                 <div class="mt-6 flex gap-3">
                     <a id="browse-cal" href="" class="rounded-xl bg-brand px-5 py-3 text-white font-semibold hover:bg-blue-600 transition">Browse Calculators</a>
-                    <a href="{{ url('/builder') }}" class="rounded-xl border border-slate-200 px-5 py-3 hover:border-brand/30 hover:bg-white transition dark:border-slate-700 dark:hover:bg-slate-800">Create Your Own</a>
+                    <a href="{{ route('home') }}" class="rounded-xl border border-slate-200 px-5 py-3 hover:border-brand/30 hover:bg-white transition dark:border-slate-700 dark:hover:bg-slate-800">Quick Calculators</a>
                 </div>
             </div>
             <div class="lg:justify-self-end">

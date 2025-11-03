@@ -71,22 +71,25 @@
 
 
             <!-- Keypad + History -->
-            <div class="flex-1 grid grid-cols-1 lg:grid-cols-5 gap-2 sm:gap-3 p-2 sm:p-3 
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-5 gap-1 sm:gap-3 p-2 sm:p-3 
                bg-gray-300 dark:bg-slate-700">
                 @php
                 $btnClass = 'btn rounded-lg px-2 sm:px-2 py-1.5 sm:py-1.5 text-xs sm:text-sm font-semibold
-                text-gray-900 dark:text-white bg-slate-200 dark:bg-slate-900/70
-                hover:bg-slate-300 dark:hover:bg-slate-800 transition-all duration-150';
+                text-gray-900 dark:text-white bg-gray-100 dark:bg-slate-900/70
+                hover:bg-gray-200 dark:hover:bg-slate-800 transition-all duration-150';
+
+                $specific = 'btn rounded-lg px-2 sm:px-2 py-1.5 sm:py-1.5 text-xs sm:text-sm font-semibold';
+
                 @endphp
 
                 <!-- Keypad -->
-                <div class="lg:col-span-3 grid grid-cols-5 gap-1 sm:gap-1.5 place-content-center scale-[0.95]">
+                <div class="lg:col-span-5 grid grid-cols-5 gap-1 sm:gap-1.5 scale-[0.95]">
                     <!-- Memory -->
                     <button data-key="MC" class="{{ $btnClass }}">MC</button>
                     <button data-key="MR" class="{{ $btnClass }}">MR</button>
                     <button data-key="M+" class="{{ $btnClass }}">M+</button>
                     <button data-key="M-" class="{{ $btnClass }}">M-</button>
-                    <button data-key="DEL" class="{{ $btnClass }} bg-amber-100 dark:bg-amber-900/30 text-amber-900 dark:text-amber-200">⌫</button>
+                    <button data-key="DEL" class="{{ $specific }} bg-amber-100 hover:bg-amber-200 dark:bg-amber-900/30 dark:hover:bg-amber-800/50 text-amber-900 dark:text-amber-200">⌫</button>
 
                     <!-- Functions -->
                     <button data-fn="sin" class="{{ $btnClass }}">sin</button>
@@ -107,11 +110,12 @@
                     <button data-key="e" class="{{ $btnClass }}">e</button>
                     <button data-fn="sign" class="{{ $btnClass }}">±</button>
 
-                    <button data-key="7" class="{{ $btnClass }}">7</button>
+                    <button data-key="7" class="{{ $btnClass }} ">7</button>
                     <button data-key="8" class="{{ $btnClass }}">8</button>
                     <button data-key="9" class="{{ $btnClass }}">9</button>
                     <button data-op="/" class="{{ $btnClass }}">÷</button>
-                    <button id="btnClear" class="{{ $btnClass }} bg-rose-100 dark:bg-rose-900/30 text-rose-900 dark:text-rose-200">C</button>
+                    <button id="btnClear" class="{{ $specific }} bg-rose-200 hover:bg-rose-300 text-rose-900 
+                     dark:bg-rose-900/30 dark:hover:bg-rose-800/50 dark:text-rose-200">C</button>
 
                     <button data-key="4" class="{{ $btnClass }}">4</button>
                     <button data-key="5" class="{{ $btnClass }}">5</button>
@@ -128,11 +132,11 @@
                     <button data-key="0" class="col-span-2 {{ $btnClass }}">0</button>
                     <button data-key="." class="{{ $btnClass }}">.</button>
                     <button data-fn="percent" class="{{ $btnClass }}">%</button>
-                    <button id="btnEq" class="{{ $btnClass }} bg-gray-900 text-black dark:bg-white dark:text-gray-900">=</button>
+                    <button id="btnEq" class="{{ $btnClass }} bg-gray-800 text-white hover:bg-gray-900 dark:hover:bg-white  dark:bg-white dark:text-gray-900">=</button>
                 </div>
 
                 <!-- History -->
-                <div class="lg:col-span-2 flex flex-col">
+                <div class="lg:col-span-5 flex flex-col">
                     <div class="flex items-center justify-between mb-1">
                         <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300">History</h2>
                         <button id="btnClearHist"

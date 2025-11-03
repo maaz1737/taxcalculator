@@ -214,12 +214,12 @@
 
 <div id="bigCalculator"
     class="fixed z-[65] hidden w-[90vw] sm:w-[75vw] lg:w-[55vw] max-w-[550px] 
-           h-[80vh] bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-2xl p-4 
-           overflow-hidden flex flex-col justify-between"
+           h-auto bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-2xl p-5 
+           flex flex-col items-center justify-start space-y-4 overflow-hidden"
     style="top:50%; left:50%; transform:translate(-50%, -50%)">
 
     <!-- Header -->
-    <div class="flex justify-between items-center mb-3 px-1">
+    <div class="flex justify-between items-center w-full">
         <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Big Calculator</h2>
         <button id="closeBigCalc"
             class="px-2 text-[22px] hidden sm:block text-black dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none"
@@ -230,7 +230,7 @@
     </div>
 
     <!-- Screen -->
-    <div class="relative mb-4 flex-shrink-0">
+    <div class="relative w-full">
         <button id="btn-clear"
             class="calc-btn absolute left-2 top-2 w-10 h-10 sm:w-12 sm:h-12 rounded-lg shadow 
                    bg-orange-400 text-white font-bold hover:bg-orange-500 
@@ -244,35 +244,33 @@
     </div>
 
     <!-- Keypad -->
-    <div class="grid grid-cols-4 gap-3 sm:gap-4 mt-auto">
+    <div class="grid grid-cols-4 gap-3 sm:gap-4 w-full pt-2">
         <!-- Numbers -->
-        <div class="col-span-3 w-full">
-            <div class="grid grid-cols-3 gap-3 sm:gap-4 place-items-center">
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">7</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">8</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">9</button>
+        <div class="col-span-3 grid grid-cols-3 gap-3 sm:gap-4 place-items-center">
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">7</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">8</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">9</button>
 
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">4</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">5</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">6</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">4</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">5</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">6</button>
 
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">1</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">2</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">3</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">1</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">2</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">3</button>
 
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">0</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">(</button>
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">)</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">0</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">(</button>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">)</button>
 
-                <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">.</button>
-                <button id="btn-equals-big"
-                    class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 text-white text-xl font-bold hover:bg-emerald-600 shadow">=</button>
-                <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">÷</button>
-            </div>
+            <button class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-100 text-slate-900 font-bold hover:bg-sky-200 dark:bg-slate-700 dark:text-white">.</button>
+            <button id="btn-equals-big"
+                class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 text-white text-xl font-bold hover:bg-emerald-600 shadow">=</button>
+            <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">÷</button>
         </div>
 
         <!-- Operators -->
-        <div class="col-span-1 flex flex-col gap-3 sm:gap-4 items-center justify-between">
+        <div class="flex flex-col gap-3 sm:gap-4 items-center justify-center">
             <button id="delete-big" class="calc-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-300 text-gray-900 font-semibold hover:bg-amber-400">Del</button>
             <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-500 text-emerald-950 font-extrabold hover:bg-red-600 dark:bg-red-500 dark:text-emerald-50">Ac</button>
             <button class="calc-btn operator w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-400 text-emerald-950 font-extrabold hover:bg-emerald-500 dark:bg-emerald-500 dark:text-emerald-50">×</button>
@@ -281,6 +279,7 @@
         </div>
     </div>
 </div>
+
 
 
 
