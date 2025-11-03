@@ -174,6 +174,11 @@ $(document).ready(function () {
         };
     }
 
+    const auds = new Intl.NumberFormat("en-AU", {
+        style: "currency",
+        currency: "AUD",
+        maximumFractionDigits: 2,
+    });
     // ---------- Events ----------
     $(".change").on("input", function (e) {
         e.preventDefault();
@@ -213,15 +218,15 @@ $(document).ready(function () {
                 Number(yearly_cost.val())
             );
             let remaining_tax = x.taxPayable - paid;
-            annual_cost_result.text(x.cost);
-            annual_revenue_result.text(x.revenue);
-            taxable_amount_result.text(x.taxableIncome);
-            total_payable_result.text(x.taxPayable);
-            paid_tax.text(paid);
+            annual_cost_result.text(auds.format(x.cost));
+            annual_revenue_result.text(auds.format(x.revenue));
+            taxable_amount_result.text(auds.format(x.taxableIncome));
+            total_payable_result.text(auds.format(x.taxPayable));
+            paid_tax.text(auds.format(paid));
 
             let new_value = remaining_tax < 0 ? "Tax Refund" : "Tax Payable";
             $("#remaining_text").text(new_value);
-            $("#remaining_tax").text(Math.abs(remaining_tax));
+            $("#remaining_tax").text(auds.format(Math.abs(remaining_tax)));
         }
     });
 
