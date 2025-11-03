@@ -71,16 +71,16 @@
 
 
             <!-- Keypad + History -->
-            <div class="flex-1 grid grid-cols-1 lg:grid-cols-5 gap-2 sm:gap-3 p-2 sm:p-3 
+            <div class="flex-1 grid grid-cols-1 lg:grid-cols-5 gap-1 sm:gap-3 p-2 sm:p-3 
                bg-gray-300 dark:bg-slate-700">
                 @php
                 $btnClass = 'btn rounded-lg px-2 sm:px-2 py-1.5 sm:py-1.5 text-xs sm:text-sm font-semibold
                 text-gray-900 dark:text-white bg-slate-200 dark:bg-slate-900/70
-                hover:bg-slate-300 dark:hover:bg-slate-800 transition-all duration-150';
+                hover:bg-red-300 dark:hover:bg-slate-800 transition-all duration-150';
                 @endphp
 
                 <!-- Keypad -->
-                <div class="lg:col-span-3 grid grid-cols-5 gap-1 sm:gap-1.5 place-content-center scale-[0.95]">
+                <div class="lg:col-span-5 grid grid-cols-5 gap-1 sm:gap-1.5 place-content-center scale-[0.95]">
                     <!-- Memory -->
                     <button data-key="MC" class="{{ $btnClass }}">MC</button>
                     <button data-key="MR" class="{{ $btnClass }}">MR</button>
@@ -132,7 +132,7 @@
                 </div>
 
                 <!-- History -->
-                <div class="lg:col-span-2 flex flex-col">
+                <div class="lg:col-span-5 flex flex-col">
                     <div class="flex items-center justify-between mb-1">
                         <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300">History</h2>
                         <button id="btnClearHist"
