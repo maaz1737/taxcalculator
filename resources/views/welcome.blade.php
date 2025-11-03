@@ -1,4 +1,4 @@
-<x-app :title="'Online Calculators for Finance, Health & Everyday Math | QuickCalculatIt'"
+<x-app :title="'Online Calculators for Finance, Health & Everyday Math | QuickCalculateIt'"
     :des="'QuickCalculatIt – Free online calculators for finance, health, fitness, and everyday math. Calculate taxes, BMI, TDEE, body fat, ideal weight, conversions, and more easily and accurately.'"
     :key="'online calculators, free calculators, finance calculator, tax calculator, salary calculator, BMI calculator, TDEE calculator, body fat calculator, ideal weight calculator, conversions, math tools, QuickCalculatIt'" />
 
