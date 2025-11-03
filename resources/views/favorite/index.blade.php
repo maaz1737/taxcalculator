@@ -3,6 +3,8 @@
     :des="'Access and manage all your favorite online calculators in one place. Quickly save, edit, and use calculators for math, finance, tax, and more.'"
     :key="'favourite calculator, online calculators, save calculators, math tools, finance calculators, tax calculators, quick access calculators'" />
 
+@auth
+
 <div class="min-h-[400px] bg-gray-50 dark:bg-slate-900 py-10 px-4">
 
     <div class=" bg-gray-50/80 dark:bg-slate-900/80 backdrop-blur-md  mb-1 py-4">
@@ -17,6 +19,8 @@
     <div class="max-w-6xl mx-auto text-gray-600 dark:text-gray-400 mb-12">
         <p class="text-sm mx-10">Manage your money smarter with our easy-to-use financial and tax tools — from rent calculations to salary and mortgage estimations.</p>
     </div>
+
+
 
     <div class="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -56,9 +60,18 @@
 
     </div>
 </div>
+@endauth
 
 
+@guest
+<div class="min-h-[calc(100vh-400px)] flex justify-center items-center">
 
+    <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">
+        Login To Use your favourite calculator
+    </h1>
+
+</div>
+@endguest
 
 
 <x-appfooter></x-appfooter>
