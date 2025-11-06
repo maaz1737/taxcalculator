@@ -151,14 +151,17 @@ Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->
 Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');
 Route::get('/favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
 Route::post('/favorites/calculators/store', [FavoriteCalculatorsController::class, 'store'])->name('favorites.calculators.store');
-
-
-
-
-
-
-
 Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
 Route::get('/success', [StripeController::class, 'success']);
 Route::get('/cancel', [StripeController::class, 'cancel']);
+
+
+
+// point of interest routes
+
+Route::get('/age/calculator', function () {
+    return view('age.age_calculator');
+})->name('avg.calculator');
+
+Route::post('/age/calculator', [App\Http\Controllers\AgeController::class, 'calculate'])->name('age.calculate');

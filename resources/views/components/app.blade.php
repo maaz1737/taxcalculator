@@ -373,8 +373,8 @@
 <body class="bg-bg text-base dark:bg-slate-900 dark:text-slate-100">
 
     <!-- Header -->
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-white/70 backdrop-blur-md dark:bg-slate-900/70">
-        <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-emerald-800  backdrop-blur-md dark:bg-slate-900/70">
+        <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between ">
             <!-- Left Section: Logo + Nav -->
             <div class="flex items-center gap-4 flex-shrink-0">
                 <!-- LOGO -->
@@ -406,12 +406,12 @@
                     }
                 </style>
 
-                <nav class="hidden md:flex items-center gap-2 text-sm relative flex-wrap">
-                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Home</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
+                <nav class="hidden md:flex items-center gap-2 text-sm relative flex-wrap text-white">
+                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Home</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
 
                     <div class="relative">
-                        <button id="categories-btn" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">
+                        <button id="categories-btn" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">
                             Categories
                             <svg class="w-4 h-4 transition-transform" id="caret-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -419,15 +419,29 @@
                         </button>
 
                         <div id="categories-menu"
-                            class="absolute  top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
-                            <a href="{{ route('tax.finance') }}" class="block px-4 py-2 hover:bg-gray-100">Finance & Tax</a>
-                            <a href="{{ route('math.measurement') }}" class="block px-4 py-2 hover:bg-gray-100">Math & Measurement</a>
-                            <a href="{{ route('health.fitness') }}" class="block px-4 py-2 hover:bg-gray-100">Health & Fitness</a>
+                            class="absolute  top-full max-h-[50vh] overflow-y-scroll  left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
+                            <a href="{{ route('length') }}" class="block px-4 py-2 hover:bg-gray-100">Length Calculator</a>
+                            <a href="{{ route('finance.income_tax') }}" class="block px-4 py-2 hover:bg-gray-100">Tax calculator</a>
+                            <a href="{{ route('area') }}" class="block px-4 py-2 hover:bg-gray-100">Area Calculator</a>
+                            <a href="{{ route('finance.rent') }}" class="block px-4 py-2 hover:bg-gray-100">Rent Calculator</a>
+                            <a href="{{ route('finance.depreciation') }}" class="block px-4 py-2 hover:bg-gray-100">Depreciation</a>
+                            <a href="{{ route('finance.mortgage') }}" class="block px-4 py-2 hover:bg-gray-100">Mortgage Calculator</a>
+                            <a href="{{ route('finance.salary') }}" class="block px-4 py-2 hover:bg-gray-100">Salary Calculator</a>
+                            <a href="{{ route('volume') }}" class="block px-4 py-2 hover:bg-gray-100">volume Calculator</a>
+                            <a href="{{ route('temperature') }}" class="block px-4 py-2 hover:bg-gray-100">Temperature</a>
+                            <a href="{{ route('weight') }}" class="block px-4 py-2 hover:bg-gray-100">Weight Calculator</a>
+                            <a href="{{ route('time') }}" class="block px-4 py-2 hover:bg-gray-100">Time Calculator</a>
+                            <a href="{{ route('fitness.bmi') }}" class="block px-4 py-2 hover:bg-gray-100">Bmi Calculator</a>
+                            <a href="{{ route('fitness.bmr') }}" class="block px-4 py-2 hover:bg-gray-100">Bmr Calculator</a>
+                            <a href="{{ route('fitness.tdee') }}" class="block px-4 py-2 hover:bg-gray-100">Tdee Calculator</a>
+                            <a href="{{ route('fitness.bodyfat') }}" class="block px-4 py-2 hover:bg-gray-100">Bodyfat Calculator</a>
+                            <a href="{{ route('fitness.ideal') }}" class="block px-4 py-2 hover:bg-gray-100">Ideal Calculator</a>
+                            <a href="{{ route('fitness.macros') }}" class="block px-4 py-2 hover:bg-gray-100">Macros Calculator</a>
                         </div>
                     </div>
 
-                    <a href="{{ route('favorites.calculators') }}" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Favorites</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
+                    <a href="{{ route('favorites.calculators') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Favorites</a>
+                    <a href="/" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
                 </nav>
             </div>
 
@@ -435,19 +449,19 @@
             <div class="flex items-center gap-2 flex-shrink-0 relative">
                 <div id="testing" class="">
                     <form action="{{ url('/search') }}" method="GET" class="hidden xl:block">
-                        <div class="relative"> <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" /> <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span> </div>
+                        <div class="relative"> <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" /> <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span> </div>
                     </form>
                     <div id="suggestions" class="suggestion hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
                 </div>
 
                 <!-- Theme toggle -->
                 <button id="themeToggle" type="button"
-                    class="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
+                    class="rounded-xl border border-black bg-black/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-black transition dark:bg-white dark:border-slate-700">
                     🌙
                 </button>
 
                 @guest
-                <a href="{{ route('login') }}" class="rounded-xl bg-brand px-4 py-2 text-white text-sm hover:bg-blue-600 transition">
+                <a href="{{ route('login') }}" class="rounded-xl bg-yellow-600 px-4 py-2 text-white text-sm hover:bg-yellow-700 transition">
                     Login
                 </a>
                 <a href="{{ route('register') }}" class="rounded-xl bg-green-700 px-4 py-2 text-white text-sm hover:bg-green-600 transition">

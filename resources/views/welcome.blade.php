@@ -5,7 +5,7 @@
 
 
 
-<main class="min-h-[70vh]">
+<main class="bg-emerald-50 dark:bg-slate-900/50 ">
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -19,8 +19,8 @@
                     All your Fitness, Finance, Health, and Utility calculators in one fast, beautiful place.
                 </p>
                 <div class="mt-6 flex gap-3">
-                    <a id="browse-cal" href="" class="rounded-xl bg-brand px-5 py-3 text-white font-semibold hover:bg-blue-600 transition">Browse Calculators</a>
-                    <a href="{{ route('home') }}" class="rounded-xl border border-slate-200 px-5 py-3 hover:border-brand/30 hover:bg-white transition dark:border-slate-700 dark:hover:bg-slate-800">Quick Calculators</a>
+                    <a id="browse-cal" href="" class="rounded-xl bg-yellow-500 px-5 py-3 text-white font-semibold hover:bg-yellow-600 transition">Browse Calculators</a>
+                    <a href="{{ route('home') }}" class="rounded-xl border border-emerald-200 px-5 py-3 text-white bg-emerald-800 hover:border-brand/30 hover:bg-emerald-900 transition dark:border-slate-700 dark:hover:bg-slate-800">Quick Calculators</a>
                 </div>
             </div>
             <div class="lg:justify-self-end">
@@ -61,7 +61,7 @@
 
         @php
         $featured = [
-        ['id'=>'openSciCalc','title'=>'Open Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','data'=>'sciCalcModal'],
+        ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','data'=>'sciCalcModal'],
         ['id'=>'openPopupSalaryCalculator','title'=>'Salary Calculator','tag'=>'Salary','summary'=>'Salary Calculator','name'=>'Open Salary Calculator','data'=>'popupSalaryCalculator'],
         ['id'=>'openPopupRentCalculator','title'=>'Rent Calculator','tag'=>'Rent','summary'=>'Rent Category','name'=>'Open Rent Calculator','data'=>'popupRentCalculator'],
         ['id'=>'openPopupDepreciationCalculator','title'=>'Depreciation Calculator','tag'=>'Depreciation','summary'=>'Check your BMI & category','name'=>'Open Depreciation Calculator','data'=>'popupDepreciationCalculator'],
@@ -96,7 +96,7 @@
             <div class="flex gap-3 overflow-x-auto pb-2">
                 @foreach ( $categories as $cat)
                 <a href="{{ route($cat['url']) }}"
-                    class="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:border-brand/30 hover:bg-white transition dark:bg-slate-800 dark:border-slate-700">
+                    class="shrink-0 rounded-full border border-emerald-900 bg-emerald-800 text-white px-4 py-2 text-sm hover:border-emerald-900 hover:bg-emerald-900 transition dark:bg-slate-800 dark:border-slate-700">
                     {{ $cat['name'] }}
                 </a>
                 @endforeach
@@ -107,15 +107,15 @@
         <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
             <h2 class="text-xl font-bold mb-4">Why QuickCalculateIt</h2>
             <div class="grid gap-4 md:grid-cols-3">
-                <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Accuracy</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">Well-tested formulas and unit handling.</p>
                 </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Speed (AJAX)</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">Instant results with debounced requests.</p>
                 </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Privacy</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">permanent storage for history; sync when logged in.</p>
                 </div>

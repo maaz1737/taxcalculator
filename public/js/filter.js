@@ -523,22 +523,36 @@ $("#browse-cal").on("click", function (e) {
             '<div class="fixed inset-0 bg-black/40 backdrop-blur-md z-[60]"></div>'
         );
         $("body").append($backdrop);
+        $("body").css("overflow", "hidden");
     }
     $("#testing2").removeClass("hidden").addClass("block");
     $("#testing2").find("input").focus();
 });
 
 // close handler for popup
-$(".close-x").on("click", function () {
+function closeSearch() {
     $("#testing2").removeClass("block").addClass("hidden");
     $("#testing2").find("input").val("");
 
     if ($backdrop) {
         $backdrop.remove();
         $backdrop = null;
+        $("body").css("overflow", "");
     }
     if ($newSearchBox) {
         $newSearchBox.remove();
         $newSearchBox = null;
+    }
+}
+
+$(".close-x").on("click", closeSearch);
+$(document).on("click", function (e) {
+    const $target = $(e.target);
+    const isInsideTesting2 = $target.closest("#testing2").length;
+    const isInsideBrowseCal = $target.closest("#browse-cal").length;
+    const isVisible = $("#testing2").hasClass("block");
+
+    if (!isInsideTesting2 && !isInsideBrowseCal && isVisible) {
+        closeSearch();
     }
 });

@@ -223,7 +223,6 @@ $(document).ready(function () {
             taxable_amount_result.text(auds.format(x.taxableIncome));
             total_payable_result.text(auds.format(x.taxPayable));
             paid_tax.text(auds.format(paid));
-
             let new_value = remaining_tax < 0 ? "Tax Refund" : "Tax Payable";
             $("#remaining_text").text(new_value);
             $("#remaining_tax").text(auds.format(Math.abs(remaining_tax)));
