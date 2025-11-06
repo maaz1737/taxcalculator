@@ -160,7 +160,7 @@ Route::get('/cancel', [StripeController::class, 'cancel']);
 
 // point of interest routes
 
-Route::get('/age/calculator', function () {
+Route::get('/agecalculator', function () {
     return view('age.age_calculator');
 })->name('avg.calculator');
 
