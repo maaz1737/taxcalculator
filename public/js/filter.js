@@ -197,7 +197,7 @@ const suggestions = [
     { text: "kanal to marla", url: "/area" },
     { text: "marla to sq ft", url: "/area" },
     { text: "plot size converter", url: "/area" },
-    { text: "land area converter pakistan", url: "/area" },
+    { text: "land area converter Australia", url: "/area" },
     { text: "convert hectare to acre", url: "/area" },
     { text: "area calculator for land", url: "/area" },
     { text: "convert square meter to acre", url: "/area" },
@@ -406,9 +406,9 @@ const suggestions = [
     // ===== TAX =====
     { text: "income tax calculator", url: "/income-tax" },
     { text: "fbr tax calculator 2025", url: "/income-tax" },
-    { text: "salary tax calculator pakistan", url: "/income-tax" },
+    { text: "salary tax calculator Australia", url: "/income-tax" },
     { text: "calculate income after tax", url: "/income-tax" },
-    { text: "tax slab 2025 pakistan", url: "/income-tax" },
+    { text: "tax slab 2025 Australia", url: "/income-tax" },
     { text: "tax refund estimator", url: "/income-tax" },
     { text: "net salary after tax", url: "/income-tax" },
     { text: "fbr salary calculator", url: "/income-tax" },
@@ -485,10 +485,10 @@ const suggestions = [
     { text: "income tax calculator", url: "/income-tax" },
     { text: "fbr tax calculator", url: "/income-tax" },
     { text: "salary tax calculator", url: "/income-tax" },
-    { text: "pakistan income tax", url: "/income-tax" },
+    { text: "Australia income tax", url: "/income-tax" },
     { text: "calculate income after tax", url: "/income-tax" },
     { text: "yearly tax calculator", url: "/income-tax" },
-    { text: "tax on salary pakistan", url: "/income-tax" },
+    { text: "tax on salary Australia", url: "/income-tax" },
     { text: "income after tax", url: "/income-tax" },
 
     // ===== BMI CALCULATOR =====
