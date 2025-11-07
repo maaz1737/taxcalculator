@@ -422,6 +422,7 @@
                             class="absolute  top-full max-h-[50vh] overflow-y-scroll  left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
                             <a href="{{ route('length') }}" class="block px-4 py-2 hover:bg-gray-100">Length Calculator</a>
                             <a href="{{ route('finance.income_tax') }}" class="block px-4 py-2 hover:bg-gray-100">Tax calculator</a>
+                            <a href="{{ route('age.calculator.view') }}" class="block px-4 py-2 hover:bg-gray-100">Age calculator</a>
                             <a href="{{ route('area') }}" class="block px-4 py-2 hover:bg-gray-100">Area Calculator</a>
                             <a href="{{ route('finance.rent') }}" class="block px-4 py-2 hover:bg-gray-100">Rent Calculator</a>
                             <a href="{{ route('finance.depreciation') }}" class="block px-4 py-2 hover:bg-gray-100">Depreciation</a>
@@ -451,7 +452,7 @@
                     <form action="{{ url('/search') }}" method="GET" class="hidden xl:block">
                         <div class="relative"> <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" /> <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span> </div>
                     </form>
-                    <div id="suggestions" class="suggestion hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-gray-900 text-gray-700">suggestions</div>
+                    <ul id="suggestions" class="suggestion max-h-[40vh] overflow-y-hidden hidden rounded-lg absolute left-2 top-10 bg-gray-100/80 border border-1px border-emerald-800 text-gray-700">suggestions</ul>
                 </div>
 
                 <!-- Theme toggle -->
@@ -481,11 +482,13 @@
     <div id="testing2" class="search-wrapper hidden fixed top-[40vh] left-1/2 -translate-x-1/2 z-[1000000] bg-white/90 dark:bg-slate-800 p-4 rounded-2xl shadow-xl">
         <form action="/search" method="GET" class="block">
             <div class="relative">
-                <input id="hello" type="text" placeholder="Search calculators…"
-                    class="sea search w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
+                <form action="">
+                    <input id="hello" type="text" placeholder="Search calculators…"
+                        class="sea search w-80 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" />
+                </form>
                 <span class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500 close-x">X</span>
             </div>
         </form>
-        <div class="suggestion hidden rounded-lg absolute left-2 top-16 bg-gray-100 border border-gray-900 text-gray-700"></div>
+        <ul class="suggestion hidden max-h-[40vh] overflow-y-hidden rounded-lg absolute left-2 top-16 bg-gray-100 border border-emerald-800 text-gray-700"></ul>
     </div>
     <x-simplecalculator />

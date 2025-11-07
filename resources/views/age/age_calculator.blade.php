@@ -53,10 +53,10 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                             <option value="12">December</option>
                         </select>
                         <input id="dobDay" type="number" placeholder="Day" min="1" max="31"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                         <input id="dobYear" type="number" placeholder="Year" min="1900"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                     </div>
                 </div>
@@ -83,23 +83,25 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                             <option value="12">December</option>
                         </select>
                         <input id="tillDay" type="number" placeholder="Day" min="1" max="31"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            class="rounded-xl border search border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                         <input id="tillYear" type="number" placeholder="Year" min="1900"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                     </div>
                 </div>
 
                 {{-- Button --}}
-                <div class="flex items-end">
+                <div class="flex items-end btn-container gap-2">
                     <button id="btnCalculateAge"
-                        class="w-full flex items-center w-[30%] sm:w-[25%] justify-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-white text-sm font-medium hover:bg-teal-700 transition">
+                        class="w-full flex items-center w-[30%] sm:w-[20%] lg:w-[15%] justify-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-white text-sm font-medium hover:bg-teal-700 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 8v4l3 3M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" />
                         </svg>
                         Calculate
                     </button>
+                    <button
+                        id="reset" class="rounded-xl bg-yellow-500 px-4 py-2 text-white text-sm font-medium hover:bg-yellow-600 transition">Reset</button>
                 </div>
             </div>
         </div>
@@ -121,69 +123,140 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
         {{-- Info Section --}}
         <div class="mt-8">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">About This Calculator</h2>
-            <div class="rounded-2xl border border-yellow-200 bg-yellow-100/30 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)] 
+            <div
+                class="rounded-2xl border border-yellow-200 bg-yellow-100/30 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)] 
 dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
   dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 text-sm text-gray-700 dark:text-gray-300">
-                This Age Calculator helps you determine your exact age in years, months, and days between two given dates. Simply enter your date of birth and the date you want to calculate till.
+                This Age Calculator helps you determine your exact age in years, months, and days between two given dates.
+                Simply enter your date of birth and the date you want to calculate till.<br><br>
+
+                🕒 <span class="font-semibold text-gray-900 dark:text-white">Smart Date Handling:</span><br>
+                • If you leave the <strong>“Till Date”</strong> fields empty, the calculator will automatically use today’s date.<br>
+                • If you enter only the <strong>year</strong> (e.g., 2020), it will use the <strong>current month and day</strong> with your given year.<br>
+                • If you enter the <strong>day and year</strong> but skip the month, it will use the <strong>current month</strong> with your given day and year.<br>
+                • If you enter the <strong>month and year</strong> but skip the day, it will use the <strong>current day</strong> for calculation.<br><br>
+
+                This makes it easier to calculate your age even if you don’t provide a complete till date.
             </div>
         </div>
+
     </div>
 </div>
 
 <script>
-    document.getElementById("btnCalculateAge").addEventListener("click", function() {
-        let dobMonth = document.getElementById("dobMonth").value;
-        let dobDay = document.getElementById("dobDay").value;
-        let dobYear = document.getElementById("dobYear").value;
-        let tillMonth = document.getElementById("tillMonth").value;
-        let tillDay = document.getElementById("tillDay").value;
-        let tillYear = document.getElementById("tillYear").value;
-        let errorBox = document.getElementById("errorAge");
-        let resultAge = document.getElementById("resultAge");
-        let resultSubAge = document.getElementById("resultSubAge");
-        // Validate DOB
+    $(document).ready(function() {
+        $("#btnCalculateAge").on("click", function() {
+            let dobMonth = $("#dobMonth").val();
+            let dobDay = $("#dobDay").val();
+            let dobYear = $("#dobYear").val();
+            let tillMonth = $("#tillMonth").val();
+            let tillDay = $("#tillDay").val();
+            let tillYear = $("#tillYear").val();
+            let $errorBox = $("#errorAge");
+            let $resultAge = $("#resultAge");
+            let $resultSubAge = $("#resultSubAge");
+            let $btnCalculateAge = $("#btnCalculateAge");
+            let $btnContainer = $(".btn-container");
+            let $reset = $("#reset");
+            let results = {};
 
+            function showResult(response) {
+                $resultAge.text((Math.floor(response.result.years) || 0) + " years, " + response.result.months + " months");
+                $resultSubAge.text(response.result.days + " days");
+                $btnCalculateAge.addClass("hidden");
 
-        $.ajax({
-            url: "{{ route('age.calculate') }}",
-            method: "POST",
-            data: {
-                dob_month: dobMonth,
-                dob_day: dobDay,
-                dob_year: dobYear,
-                till_month: tillMonth,
-                till_day: tillDay,
-                till_year: tillYear,
-                _token: "{{ csrf_token() }}"
-            },
-            success: function(response) {
-                errorBox.classList.add("hidden");
-                console.log(response);
-                resultAge.textContent = Math.floor(response.result.years) + " years, " + response.result.months + " months";
-                resultSubAge.textContent = response.result.days + " days total";
-            },
-            error: function(xhr) {
-                let errors = xhr.responseJSON.errors;
-                console.log(xhr);
-                let errorMessages = [];
-                for (let key in errors) {
-                    if (errors.hasOwnProperty(key)) {
-                        errorMessages.push(errors[key][0]);
-                    }
-                }
-                errorBox.innerHTML = errorMessages.join("<br>");
-                errorBox.classList.remove("hidden");
-                resultAge.textContent = "—";
-                resultSubAge.textContent = "";
+                // Create and append Save Result button
+                let $button = $("<button>")
+                    .text("Save Result")
+                    .addClass("w-full save-age flex items-center w-[30%] sm:w-[20%] lg:w-[15%] justify-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-white text-sm font-medium hover:bg-teal-700 transition");
+                $btnContainer.prepend($button);
             }
+
+            function showError(errors, errorMessages) {
+                $.each(errors, function(key, value) {
+                    errorMessages.push(value[0]);
+                });
+                $errorBox.html(errorMessages.join("<br>")).removeClass("hidden");
+                $resultAge.text("—");
+                $resultSubAge.text("");
+            }
+
+            function reset() {
+                $("#dobMonth").val("");
+                $("#dobDay").val("");
+                $("#dobYear").val("");
+                $("#tillMonth").val("");
+                $("#tillDay").val("");
+                $("#tillYear").val("");
+                $resultAge.text("—");
+                $resultSubAge.text("");
+            }
+            $reset.on("click", function() {
+                reset();
+                btnToggle();
+            });
+            $.ajax({
+                url: "{{ route('age.calculate') }}",
+                method: "POST",
+                data: {
+                    dob_month: dobMonth,
+                    dob_day: dobDay,
+                    dob_year: dobYear,
+                    till_month: tillMonth,
+                    till_day: tillDay,
+                    till_year: tillYear,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    $errorBox.addClass("hidden");
+                    results = {
+                        ...response.result
+                    };
+                    console.log(results);
+                    showResult(response);
+                },
+                error: function(xhr) {
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessages = [];
+                    showError(errors, errorMessages);
+                }
+            });
+
+            function btnToggle() {
+                $('.save-age').hide().remove();
+                $btnCalculateAge.removeClass("hidden").addClass('block');
+            }
+            $('input, select').on('input change', function() {
+                btnToggle();
+            });
+
+            $(document).on("click", ".save-age", function() {
+                $.ajax({
+                    url: "{{ route('age.save') }}",
+                    method: "POST",
+                    contentType: "application/json",
+                    dataType: "json",
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+                    data: JSON.stringify(results),
+                    success: function(response) {
+
+                        reset();
+
+                    },
+                    error: function(xhr) {
+                        console.log(xhr);
+                        let errors = xhr.responseJSON.errors;
+                        let errorMessages = [];
+                        showError(errorMessages);
+                    }
+                });
+            });
+
         });
-
-
-
-
-
-
     });
 </script>
+
 
 <x-appfooter />

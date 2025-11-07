@@ -7,7 +7,7 @@
             data-modal-target="{{ $f['data'] }}" id="{{ $f['id'] }}">
             <div class="flex items-center justify-between">
                 <span
-                    class="inline-flex items-center rounded-full border border-1 border-yellow-600 px-2 py-0.5 text-sm text-slate-600 dark:text-slate-300 dark:border-slate-600">{{ $f['tag'] }}</span>
+                    class="inline-flex items-center rounded-full border border-1 border-yellow-600 px-2 py-0.5 text-sm text-emerald-700 dark:text-slate-300 dark:border-slate-600">{{ $f['tag'] }}</span>
             </div>
             <h1 class="mt-3 font-semibold text-lg">{{ $f['title'] }}</h1>
             <button data-modal-target="{{ $f['data'] }}"

@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="lg:justify-self-end">
-                <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 p-6 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-sm text-slate-500 mb-2">Quick Access</div>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         @php
@@ -39,7 +39,7 @@
                         ];
                         @endphp
                         @foreach($quick as $c)
-                        <a href="{{ route($c['href']) }}" class="group rounded-xl border border-slate-200 bg-white p-4 hover:shadow-card transition dark:bg-slate-900 dark:border-slate-700">
+                        <a href="{{ route($c['href']) }}" class="group rounded-xl border  border-red-300 bg-red-100 p-4 hover:shadow-card transition dark:bg-slate-900 dark:border-slate-700">
                             <div class="font-semibold">{{ $c['name'] }}</div>
                             <div class="text-xs text-slate-500">{{ $c['desc'] }}</div>
                             <div class="mt-3 text-brand text-sm opacity-0 group-hover:opacity-100 transition">Open →</div>
@@ -107,15 +107,15 @@
         <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
             <h2 class="text-xl font-bold mb-4">Why QuickCalculateIt</h2>
             <div class="grid gap-4 md:grid-cols-3">
-                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Accuracy</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">Well-tested formulas and unit handling.</p>
                 </div>
-                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Speed (AJAX)</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">Instant results with debounced requests.</p>
                 </div>
-                <div class="rounded-2xl border border-emerald-300 bg-white p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
                     <div class="font-semibold mb-1">Privacy</div>
                     <p class="text-sm text-slate-600 dark:text-slate-400">permanent storage for history; sync when logged in.</p>
                 </div>

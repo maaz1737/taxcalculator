@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AgeRequest;
+use App\Models\Age;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AgeController extends Controller
 {
-    public function calculate(Request $request)
+    public function index()
     {
-        $validated = $request->validate([
-            'dob_day' => 'required|integer|min:1|max:31',
-            'dob_month' => 'required|integer|min:1|max:12',
-            'dob_year' => 'required|integer|min:1900|max:' . now()->year,
-            'till_day' => 'nullable|integer|min:1|max:31',
-            'till_month' => 'nullable|integer|min:1|max:12',
-            'till_year' => 'nullable|integer|min:1900|max:' . now()->year,
-        ]);
+        return view('age.age_calculator');
+    }
+    public function calculate(AgeRequest $request)
+    {
+        $validated = $request->validated();
 
         $tillYear = $validated['till_year'] ?? now()->year;
         $tillMonth = $validated['till_month'] ?? now()->month;
@@ -40,5 +39,18 @@ class AgeController extends Controller
                 'days' => $days,
             ]
         ]);
+    }
+    public function save(Request $request)
+    {
+        $data = $request->all();
+
+        Age::create([
+            'years' => $data['years'],
+            'months' => $data['months'],
+            'days' => $data['days'],
+            // Add other fields as necessary
+        ]);
+
+        return response()->json(['message' => 'Age calculation saved successfully.']);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgeController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
@@ -160,8 +161,7 @@ Route::get('/cancel', [StripeController::class, 'cancel']);
 
 // point of interest routes
 
-Route::get('/agecalculator', function () {
-    return view('age.age_calculator');
-})->name('avg.calculator');
+Route::get('/agecalculator', [AgeController::class, 'index'])->name('age.calculator.view');
 
 Route::post('/age/calculator', [App\Http\Controllers\AgeController::class, 'calculate'])->name('age.calculate');
+Route::post('/age/save', [App\Http\Controllers\AgeController::class, 'save'])->name('age.save');
