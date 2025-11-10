@@ -5,7 +5,7 @@ use App\Http\Controllers\AiSuggestController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
-use App\Http\Controllers\CountriesTime;
+use App\Http\Controllers\CountriesTimeController;
 use App\Http\Controllers\FavoriteCalculatorsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LengthController;
@@ -63,10 +63,9 @@ Route::view('/volume', 'volume.volume')->name('volume');
 Route::view('/mortgage', 'finance/mortgage')->name('finance.mortgage');
 Route::view('/auto', 'finance/auto')->name('page.auto');
 Route::view('/loan', 'finance/loan')->name('page.loan');
-Route::view('/tax/calculation/calculator', 'finance/income-tax')->name('finance.tax');
 Route::view('/depreciation', 'finance/depreciation')->name('finance.depreciation');
 Route::view('/rent/calculation/calculator', 'finance.rent')->name('finance.rent');
-Route::view('/income-tax', 'finance.income-tax')->name('finance.income_tax');
+Route::view('/income-tax-calculator', 'finance.income-tax')->name('finance.income_tax');
 
 
 Route::view('/salary/calculation/calculator', 'finance.salary')->name('finance.salary');
@@ -170,6 +169,6 @@ Route::post('/age/calculator', [App\Http\Controllers\AgeController::class, 'calc
 Route::post('/age/save', [App\Http\Controllers\AgeController::class, 'save'])->name('age.save');
 
 
-Route::get('/wolrd-times', [CountriesTime::class, 'index'])->name('world.time');
-Route::get('/current-time-in-new-york-united-states', [CountriesTime::class, 'newyork_time'])->name('newyork.time');
-Route::get('/australia/sydney', [CountriesTime::class, 'australia_time'])->name('australia.time');
+Route::get('/wolrd-times', [CountriesTimeController::class, 'index'])->name('world.time');
+Route::get('/current-time-in-new-york-united-states', [CountriesTimeController::class, 'newyork_time'])->name('newyork.time');
+Route::get('/australia/sydney', [CountriesTimeController::class, 'australia_time'])->name('australia.time');

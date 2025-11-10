@@ -12,6 +12,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quickcalculateit.com/length-converter">
     <meta property="og:image" content="https://quickcalculateit.com/images/staticimages/logo_2.png">
+    <meta property="keyword" content="{{$key}}">
+
     <meta property="og:locale" content="en_AU">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="https://quickcalculateit.com/images/staticimages/logo_2.png">
