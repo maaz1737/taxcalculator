@@ -5,8 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="{{ $des }}">
-    <meta name="keywords" content="{{ $key }}">
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="{{$title}}">
+    <meta property="og:description" content="{{ $des }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quickcalculateit.com/length-converter">
+    <meta property="og:image" content="https://quickcalculateit.com/images/staticimages/logo_2.png">
+    <meta property="og:locale" content="en_AU">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="https://quickcalculateit.com/images/staticimages/logo_2.png">
+    <meta name="twitter:title" content="{{ $titleTwitter ?? 'twitter' }}">
+    <meta name="twitter:description" content="{{ $des ?? 'Explore 20+ free online calculators including unit converters, finance tools, fitness calculators, math calculators, and more. Fast, accurate, and easy to use for everyday calculations.' }}">
+    <meta name="twitter:image" content="https://quickcalculateit.com/images/staticimages/logo_2.png">
+
 
     <title>{{ $title  }}</title>
 
@@ -14,6 +26,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" sizes="32x32" type="image/png" href="https://quickcalculateit.com/images/staticimages/logo_2.png">
+
     <style>
         /* Base style */
         .form-control {
@@ -329,6 +344,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
 
+
     <script>
         $.ajaxSetup({
             headers: {
@@ -380,7 +396,7 @@
                 <!-- LOGO -->
                 <a href="{{ url('/') }}" class="flex items-center gap-2 min-w-[70px]">
                     <div class="text-brand grid place-items-center font-extrabold">
-                        <img class="w-[55px] sm:w-[65px] object-contain" src="{{ asset('images/staticimages/logo_2.png') }}" alt="Logo">
+                        <img class="w-[55px] sm:w-[65px] object-contain" src="{{ asset('images/staticimages/logo_2.png') }}" alt="calculator logo" />
                     </div>
                 </a>
 
@@ -408,7 +424,7 @@
 
                 <nav class="hidden md:flex items-center gap-2 text-sm relative flex-wrap text-white">
                     <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Home</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
+                    <a href="{{route('world.time')}}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Calculators</a>
 
                     <div class="relative">
                         <button id="categories-btn" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">

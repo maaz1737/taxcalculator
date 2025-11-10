@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AgeController;
+use App\Http\Controllers\AiSuggestController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
+use App\Http\Controllers\CountriesTime;
 use App\Http\Controllers\FavoriteCalculatorsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LengthController;
@@ -51,7 +53,8 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
-Route::view('/length', 'length.index')->name('length');
+Route::view('/length-converter', 'length.index')->name('length');
+
 Route::view('/area', 'area.area')->name('area');
 Route::view('/weight', 'weight.weight')->name('weight');
 Route::view('/temperature', 'temperature.temperature')->name('temperature');
@@ -165,3 +168,8 @@ Route::get('/agecalculator', [AgeController::class, 'index'])->name('age.calcula
 
 Route::post('/age/calculator', [App\Http\Controllers\AgeController::class, 'calculate'])->name('age.calculate');
 Route::post('/age/save', [App\Http\Controllers\AgeController::class, 'save'])->name('age.save');
+
+
+Route::get('/wolrd-times', [CountriesTime::class, 'index'])->name('world.time');
+Route::get('/current-time-in-new-york-united-states', [CountriesTime::class, 'newyork_time'])->name('newyork.time');
+Route::get('/australia/sydney', [CountriesTime::class, 'australia_time'])->name('australia.time');

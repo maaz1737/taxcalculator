@@ -1,0 +1,77 @@
+:root {
+    --dial-size: 260px;
+    --center-size: 14px;
+}
+
+.dial {
+    position: relative;
+    width: var(--dial-size);
+    height: var(--dial-size);
+    margin: 0 auto;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(30, 41, 59, 0.9),
+        rgba(15, 23, 42, 1)
+    );
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.35);
+}
+
+.num {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #00edff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 2px 5px rgba(0, 255, 255, 0.7);
+    z-index: 3;
+}
+
+.hand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%) rotate(0deg);
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.hour {
+    width: 8px;
+    height: 80px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.minute {
+    width: 6px;
+    height: 100px;
+    background: #00eaff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.9);
+}
+
+.second {
+    width: 3px;
+    height: 110px;
+    background: #ff3358;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.center-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--center-size);
+    height: var(--center-size);
+    transform: translate(-50%, -50%);
+    background: #00f7ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 1);
+    z-index: 11;
+}

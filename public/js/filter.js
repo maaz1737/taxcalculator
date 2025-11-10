@@ -650,21 +650,3 @@ $(document).on("click", function (e) {
         closeSearch();
     }
 });
-
-$(".sea").on("input", function () {
-    const query = $(this).val().trim();
-    if (query.length < 3) return;
-
-    $.ajax({
-        url: "/ai-suggest",
-        method: "GET",
-        data: { q: query },
-        success: function (res) {
-            console.log(res);
-        },
-    });
-});
-
-$(document).on("click", "#suggestionBox li", function () {
-    window.location.href = $(this).data("url");
-});
