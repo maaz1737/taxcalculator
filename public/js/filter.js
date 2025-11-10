@@ -581,7 +581,7 @@ $(".sea").on("input change keyup", function () {
             $box.append(`
         <li 
           class="px-4 rounded-lg py-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
-                 cursor-pointer text-gray-800 dark:text-gray-200 transition-colors duration-150"
+                 cursor-pointer text-gray-800 dark:text-gray-900 transition-colors duration-150"
           data-url="${item.url}"
         >
           ${item.text}
@@ -649,4 +649,22 @@ $(document).on("click", function (e) {
     if (!isInsideTesting2 && !isInsideBrowseCal && isVisible) {
         closeSearch();
     }
+});
+
+$(".sea").on("input", function () {
+    const query = $(this).val().trim();
+    if (query.length < 3) return;
+
+    $.ajax({
+        url: "/ai-suggest",
+        method: "GET",
+        data: { q: query },
+        success: function (res) {
+            console.log(res);
+        },
+    });
+});
+
+$(document).on("click", "#suggestionBox li", function () {
+    window.location.href = $(this).data("url");
 });

@@ -452,7 +452,7 @@
                     <form action="{{ url('/search') }}" method="GET" class="hidden xl:block">
                         <div class="relative"> <input id="" type="text" placeholder="Search calculators…" class=" sea search-input w-80 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none ring-1 ring-transparent focus:ring-brand/30 dark:bg-slate-800 dark:border-slate-700" /> <span id="" class="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">/</span> </div>
                     </form>
-                    <ul id="suggestions" class="suggestion max-h-[40vh] overflow-y-hidden hidden rounded-lg absolute left-2 top-10 bg-gray-100/80 border border-1px border-emerald-800 text-gray-700">suggestions</ul>
+                    <ul id="suggestions" class="suggestion  max-h-[40vh] overflow-y-hidden hidden rounded-lg absolute left-2 top-10 bg-gray-100 border border-1px border-emerald-800 text-gray-700">suggestions</ul>
                 </div>
 
                 <!-- Theme toggle -->
@@ -460,7 +460,6 @@
                     class="rounded-xl border border-black bg-black/70 px-3 py-2 text-sm hover:border-brand/30 hover:bg-black transition dark:bg-white dark:border-slate-700">
                     🌙
                 </button>
-
                 @guest
                 <a href="{{ route('login') }}" class="rounded-xl bg-yellow-600 px-4 py-2 text-white text-sm hover:bg-yellow-700 transition">
                     Login
