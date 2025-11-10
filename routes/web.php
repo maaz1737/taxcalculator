@@ -171,4 +171,6 @@ Route::post('/age/save', [App\Http\Controllers\AgeController::class, 'save'])->n
 
 Route::get('/wolrd-times', [CountriesTimeController::class, 'index'])->name('world.time');
 Route::get('/current-time-in-new-york-united-states', [CountriesTimeController::class, 'newyork_time'])->name('newyork.time');
-Route::get('/australia/sydney', [CountriesTimeController::class, 'australia_time'])->name('australia.time');
+Route::get('/current-time-in-sydney-australia', [CountriesTimeController::class, 'australia_time'])->name('australia.time');
+Route::get('/current-time-in-tokyo-japan', [CountriesTimeController::class, 'japan_time'])->name('japan.time');
+Route::get('/current-time-in-Kathmandu-nepal', [CountriesTimeController::class, 'nepal_time'])->name('nepal.time');

@@ -119,7 +119,7 @@
                 to,
                 value,
             });
-            $elResult.text(conv.result);
+            $elResult.text(Math.round(conv.result * 100) / 100);
             $elToUnit.text(to);
 
             const tbl = await fetchJson("/convert/table", {
@@ -132,7 +132,7 @@
             for (const row of tbl.rows || []) {
                 const $tr = $("<tr>");
                 const $tdU = $("<td>").text(row.unit);
-                const $tdV = $("<td>").text(row.value);
+                const $tdV = $("<td>").text(Math.round(row.value * 100) / 100);
                 $tr.append($tdU, $tdV);
                 $elTable.append($tr);
 

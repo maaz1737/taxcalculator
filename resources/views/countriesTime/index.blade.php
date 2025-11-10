@@ -25,6 +25,18 @@
                     'summary' => 'Get the current time in Australia with our live time calculator. View accurate local time and timezone details for cities across Australia, including Sydney, Melbourne, and Brisbane.',
                     'route' => 'australia.time'
                 ],
+                [
+                    'name' => 'Japan Current Time',
+                    'summary' => 'Get the current time in Japan with our live time calculator. View accurate local time and timezone details for major cities including Tokyo, Osaka, Kyoto, Hiroshima, and Nagasaki.',
+                    'route' => 'japan.time'
+                ],
+
+                [
+                    'name' => 'Nepal Current Time',
+                    'summary' => 'Get the current time in Nepal with our live time calculator. View accurate local time and timezone details for major cities including Kathmandu, Pokhara, Biratnagar, and Lalitpur.',
+                    'route' => 'nepal.time'
+                ],
+
             ];
 
             ?>

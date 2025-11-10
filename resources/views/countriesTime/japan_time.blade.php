@@ -1,22 +1,20 @@
 <x-app
-    :title="'Sydney Time Now – Current Time in Sydney, Australia | Live Time Zone Converter'"
-    :titleTwitter="'Sydney Time Now – Live Time in Australia'"
-    :des="'Check the current time in Sydney, Australia with our live time clock and time zone converter. View Sydney local time, compare time differences, convert time zones, and see Sydney daylight saving updates instantly.'"
-    :key="'Sydney time now, current time in Sydney, Sydney Australia time, live Sydney clock, Sydney timezone, Australia time converter, Sydney time difference, Sydney local time, time in Australia NSW, Sydney daylight saving time, convert local time to Sydney, world clock Sydney, online time zone converter Australia'" />
-
-
+    :title="'Japan Time Now – Current Time in Japan (Tokyo) | Live Japan Time Zone Converter'"
+    :titleTwitter="'Japan Time Now – Live Tokyo Time'"
+    :des="'Check the current time in Japan (Tokyo) with our live online clock. View Japan local time, compare your time zone with Tokyo, see Japan daylight saving rules, and convert your local time instantly.'"
+    :key="'Japan time now, current time in Japan, Tokyo time now, Japan timezone, Japan local time, time in Tokyo, Japan time converter, live Japan clock, Japan time difference, world clock Japan, Asia/Tokyo time, Japanese time now, convert local time to Japan, online Japan time zone converter'" />
 <div class="bg-emerald-50 text-black dark:bg-slate-900 text-white">
     <div class="w-full min-h-[70vh] py-10 flex flex-col lg:flex-row items-center justify-center gap-16 text-center">
 
-        <!-- Sydney Time -->
+        <!-- Japan Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Sydney 🇦🇺</h3>
-            <div class="dial" id="syd-dial"></div>
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Japan 🇯🇵 (Tokyo)</h3>
+            <div class="dial" id="jp-dial"></div>
 
             <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
-                <p id="syd-day" class="font-bold"></p>
-                <p id="syd-date"></p>
-                <p id="syd-time" class="text-xl font-semibold"></p>
+                <p id="jp-day" class="font-bold"></p>
+                <p id="jp-date"></p>
+                <p id="jp-time" class="text-xl font-semibold"></p>
             </div>
         </div>
 
@@ -36,22 +34,24 @@
 
     </div>
 
-    <!-- ✅ SEO TEXT SECTION FOR SYDNEY -->
+    <!-- ✅ SEO TEXT SECTION FOR JAPAN -->
     <div class="w-full max-w-3xl mx-auto mt-12 p-6 bg-yellow-100/30 rounded-xl shadow border border-yellow-300 dark:text-gray-100 dark:bg-slate-600/50 dark:border-slate-700/40">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Sydney Current Time</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Japan Current Time (Tokyo Time)</h2>
+
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Sydney, Australia operates on Australian Eastern Time, which includes Australian Eastern Standard Time (AEST) and Australian Eastern Daylight Time (AEDT) during daylight saving months. If you need to check the <strong>current time in Sydney</strong>, this online clock provides accurate and real-time results based on the official Australia/Sydney timezone.
+            Japan operates on Japan Standard Time (JST), which is UTC +09:00. Unlike many other countries, Japan does not observe daylight saving time, making <strong>Japan time now</strong> consistent throughout the year. This online tool lets you instantly check the <strong>current time in Japan (Tokyo)</strong> with accurate and real-time results.
         </p>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Sydney time is especially important for international business, travel planning, forex trading, sports events, and communication with family or friends living in New South Wales. With our live Sydney clock, you can easily compare your local time with Sydney, helping you schedule calls or meetings without confusion.
+            Japan time is commonly used for business meetings, international trading, gaming events, travel planning, and coordinating with family or friends living in Tokyo. Use this tool to compare <strong>Japan time vs your local time</strong> to avoid confusion when scheduling anything across time zones.
         </p>
 
         <p class="text-gray-800 leading-relaxed dark:text-gray-200">
-            Use this tool to find <strong>Sydney time now</strong>, check the <strong>time difference between Sydney and your location</strong>, or convert your local time to match Australia/Sydney timezone instantly.
+            This calculator helps you convert your local time to <strong>Tokyo time</strong> instantly and provides quick access to Japan’s current date, day, and hour formatting. Perfect for online workers, traders, remote teams, and international travelers.
         </p>
     </div>
 </div>
+<x-appfooter />
 
 <script>
     const localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -63,9 +63,9 @@
             prefix: "local"
         },
         {
-            dialId: "syd-dial",
-            tz: "Australia/Sydney",
-            prefix: "syd"
+            dialId: "jp-dial",
+            tz: "Asia/Tokyo",
+            prefix: "jp"
         }
     ];
 
@@ -176,5 +176,3 @@
         });
     });
 </script>
-
-<x-appfooter />

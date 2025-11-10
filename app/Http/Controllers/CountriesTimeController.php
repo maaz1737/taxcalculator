@@ -18,4 +18,12 @@ class CountriesTimeController extends Controller
     {
         return view('countriesTime.australia_time');
     }
+    public function japan_time()
+    {
+        return view('countriesTime.japan_time');
+    }
+    public function nepal_time()
+    {
+        return view('countriesTime.nepal_time');
+    }
 }
