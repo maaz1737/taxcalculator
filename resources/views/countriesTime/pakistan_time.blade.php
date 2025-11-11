@@ -1,20 +1,21 @@
 <x-app
-    :title="'Japan Time Now – Current Time in Japan (Tokyo) | Live Japan Time Zone Converter'"
-    :titleTwitter="'Japan Time Now – Live Tokyo Time'"
-    :des="'Check the current time in Japan (Tokyo) with our live online clock. View Japan local time, compare your time zone with Tokyo, see Japan daylight saving rules, and convert your local time instantly.'"
-    :key="'Japan time now, current time in Japan, Tokyo time now, Japan timezone, Japan local time, time in Tokyo, Japan time converter, live Japan clock, Japan time difference, world clock Japan, Asia/Tokyo time, Japanese time now, convert local time to Japan, online Japan time zone converter'" />
+    :title="'Pakistan Time Now – Current Time in Pakistan (PKT) | Live Pakistan Time Zone Converter'"
+    :titleTwitter="'Pakistan Time Now – Live PKT Time'"
+    :des="'Check the current time in Pakistan (PKT) with our live online clock. View Pakistan local time, compare your time zone with Pakistan Standard Time, see PKT offset, and convert your local time instantly.'"
+    :key="'Pakistan time now, current time in Pakistan, PKT time now, Pakistan timezone, Pakistan local time, time in Pakistan, Pakistan time converter, live Pakistan clock, Pakistan time difference, world clock Pakistan, Asia/Karachi time, Pakistan time now, convert local time to Pakistan time, online Pakistan time zone converter'" />
+
 <div class="bg-emerald-50 text-black dark:bg-slate-900 text-white">
     <div class="w-full min-h-[70vh] py-10 flex flex-col lg:flex-row items-center justify-center gap-16 text-center">
 
-        <!-- Japan Time -->
+        <!-- Pakistan Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Japan 🇯🇵 (Tokyo)</h3>
-            <div class="dial" id="jp-dial"></div>
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Pakistan 🇵🇰 (PKT)</h3>
+            <div class="dial" id="pk-dial"></div>
 
             <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
-                <p id="jp-day" class="font-bold"></p>
-                <p id="jp-date"></p>
-                <p id="jp-time" class="text-xl font-semibold"></p>
+                <p id="pk-day" class="font-bold"></p>
+                <p id="pk-date"></p>
+                <p id="pk-time" class="text-xl font-semibold"></p>
             </div>
         </div>
 
@@ -34,23 +35,24 @@
 
     </div>
 
-    <!-- ✅ SEO TEXT SECTION FOR JAPAN -->
+    <!-- ✅ SEO TEXT SECTION FOR PAKISTAN -->
     <div class="w-full max-w-3xl mx-auto mt-12 p-6 bg-yellow-100/30 rounded-xl shadow border border-yellow-300 dark:text-gray-100 dark:bg-slate-600/50 dark:border-slate-700/40">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Japan Current Time (Tokyo Time)</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Pakistan Current Time (PKT – Pakistan Standard Time)</h2>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan operates on Japan Standard Time (JST), which is UTC +09:00. Unlike many other countries, Japan does not observe daylight saving time, making <strong>Japan time now</strong> consistent throughout the year. This online tool lets you instantly check the <strong>current time in Japan (Tokyo)</strong> with accurate and real-time results.
+            Pakistan follows <strong>Pakistan Standard Time (PKT)</strong>, which is UTC +05:00. Pakistan does not observe daylight saving time, meaning the time stays the same throughout the entire year. This tool shows the <strong>current time in Pakistan</strong> in real time with accurate digital and analog clock display.
         </p>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan time is commonly used for business meetings, international trading, gaming events, travel planning, and coordinating with family or friends living in Tokyo. Use this tool to compare <strong>Japan time vs your local time</strong> to avoid confusion when scheduling anything across time zones.
+            Pakistan time is important for business meetings, online classes, freelancing work, trading platforms, gaming, travel planning, and international communication. You can instantly check and compare <strong>Pakistan time vs your local time</strong> without any calculations.
         </p>
 
         <p class="text-gray-800 leading-relaxed dark:text-gray-200">
-            This calculator helps you convert your local time to <strong>Tokyo time</strong> instantly and provides quick access to Japan’s current date, day, and hour formatting. Perfect for online workers, traders, remote teams, and international travelers.
+            This tool displays Pakistan’s current day, date, and exact clock movement in real time. It is perfect for professionals, students, remote teams, travelers, freelancers, and anyone needing accurate PKT time.
         </p>
     </div>
 </div>
+
 <x-appfooter />
 
 <script>
@@ -63,9 +65,9 @@
             prefix: "local"
         },
         {
-            dialId: "jp-dial",
-            tz: "Asia/Tokyo",
-            prefix: "jp"
+            dialId: "pk-dial",
+            tz: "Asia/Karachi",
+            prefix: "pk"
         }
     ];
 

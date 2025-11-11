@@ -1,24 +1,25 @@
 <x-app
-    :title="'Japan Time Now – Current Time in Japan (Tokyo) | Live Japan Time Zone Converter'"
-    :titleTwitter="'Japan Time Now – Live Tokyo Time'"
-    :des="'Check the current time in Japan (Tokyo) with our live online clock. View Japan local time, compare your time zone with Tokyo, see Japan daylight saving rules, and convert your local time instantly.'"
-    :key="'Japan time now, current time in Japan, Tokyo time now, Japan timezone, Japan local time, time in Tokyo, Japan time converter, live Japan clock, Japan time difference, world clock Japan, Asia/Tokyo time, Japanese time now, convert local time to Japan, online Japan time zone converter'" />
+    :title="'USA California Time Now – Current Time in California | Live California Time Zone Converter'"
+    :titleTwitter="'USA California Time Now – Live California Time'"
+    :des="'Check the current time in USA (California) with our live online clock. View California local time, compare your time zone with California, see US daylight saving rules, and convert your local time instantly.'"
+    :key="'California time now, current time in California, USA California time, California timezone, California local time, time in California, California time converter, live California clock, California time difference, world clock California, America/Los_Angeles time, PST time now, convert local time to California, online California time zone converter'" />
+
 <div class="bg-emerald-50 text-black dark:bg-slate-900 text-white">
     <div class="w-full min-h-[70vh] py-10 flex flex-col lg:flex-row items-center justify-center gap-16 text-center">
 
-        <!-- Japan Time -->
+        <!-- California Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Japan 🇯🇵 (Tokyo)</h3>
-            <div class="dial" id="jp-dial"></div>
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">USA 🇺🇸 (California)</h3>
+            <div class="dial" id="ca-dial"></div>
 
             <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
-                <p id="jp-day" class="font-bold"></p>
-                <p id="jp-date"></p>
-                <p id="jp-time" class="text-xl font-semibold"></p>
+                <p id="ca-day" class="font-bold"></p>
+                <p id="ca-date"></p>
+                <p id="ca-time" class="text-xl font-semibold"></p>
             </div>
         </div>
 
-        <div class="text-black text-5xl dark:text-white"> = </div>
+        <div class="text-black text-xl dark:text-white"> = </div>
 
         <!-- Local Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
@@ -34,23 +35,24 @@
 
     </div>
 
-    <!-- ✅ SEO TEXT SECTION FOR JAPAN -->
+    <!-- ✅ SEO TEXT SECTION FOR CALIFORNIA -->
     <div class="w-full max-w-3xl mx-auto mt-12 p-6 bg-yellow-100/30 rounded-xl shadow border border-yellow-300 dark:text-gray-100 dark:bg-slate-600/50 dark:border-slate-700/40">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Japan Current Time (Tokyo Time)</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About USA California Current Time</h2>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan operates on Japan Standard Time (JST), which is UTC +09:00. Unlike many other countries, Japan does not observe daylight saving time, making <strong>Japan time now</strong> consistent throughout the year. This online tool lets you instantly check the <strong>current time in Japan (Tokyo)</strong> with accurate and real-time results.
+            California operates on Pacific Time, which alternates between Pacific Standard Time (PST, UTC -08:00) and Pacific Daylight Time (PDT, UTC -07:00) depending on daylight saving. This tool allows you to check the <strong>current time in California</strong> instantly with real-time results.
         </p>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan time is commonly used for business meetings, international trading, gaming events, travel planning, and coordinating with family or friends living in Tokyo. Use this tool to compare <strong>Japan time vs your local time</strong> to avoid confusion when scheduling anything across time zones.
+            California time is widely used for business meetings, trading, remote work, gaming, travel planning, and international coordination. Use this calculator to compare <strong>California time vs your local time</strong> and avoid confusion when scheduling online events or calls.
         </p>
 
         <p class="text-gray-800 leading-relaxed dark:text-gray-200">
-            This calculator helps you convert your local time to <strong>Tokyo time</strong> instantly and provides quick access to Japan’s current date, day, and hour formatting. Perfect for online workers, traders, remote teams, and international travelers.
+            This clock provides quick access to California’s current date, day, and time format. Ideal for remote teams, freelancers, stock traders, online workers, and international travelers.
         </p>
     </div>
 </div>
+
 <x-appfooter />
 
 <script>
@@ -63,9 +65,9 @@
             prefix: "local"
         },
         {
-            dialId: "jp-dial",
-            tz: "Asia/Tokyo",
-            prefix: "jp"
+            dialId: "ca-dial",
+            tz: "America/Los_Angeles",
+            prefix: "ca"
         }
     ];
 

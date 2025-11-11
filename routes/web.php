@@ -173,6 +173,17 @@ Route::get('/age-calculation-history', [AgeController::class, 'history'])->name(
 
 Route::get('/wolrd-times', [CountriesTimeController::class, 'index'])->name('world.time');
 Route::get('/current-time-in-new-york-united-states', [CountriesTimeController::class, 'newyork_time'])->name('newyork.time');
+Route::get('/current-time-in-california-united-states', [CountriesTimeController::class, 'california_time'])->name('california.time');
 Route::get('/current-time-in-sydney-australia', [CountriesTimeController::class, 'australia_time'])->name('australia.time');
 Route::get('/current-time-in-tokyo-japan', [CountriesTimeController::class, 'japan_time'])->name('japan.time');
 Route::get('/current-time-in-Kathmandu-nepal', [CountriesTimeController::class, 'nepal_time'])->name('nepal.time');
+Route::get('/current-time-in-thimphu-bhutan', [CountriesTimeController::class, 'bhutan_time'])->name('bhutan.time');
+
+
+
+
+Route::get('/current-time-in-Kolkata-india', [CountriesTimeController::class, 'india_time'])->name('india.time');
+Route::get('/current-time-in-dubai-uae', [CountriesTimeController::class, 'uae_time'])->name('uae.time');
+Route::get('/current-time-in-karachi-pakistan', [CountriesTimeController::class, 'pakistan_time'])->name('pakistan.time');
+Route::get('/current-time-in-riyadh-saudia-arabia', [CountriesTimeController::class, 'saudia_arabia_time'])->name('saudia.arabia.time');
+Route::get('/current-time-in-riyadh-dhaka-bangladesh', [CountriesTimeController::class, 'bangladesh_time'])->name('bangladesh.time');

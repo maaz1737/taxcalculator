@@ -1,20 +1,21 @@
 <x-app
-    :title="'Japan Time Now – Current Time in Japan (Tokyo) | Live Japan Time Zone Converter'"
-    :titleTwitter="'Japan Time Now – Live Tokyo Time'"
-    :des="'Check the current time in Japan (Tokyo) with our live online clock. View Japan local time, compare your time zone with Tokyo, see Japan daylight saving rules, and convert your local time instantly.'"
-    :key="'Japan time now, current time in Japan, Tokyo time now, Japan timezone, Japan local time, time in Tokyo, Japan time converter, live Japan clock, Japan time difference, world clock Japan, Asia/Tokyo time, Japanese time now, convert local time to Japan, online Japan time zone converter'" />
+    :title="'Bangladesh Time Now – Current Time in Bangladesh (Dhaka) | Live Bangladesh Time Zone Converter'"
+    :titleTwitter="'Bangladesh Time Now – Live Dhaka Time'"
+    :des="'Check the current time in Bangladesh (Dhaka) with our live online clock. View Bangladesh local time, compare your time zone with Dhaka, see Bangladesh daylight saving rules, and convert your local time instantly.'"
+    :key="'Bangladesh time now, current time in Bangladesh, Dhaka time now, Bangladesh timezone, Bangladesh local time, time in Dhaka, Bangladesh time converter, live Bangladesh clock, Bangladesh time difference, world clock Bangladesh, Asia/Dhaka time, Bangladesh time now live, convert local time to Bangladesh, online Bangladesh time zone converter'" />
+
 <div class="bg-emerald-50 text-black dark:bg-slate-900 text-white">
     <div class="w-full min-h-[70vh] py-10 flex flex-col lg:flex-row items-center justify-center gap-16 text-center">
 
-        <!-- Japan Time -->
+        <!-- Bangladesh Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Japan 🇯🇵 (Tokyo)</h3>
-            <div class="dial" id="jp-dial"></div>
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Bangladesh 🇧🇩 (Dhaka)</h3>
+            <div class="dial" id="bd-dial"></div>
 
             <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
-                <p id="jp-day" class="font-bold"></p>
-                <p id="jp-date"></p>
-                <p id="jp-time" class="text-xl font-semibold"></p>
+                <p id="bd-day" class="font-bold"></p>
+                <p id="bd-date"></p>
+                <p id="bd-time" class="text-xl font-semibold"></p>
             </div>
         </div>
 
@@ -34,23 +35,24 @@
 
     </div>
 
-    <!-- ✅ SEO TEXT SECTION FOR JAPAN -->
+    <!-- ✅ SEO TEXT SECTION FOR BANGLADESH -->
     <div class="w-full max-w-3xl mx-auto mt-12 p-6 bg-yellow-100/30 rounded-xl shadow border border-yellow-300 dark:text-gray-100 dark:bg-slate-600/50 dark:border-slate-700/40">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Japan Current Time (Tokyo Time)</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">About Bangladesh Current Time (Dhaka Time)</h2>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan operates on Japan Standard Time (JST), which is UTC +09:00. Unlike many other countries, Japan does not observe daylight saving time, making <strong>Japan time now</strong> consistent throughout the year. This online tool lets you instantly check the <strong>current time in Japan (Tokyo)</strong> with accurate and real-time results.
+            Bangladesh operates on Bangladesh Standard Time (BST), which is UTC +06:00. The country does not use daylight saving time, meaning the <strong>Bangladesh time now</strong> remains stable throughout the year. This online tool allows you to instantly check the <strong>current time in Bangladesh (Dhaka)</strong> with accurate real-time results.
         </p>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Japan time is commonly used for business meetings, international trading, gaming events, travel planning, and coordinating with family or friends living in Tokyo. Use this tool to compare <strong>Japan time vs your local time</strong> to avoid confusion when scheduling anything across time zones.
+            Bangladesh time is widely used for business, travel planning, online work, communication, and daily scheduling. Use this calculator to compare <strong>Bangladesh time vs your local time</strong> instantly so you can avoid time zone confusion when coordinating with people in Dhaka.
         </p>
 
         <p class="text-gray-800 leading-relaxed dark:text-gray-200">
-            This calculator helps you convert your local time to <strong>Tokyo time</strong> instantly and provides quick access to Japan’s current date, day, and hour formatting. Perfect for online workers, traders, remote teams, and international travelers.
+            This calculator helps you convert your local time to <strong>Dhaka time</strong> instantly and provides quick access to Bangladesh’s current date, day, and time format. Perfect for international workers, freelancers, travelers, traders, and remote teams.
         </p>
     </div>
 </div>
+
 <x-appfooter />
 
 <script>
@@ -63,9 +65,9 @@
             prefix: "local"
         },
         {
-            dialId: "jp-dial",
-            tz: "Asia/Tokyo",
-            prefix: "jp"
+            dialId: "bd-dial",
+            tz: "Asia/Dhaka",
+            prefix: "bd"
         }
     ];
 

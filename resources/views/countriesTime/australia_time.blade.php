@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="text-black text-xl dark:text-white"> = </div>
+        <div class="text-black text-5xl dark:text-white"> = </div>
 
         <!-- Local Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">

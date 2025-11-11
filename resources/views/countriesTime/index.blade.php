@@ -36,6 +36,41 @@
                     'summary' => 'Get the current time in Nepal with our live time calculator. View accurate local time and timezone details for major cities including Kathmandu, Pokhara, Biratnagar, and Lalitpur.',
                     'route' => 'nepal.time'
                 ],
+                [
+                    'name' => 'Saudi Arabia Current Time',
+                    'summary' => 'Get the current time in Saudi Arabia with our live time calculator. View accurate local time and timezone details for major cities including Riyadh, Jeddah, Mecca, and Medina.',
+                    'route' => 'saudia.arabia.time'
+                ],
+                [
+                    'name' => 'UAE Current Time',
+                    'summary' => 'Get the current time in United Arab Emirates (UAE) with our live time calculator. View accurate local time and timezone details for major cities including Dubai, Abu Dhabi, Sharjah, and Ajman.',
+                    'route' => 'uae.time'
+                ],
+                [
+                    'name' => 'India Current Time',
+                    'summary' => 'Get the current time in India with our live time calculator. View accurate local time and timezone details for major cities including New Delhi, Mumbai, Bangalore, and Chennai.',
+                    'route' => 'india.time'
+                ],
+                [
+                    'name' => 'pakistan Current Time',
+                    'summary' => 'Get the current time in Pakistan with our live time calculator. View accurate local time and timezone details for major cities including Islamabad, Karachi, Lahore, and Faisalabad.',
+                    'route' => 'pakistan.time'
+                ],
+                [
+                    'name' => 'bhutan Current Time',
+                    'summary' => 'Get the current time in Bhutan with our live time calculator. View accurate local time and timezone details for major cities including Thimphu, Paro, and Phuntsholing.',
+                    'route' => 'bhutan.time'
+                ],
+                [
+                    'name' => 'Bangladesh Current Time',
+                    'summary' => 'Get the current time in Bangladesh with our live time calculator. View accurate local time and timezone details for major cities including Dhaka, Chittagong, Khulna, and Sylhet.',
+                    'route' => 'bangladesh.time'
+                ],
+                [
+                    'name' => 'California Current Time',
+                    'summary' => 'Get the current time in California, USA with our live time calculator. View accurate local time and timezone details for major cities including Los Angeles, San Francisco, San Diego, and Sacramento.',
+                    'route' => 'california.time'
+                ]
 
             ];
 

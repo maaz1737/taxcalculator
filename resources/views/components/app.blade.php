@@ -439,21 +439,22 @@
                         <div id="categories-menu"
                             class="absolute  top-full max-h-[50vh] overflow-y-scroll  left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
                             <a href="{{ route('length') }}" class="block px-4 py-2 hover:bg-gray-100">Length Calculator</a>
-                            <a href="{{ route('finance.income_tax') }}" class="block px-4 py-2 hover:bg-gray-100">Tax calculator</a>
-                            <a href="{{ route('age.calculator.view') }}" class="block px-4 py-2 hover:bg-gray-100">Age calculator</a>
                             <a href="{{ route('area') }}" class="block px-4 py-2 hover:bg-gray-100">Area Calculator</a>
-                            <a href="{{ route('finance.rent') }}" class="block px-4 py-2 hover:bg-gray-100">Rent Calculator</a>
-                            <a href="{{ route('finance.depreciation') }}" class="block px-4 py-2 hover:bg-gray-100">Depreciation</a>
-                            <a href="{{ route('finance.mortgage') }}" class="block px-4 py-2 hover:bg-gray-100">Mortgage Calculator</a>
-                            <a href="{{ route('finance.salary') }}" class="block px-4 py-2 hover:bg-gray-100">Salary Calculator</a>
+                            <a href="{{ route('time') }}" class="block px-4 py-2 hover:bg-gray-100">Time Calculator</a>
                             <a href="{{ route('volume') }}" class="block px-4 py-2 hover:bg-gray-100">volume Calculator</a>
                             <a href="{{ route('temperature') }}" class="block px-4 py-2 hover:bg-gray-100">Temperature</a>
                             <a href="{{ route('weight') }}" class="block px-4 py-2 hover:bg-gray-100">Weight Calculator</a>
-                            <a href="{{ route('time') }}" class="block px-4 py-2 hover:bg-gray-100">Time Calculator</a>
-                            <a href="{{ route('fitness.bmi') }}" class="block px-4 py-2 hover:bg-gray-100">Bmi Calculator</a>
-                            <a href="{{ route('fitness.bmr') }}" class="block px-4 py-2 hover:bg-gray-100">Bmr Calculator</a>
-                            <a href="{{ route('fitness.tdee') }}" class="block px-4 py-2 hover:bg-gray-100">Tdee Calculator</a>
-                            <a href="{{ route('fitness.bodyfat') }}" class="block px-4 py-2 hover:bg-gray-100">Bodyfat Calculator</a>
+                            <a href="{{ route('age.calculator.view') }}" class="block px-4 py-2 hover:bg-gray-100">Age calculator</a>
+
+                            <a href="{{ route('finance.income_tax') }}" class="block px-4 py-2 hover:bg-gray-100">Tax calculator</a>
+                            <a href="{{ route('finance.rent') }}" class="block px-4 py-2 hover:bg-gray-100">Rent Calculator</a>
+                            <a href="{{ route('finance.salary') }}" class="block px-4 py-2 hover:bg-gray-100">Salary Calculator</a>
+                            <a href="{{ route('finance.depreciation') }}" class="block px-4 py-2 hover:bg-gray-100">Depreciation</a>
+                            <a href="{{ route('finance.mortgage') }}" class="block px-4 py-2 hover:bg-gray-100">Mortgage Calculator</a>
+                            <a href="{{ route('fitness.bmi') }}" class="block px-4 py-2 hover:bg-gray-100">BMI Calculator</a>
+                            <a href="{{ route('fitness.bmr') }}" class="block px-4 py-2 hover:bg-gray-100">BMR Calculator</a>
+                            <a href="{{ route('fitness.tdee') }}" class="block px-4 py-2 hover:bg-gray-100">TDEE Calculator</a>
+                            <a href="{{ route('fitness.bodyfat') }}" class="block px-4 py-2 hover:bg-gray-100">BodyFat Calculator</a>
                             <a href="{{ route('fitness.ideal') }}" class="block px-4 py-2 hover:bg-gray-100">Ideal Calculator</a>
                             <a href="{{ route('fitness.macros') }}" class="block px-4 py-2 hover:bg-gray-100">Macros Calculator</a>
                         </div>
