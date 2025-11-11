@@ -1,7 +1,7 @@
 <x-app
-    :title="'Age Calculator – Calculate Your Exact Age in Years, Months, and Days | QuickCalculatIt'"
-    :des="'QuickCalculatIt Age Calculator helps you find your exact age in years, months, and days by entering your date of birth and the date to calculate till.'"
-    :key="'age calculator, date of birth calculator, age finder, QuickCalculatIt'" />
+    :title="'Age Calculator – Calculate Your Exact Age in Years, Months, and Days | online calculator'"
+    :des="'online Age Calculator helps you find your exact age in years, months, and days by entering your date of birth and the date to calculate till.'"
+    :key="'age calculator, date of birth calculator, age finder, online calculator'" />
 
 <div class="min-h-screen bg-emerald-50 dark:bg-slate-900 py-10">
     <div class="container mx-auto max-w-5xl px-4">
@@ -35,6 +35,9 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date of Birth</label>
                     <div class="grid grid-cols-3 gap-2">
+                        <input id="dobDay" type="text" placeholder="Day" min="1" max="31"
+                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                         <select id="dobMonth"
                             class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
@@ -52,12 +55,13 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <input id="dobDay" type="number" placeholder="Day" min="1" max="31"
-                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                        <div class="relative col-span-1">
+                            <input id="dobYear" type="text" placeholder="Year" min="1900"
+                                class="rounded-xl search w-[100%] border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                        <input id="dobYear" type="number" placeholder="Year" min="1900"
-                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
-                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
+                            <datalist class="absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList"></datalist>
+                        </div>
+
                     </div>
                 </div>
 
@@ -65,6 +69,9 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Age at date</label>
                     <div class="grid grid-cols-3 gap-2">
+                        <input id="tillDay" type="text" placeholder="Day" min="1" max="31"
+                            class="rounded-xl border search border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
                         <select id="tillMonth"
                             class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
@@ -82,12 +89,13 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <input id="tillDay" type="number" placeholder="Day" min="1" max="31"
-                            class="rounded-xl border search border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                        <div class="relative col-span-1">
+                            <input id="tillYear" type="text" placeholder="Year" min="1900"
+                                class="rounded-xl w-[100%] search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                        <input id="tillYear" type="number" placeholder="Year" min="1900"
-                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
-                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
+                            <datalist class="absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList2"></datalist>
+                        </div>
+
                     </div>
                 </div>
 
@@ -101,7 +109,7 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                         Calculate
                     </button>
                     <button
-                        id="reset" class="rounded-xl bg-yellow-500 px-4 py-2 text-white text-sm font-medium hover:bg-yellow-600 transition">Reset</button>
+                        id="reset" class="rounded-xl bg-red-500 px-4 py-2 text-white text-sm font-medium hover:bg-red-600 transition">Reset</button>
                 </div>
             </div>
         </div>
@@ -117,6 +125,15 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                     <div id="resultAge" class="text-3xl font-semibold text-gray-900 dark:text-white">—</div>
                     <div id="resultSubAge" class="text-sm text-gray-500 dark:text-gray-400"></div>
                 </div>
+            </div>
+            <div>
+                <button id="openHistory"
+                    class="inline-flex w-[110px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
+            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300
+            dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900
+            shadow-sm transition">
+                    🕓 History
+                </button>
             </div>
         </div>
 
@@ -141,9 +158,73 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
         </div>
 
     </div>
+    <div id="historySheet" class=" scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+        <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900">
+            <!-- Sheet header -->
+            <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-slate-700">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Age – Full History</h3>
+                <button id="closeHistory" class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" aria-label="Close history">✕</button>
+            </div>
+            <!-- Sheet body -->
+            <div class="scroll-area p-5 overflow-y-auto max-h-[70vh]">
+                <!-- Example content; replace with your real history -->
+                <ol id="historyList" class="space-y-3 text-sm text-gray-700 dark:text-gray-300"></ol>
+
+                <div class="my-3" id="length_pagination"></div>
+
+            </div>
+            <!-- Sheet footer -->
+            <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                <button id="closeHistory2" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:focus:ring-slate-600">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
+    $(document).ready(function() {
+
+
+        $("#openHistory").on("click", function() {
+            $.ajax({
+                url: "{{ route('age.history') }}",
+                method: "GET",
+                success: function(response) {
+                    let $historyList = $("#historyList");
+                    $historyList.empty();
+                    if (response.history.length === 0) {
+                        $historyList.append('<li class="text-gray-500 dark:text-gray-400">No history available.</li>');
+                    } else {
+                        $.each(response.history, function(index, item) {
+                            let date = new Date(item.created_at)
+                            $historyList.append('<li class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">' +
+
+                                '<div><span class="font-semibold text-gray-900 dark:text-white">Age:</span> ' + Math.floor(item.years) + ' years, ' + item.months + ' months, ' + item.days + ' days</div>' +
+                                '<div class="text-xs text-gray-500 dark:text-gray-400">Calculated on: ' + date.toLocaleDateString('en-US') + '</div>' +
+                                '</li>');
+                        });
+                    }
+                    $("#historySheet").removeClass("translate-y-full opacity-0 pointer-events-none");
+                },
+                error: function(xhr) {
+                    console.log("Error fetching history:", xhr);
+                }
+            });
+        });
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
     $(document).ready(function() {
         $("#btnCalculateAge").on("click", function() {
             let dobMonth = $("#dobMonth").val();
@@ -242,6 +323,7 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                     data: JSON.stringify(results),
                     success: function(response) {
 
+                        btnToggle();
                         reset();
 
                     },
@@ -253,8 +335,31 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                     }
                 });
             });
+            yearsList
+
+
 
         });
+    });
+
+    $('#dobYear,#tillYear').on('input', function() {
+        let currentYear = new Date().getFullYear();
+        $(this).closest('div').find('datalist').empty();
+        for (let y = currentYear; y >= 1900; y--) {
+            $(this).closest('div').find('datalist').addClass('block').append(`<option value="${y}">${y}</option>`);
+        }
+    });
+    $("#yearsList,#yearsList2").on('click', 'option', function() {
+        $(this).closest('div').find('input').val($(this).val());
+        $(this).removeClass('block').empty();
+    });
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('#dobYear').length) {
+            $('#yearsList').removeClass('block').empty();
+        }
+        if (!$(e.target).closest('#tillYear').length) {
+            $('#yearsList2').removeClass('block').empty();
+        }
     });
 </script>
 

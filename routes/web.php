@@ -149,7 +149,7 @@ Route::post('/lenghtsave', [LengthController::class, 'store'])->middleware(['aut
 
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
-Route::get('tax/finance', [CategoryController::class, 'TaxFinance'])->name('tax.finance');
+Route::get('/tax/finance', [CategoryController::class, 'TaxFinance'])->name('tax.finance');
 Route::get('math/measurement', [CategoryController::class, 'MathMeasurement'])->name('math.measurement');
 Route::get('health/fitness', [CategoryController::class, 'HealthFitness'])->name('health.fitness');
 Route::get('/favorites/calculators', [FavoriteCalculatorsController::class, 'index'])->name('favorites.calculators');
@@ -163,10 +163,12 @@ Route::get('/cancel', [StripeController::class, 'cancel']);
 
 // point of interest routes
 
-Route::get('/agecalculator', [AgeController::class, 'index'])->name('age.calculator.view');
+Route::get('/age-calculator', [AgeController::class, 'index'])->name('age.calculator.view');
 
-Route::post('/age/calculator', [App\Http\Controllers\AgeController::class, 'calculate'])->name('age.calculate');
-Route::post('/age/save', [App\Http\Controllers\AgeController::class, 'save'])->name('age.save');
+Route::post('/age/calculator', [AgeController::class, 'calculate'])->name('age.calculate');
+Route::post('/age/save', [AgeController::class, 'save'])->name('age.save');
+Route::get('/age-calculation-history', [AgeController::class, 'history'])->name('age.history');
+
 
 
 Route::get('/wolrd-times', [CountriesTimeController::class, 'index'])->name('world.time');

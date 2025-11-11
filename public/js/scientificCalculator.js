@@ -90,6 +90,8 @@ $(function () {
     }
 
     function push(s, origin = "btn") {
+        console.log(s);
+        if (!input.length && ["*", "+", "/", "-", "^"].includes(s)) return;
         input += s;
         insStack.push({
             len: s.length,
@@ -415,7 +417,7 @@ $(function () {
             }
             throw new Error("Bad token");
         }
-        if (st.length !== 1) throw new Error("Malformed expression");
+        if (st.length !== 1) throw new Error("Enter Expression to Evaluate");
         return st[0];
     }
 
@@ -559,7 +561,7 @@ $(function () {
 
         // common buttons by id
         if (id === "btnClear") {
-            setInput("");
+            clearAll();
             return;
         }
         if (id === "btnClearAll") {

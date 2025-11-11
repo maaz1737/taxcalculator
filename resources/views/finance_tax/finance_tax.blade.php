@@ -25,7 +25,7 @@
 
 
         $cards_info = [
-            ['id' => 1, 'url' => 'finance.tax', 'logo' => '💸', 'heading' => 'Tax Calculator', 'text' => 'Estimate your income tax based on salary, deductions, and the current year’s tax slabs.', 'button' => 'Open Tax calculator', 'color' => 'bg-blue-100 
+            ['id' => 1, 'url' => 'finance.income_tax', 'logo' => '💸', 'heading' => 'Tax Calculator', 'text' => 'Estimate your income tax based on salary, deductions, and the current year’s tax slabs.', 'button' => 'Open Tax calculator', 'color' => 'bg-blue-100 
                             dark:bg-blue-900/30'],
             ['id' => 2, 'url' => 'finance.salary', 'logo' => '💼', 'heading' => 'Salary Calculator', 'text' => 'Calculate your net salary, tax deductions, and take-home pay after withholdings.', 'button' => 'Open Salary calculator', 'color' => 'bg-yellow-100 
                             dark:bg-yellow-900/30'],

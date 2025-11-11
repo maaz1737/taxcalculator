@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Age extends Model
 {
-    protected $fillable = ['years', 'months', 'days'];
+    protected $fillable = ['years', 'months', 'days', 'user_id'];
 }

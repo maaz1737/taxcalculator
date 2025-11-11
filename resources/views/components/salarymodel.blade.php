@@ -5,10 +5,10 @@
     <div class="popup-content bg-white dark:bg-gray-900 rounded-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 w-[min(960px,95vw)] max-h-[85vh] overflow-hidden p-0">
 
         <!-- Header (sticky) -->
-        <div class="sticky top-0 z-10 flex items-center justify-between px-5 py-3 rounded-t-2xl bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur border-b border-slate-200 dark:border-slate-700">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Salary (Gross ↔ Net) Calculator</h2>
+        <div class="sticky top-0 z-10 flex items-center justify-between px-5 py-3 rounded-t-2xl bg-emerald-800 dark:bg-gray-900/60 backdrop-blur border-b border-slate-200 dark:border-slate-700">
+            <h2 class="text-xl font-semibold text-gray-100 dark:text-white">Salary (Gross ↔ Net) Calculator</h2>
             <button id="closePopupSalaryCalculator"
-                class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900"
+                class="close-popup inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-100 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900"
                 aria-label="Close">✕</button>
         </div>
         <div class="relative z-[99999999999]">
@@ -20,12 +20,12 @@
         </div>
 
         <!-- Body (scroll container) -->
-        <div class="px-6 sm:px-8 py-6 overflow-y-auto max-h-[calc(85vh-48px-56px)] scroll-area">
+        <div class="px-6 sm:px-8 py-6 overflow-y-auto max-h-[calc(85vh-48px-56px)] scroll-area bg-emerald-50  dark:bg-gray-800/80">
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                 <!-- Left: Inputs -->
-                <div class="rounded-xl border border-slate-200/70 dark:border-slate-700/60 bg-white/70 dark:bg-gray-900/60 backdrop-blur p-5">
+                <div class="rounded-xl border border-yellow-300 dark:border-slate-700/60 bg-yellow-100/30 dark:bg-gray-900/60 backdrop-blur p-5">
 
 
                     <form id="salary-form" class="space-y-4">
@@ -34,7 +34,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Mode</label>
                             <select id="mode"
-                                class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                class="w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                                 <option value="gross_to_net" selected>Gross → Net</option>
                                 <option value="net_to_gross">Net → Gross</option>
                             </select>
@@ -60,7 +60,7 @@
                                 <div
                                     class="w-11 h-6 rounded-full bg-slate-300 dark:bg-slate-700 transition
              peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-slate-300 dark:peer-focus:ring-slate-600
-             peer-checked:bg-gray-900 dark:peer-checked:bg-white relative
+             peer-checked:bg-emerald-800 dark:peer-checked:bg-white relative
              after:content-[''] after:absolute after:top-[2px] after:left-[2px]
              after:h-5 after:w-5 after:rounded-full after:bg-white dark:after:bg-gray-900
              after:shadow after:transition-all peer-checked:after:translate-x-5">
@@ -72,7 +72,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Pay Frequency</label>
                             <select id="pay_frequency"
-                                class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                class="w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                                 <option value="hourly">Hourly</option>
                                 <option value="weekly">Weekly</option>
                                 <option value="biweekly">Bi-Weekly</option>
@@ -85,7 +85,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Amount</label>
                             <input type="number" id="amount" value="6000"
-                                class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" required>
+                                class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" required>
                             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Gross if Gross→Net; Target Net if Net→Gross.</p>
                         </div>
 
@@ -93,12 +93,12 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Hours / Week</label>
                                 <input type="number" id="hours_per_week" value="40"
-                                    class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                    class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Weeks / Year</label>
                                 <input type="number" id="weeks_per_year" value="52"
-                                    class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                    class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                             </div>
                         </div>
 
@@ -106,17 +106,17 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Country</label>
                                 <input type="text" id="country_code" value="US"
-                                    class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                    class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Region</label>
                                 <input type="text" id="region_code" placeholder="CA / ON / PK-ISB"
-                                    class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                    class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Tax Year</label>
                                 <input type="number" id="tax_year" value="2024"
-                                    class="search w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
+                                    class="search w-full p-3 rounded-lg border border-yellow-300 dark:border-slate-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@
                 </div>
 
                 <!-- Right: Results -->
-                <div class="rounded-xl border border-slate-200/70 dark:border-slate-700/60 bg-white/70 dark:bg-gray-900/60 backdrop-blur p-5">
+                <div class="rounded-xl border border-red-300 bg-red-100/30 dark:border-slate-700/60 bg-white/70 dark:bg-gray-900/60 backdrop-blur p-5">
                     <h2 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Your Result</h2>
                     <div class="text-sm space-y-2 text-gray-800 dark:text-gray-300">
                         <div><strong>Headline:</strong> <span id="headline">—</span></div>
@@ -173,7 +173,7 @@
         </div>
 
         <!-- Sticky bottom action bar -->
-        <div class="sticky bottom-0 left-0 w-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur border-t border-slate-200 dark:border-slate-700 px-5 py-3 rounded-b-2xl flex items-center justify-end">
+        <div class="sticky bottom-0 left-0 w-full bg-emerald-50 dark:bg-gray-800/80 backdrop-blur border-t border-slate-200 dark:border-slate-700 px-5 py-3 rounded-b-2xl flex items-center justify-end">
             @auth
             <button id="openHistorySalary"
                 class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">

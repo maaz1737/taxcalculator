@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AgeRequest;
-use App\Models\Age;
 use Carbon\Carbon;
+use App\Models\Age;
 use Illuminate\Http\Request;
+use App\Http\Requests\AgeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AgeController extends Controller
 {
@@ -44,13 +45,21 @@ class AgeController extends Controller
     {
         $data = $request->all();
 
+
         Age::create([
             'years' => $data['years'],
             'months' => $data['months'],
             'days' => $data['days'],
-            // Add other fields as necessary
+            'user_id' => Auth::id(),
         ]);
 
         return response()->json(['message' => 'Age calculation saved successfully.']);
+    }
+    public function history()
+    {
+        $user = Auth::user();
+        $ageCalculations = Age::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+        return response()->json(['history' => $ageCalculations]);
     }
 }
