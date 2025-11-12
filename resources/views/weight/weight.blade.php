@@ -1,9 +1,10 @@
 <x-app
-    :title="'Weight Converter – Convert Kilograms, Pounds, Grams & Ounces | QuickCalculatIt'"
-    :des="'QuickCalculatIt Weight Converter allows you to convert between kilograms, grams, pounds, and ounces instantly with accurate results.'"
-    :key="'weight converter, kilograms to pounds, grams to ounces, mass converter, QuickCalculatIt'" />
+    :title="'Weight Converter – Convert Kilograms, Pounds, Grams, Ounces & Stones Instantly | QuickCalculatIt'"
+    :des="'Use QuickCalculatIt Weight Converter to easily convert between kilograms, pounds, grams, ounces, and stones with instant and accurate results. Perfect for cooking, fitness, and scientific measurements. Simplify your weight and mass conversions online for free.'"
+    :key="'weight converter, kilograms to pounds, grams to ounces, kg to lbs, lbs to kg, ounces to grams, mass converter, online weight converter, body weight converter, metric to imperial, QuickCalculatIt weight calculator, free weight conversion tool'"
+    :titleTwitter="'Weight Converter – Convert kg, lbs, grams, ounces & stones instantly | QuickCalculatIt'" />
 
-<div class="min-h-screen bg-gray-50 dark:bg-slate-900 py-10">
+<div class="min-h-screen bg-emerald-50 dark:bg-slate-900 py-10">
     <div class="container mx-auto max-w-5xl px-4">
 
         {{-- Header --}}
@@ -22,7 +23,7 @@
 
 
         {{-- Converter Inputs --}}
-        <div class="relative rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm px-5 pt-5 pb-3">
+        <div class="relative rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm px-5 pt-5 pb-3">
             <div id="weight_error"
                 class=" absolute top-0 left-0 w-[50%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
@@ -31,13 +32,13 @@
                 <div>
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Value</label>
                     <input id="weight_value" type="number" step="any" value="1"
-                        class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
+                        class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
                 </div>
 
                 <div>
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">From</label>
                     <select id="weight_from"
-                        class="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
+                        class="w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
                         <option value="ug">Microgram (µg)</option>
                         <option value="mg">Milligram (mg)</option>
                         <option value="g">Gram (g)</option>
@@ -57,7 +58,7 @@
                 <div>
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">To</label>
                     <select id="weight_to"
-                        class="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
+                        class="w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-400/40">
                         <option value="ug">Microgram (µg)</option>
                         <option value="mg">Milligram (mg)</option>
                         <option value="g">Gram (g)</option>
@@ -88,7 +89,7 @@
                 </button>
             </div>
         </div>
-        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center justify-between  rounded-2xl border border-slate-600 bg-gradient-to-b from-white/90 to-gray-50/70 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm px-5 py-5">
+        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center justify-between  rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm px-5 py-5">
             <div class="flex items-center justify-between mb-3">
                 <div>
                     <div class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Result</div>
@@ -114,20 +115,20 @@
 
 
         {{-- Quick Conversion Table --}}
-        <div class="mt-4 rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+        <div class="mt-4 rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
             <div class="flex items-center justify-between">
                 <div class="font-semibold text-gray-900 dark:text-white">Quick Conversion Table</div>
                 <span class="text-xs text-gray-500 dark:text-gray-400">Based on current input</span>
             </div>
-            <div class="overflow-x-auto mt-4 rounded-xl border border-gray-100 dark:border-slate-700">
+            <div class="overflow-x-auto mt-4 rounded-xl border border-gray-200 dark:border-slate-700">
                 <table class="min-w-full text-sm">
-                    <thead class="bg-gray-50 dark:bg-slate-900/50 text-gray-700 dark:text-gray-300">
+                    <thead class="bg-yellow-100 dark:bg-slate-900/50 text-gray-900 dark:text-gray-300">
                         <tr>
                             <th class="text-left font-medium py-2 pl-3 pr-6">Unit</th>
                             <th class="text-left font-medium py-2 px-3">Value</th>
                         </tr>
                     </thead>
-                    <tbody id="weight_tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 text-gray-700 dark:text-gray-200">
+                    <tbody id="weight_tableBody" class="divide-y divide-gray-200 dark:divide-slate-700 text-gray-700 dark:text-gray-200">
                         {{-- rows via JS --}}
                     </tbody>
                 </table>
@@ -135,34 +136,42 @@
         </div>
 
         {{-- Weight Conversion Guide --}}
+        {{-- Weight Conversion Guide --}}
         <div class="mt-8">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Weight (Mass) Conversion Guide</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Weight (Mass) Conversion Guide – Kilograms, Pounds, Grams, Ounces & More
+            </h2>
 
             {{-- Cheat Sheet --}}
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 mb-4">
-                <div class="font-semibold text-gray-900 dark:text-white mb-3">Cheat Sheet</div>
+            <div class="rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 mb-4">
+                <div class="font-semibold text-gray-900 dark:text-white mb-3">Quick Weight Conversion Cheat Sheet</div>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                    Use this quick reference guide to easily convert between common weight and mass units such as kilograms (kg), grams (g),
+                    pounds (lb), ounces (oz), stones (st), and tons. Perfect for <strong>cooking, fitness, science, and trade conversions</strong>.
+                </p>
                 <div class="grid gap-3 sm:grid-cols-2">
                     <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><span class="font-medium">1 kg</span> = <span class="font-medium">1000 g</span></li>
-                        <li><span class="font-medium">1 lb</span> = <span class="font-medium">16 oz</span> ≈ <span class="font-medium">0.453592 kg</span></li>
-                        <li><span class="font-medium">1 oz</span> ≈ <span class="font-medium">28.3495 g</span></li>
-                        <li><span class="font-medium">1 stone</span> = <span class="font-medium">14 lb</span> ≈ <span class="font-medium">6.35029 kg</span></li>
+                        <li><strong>1 kilogram (kg)</strong> = <strong>1000 grams (g)</strong></li>
+                        <li><strong>1 pound (lb)</strong> = <strong>16 ounces (oz)</strong> ≈ <strong>0.453592 kilograms (kg)</strong></li>
+                        <li><strong>1 ounce (oz)</strong> ≈ <strong>28.3495 grams (g)</strong></li>
+                        <li><strong>1 stone (st)</strong> = <strong>14 pounds (lb)</strong> ≈ <strong>6.35029 kilograms (kg)</strong></li>
                     </ul>
                     <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
-                        <li><span class="font-medium">1 metric tonne (t)</span> = <span class="font-medium">1000 kg</span></li>
-                        <li><span class="font-medium">1 US ton (short)</span> = <span class="font-medium">2000 lb</span> ≈ <span class="font-medium">907.185 kg</span></li>
-                        <li><span class="font-medium">1 UK ton (long)</span> = <span class="font-medium">2240 lb</span> ≈ <span class="font-medium">1016.05 kg</span></li>
-                        <li><span class="font-medium">1 carat (ct)</span> = <span class="font-medium">0.2 g</span></li>
+                        <li><strong>1 metric tonne (t)</strong> = <strong>1000 kilograms (kg)</strong></li>
+                        <li><strong>1 US ton (short)</strong> = <strong>2000 pounds (lb)</strong> ≈ <strong>907.185 kilograms (kg)</strong></li>
+                        <li><strong>1 UK ton (long)</strong> = <strong>2240 pounds (lb)</strong> ≈ <strong>1016.05 kilograms (kg)</strong></li>
+                        <li><strong>1 carat (ct)</strong> = <strong>0.2 grams (g)</strong></li>
                     </ul>
                 </div>
             </div>
 
             {{-- How conversions work --}}
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 mb-4">
-                <div class="font-medium text-gray-900 dark:text-white mb-2">How conversions are calculated</div>
+            <div class="rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 mb-4">
+                <div class="font-medium text-gray-900 dark:text-white mb-2">How Weight Conversions Are Calculated</div>
                 <p class="text-sm text-gray-700 dark:text-gray-300">
-                    Conversions use a **base unit** (kilogram, kg). Your input is converted to kg using a known factor, then from kg to the target unit.
-                    For example, <em>lb → kg → g</em>. This two-step approach keeps results accurate and consistent.
+                    Weight and mass conversions are calculated using a <strong>base unit (kilogram, kg)</strong>. Your input value is first converted
+                    to kilograms using a known conversion factor, and then from kilograms to the target unit.
+                    This <strong>two-step conversion method</strong> ensures maximum accuracy across all units, from grams and ounces to pounds and tons.
                 </p>
                 <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
                     Examples: 1 lb × 0.453592 = 0.453592 kg; 1 oz × 28.3495 = 28.3495 g; 1 st = 14 lb ≈ 6.35029 kg.
@@ -170,16 +179,20 @@
             </div>
 
             {{-- When to use which unit --}}
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
-                <div class="font-medium text-gray-900 dark:text-white mb-2">When to use which unit</div>
+            <div class="rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+                <div class="font-medium text-gray-900 dark:text-white mb-2">When to Use Each Weight Unit</div>
                 <ul class="text-sm text-gray-700 dark:text-gray-300 list-disc pl-5 space-y-1">
-                    <li><strong>g / kg:</strong> science, labeling, most countries (metric).</li>
-                    <li><strong>oz / lb / st:</strong> food, body weight (US/UK customary).</li>
-                    <li><strong>t / ton (US/UK):</strong> freight, large loads.</li>
-                    <li><strong>ct, gr, dr:</strong> jewelry (carat), ammo/grains (gr), apothecaries (dr).</li>
+                    <li><strong>Grams (g) / Kilograms (kg):</strong> Common in science, nutrition, packaging, and most countries using the metric system.</li>
+                    <li><strong>Ounces (oz) / Pounds (lb) / Stones (st):</strong> Used for food measurements, fitness tracking, and body weight in the US and UK.</li>
+                    <li><strong>Tonnes (t) / Tons (US/UK):</strong> Ideal for heavy loads, shipping, and industrial use.</li>
+                    <li><strong>Carat (ct), Grain (gr), Dram (dr):</strong> Used in jewelry (carat), ammunition (grain), and pharmaceuticals (dram).</li>
                 </ul>
+                <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                    Tip: For international conversions, always check whether the measurement follows the <strong>metric</strong> or <strong>imperial system</strong>.
+                </p>
             </div>
         </div>
+
     </div>
 </div>
 

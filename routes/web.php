@@ -55,20 +55,18 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::view('/length-converter', 'length.index')->name('length');
 
-Route::view('/area', 'area.area')->name('area');
-Route::view('/weight', 'weight.weight')->name('weight');
-Route::view('/temperature', 'temperature.temperature')->name('temperature');
-Route::view('/time', 'time.time')->name('time');
-Route::view('/volume', 'volume.volume')->name('volume');
-Route::view('/mortgage', 'finance/mortgage')->name('finance.mortgage');
-Route::view('/auto', 'finance/auto')->name('page.auto');
-Route::view('/loan', 'finance/loan')->name('page.loan');
-Route::view('/depreciation', 'finance/depreciation')->name('finance.depreciation');
-Route::view('/rent/calculation/calculator', 'finance.rent')->name('finance.rent');
+Route::view('/area-conversion-calculator', 'area.area')->name('area');
+Route::view('/weight-conversion-calculator', 'weight.weight')->name('weight');
+Route::view('/temperature-converter', 'temperature.temperature')->name('temperature');
+Route::view('/time-conversion-calculator', 'time.time')->name('time');
+Route::view('/volume-converter', 'volume.volume')->name('volume');
+Route::view('/home-loan-calculator', 'finance/mortgage')->name('finance.mortgage');
+Route::view('/asset-depreciation-calculator', 'finance/depreciation')->name('finance.depreciation');
+Route::view('/rent-cost-calculator', 'finance.rent')->name('finance.rent');
 Route::view('/income-tax-calculator', 'finance.income-tax')->name('finance.income_tax');
 
 
-Route::view('/salary/calculation/calculator', 'finance.salary')->name('finance.salary');
+Route::view('/salary-calculator', 'finance.salary')->name('finance.salary');
 Route::prefix('fitness')->group(function () {
     Route::get('/bmi-calculator', [FitnessController::class, 'bmi_view'])->name('fitness.bmi');
     Route::get('/bmr-calculator', [FitnessController::class, 'bmr_view'])->name('fitness.bmr');

@@ -1,10 +1,12 @@
 <x-app
-    :title="'Temperature Converter – Convert Celsius, Fahrenheit & Kelvin | QuickCalculatIt'"
-    :des="'QuickCalculatIt Temperature Converter lets you convert between Celsius, Fahrenheit, and Kelvin quickly and accurately.'"
-    :key="'temperature converter, Celsius to Fahrenheit, Kelvin converter, QuickCalculatIt'" />
+    :title="'Temperature Converter – Convert Celsius, Fahrenheit, Kelvin, and More | QuickCalculatIt'"
+    :des="'Use QuickCalculatIt’s free Temperature Converter to instantly convert between Celsius (°C), Fahrenheit (°F), and Kelvin (K). Get accurate results for scientific, cooking, and weather-related temperature conversions with easy formulas and step-by-step explanations.'"
+    :key="'temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin to celsius, kelvin to fahrenheit, temperature conversion calculator, convert temperature units, online temperature converter, celsius fahrenheit kelvin converter, heat conversion tool, metric to imperial temperature converter, temperature formula, QuickCalculatIt'"
+    :titleTwitter="'Temperature Converter – Celsius ⇄ Fahrenheit ⇄ Kelvin | QuickCalculatIt'" />
 
 
-<div class="min-h-screen bg-gray-50 dark:bg-slate-900 py-10">
+
+<div class="min-h-screen bg-emerald-50 dark:bg-slate-900 py-10">
     <div class="container mx-auto max-w-5xl px-4">
 
         {{-- Header --}}
@@ -22,7 +24,7 @@
         </div>
 
         {{-- Converter Form --}}
-        <div class="rounded-2xl border border-gray-200 bg-white/80 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
+        <div class="rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
             <div id="temperature_error"
                 class=" absolute top-0 left-0 w-[50%] mb-4 text-sm text-red-700 bg-red-100 border border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800 rounded-lg px-3 py-2
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
@@ -31,13 +33,13 @@
                 <div class="col-span-1">
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Value</label>
                     <input id="temperature_value" type="number" step="any" value="0"
-                        class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900
+                        class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                         text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">From</label>
                     <select id="temperature_from"
-                        class="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900
+                        class="w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                          text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40">
                         <option value="C" selected>Celsius (°C)</option>
                         <option value="K">Kelvin (K)</option>
@@ -47,7 +49,7 @@
                 <div>
                     <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">To</label>
                     <select id="temperature_to"
-                        class="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900
+                        class="w-full rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                          text-gray-900 dark:text-gray-100 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40">
                         <option value="C">Celsius (°C)</option>
                         <option value="K">Kelvin (K)</option>
@@ -69,11 +71,11 @@
         </div>
 
         {{-- Result --}}
-        <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center justify-between rounded-2xl border border-gray-200 bg-white/80 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
+        <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center justify-between rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
 
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Result</div>
+                    <div class="text-xs uppercase tracking-wide text-gray-900 dark:text-gray-400">Result</div>
                     <div class="mt-1 flex items-baseline gap-2">
                         <span id="temperature_result" class="text-3xl font-semibold text-gray-900 dark:text-white">—</span>
                         <span id="temperature_toUnit" class="text-sm text-gray-500 dark:text-gray-400">°F</span>
@@ -91,34 +93,40 @@
         </div>
 
         {{-- Quick Conversion Table --}}
-        <div class="mt-4 rounded-2xl border border-gray-200 bg-white/80 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
+        <div class="mt-4 rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800/80 shadow-sm backdrop-blur p-5">
             <div class="flex items-center justify-between">
                 <div class="font-semibold text-gray-900 dark:text-white">Quick Conversion Table</div>
                 <span class="text-xs text-gray-500 dark:text-gray-400">Based on current input</span>
             </div>
-            <div class="overflow-x-auto mt-4 rounded-xl border border-gray-100 dark:border-slate-700">
+            <div class="overflow-x-auto mt-4 rounded-xl border border-gray-200 dark:border-slate-700">
                 <table class="min-w-full text-sm">
-                    <thead class="bg-gray-50 dark:bg-slate-900/50 text-gray-700 dark:text-gray-300">
+                    <thead class="bg-yellow-100 dark:bg-slate-900/50 text-gray-900 dark:text-gray-300">
                         <tr>
                             <th class="text-left font-medium py-2 pl-3 pr-6">Unit</th>
                             <th class="text-left font-medium py-2 px-3">Value</th>
                         </tr>
                     </thead>
-                    <tbody id="temperature_tableBody" class="divide-y divide-gray-100 dark:divide-slate-700 text-gray-700 dark:text-gray-200">
+                    <tbody id="temperature_tableBody" class="divide-y divide-gray-200 dark:divide-slate-700 text-gray-700 dark:text-gray-200">
                         {{-- rows via your JS --}}
                     </tbody>
                 </table>
             </div>
         </div>
 
-        {{-- Temperature Guide (concise & useful) --}}
         <div class="mt-8">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Temperature Conversion Guide</h2>
 
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-5">
+                Use this comprehensive <strong>Temperature Conversion Guide</strong> to understand how to accurately
+                <strong>convert Celsius to Fahrenheit, Fahrenheit to Celsius, and Kelvin</strong>. Whether you’re
+                checking the weather, cooking, doing a science experiment, or working on an engineering project,
+                these easy-to-follow formulas and examples will help you convert temperatures instantly and accurately.
+            </p>
+
             <div class="grid gap-4 sm:grid-cols-2">
                 {{-- Formulas card --}}
-                <div class="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
-                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Core Formulas</div>
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Core Temperature Conversion Formulas</div>
                     <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                         <li><strong>K</strong> = <strong>°C</strong> + 273.15</li>
                         <li><strong>°F</strong> = (<strong>°C</strong> × 9/5) + 32</li>
@@ -128,13 +136,14 @@
                         <li><strong>K</strong> = (<strong>°F</strong> − 32) × 5/9 + 273.15</li>
                     </ul>
                     <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                        Tip: Kelvin starts at absolute zero (no negative K). Celsius and Fahrenheit can be negative.
+                        <strong>Tip:</strong> The <strong>Kelvin scale</strong> starts at <em>absolute zero</em> — the lowest possible temperature.
+                        Celsius and Fahrenheit can have negative values, but Kelvin cannot.
                     </p>
                 </div>
 
                 {{-- Examples card --}}
-                <div class="rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
-                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Quick Examples</div>
+                <div class="rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Quick Conversion Examples</div>
                     <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
                         <li><strong>0 °C → °F</strong>: (0 × 9/5) + 32 = <strong>32 °F</strong></li>
                         <li><strong>100 °C → °F</strong>: (100 × 9/5) + 32 = <strong>212 °F</strong></li>
@@ -143,21 +152,40 @@
                         <li><strong>300 K → °C</strong>: 300 − 273.15 = <strong>26.85 °C</strong></li>
                     </ul>
                     <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                        Mental math: <em>°F ≈ °C × 2 + 30</em> (rough rule) — good for quick estimates.
+                        <strong>Quick Tip:</strong> For mental math, use this quick rule — <em>°F ≈ °C × 2 + 30</em>.
+                        It’s not exact but useful for rough temperature conversions on the go.
                     </p>
                 </div>
             </div>
 
             {{-- When to use which scale --}}
-            <div class="mt-4 rounded-2xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
-                <div class="font-medium text-gray-900 dark:text-white mb-2">When to use which scale</div>
+            <div class="mt-4 rounded-2xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5">
+                <div class="font-medium text-gray-900 dark:text-white mb-2">When to Use Celsius, Fahrenheit, or Kelvin</div>
                 <ul class="text-sm text-gray-700 dark:text-gray-300 list-disc pl-5 space-y-1">
-                    <li><strong>Celsius (°C):</strong> everyday weather & most countries (metric).</li>
-                    <li><strong>Fahrenheit (°F):</strong> everyday weather in the United States.</li>
-                    <li><strong>Kelvin (K):</strong> science & engineering (absolute scale, no degrees symbol).</li>
+                    <li><strong>Celsius (°C):</strong> Used in most countries for daily weather, climate data, and cooking measurements (metric system).</li>
+                    <li><strong>Fahrenheit (°F):</strong> Common in the United States for weather forecasts, indoor heating, and recipes (imperial system).</li>
+                    <li><strong>Kelvin (K):</strong> The scientific temperature unit used in physics, chemistry, and engineering for absolute measurements.</li>
                 </ul>
+                <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
+                    Knowing which temperature scale to use helps ensure accuracy in calculations.
+                    Our <strong>Temperature Converter Tool</strong> instantly converts <strong>Celsius to Fahrenheit, Fahrenheit to Celsius, and Kelvin</strong> with precision — ideal for students, scientists, and anyone needing reliable results.
+                </p>
+            </div>
+
+            {{-- SEO-friendly closing paragraph --}}
+            <div class="mt-5 text-sm text-gray-700 dark:text-gray-300">
+                <p>
+                    The <strong>QuickCalculatIt Temperature Conversion Calculator</strong> is designed to simplify
+                    all types of <strong>temperature conversions</strong>. Whether you’re learning physics, baking with Fahrenheit-based recipes,
+                    or converting Kelvin values for lab reports, this tool ensures fast, accurate, and effortless results.
+                </p>
+                <p class="mt-2">
+                    Convert between <strong>Celsius, Fahrenheit, Kelvin</strong>, and more using our easy temperature calculator —
+                    trusted by students, teachers, engineers, and weather enthusiasts worldwide.
+                </p>
             </div>
         </div>
+
     </div>
     <div id="temperatureHistorySheet" class="scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
         <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900">
