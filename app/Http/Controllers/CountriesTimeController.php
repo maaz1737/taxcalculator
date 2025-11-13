@@ -54,4 +54,36 @@ class CountriesTimeController extends Controller
     {
         return view('countriesTime.california_time');
     }
+    public function srilanka_time()
+    {
+        return view('countriesTime.srilanka_time');
+    }
+    public function china_time()
+    {
+        return view('countriesTime.china_time');
+    }
+    public function canada_time()
+    {
+        return view('countriesTime.canada_time');
+    }
+    public function uk_time()
+    {
+        return view('countriesTime.uk_time');
+    }
+    public function germany_time()
+    {
+        return view('countriesTime.germany_time');
+    }
+    public function france_time()
+    {
+        return view('countriesTime.france_time');
+    }
+    public function italy_time()
+    {
+        return view("countriesTime.italy_time");
+    }
+    public function spain_time()
+    {
+        return view("countriesTime.spain_time");
+    }
 }

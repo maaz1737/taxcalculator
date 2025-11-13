@@ -184,4 +184,20 @@ Route::get('/current-time-in-Kolkata-india', [CountriesTimeController::class, 'i
 Route::get('/current-time-in-dubai-uae', [CountriesTimeController::class, 'uae_time'])->name('uae.time');
 Route::get('/current-time-in-karachi-pakistan', [CountriesTimeController::class, 'pakistan_time'])->name('pakistan.time');
 Route::get('/current-time-in-riyadh-saudia-arabia', [CountriesTimeController::class, 'saudia_arabia_time'])->name('saudia.arabia.time');
-Route::get('/current-time-in-riyadh-dhaka-bangladesh', [CountriesTimeController::class, 'bangladesh_time'])->name('bangladesh.time');
+Route::get('/current-time-in-dhaka-bangladesh', [CountriesTimeController::class, 'bangladesh_time'])->name('bangladesh.time');
+
+
+
+Route::get('/sri-lanka-time-now-colombo', [CountriesTimeController::class, 'srilanka_time'])->name('srilanka.time');
+Route::get('/china-time-now-beijing', [CountriesTimeController::class, 'china_time'])->name('china.time');
+
+Route::get('/canada-time-now-toronto', [CountriesTimeController::class, 'canada_time'])->name('canada.time');
+Route::get('/uk-time-now-london', [CountriesTimeController::class, 'uk_time'])->name('uk.time');
+
+
+Route::get('/germany-time-now-berlin', [CountriesTimeController::class, 'germany_time'])->name('germany.time');
+Route::get('/france-time-now-paris', [CountriesTimeController::class, 'france_time'])->name('france.time');
+
+Route::get('/italy-time-now-rome', [CountriesTimeController::class, 'italy_time'])->name('italy.time');
+
+Route::get('/spain-time-now-madrid', [CountriesTimeController::class, 'spain_time'])->name('spain.time');

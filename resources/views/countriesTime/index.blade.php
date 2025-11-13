@@ -70,8 +70,47 @@
                     'name' => 'California Current Time',
                     'summary' => 'Get the current time in California, USA with our live time calculator. View accurate local time and timezone details for major cities including Los Angeles, San Francisco, San Diego, and Sacramento.',
                     'route' => 'california.time'
+                ],
+                [
+                    'name' => 'Sri Lanka Current Time',
+                    'summary' => 'Check the current time in Colombo, Sri Lanka with our live clock and time zone converter. View accurate local time, UTC offset, and time difference between Sri Lanka and your region.',
+                    'route' => 'srilanka.time'
+                ],
+                [
+                    'name' => 'China Current Time',
+                    'summary' => 'See the current time in Beijing, China with our live online clock. Get real-time China Standard Time (CST), UTC offset, and time difference with your local time zone.',
+                    'route' => 'china.time'
+                ],
+                [
+                    'name' => 'Canada Current Time',
+                    'summary' => 'Find the current time in Toronto, Canada with our accurate live clock. View local Canadian time zones, UTC offset, and time difference for major cities including Vancouver and Montreal.',
+                    'route' => 'canada.time'
+                ],
+                [
+                    'name' => 'UK Current Time',
+                    'summary' => 'Check the current time in London, United Kingdom (UK) using our live time zone converter. View GMT and BST details, local date, and time difference with your location.',
+                    'route' => 'uk.time'
+                ],
+                [
+                    'name' => 'Germany Current Time',
+                    'summary' => 'Get the current time in Berlin, Germany with our accurate live clock. See Central European Time (CET), daylight saving details, and the time difference with your city.',
+                    'route' => 'germany.time'
+                ],
+                [
+                    'name' => 'France Current Time',
+                    'summary' => 'View the current time in Paris, France with our live France time calculator. Check local time, CET/CEST time zone details, and compare it with your location easily.',
+                    'route' => 'france.time'
+                ],
+                [
+                    'name' => 'Italy Current Time',
+                    'summary' => 'Discover the current time in Rome, Italy with our real-time clock tool. Get Italian local time, CET zone information, and the exact time difference from your country.',
+                    'route' => 'italy.time'
+                ],
+                [
+                    'name' => 'Spain Current Time',
+                    'summary' => 'Check the current time in Madrid, Spain using our live online time converter. View Spanish local time, CET/CEST information, and the time difference with your region.',
+                    'route' => 'spain.time'
                 ]
-
             ];
 
             ?>

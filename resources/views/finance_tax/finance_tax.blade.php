@@ -3,9 +3,9 @@
     :des="'QuickCalculatIt provides free online finance and tax calculators. Easily calculate your salary, taxes, rent, mortgage payments, depreciation, and other financial metrics with accuracy and speed.'"
     :key="'finance calculators, tax calculator, salary calculator, rent calculator, mortgage calculator, depreciation calculator, financial tools, online calculators, QuickCalculatIt'" />
 
-<div class="min-h-[400px] bg-gray-50 dark:bg-slate-900 py-10 px-4">
+<div class="min-h-[400px] bg-emerald-50 dark:bg-slate-900 py-10 px-4">
 
-    <div class=" bg-gray-50/80 dark:bg-slate-900/80 backdrop-blur-md  mb-1 py-4">
+    <div class=" dark:bg-slate-900/80 backdrop-blur-md  mb-1 py-4">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">
                 💰 Finance & Tax Calculators
@@ -44,8 +44,8 @@
 
         <div class="filter-card relative group">
             <a type="button"
-                class="fav-btn absolute top-3 right-3 z-10 rounded-full border border-gray-200 dark:border-slate-700
-                   bg-white/90 dark:bg-slate-900/90 p-2 shadow-sm hover:shadow transition
+                class="fav-btn absolute top-3 right-3 z-10 rounded-full border border-red-200 dark:border-slate-700
+                   bg-red-200/30 dark:bg-slate-900/90 p-2 shadow-sm hover:shadow transition
                    hover:scale-105"
                 title="Add to favorites"
                 data-id="{{ $card['url'] ?? '' }}"
@@ -57,7 +57,7 @@
                 </svg>
             </a>
             <a href="{{ route($card['url']) }}"
-                class="block p-5 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 
+                class="block p-5 rounded-xl border border-yellow-200 dark:border-slate-700 bg-yellow-100/30 dark:bg-slate-800 
                   hover:shadow-md hover:-translate-y-1 transition-all duration-200">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="w-10 h-10 flex items-center justify-center rounded-lg {{$card['color']}} ">{{$card['logo']}}</div>

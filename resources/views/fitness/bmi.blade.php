@@ -92,13 +92,12 @@
 
         </div>
         <!-- Section 1: Understanding BMI -->
-        <div
-            class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+        <!-- Section 1: Understanding Your Body Mass Index (BMI) -->
+        <div class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Understanding Your Body Mass Index (BMI)</h2>
 
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                <strong>Body Mass Index (BMI)</strong> is a simple yet powerful measurement that estimates if your weight is healthy for your height.
-                It helps determine your <strong>weight category</strong>—underweight, normal, overweight, or obese—based on your height and weight.
+                <strong>Body Mass Index (BMI)</strong> is a widely used health metric that estimates whether your weight is healthy for your height. It helps identify your <strong>weight category</strong>—underweight, normal, overweight, or obese—based on your height and weight. BMI is an effective tool for assessing potential health risks related to body weight.
             </p>
 
             <p class="text-gray-700 dark:text-gray-300 mb-4">
@@ -107,48 +106,63 @@
             </p>
 
             <div>
-                <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-2">BMI Categories:</h3>
+                <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-2">BMI Categories for Adults (20+ years):</h3>
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                    <li>Underweight: &lt; 18.5</li>
-                    <li>Normal (Healthy Weight): 18.5 – 24.9</li>
-                    <li>Overweight: 25 – 29.9</li>
-                    <li>Obese: ≥ 30</li>
+                    <li>Severe Thinness: &lt; 16</li>
+                    <li>Moderate Thinness: 16 – 17</li>
+                    <li>Mild Thinness: 17 – 18.5</li>
+                    <li>Normal (Healthy Weight): 18.5 – 25</li>
+                    <li>Overweight: 25 – 30</li>
+                    <li>Obese Class I: 30 – 35</li>
+                    <li>Obese Class II: 35 – 40</li>
+                    <li>Obese Class III: &gt; 40</li>
                 </ul>
             </div>
+
+            <div class="mt-4">
+                <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-2">BMI Categories for Children & Teens (2–20 years):</h3>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Underweight: &lt; 5th percentile</li>
+                    <li>Healthy Weight: 5th – 85th percentile</li>
+                    <li>At Risk of Overweight: 85th – 95th percentile</li>
+                    <li>Overweight: &gt; 95th percentile</li>
+                </ul>
+            </div>
+
+            <p class="text-gray-700 dark:text-gray-300 mt-3">
+                BMI is an important health tool used alongside other metrics to monitor your <strong>body composition</strong> and overall wellness.
+            </p>
         </div>
 
         <!-- Section 2: Why BMI Matters -->
-        <div
-            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Why Your BMI Matters</h2>
 
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                Knowing your <strong>BMI (Body Mass Index)</strong> helps you understand your overall health and fitness level.
-                A healthy BMI reduces the risk of chronic diseases like heart disease, high blood pressure, type 2 diabetes, and obesity.
-                Tracking your BMI regularly can guide you toward maintaining a balanced lifestyle and reaching your <strong>fitness goals</strong>.
+                Knowing your <strong>BMI (Body Mass Index)</strong> helps you understand your health and fitness level. Maintaining a healthy BMI reduces risks of chronic diseases such as <strong>heart disease, type 2 diabetes, high blood pressure</strong>, and obesity. It also provides a baseline for tracking weight changes over time.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                Your BMI doesn’t directly measure body fat, but it is a strong indicator of whether your weight may affect your health. For a more complete analysis, consider related tools like the
+                <a href="/fitness/body-fat-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Body Fat Calculator</a> or
+                <a href="/fitness/ideal-weight-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Ideal Weight Calculator</a>.
             </p>
 
             <p class="text-gray-700 dark:text-gray-300">
-                Your BMI doesn’t directly measure body fat, but it’s an effective screening tool to assess whether your weight could affect your health.
-                For a more complete analysis, use related tools like the
-                <a href="/fitness/body-fat-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Body Fat Calculator</a> or
-                <a href="/fitness/ideal-weight-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Ideal Weight Calculator</a>.
+                The BMI Calculator also computes the <strong>Ponderal Index (PI)</strong> and <strong>BMI Prime</strong>, providing additional insights about your body composition and leanness for adults and children.
             </p>
         </div>
 
         <!-- Section 3: Limitations of BMI -->
-        <div
-            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Limitations of BMI</h2>
 
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                While <strong>BMI</strong> is useful for most people, it has limitations. It doesn’t distinguish between fat and muscle mass,
-                so muscular individuals or athletes may have a high BMI even though their body fat percentage is low.
-                Similarly, older adults might have a normal BMI but higher body fat levels.
+                While BMI is useful, it has limitations. It does not distinguish between <strong>muscle and fat</strong>, so muscular individuals may have a high BMI despite low body fat. Older adults may have normal BMI but higher body fat. BMI should always be used alongside other health metrics.
             </p>
 
-            <p class="text-gray-700 dark:text-gray-300">
-                That’s why it’s important to pair your BMI with other health metrics such as:
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                Other measurements to pair with BMI include:
             </p>
 
             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
@@ -159,34 +173,32 @@
         </div>
 
         <!-- Section 4: How to Maintain a Healthy BMI -->
-        <div
-            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">How to Maintain a Healthy BMI</h2>
 
             <p class="text-gray-700 dark:text-gray-300 mb-3">
-                Achieving and maintaining a <strong>healthy BMI</strong> involves a combination of balanced nutrition, regular physical activity, and healthy habits.
+                Achieving a <strong>healthy BMI</strong> involves proper nutrition, regular exercise, and lifestyle habits. Follow these tips:
             </p>
 
             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-                <li>Eat a balanced diet with lean proteins, fruits, vegetables, and whole grains.</li>
-                <li>Exercise regularly—aim for at least 150 minutes of moderate activity per week.</li>
-                <li>Track your calorie needs using the <a href="/fitness/tdee-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">TDEE Calculator</a>.</li>
-                <li>Stay hydrated and get enough sleep to support recovery and metabolism.</li>
-                <li>Recalculate your BMI regularly to track progress over time.</li>
+                <li>Eat a balanced diet with lean protein, fruits, vegetables, and whole grains.</li>
+                <li>Engage in regular exercise—at least 150 minutes of moderate activity per week.</li>
+                <li>Track calorie needs using the <a href="/fitness/tdee-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">TDEE Calculator</a>.</li>
+                <li>Stay hydrated and get adequate sleep to support metabolism and recovery.</li>
+                <li>Recalculate BMI regularly and track changes to monitor progress.</li>
             </ul>
 
             <p class="text-gray-700 dark:text-gray-300 mt-3">
-                Maintaining a stable, healthy weight not only improves appearance but also enhances energy levels, reduces stress, and promotes long-term wellness.
+                Maintaining a healthy weight improves energy, reduces disease risk, and enhances overall wellness.
             </p>
         </div>
 
         <!-- Section 5: Related Fitness Calculators -->
-        <div
-            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Try Other Fitness Calculators</h2>
 
             <p class="text-gray-700 dark:text-gray-300 mb-3">
-                Explore more free tools by QuickCalculatIt to better understand your health, fitness, and nutrition needs:
+                Explore these free tools to better understand your <strong>weight, BMI, body fat, and nutrition</strong>:
             </p>
 
             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
@@ -197,6 +209,7 @@
                 <li><a href="/fitness/macros-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Macros Calculator</a> – Calculate daily protein, carb, and fat intake.</li>
             </ul>
         </div>
+
 
         <section>
             <div id="HistorySheetBmi" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
