@@ -1,9 +1,11 @@
 <x-app
-    :title="'Macros Calculator – Calculate Protein, Carbs & Fat Intake | QuickCalculatIt'"
-    :des="'QuickCalculatIt Macros Calculator helps you calculate the optimal daily intake of protein, carbs, and fats based on your goals and TDEE.'"
-    :key="'macros calculator, protein calculator, carbs calculator, fat calculator, nutrition tools, fitness calculator, QuickCalculatIt'" />
+    :title="'Macros Calculator – Calculate Daily Protein, Carbs & Fat Ratio for Your Fitness Goals | QuickCalculatIt'"
+    :des="'Use the free Macros Calculator by QuickCalculatIt to calculate your daily macronutrient needs including protein, carbs, and fats. Get a personalized macro breakdown based on your TDEE, weight, age, activity level, and fitness goals like weight loss, muscle gain, or maintenance. Perfect for diet planning, bodybuilding, and balanced nutrition tracking.'"
+    :key="'macros calculator, macronutrient calculator, protein carbs fat calculator, daily macros calculator, calculate macros online, nutrition calculator, TDEE and macros calculator, macro ratio calculator, macro diet planner, fitness nutrition calculator, calorie and macros calculator, bodybuilding nutrition calculator, macro intake calculator, healthy eating calculator, weight loss macros calculator, muscle gain macros calculator, macro nutrient breakdown, food nutrition calculator, meal planning calculator, QuickCalculatIt macros calculator'"
+    :titleTwitter="'Free Macros Calculator – Calculate Daily Protein, Carbs & Fat for Your Fitness Goals | QuickCalculatIt'" />
 
-<div class="px-6 sm:px-8 py-8 scroll-area">
+
+<div class="px-6 sm:px-8 py-8 scroll-area bg-emerald-50 dark:bg-gray-900">
     <div class="container mx-auto max-w-6xl">
         <header class="mb-10 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -26,8 +28,8 @@
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
             </div>
             <!-- 🧮 Macros Form Section -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-yellow-300 dark:border-slate-700 
+                        bg-yellow-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <form action="" id="macros-form">
                     <div class="p-6 space-y-5">
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Macros Calculator</h2>
@@ -36,45 +38,43 @@
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Calories (kcal)</label>
                                 <input id="macros_calories" type="number" placeholder="e.g. 2000"
-                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Carbs %</label>
                                 <input id="macros_carb_pct" type="number" value="50"
-                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Protein %</label>
                                 <input id="macros_protein_pct" type="number" value="20"
-                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Fat %</label>
                                 <input id="macros_fat_pct" type="number" value="30"
-                                    class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                                    class="search w-full rounded-xl border border-yellow-300 dark:border-slate-700 px-3 py-2.5 
                                        bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-yellow-200 dark:border-slate-700 p-5 flex justify-end bg-yellow-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="btnSaveMacros" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                                                     text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                                                     focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                                                     dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                                                     dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                                                     text-white bg-emerald-800 hover:bg-emerald-700 focus:outline-none 
+                                                     focus:ring-2 focus:ring-offset-2 focus:ring-slate-300">
                         💾 Save
                     </button>
                 </div>
             </div>
 
             <!-- 📊 Macros Result Section -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-red-300 dark:border-slate-700 
+                        bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Macros Result</h2>
 
@@ -97,44 +97,102 @@
                     </div>
                 </div>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-red-200 dark:border-slate-700 p-5 flex justify-end bg-red-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="openHistoryMacros" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                                                           text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                                                           focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                                                           dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                                                           dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                                                           text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none 
+                                                           focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 ">
                         🕓 History
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- ℹ️ Macros Explanation Section -->
-        <div class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 
-                    text-gray-900 dark:text-white shadow-sm p-6">
+        <!-- 🍽️ Understanding Macros Section -->
+        <div class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Understanding Macros</h2>
 
             <div class="space-y-4 text-sm leading-relaxed">
                 <p class="text-gray-700 dark:text-gray-300">
-                    Macronutrients are nutrients your body needs in large amounts: <strong>Carbohydrates, Protein, and Fat</strong>.
-                    They provide energy and building blocks for your body.
+                    <strong>Macronutrients (Macros)</strong> are the essential nutrients your body needs in large amounts —
+                    <strong>Carbohydrates, Proteins, and Fats</strong>. Each macro plays a unique role in maintaining
+                    <strong>energy balance, metabolism, and muscle health</strong>.
+                    Tracking your macros helps you create a balanced and personalized nutrition plan.
                 </p>
 
                 <p class="text-gray-700 dark:text-gray-300">
-                    Based on your daily calorie intake, you can calculate grams of each macronutrient using percentages:
+                    <strong>Why Macros Matter:</strong> Understanding your macronutrient distribution helps you:
                 </p>
 
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                    <li>Carbs (g) = (Calories × Carbs %) ÷ 4</li>
+                    <li>Lose weight efficiently by maintaining a calorie deficit while keeping nutrient balance.</li>
+                    <li>Build muscle mass by increasing protein and calorie intake strategically.</li>
+                    <li>Improve energy levels, athletic performance, and overall fitness through balanced nutrition.</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Macros Formula:</strong> Based on your <strong>Total Daily Energy Expenditure (TDEE)</strong> or daily calorie goal,
+                    you can calculate your macronutrient needs as:
+                </p>
+
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Carbs (g) = (Calories × Carbohydrate %) ÷ 4</li>
                     <li>Protein (g) = (Calories × Protein %) ÷ 4</li>
                     <li>Fat (g) = (Calories × Fat %) ÷ 9</li>
                 </ul>
 
                 <p class="text-gray-700 dark:text-gray-300">
-                    Adjust these ratios according to your fitness goals: weight loss, maintenance, or muscle gain.
+                    Adjust your macro ratios based on your <strong>fitness goals</strong> — for example,
+                    higher protein for muscle gain or lower carbohydrates for fat loss.
                 </p>
             </div>
         </div>
+
+        <!-- ⚖️ Recommended Macro Ratios Section -->
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Recommended Macro Ratios for Fitness Goals</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    There is no one-size-fits-all macro ratio. Your ideal breakdown depends on your body type, activity level, and health goals.
+                    However, these are commonly recommended starting points:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li><strong>Weight Loss:</strong> 40% carbs, 30% protein, 30% fat</li>
+                    <li><strong>Muscle Gain:</strong> 50% carbs, 25% protein, 25% fat</li>
+                    <li><strong>Maintenance:</strong> 45% carbs, 25% protein, 30% fat</li>
+                </ul>
+                <p class="text-gray-700 dark:text-gray-300">
+                    Use our <strong>Macros Calculator</strong> to find your ideal macronutrient balance and build
+                    a customized <strong>meal plan</strong> for sustainable results.
+                </p>
+            </div>
+        </div>
+
+        <!-- 🥗 Tips for Tracking Your Macros -->
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Tips for Tracking Your Macros Effectively</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    Tracking your macros accurately helps you stay on top of your <strong>nutrition and calorie goals</strong>.
+                    Here are some tips for success:
+                </p>
+
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Use a food scale or mobile app to log meals and track calories.</li>
+                    <li>Plan your meals ahead to hit your daily macro targets.</li>
+                    <li>Monitor your progress weekly and adjust your macro intake as needed.</li>
+                    <li>Combine macro tracking with our <strong>TDEE</strong> and <strong>BMR calculators</strong> for more accurate results.</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    By consistently tracking your <strong>protein, carbs, and fat intake</strong>, you’ll gain full control over your
+                    <strong>fitness, body composition, and overall health</strong>.
+                </p>
+            </div>
+        </div>
+
         <section>
             <div id="HistorySheetMacros" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">

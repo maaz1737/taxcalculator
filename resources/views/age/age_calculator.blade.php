@@ -35,31 +35,34 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date of Birth</label>
                     <div class="grid grid-cols-3 gap-2">
-                        <input id="dobDay" type="text" placeholder="Day" min="1" max="31"
-                            class="rounded-xl search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                        <div>
+                            <select id="dobMonth"
+                                class="rounded-xl w-full border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                        <select id="dobMonth"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
-                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                            <option value="">Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="relative col-span-1">
+                            <select id="dobDay" type="text" placeholder="Day" min="1" max="31"
+                                class="rounded-xl w-full search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40 max-h-[40vh]"> </select>
+                        </div>
                         <div class="relative col-span-1">
                             <input id="dobYear" type="text" placeholder="Year" min="1900"
                                 class="rounded-xl search w-[100%] border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                            <datalist class="absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList"></datalist>
+                            <datalist class="test absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList"></datalist>
                         </div>
 
                     </div>
@@ -69,31 +72,37 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Age at date</label>
                     <div class="grid grid-cols-3 gap-2">
-                        <input id="tillDay" type="text" placeholder="Day" min="1" max="31"
-                            class="rounded-xl border search border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                        <div class="col-span-1">
+                            <select id="tillMonth"
+                                class="rounded-xl w-full border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                        <select id="tillMonth"
-                            class="rounded-xl border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
-                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                            <option value="">Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="relative col-span-1">
+                            <select id="tillDay" type="text" placeholder="Day" min="1" max="31"
+                                class="rounded-xl border w-full search border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
+                            text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40"></select>
+                            <datalist id="tillDay_days" class="test bg-white max-h-[40vh] left-2 overflow-y-auto absolute z-[20] w-[20%] text-center"></datalist>
+                        </div>
+
                         <div class="relative col-span-1">
                             <input id="tillYear" type="text" placeholder="Year" min="1900"
                                 class="rounded-xl w-[100%] search border border-yellow-300 dark:border-slate-700 bg-white dark:bg-slate-900
                             text-gray-900 dark:text-gray-100 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400/40">
-                            <datalist class="absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList2"></datalist>
+                            <datalist class="test absolute max-h-[50vh] bg-white overflow-y-auto text-black z-[10] " id="yearsList2"></datalist>
                         </div>
 
                     </div>
@@ -342,17 +351,19 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
         });
     });
 
-    $('#dobYear,#tillYear').on('input', function() {
+    $('#dobYear,#tillYear').on('input focus', function() {
         let currentYear = new Date().getFullYear();
         $(this).closest('div').find('datalist').empty();
         for (let y = currentYear; y >= 1900; y--) {
             $(this).closest('div').find('datalist').addClass('block').append(`<option value="${y}">${y}</option>`);
         }
     });
-    $("#yearsList,#yearsList2").on('click', 'option', function() {
+    $("datalist").on('click', 'option', function() {
         $(this).closest('div').find('input').val($(this).val());
-        $(this).removeClass('block').empty();
+        $(this).closest('div').find('datalist').removeClass('block').empty();
     });
+
+
     $(document).on('click', function(e) {
         if (!$(e.target).closest('#dobYear').length) {
             $('#yearsList').removeClass('block').empty();
@@ -361,6 +372,47 @@ dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
             $('#yearsList2').removeClass('block').empty();
         }
     });
+
+    function dobForm() {
+        let month = $('#dobMonth').val();
+        let day = $('#dobDay').val();
+        let year = $('#dobYear').val() || new Date().getFullYear();
+        if (!month) return;
+
+        let daysInMonth = new Date(year, month, 0).getDate();
+        let $dayInput = $('#dobDay').empty();
+        $dayInput.attr('max', daysInMonth);
+        for (let d = 1; d <= daysInMonth; d++) {
+            if (d == day) {
+                $dayInput.append(`<option value="${d}" selected>${d}</option>`);
+            } else {
+                $dayInput.append(`<option value="${d}">${d}</option>`);
+            }
+        }
+    }
+    dobForm();
+    $('#dobMonth, #dobYear,#dobDay').on('input change click', dobForm);
+
+    function tillForm() {
+        let month = $('#tillMonth').val();
+        let day = $('#tillDay').val();
+        let year = $('#tillYear').val() || new Date().getFullYear();
+        if (!month) return;
+        let daysInMonth = new Date(year, month, 0).getDate();
+        let $dayInput = $('#tillDay').empty();
+        $dayInput.attr('max', daysInMonth);
+        let $datalist = $dayInput.closest('div').find('datalist');
+        $datalist.empty().addClass('block');
+        for (let d = 1; d <= daysInMonth; d++) {
+            if (d == day) {
+                $dayInput.append(`<option value="${d}" selected>${d}</option>`);
+            } else {
+                $dayInput.append(`<option value="${d}">${d}</option>`);
+            }
+        }
+    }
+    tillForm();
+    $('#tillYear, #tillMonth,#tillDay').on('input change click', tillForm);
 </script>
 
 

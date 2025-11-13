@@ -1,9 +1,11 @@
 <x-app
-    :title="'Body Fat Calculator – Estimate Your Body Fat Percentage | QuickCalculatIt'"
-    :des="'QuickCalculatIt Body Fat Calculator helps you estimate your body fat percentage easily. Track your fitness and health progress accurately.'"
-    :key="'body fat calculator, body fat percentage, fitness calculator, health tools, QuickCalculatIt'" />
+    :title="'Body Fat Calculator – Calculate Body Fat Percentage, BMI & Fitness Level | QuickCalculatIt'"
+    :des="'Use the free Body Fat Calculator by QuickCalculatIt to accurately estimate your body fat percentage using height, weight, age, and gender. Understand your body composition, track fitness progress, and find out if you are in a healthy range. Ideal for men and women to plan weight loss, muscle gain, or fitness goals effectively.'"
+    :key="'body fat calculator, body fat percentage calculator, body composition calculator, body fat measurement, body fat chart, calculate body fat online, fitness and health calculator, body fat for men, body fat for women, BMI and body fat calculator, lean body mass calculator, muscle to fat ratio calculator, ideal body fat percentage, weight management calculator, health tracker, fitness progress tracker, QuickCalculatIt body fat calculator, body analysis tool, online fitness calculator, fat loss calculator, fitness goal calculator'"
+    :titleTwitter="'Free Body Fat Calculator – Check Your Body Fat Percentage & Fitness Level | QuickCalculatIt'" />
 
-<div class="px-6 sm:px-8 py-8 scroll-area" id="calculatorRoot">
+
+<div class="px-6 sm:px-8 py-8 scroll-area bg-emerald-50 dark:bg-gray-900" id="calculatorRoot">
     <div class="container mx-auto max-w-6xl">
         <header class="mb-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -27,8 +29,8 @@
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
             </div>
             <!-- 🧮 Body Fat Form Section -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-yellow-300 dark:border-slate-700 
+                        bg-yellow-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
 
                 <form id="form-bodyfat" class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold mb-4">Body Fat Calculator</h2>
@@ -36,7 +38,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium mb-1">Sex</label>
-                            <select name="sex" class="input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <select name="sex" class="input w-full rounded-xl dark:bg-slate-900 border border-yellow-300 dark:border-gray-400 px-3 py-2.5">
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -44,38 +46,36 @@
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Height (cm)</label>
-                            <input name="height_cm" type="number" placeholder="e.g. 170" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="height_cm" type="number" placeholder="e.g. 170" class="search input w-full rounded-xl dark:bg-slate-900 border border-yellow-300 dark:border-gray-400 px-3 py-2.5">
                             <p class="height_error text-sm text-red-500 mt-2"></p>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Waist (cm)</label>
-                            <input name="waist_cm" type="number" placeholder="e.g. 80" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="waist_cm" type="number" placeholder="e.g. 80" class="search input w-full rounded-xl dark:bg-slate-900 border border-yellow-300 dark:border-gray-400 px-3 py-2.5">
                             <p class="waist_error text-sm text-red-500 mt-2"></p>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Neck (cm)</label>
-                            <input name="neck_cm" type="number" placeholder="e.g. 40" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="neck_cm" type="number" placeholder="e.g. 40" class="search input w-full rounded-xl dark:bg-slate-900 border border-yellow-300 dark:border-gray-400 px-3 py-2.5">
                             <p class="neck_error text-sm text-red-500 mt-2"></p>
 
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium mb-1">Hip (cm) – Female only</label>
-                            <input name="hip_cm" type="number" placeholder="e.g. 95" class="search input w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="hip_cm" type="number" placeholder="e.g. 95" class="search input w-full rounded-xl dark:bg-slate-900 border border-yellow-300 dark:border-gray-400 px-3 py-2.5">
                             <p class="hip_error text-sm text-red-500 mt-2"></p>
                         </div>
                     </div>
                 </form>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-yellow-200 dark:border-slate-700 p-5 flex justify-end bg-yellow-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="saveBtn"
                         class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                               text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                               focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                               dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                               dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                               text-white bg-emerald-700 hover:bg-emerald-800 focus:outline-none 
+                               focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300">
                         💾 Save
                     </button>
                     <span id="saveMsg" class="text-sm text-gray-500 ml-3 hidden"></span>
@@ -83,47 +83,99 @@
             </div>
 
             <!-- 📊 Body Fat Result Section -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-red-300 dark:border-slate-700 
+                        bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
 
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold mb-4">Body Fat Result</h2>
 
-                    <div class="rounded-lg bg-purple-100 dark:bg-purple-900/40 p-4">
+                    <div class="rounded-lg bg-purple-200 dark:bg-purple-900/40 p-4">
                         <div class="text-sm text-gray-700 dark:text-gray-200">Your Body Fat Percentage</div>
                         <div id="headlines" class="text-2xl font-semibold">—</div>
                         <div id="breakdown" class="mt-2 text-sm text-gray-600 dark:text-gray-300"></div>
                     </div>
                 </div>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-red-200 dark:border-slate-700 p-5 flex justify-end bg-red-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="openHistoryBodyFat"
                         class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                               text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                               focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                               dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                               dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                               text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none 
+                               focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 ">
                         🕓 History
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- ℹ️ Body Fat Explanation Section -->
-        <div class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 
-                    text-gray-900 dark:text-white shadow-sm p-6">
-            <h2 class="text-xl font-semibold mb-4">Understanding Body Fat</h2>
+        <!-- 🧠 Understanding Body Fat Section -->
+        <div class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Understanding Body Fat Percentage</h2>
             <div class="space-y-4 text-sm leading-relaxed">
-                <p>Body Fat Percentage represents the proportion of fat in your body relative to total weight.</p>
-                <p><strong>Formula (U.S. Navy method):</strong><br>
-                    Male: 495 / (1.0324 − 0.19077 × log10(waist−neck) + 0.15456 × log10(height)) − 450<br>
-                    Female: 495 / (1.29579 − 0.35004 × log10(waist+hip−neck) + 0.22100 × log10(height)) − 450
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Body Fat Percentage (BFP)</strong> is the proportion of fat compared to your total body weight.
+                    It’s one of the most important indicators of fitness, health, and overall body composition.
+                    Knowing your body fat percentage helps you plan workouts, manage weight, and achieve a healthy physique.
                 </p>
-                <p>Typical ranges:<br>
-                    Men: 6–24%, Women: 14–31%
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Common Methods to Calculate Body Fat:</strong>
+                <ul class="list-disc list-inside mt-2 text-gray-700 dark:text-gray-300">
+                    <li><strong>U.S. Navy Formula:</strong> A popular method using body measurements like waist, neck, and height.</li>
+                    <li><strong>Skinfold Caliper Test:</strong> Estimates fat from skinfold thickness at various points.</li>
+                    <li><strong>BIA (Bioelectrical Impedance Analysis):</strong> Uses electrical currents to estimate fat and lean mass.</li>
+                </ul>
+                </p>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>U.S. Navy Formula:</strong><br>
+                    <em>For Men:</em> 495 / (1.0324 − 0.19077 × log10(waist − neck) + 0.15456 × log10(height)) − 450<br>
+                    <em>For Women:</em> 495 / (1.29579 − 0.35004 × log10(waist + hip − neck) + 0.22100 × log10(height)) − 450
+                </p>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    <strong>Typical Body Fat Ranges:</strong><br>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2">
+                    <li>Essential Fat: Men 2–5%, Women 10–13%</li>
+                    <li>Athletes: Men 6–13%, Women 14–20%</li>
+                    <li>Fitness: Men 14–17%, Women 21–24%</li>
+                    <li>Average: Men 18–24%, Women 25–31%</li>
+                    <li>Obese: Men ≥ 25%, Women ≥ 32%</li>
+                </ul>
+                </p>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    Maintaining an optimal <strong>body fat percentage</strong> is essential for good health.
+                    Too much fat increases the risk of heart disease and diabetes, while too little can cause hormonal imbalance and fatigue.
+                    Use our <strong>Body Fat Calculator</strong> to find your current percentage and plan for a balanced, healthy body composition.
                 </p>
             </div>
         </div>
+
+        <!-- 💪 How to Improve Body Composition -->
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">How to Improve Your Body Composition</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    Improving body fat levels requires a combination of <strong>regular exercise</strong>, <strong>proper nutrition</strong>, and <strong>adequate rest</strong>.
+                    To lower your body fat percentage and increase lean muscle mass:
+                </p>
+
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Follow a balanced diet rich in protein, complex carbs, and healthy fats.</li>
+                    <li>Incorporate both strength training and cardio exercises into your routine.</li>
+                    <li>Stay hydrated and get 7–8 hours of sleep each night.</li>
+                    <li>Monitor progress using tools like the <strong>Body Fat Calculator</strong> and <strong>BMI Calculator</strong>.</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    Remember, healthy body fat levels vary depending on gender, age, and lifestyle.
+                    Focus on <strong>long-term fitness goals</strong> rather than rapid fat loss for lasting health benefits.
+                </p>
+            </div>
+        </div>
+
         <section>
             <div id="HistorySheetBodyFat" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">

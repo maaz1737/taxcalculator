@@ -1,9 +1,12 @@
 <x-app
-    :title="'BMI Calculator – Calculate Your Body Mass Index | QuickCalculatIt'"
-    :des="'QuickCalculatIt BMI Calculator helps you calculate your Body Mass Index easily. Determine if you are underweight, normal, overweight, or obese with accurate results.'"
-    :key="'BMI calculator, body mass index, health calculator, fitness tools, weight management, QuickCalculatIt'" />
+    :title="'BMR Calculator – Calculate Your Basal Metabolic Rate, Daily Calorie Needs & Metabolism | QuickCalculatIt'"
+    :des="'Use the free BMR Calculator by QuickCalculatIt to calculate your Basal Metabolic Rate instantly. Discover how many calories your body burns at rest and estimate your daily energy expenditure. Get accurate BMR results based on your age, gender, height, and weight to plan your diet, weight loss, or fitness goals effectively.'"
+    :key="'BMR calculator, basal metabolic rate calculator, daily calorie needs, calorie calculator, TDEE calculator, metabolism calculator, energy expenditure calculator, body calorie burn rate, calorie maintenance calculator, fitness and nutrition calculator, weight management tool, health calculator, diet planning calculator, BMR for men, BMR for women, calculate BMR online, QuickCalculatIt BMR calculator, metabolic health, body energy calculator, resting calorie burn calculator, online BMR chart'"
+    :titleTwitter="'Free BMR Calculator – Find Your Basal Metabolic Rate & Daily Calorie Burn | QuickCalculatIt'" />
 
-<div class="px-6 sm:px-8 py-8 scroll-area">
+
+
+<div class="px-6 sm:px-8 py-8 scroll-area bg-emerald-50 dark:bg-gray-900">
     <div class="container mx-auto max-w-6xl">
         <header class="mb-10 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -25,25 +28,25 @@
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
             </div>
             <!-- BMI Form -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-yellow-300 dark:border-slate-700 
+                        bg-yellow-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">BMI Calculator</h2>
                     <form id="form-bmi" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height</label>
-                            <input name="height" value="0" type="number" placeholder="e.g. 170" class="search w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="height" value="0" type="number" placeholder="e.g. 170" class="search w-full rounded-xl border-yellow-300 dark:border-gray-400 dark:bg-slate-900 border px-3 py-2.5">
                             <p class="height_error text-sm text-red-500 mt-2"></p>
 
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Weight</label>
-                            <input name="weight" value="0" type="number" placeholder="e.g. 65" class="search w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <input name="weight" value="0" type="number" placeholder="e.g. 65" class="search w-full rounded-xl border-yellow-300 dark:border-gray-400 dark:bg-slate-900 border px-3 py-2.5">
                             <p class="weight_error text-sm text-red-500 mt-2"></p>
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Unit System</label>
-                            <select name="unit" class="w-full rounded-xl dark:bg-slate-900 border px-3 py-2.5">
+                            <select name="unit" class="w-full rounded-xl border-yellow-300 dark:border-gray-400 dark:bg-slate-900 border px-3 py-2.5">
                                 <option value="metric">Metric (kg, cm)</option>
                                 <option value="imperial">Imperial (lbs, in)</option>
                             </select>
@@ -51,9 +54,9 @@
                     </form>
                 </div>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-200 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-yellow-300 dark:border-slate-700 p-5 flex justify-end bg-yellow-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="saveBtn" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
+                            text-white bg-emerald-800 hover:bg-emerald-700 focus:outline-none 
                             focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
                             dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
                             dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">💾 Save</button>
@@ -62,23 +65,23 @@
             </div>
 
             <!-- BMI Result -->
-            <div class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+            <div class="flex flex-col justify-between rounded-2xl border border-red-300 dark:border-slate-700 
+                        bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">BMI Result</h2>
-                    <div class="rounded-lg bg-indigo-100 dark:bg-indigo-900/40 p-4">
+                    <div class="rounded-lg bg-indigo-200 dark:bg-indigo-900/40 p-4">
                         <div class="text-sm text-gray-700 dark:text-gray-200">Your BMI</div>
                         <div id="headlines" class="text-2xl font-semibold text-gray-900 dark:text-white">—</div>
                     </div>
 
-                    <div class="rounded-lg bg-teal-100 dark:bg-teal-900/40 p-4 flex justify-between items-center">
+                    <div class="rounded-lg bg-teal-200 dark:bg-teal-900/40 p-4 flex justify-between items-center">
                         <span class="text-sm font-medium">BMI input</span>
                         <span id="breakdown" class="font-semibold text-gray-900 text-sm dark:text-white">—</span>
                     </div>
                 </div>
-                <div class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-200 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-red-300 dark:border-slate-700 p-5 flex justify-end bg-red-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="openHistoryBmi" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
+                            text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none 
                             focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
                             dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
                             dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
@@ -88,36 +91,113 @@
             </div>
 
         </div>
+        <!-- Section 1: Understanding BMI -->
         <div
-            class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
-            <h2 class="text-xl font-semibold mb-4">Understanding Your BMI</h2>
+            class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Understanding Your Body Mass Index (BMI)</h2>
 
-            <div class="space-y-4 text-sm leading-relaxed">
-                <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Body Mass Index (BMI)</strong> is a simple measurement that helps you understand if your weight is healthy for your height.
-                    It’s commonly used by health professionals to classify underweight, normal weight, overweight, and obesity in adults.
-                </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                <strong>Body Mass Index (BMI)</strong> is a simple yet powerful measurement that estimates if your weight is healthy for your height.
+                It helps determine your <strong>weight category</strong>—underweight, normal, overweight, or obese—based on your height and weight.
+            </p>
 
-                <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Metric Formula:</strong> BMI = weight (kg) ÷ [height (m)]² <br>
-                    <strong>Imperial Formula:</strong> BMI = 703 × weight (lbs) ÷ [height (in)]²
-                </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                <strong>Metric Formula:</strong> BMI = weight (kg) ÷ [height (m)]² <br>
+                <strong>Imperial Formula:</strong> BMI = 703 × weight (lbs) ÷ [height (in)]²
+            </p>
 
-                <div>
-                    <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-1">BMI Categories:</h3>
-                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                        <li>Underweight: &lt; 18.5</li>
-                        <li>Normal: 18.5 – 24.9</li>
-                        <li>Overweight: 25 – 29.9</li>
-                        <li>Obese: ≥ 30</li>
-                    </ul>
-                </div>
-
-                <p class="text-gray-700 dark:text-gray-300">
-                    Keep in mind that BMI doesn’t measure body fat directly, so athletes or muscular individuals may have a high BMI even though they are healthy.
-                </p>
+            <div>
+                <h3 class="font-semibold text-gray-800 dark:text-gray-100 mb-2">BMI Categories:</h3>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Underweight: &lt; 18.5</li>
+                    <li>Normal (Healthy Weight): 18.5 – 24.9</li>
+                    <li>Overweight: 25 – 29.9</li>
+                    <li>Obese: ≥ 30</li>
+                </ul>
             </div>
         </div>
+
+        <!-- Section 2: Why BMI Matters -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Why Your BMI Matters</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                Knowing your <strong>BMI (Body Mass Index)</strong> helps you understand your overall health and fitness level.
+                A healthy BMI reduces the risk of chronic diseases like heart disease, high blood pressure, type 2 diabetes, and obesity.
+                Tracking your BMI regularly can guide you toward maintaining a balanced lifestyle and reaching your <strong>fitness goals</strong>.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300">
+                Your BMI doesn’t directly measure body fat, but it’s an effective screening tool to assess whether your weight could affect your health.
+                For a more complete analysis, use related tools like the
+                <a href="/fitness/body-fat-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Body Fat Calculator</a> or
+                <a href="/fitness/ideal-weight-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Ideal Weight Calculator</a>.
+            </p>
+        </div>
+
+        <!-- Section 3: Limitations of BMI -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Limitations of BMI</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                While <strong>BMI</strong> is useful for most people, it has limitations. It doesn’t distinguish between fat and muscle mass,
+                so muscular individuals or athletes may have a high BMI even though their body fat percentage is low.
+                Similarly, older adults might have a normal BMI but higher body fat levels.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300">
+                That’s why it’s important to pair your BMI with other health metrics such as:
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li><a href="/fitness/body-fat-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Body Fat Percentage</a></li>
+                <li><a href="/fitness/bmr-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Basal Metabolic Rate (BMR)</a></li>
+                <li><a href="/fitness/tdee-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Total Daily Energy Expenditure (TDEE)</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 4: How to Maintain a Healthy BMI -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">How to Maintain a Healthy BMI</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-3">
+                Achieving and maintaining a <strong>healthy BMI</strong> involves a combination of balanced nutrition, regular physical activity, and healthy habits.
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <li>Eat a balanced diet with lean proteins, fruits, vegetables, and whole grains.</li>
+                <li>Exercise regularly—aim for at least 150 minutes of moderate activity per week.</li>
+                <li>Track your calorie needs using the <a href="/fitness/tdee-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">TDEE Calculator</a>.</li>
+                <li>Stay hydrated and get enough sleep to support recovery and metabolism.</li>
+                <li>Recalculate your BMI regularly to track progress over time.</li>
+            </ul>
+
+            <p class="text-gray-700 dark:text-gray-300 mt-3">
+                Maintaining a stable, healthy weight not only improves appearance but also enhances energy levels, reduces stress, and promotes long-term wellness.
+            </p>
+        </div>
+
+        <!-- Section 5: Related Fitness Calculators -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Try Other Fitness Calculators</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-3">
+                Explore more free tools by QuickCalculatIt to better understand your health, fitness, and nutrition needs:
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <li><a href="/fitness/bmr-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">BMR Calculator</a> – Estimate your resting calorie burn.</li>
+                <li><a href="/fitness/tdee-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">TDEE Calculator</a> – Find your total daily calorie needs.</li>
+                <li><a href="/fitness/body-fat-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Body Fat Calculator</a> – Measure your body fat percentage.</li>
+                <li><a href="/fitness/ideal-weight-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Ideal Weight Calculator</a> – Discover your healthy weight range.</li>
+                <li><a href="/fitness/macros-calculator" class="text-yellow-600 dark:text-yellow-400 hover:underline">Macros Calculator</a> – Calculate daily protein, carb, and fat intake.</li>
+            </ul>
+        </div>
+
         <section>
             <div id="HistorySheetBmi" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">

@@ -1,9 +1,11 @@
 <x-app
-    :title="'Ideal Weight Calculator – Find Your Healthy Weight | QuickCalculatIt'"
-    :des="'QuickCalculatIt Ideal Weight Calculator helps you find your healthy weight range based on height, age, and gender. Achieve your fitness goals safely.'"
-    :key="'ideal weight calculator, healthy weight, BMI tools, fitness calculator, QuickCalculatIt'" />
+    :title="'Ideal Weight Calculator – Find Your Perfect Weight by Height, Age & Gender | QuickCalculatIt'"
+    :des="'Use the free Ideal Weight Calculator by QuickCalculatIt to find your healthy weight range based on your height, age, and gender. Instantly discover your ideal weight using proven formulas like BMI, Devine, Robinson, and Miller methods. Perfect for planning fitness goals, tracking progress, and maintaining a healthy lifestyle for men and women.'"
+    :key="'ideal weight calculator, healthy weight calculator, weight range calculator, calculate ideal weight, ideal body weight chart, ideal weight for men, ideal weight for women, height and weight calculator, BMI and ideal weight calculator, weight management tool, body weight calculator, fitness and health calculator, QuickCalculatIt ideal weight calculator, ideal body mass calculator, target weight calculator, weight goal planner, body measurement calculator, healthy lifestyle calculator, nutrition and fitness calculator, body balance calculator, body shape calculator'"
+    :titleTwitter="'Free Ideal Weight Calculator – Find Your Healthy Weight by Height, Age & Gender | QuickCalculatIt'" />
 
-<div class="px-6 sm:px-8 py-8 scroll-area" id="calculatorRoot">
+
+<div class="px-6 sm:px-8 py-8 scroll-area bg-emerald-50 dark:bg-gray-900" id="calculatorRoot">
     <div class="container mx-auto max-w-6xl">
         <header class="mb-10 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -29,14 +31,14 @@
                 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out">
             </div>
             <!-- 🧮 Ideal Weight Form Section -->
-            <form id="form-ideal" class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6 space-y-5">
+            <form id="form-ideal" class="flex flex-col justify-between rounded-2xl border border-yellow-300 dark:border-slate-700 
+                        bg-yellow-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6 space-y-5">
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Ideal Weight Calculator</h2>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Sex</label>
-                        <select name="sex" class="w-full rounded-xl border border-gray-200 dark:border-slate-700 
+                        <select name="sex" class="w-full rounded-xl border border-yellow-300 dark:border-gray-400 dark:border-slate-700 
                                                         px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -46,7 +48,7 @@
                     <div>
                         <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Height (cm)</label>
                         <input name="height_cm" type="number" placeholder="e.g. 170"
-                            class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 
+                            class="search w-full rounded-xl border border-yellow-300 dark:border-gray-400 dark:border-slate-700 px-3 py-2.5 
                                 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                         <p class="input_errors text-sm text-red-500 mt-2"></p>
                     </div>
@@ -54,13 +56,11 @@
 
                 </div>
 
-                <div class="flex justify-end border-t border-slate-200 dark:border-slate-700 p-3 bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="flex justify-end border-t border-yellow-200 dark:border-slate-700 p-3 bg-yellow-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button type="button" id="saveBtn"
                         class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                            focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                            dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                            dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                            text-white bg-emerald-700 hover:bg-emerald-800 focus:outline-none 
+                            focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300">
                         💾 Save
                     </button>
                     <span id="saveMsg" class="ml-3 text-green-600 hidden">Saved</span>
@@ -68,47 +68,107 @@
             </form>
 
             <!-- 📊 Ideal Weight Result Section -->
-            <div class="card flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 
-                        bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <div class="card flex flex-col justify-between rounded-2xl border border-red-300 dark:border-slate-700 
+                        bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Ideal Weight Result</h2>
 
-                <div class="rounded-lg bg-green-100 dark:bg-green-900/40 p-4 mb-4">
+                <div class="rounded-lg bg-green-200 dark:bg-green-900/40 p-4 mb-4">
                     <div class="text-sm text-gray-700 dark:text-gray-200">Your Ideal Weight</div>
                     <div id="headlines" class="text-2xl font-semibold text-gray-900 dark:text-white">—</div>
                     <div id="breakdown" class="text-sm text-slate-600 dark:text-slate-400 mt-2"></div>
                 </div>
 
-                <div class="border-t border-slate-200 dark:border-slate-700 p-3 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                <div class="border-t border-red-200 dark:border-slate-700 p-3 flex justify-end bg-red-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="openHistoryIdealWeight" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium 
-                            text-white bg-gray-900 hover:bg-gray-800 focus:outline-none 
-                            focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 
-                            dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 
-                            dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                            text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none 
+                            focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300">
                         🕓 History
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- ℹ️ Ideal Weight Explanation Section -->
-        <div class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 
-                    text-gray-900 dark:text-white shadow-sm p-6">
+        <!-- ⚖️ Understanding Ideal Weight Section -->
+        <div class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
             <h2 class="text-xl font-semibold mb-4">Understanding Ideal Weight</h2>
             <div class="space-y-4 text-sm leading-relaxed">
                 <p class="text-gray-700 dark:text-gray-300">
-                    Ideal Weight is an estimate of the weight that is considered healthy based on your height, sex, and frame size.
+                    <strong>Ideal Weight</strong> represents the weight range that is considered healthy for your height, age, and gender.
+                    It’s an important part of understanding your overall <strong>body composition</strong> and maintaining good <strong>health and fitness</strong>.
+                    By knowing your ideal weight, you can set realistic goals for weight management, muscle gain, or fat loss.
                 </p>
+
                 <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Common Formulas:</strong><br>
-                    <strong>Devine Formula:</strong><br>
-                    Male: 50 kg + 2.3 kg per inch over 5 feet<br>
-                    Female: 45.5 kg + 2.3 kg per inch over 5 feet
+                    <strong>Common Ideal Weight Formulas:</strong><br>
+                <ul class="list-disc list-inside mt-2 text-gray-700 dark:text-gray-300">
+                    <li><strong>Devine Formula:</strong> Male: 50 kg + 2.3 kg per inch over 5 ft | Female: 45.5 kg + 2.3 kg per inch over 5 ft</li>
+                    <li><strong>Hamwi Formula:</strong> Male: 48.0 kg + 2.7 kg per inch over 5 ft | Female: 45.5 kg + 2.2 kg per inch over 5 ft</li>
+                    <li><strong>Robinson Formula:</strong> Male: 52 kg + 1.9 kg per inch over 5 ft | Female: 49 kg + 1.7 kg per inch over 5 ft</li>
+                </ul>
                 </p>
+
                 <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Notes:</strong> Frame size adjusts the ideal range: small, medium, or large frame influences the final value.
+                    <strong>Frame Size Adjustment:</strong> People with a <em>small frame</em> may weigh less than the average ideal range,
+                    while those with a <em>large frame</em> may weigh slightly more and still be healthy.
+                    This is why it’s important to interpret your <strong>ideal weight calculator</strong> results with your frame size and muscle mass in mind.
+                </p>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    Remember, “ideal weight” isn’t about appearance — it’s about <strong>optimal health</strong>.
+                    Your ideal range supports better <strong>metabolism</strong>, lower risk of chronic disease,
+                    and improved <strong>energy levels</strong> throughout the day.
                 </p>
             </div>
         </div>
+
+        <!-- 🩺 How to Maintain a Healthy Weight -->
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">How to Maintain Your Ideal Weight</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    Maintaining your <strong>ideal body weight</strong> requires a combination of proper nutrition, regular exercise, and balanced lifestyle habits.
+                    Here are a few science-backed tips to help you stay within your healthy weight range:
+                </p>
+
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>Follow a balanced diet rich in lean protein, complex carbohydrates, and healthy fats.</li>
+                    <li>Engage in at least 150 minutes of moderate exercise or 75 minutes of vigorous exercise per week.</li>
+                    <li>Stay hydrated and prioritize 7–8 hours of sleep per night.</li>
+                    <li>Track your progress using our <strong>Ideal Weight Calculator</strong>, <strong>BMI Calculator</strong>, and <strong>Body Fat Calculator</strong>.</li>
+                    <li>Focus on long-term habits, not short-term diets or extreme restrictions.</li>
+                </ul>
+
+                <p class="text-gray-700 dark:text-gray-300">
+                    By maintaining a healthy weight range, you can improve your <strong>heart health</strong>,
+                    boost your <strong>energy</strong>, and reduce the risk of <strong>diabetes, hypertension,</strong> and other lifestyle diseases.
+                </p>
+            </div>
+        </div>
+
+        <!-- 📊 Ideal Weight Chart Section -->
+        <div class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 
+            text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Height and Weight Chart for Adults</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300">
+                    The table below provides a general guide to the <strong>ideal weight range</strong> for adults based on height.
+                    These values may vary slightly depending on gender, bone density, and body composition.
+                </p>
+                <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    <li>5'0" (152 cm) – 45 to 56 kg</li>
+                    <li>5'4" (163 cm) – 50 to 63 kg</li>
+                    <li>5'8" (173 cm) – 59 to 72 kg</li>
+                    <li>6'0" (183 cm) – 65 to 80 kg</li>
+                </ul>
+                <p class="text-gray-700 dark:text-gray-300">
+                    Use these numbers as a reference — your best weight is one that supports your <strong>physical performance</strong>,
+                    <strong>mental wellbeing</strong>, and <strong>long-term health</strong>.
+                </p>
+            </div>
+        </div>
+
         <section>
             <div id="HistorySheetIdealWeight" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">

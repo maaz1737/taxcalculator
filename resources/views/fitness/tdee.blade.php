@@ -1,9 +1,11 @@
 <x-app
-    :title="'TDEE Calculator – Total Daily Energy Expenditure | QuickCalculatIt'"
-    :des="'QuickCalculatIt TDEE Calculator calculates your daily calorie burn based on activity level. Plan your diet and fitness goals effectively.'"
-    :key="'TDEE calculator, total daily energy expenditure, calorie calculator, fitness tools, QuickCalculatIt'" />
+    :title="'TDEE Calculator – Calculate Total Daily Energy Expenditure & Calorie Burn | QuickCalculatIt'"
+    :des="'Use the free TDEE Calculator by QuickCalculatIt to find out how many calories you burn per day based on your activity level, age, height, weight, and gender. Instantly calculate your Total Daily Energy Expenditure (TDEE) to plan your diet, maintain, lose, or gain weight effectively. Perfect for fitness tracking, nutrition planning, and calorie management.'"
+    :key="'TDEE calculator, total daily energy expenditure calculator, daily calorie burn calculator, calorie maintenance calculator, calorie needs calculator, TDEE for men, TDEE for women, fitness and nutrition calculator, calorie intake calculator, energy expenditure calculator, calorie tracking, health and fitness tool, weight management calculator, calorie deficit calculator, BMR and TDEE calculator, diet planning tool, QuickCalculatIt TDEE calculator, metabolic rate calculator, online calorie calculator, daily energy calculator, calorie goal calculator'"
+    :titleTwitter="'Free TDEE Calculator – Find Your Daily Calorie Burn & Energy Expenditure | QuickCalculatIt'" />
 
-<div class="px-6 sm:px-8 py-8 scroll-area">
+
+<div class="px-6 sm:px-8 py-8 scroll-area bg-emerald-50 dark:bg-gray-900">
     <div class="container mx-auto max-w-6xl">
         <header class="mb-10 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -31,7 +33,7 @@
             </div>
             <!-- 🧮 TDEE Form -->
             <form id="form-tdee"
-                class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                class="flex flex-col justify-between rounded-2xl border border-yellow-300 dark:border-slate-700 bg-yellow-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">TDEE Calculator</h2>
 
@@ -39,13 +41,13 @@
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">BMR (cal/day)</label>
                             <input name="bmr" id="tdee_bmr" type="number" placeholder="e.g. 1600"
-                                class="search w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="search w-full rounded-xl border border-yellow-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                             <p class="input_error text-sm text-red-500 mt-2"></p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">Activity Level</label>
                             <select name="activity" id="tdee_activity"
-                                class="w-full rounded-xl border border-gray-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
+                                class="w-full rounded-xl border border-yellow-200 dark:border-slate-700 px-3 py-2.5 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-indigo-400/40">
                                 <option value="sedentary">Sedentary</option>
                                 <option value="light">Light</option>
                                 <option value="moderate">Moderate</option>
@@ -56,9 +58,9 @@
                 </div>
 
                 <div
-                    class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                    class="border-t border-yellow-200 dark:border-slate-700 p-5 flex justify-end bg-yellow-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="saveBtn"
-                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-emerald-700 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300">
                         ⚙️ Save
                     </button>
                     <span id="saveMsg" class="text-green-600 hidden">Saved</span>
@@ -68,11 +70,11 @@
 
             <!-- 📊 TDEE Result -->
             <div
-                class="flex flex-col justify-between rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
+                class="flex flex-col justify-between rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100/30 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm">
                 <div class="p-6 space-y-5">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">TDEE Result</h2>
 
-                    <div class="rounded-lg bg-blue-100 dark:bg-blue-900/40 p-4">
+                    <div class="rounded-lg bg-blue-200 dark:bg-blue-900/40 p-4">
                         <div class="text-sm text-gray-700 dark:text-gray-200">Your Total Daily Energy Expenditure</div>
                         <div id="headlines" class="text-2xl font-semibold text-gray-900 dark:text-white">—</div>
                         <div id="breakdown" class="text-sm text-slate-600 dark:text-slate-400 mt-2"></div>
@@ -82,31 +84,123 @@
                 </div>
 
                 <div
-                    class="border-t border-slate-200 dark:border-slate-700 p-5 flex justify-end bg-gray-50 dark:bg-gray-900/50 rounded-b-2xl">
+                    class="border-t border-red-200 dark:border-slate-700 p-5 flex justify-end bg-red-100 dark:bg-gray-900/50 rounded-b-2xl">
                     <button id="openHistoryTDEE"
-                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus:ring-slate-600 dark:focus:ring-offset-gray-900">
+                        class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 ">
                         🕓 History
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- ℹ️ TDEE Explanation -->
+        <!-- Section 1: Understanding Your TDEE -->
         <div
-            class="mt-10 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
-            <h2 class="text-xl font-semibold mb-4">Understanding Your TDEE</h2>
-            <div class="space-y-4 text-sm leading-relaxed">
-                <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Total Daily Energy Expenditure (TDEE)</strong> estimates how many calories you burn per day including all
-                    activities.
-                </p>
-                <p class="text-gray-700 dark:text-gray-300">
-                    <strong>Formula:</strong> TDEE = BMR × Activity Factor
-                    <br>
-                    <em>Activity Factors:</em> Sedentary: 1.2, Light: 1.375, Moderate: 1.55, Active: 1.725, Very Active: 1.9
-                </p>
-            </div>
+            class="mt-10 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Understanding Your Total Daily Energy Expenditure (TDEE)</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                <strong>Total Daily Energy Expenditure (TDEE)</strong> is the total number of calories your body burns in a day,
+                accounting for all activities such as resting, working, exercising, and even digesting food.
+                It provides a complete picture of how much energy your body needs daily to maintain your current weight.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                <strong>Formula:</strong> TDEE = BMR × Activity Factor
+                <br>
+                <em>Activity Factors:</em><br>
+                Sedentary: 1.2 | Lightly Active: 1.375 | Moderately Active: 1.55 | Active: 1.725 | Very Active: 1.9
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300">
+                Knowing your <strong>TDEE</strong> helps you set accurate calorie targets for <strong>weight loss</strong>,
+                <strong>muscle gain</strong>, or <strong>maintenance</strong>. It’s one of the most reliable methods to understand your
+                <strong>daily calorie burn</strong> and manage your diet effectively.
+            </p>
         </div>
+
+        <!-- Section 2: Why TDEE is Important -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Why TDEE is Important for Fitness and Nutrition</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                Your <strong>Total Daily Energy Expenditure</strong> is crucial for achieving your health and fitness goals.
+                By understanding your TDEE, you can design a personalized meal and workout plan that aligns with your energy needs.
+                It helps you avoid under-eating or over-eating, which can slow down progress or lead to weight gain.
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">
+                <li><strong>Weight Loss:</strong> Consume fewer calories than your TDEE (calorie deficit).</li>
+                <li><strong>Weight Gain:</strong> Eat more calories than your TDEE (calorie surplus).</li>
+                <li><strong>Weight Maintenance:</strong> Match your calorie intake to your TDEE.</li>
+            </ul>
+
+            <p class="text-gray-700 dark:text-gray-300">
+                Pair your <strong>TDEE calculation</strong> with your <a href="/fitness/bmr-calculator" class="text-red-600 dark:text-red-400 hover:underline">BMR (Basal Metabolic Rate)</a>
+                and <a href="/fitness/macros-calculator" class="text-red-600 dark:text-red-400 hover:underline">Macros Calculator</a>
+                to create a complete fitness strategy for long-term success.
+            </p>
+        </div>
+
+        <!-- Section 3: Factors That Influence Your TDEE -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">What Factors Affect Your TDEE?</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-3">
+                Your <strong>Total Daily Energy Expenditure</strong> isn’t fixed — it varies based on several lifestyle and biological factors:
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <li><strong>BMR (Basal Metabolic Rate):</strong> The calories your body burns at rest.</li>
+                <li><strong>Physical Activity:</strong> Exercise and movement increase daily calorie burn.</li>
+                <li><strong>Thermic Effect of Food (TEF):</strong> The energy used during digestion and nutrient absorption.</li>
+                <li><strong>Age:</strong> Metabolism slows as you get older, reducing TDEE.</li>
+                <li><strong>Gender:</strong> Men generally have higher TDEE than women due to muscle mass.</li>
+                <li><strong>Body Composition:</strong> More muscle means higher energy expenditure, even at rest.</li>
+            </ul>
+        </div>
+
+        <!-- Section 4: How to Calculate and Use Your TDEE -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">How to Calculate and Use Your TDEE Effectively</h2>
+
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                To calculate your <strong>TDEE</strong>, first find your <strong>BMR</strong> using the
+                <a href="/fitness/bmr-calculator" class="text-red-600 dark:text-red-400 hover:underline">BMR Calculator</a>.
+                Then multiply your BMR by your activity factor (based on your lifestyle).
+                This gives you the total calories you burn each day.
+            </p>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 mb-4">
+                <li><strong>Sedentary (little or no exercise):</strong> BMR × 1.2</li>
+                <li><strong>Lightly Active (light exercise 1–3 days/week):</strong> BMR × 1.375</li>
+                <li><strong>Moderately Active (moderate exercise 3–5 days/week):</strong> BMR × 1.55</li>
+                <li><strong>Active (hard exercise 6–7 days/week):</strong> BMR × 1.725</li>
+                <li><strong>Very Active (physical job or intense training):</strong> BMR × 1.9</li>
+            </ul>
+
+            <p class="text-gray-700 dark:text-gray-300">
+                Once you have your <strong>TDEE results</strong>, you can use them to adjust your diet, track calories, and
+                optimize your nutrition using the <a href="/fitness/macros-calculator" class="text-red-600 dark:text-red-400 hover:underline">Macros Calculator</a>
+                for protein, carbs, and fat balance.
+            </p>
+        </div>
+
+        <!-- Section 5: Related Calculators -->
+        <div
+            class="mt-6 rounded-2xl border border-red-300 dark:border-slate-700 bg-red-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm p-6">
+            <h2 class="text-xl font-semibold mb-4">Explore Related Fitness Calculators</h2>
+
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <li><a href="/fitness/bmr-calculator" class="text-red-600 dark:text-red-400 hover:underline">BMR Calculator</a> – Find your resting metabolic rate.</li>
+                <li><a href="/fitness/macros-calculator" class="text-red-600 dark:text-red-400 hover:underline">Macros Calculator</a> – Get your daily nutrient ratios.</li>
+                <li><a href="/fitness/bmi-calculator" class="text-red-600 dark:text-red-400 hover:underline">BMI Calculator</a> – Check your healthy weight range.</li>
+                <li><a href="/fitness/body-fat-calculator" class="text-red-600 dark:text-red-400 hover:underline">Body Fat Calculator</a> – Estimate body fat percentage.</li>
+                <li><a href="/fitness/ideal-weight-calculator" class="text-red-600 dark:text-red-400 hover:underline">Ideal Weight Calculator</a> – Find your target body weight.</li>
+            </ul>
+        </div>
+
         <section>
             <div id="HistorySheetTDEE" class="fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
                 <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-slate-700 bg-white dark:bg-gray-900">
