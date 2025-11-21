@@ -7,19 +7,8 @@
 <div class="bg-emerald-50 text-black dark:bg-slate-900 text-white">
     <div class="w-full min-h-[70vh] py-10 flex flex-col lg:flex-row items-center justify-center gap-16 text-center">
 
-        <!-- Sri Lanka Time -->
-        <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Sri Lanka 🇱🇰 (Colombo)</h3>
-            <div class="dial" id="sl-dial"></div>
 
-            <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
-                <p id="sl-day" class="font-bold"></p>
-                <p id="sl-date"></p>
-                <p id="sl-time" class="text-xl font-semibold"></p>
-            </div>
-        </div>
 
-        <div class="text-black text-5xl dark:text-white"> = </div>
 
         <!-- Local Time -->
         <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
@@ -32,6 +21,21 @@
                 <p id="local-time" class="text-xl font-semibold"></p>
             </div>
         </div>
+
+        <div class="text-black text-5xl dark:text-white"> = </div>
+
+        <!-- Sri Lanka Time -->
+        <div class="bg-yellow-50 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-yellow-300 w-[320px] dark:bg-slate-600/50 dark:border-slate-700">
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-gray-200 mb-4">Sri Lanka 🇱🇰 (Colombo)</h3>
+            <div class="dial" id="sl-dial"></div>
+
+            <div class="mt-4 text-emerald-800 dark:text-white space-y-1">
+                <p id="sl-day" class="font-bold"></p>
+                <p id="sl-date"></p>
+                <p id="sl-time" class="text-xl font-semibold"></p>
+            </div>
+        </div>
+
 
     </div>
 

@@ -74,11 +74,19 @@
  <script src=" {{ asset('js/salary.js') }}" defer></script>
  <script src=" {{ asset('js/mortgage.js') }}" defer></script>
  <script src=" {{ asset('js/depreciation.js') }}" defer></script>
- <script src=" {{ asset('js/simplecalculator.js') }}"></script>
- <script src="{{ asset('js/scientificCalculator.js') }}"></script>
+ <script src=" {{ asset('js/simplecalculator.js') }}" defer></script>
+ <script src="{{ asset('js/scientificCalculator.js') }}" defer></script>
 
 
 
+
+ @if (request()->routeIs('age.*'))
+ <script src="{{ asset('js/ageCalculation.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('dayCounter.*'))
+ <script src="{{ asset('js/dayCounter.js') }}" defer></script>
+ @endif
 
 
  </body>

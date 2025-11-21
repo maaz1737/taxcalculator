@@ -1,4 +1,4 @@
-$(function () {
+(function () {
     const $modal = $("#sciCalcModal");
     const $overlay = $modal.find("[data-overlay]");
     const $openBtn = $("#openSciCalc");
@@ -90,7 +90,6 @@ $(function () {
     }
 
     function push(s, origin = "btn") {
-        console.log(s);
         if (!input.length && ["*", "+", "/", "-", "^"].includes(s)) return;
         input += s;
         insStack.push({
@@ -453,7 +452,6 @@ $(function () {
                 withCredentials: true,
             },
             success: function (res) {
-                console.log(res.data);
                 $historyEl.empty();
 
                 let history = res.data;
@@ -502,7 +500,6 @@ $(function () {
                 result,
             })
                 .then((data) => {
-                    console.log(data);
                     showSuccessMessage(data.message);
                     appendHistory();
                 })

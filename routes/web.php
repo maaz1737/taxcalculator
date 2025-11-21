@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConvertController;
 use App\Http\Controllers\CountriesTimeController;
+use App\Http\Controllers\DayCounterController;
 use App\Http\Controllers\FavoriteCalculatorsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LengthController;
@@ -15,7 +16,7 @@ use App\Http\Controllers\V1\FitnessController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\SimpleCalculatorController;
 use App\Http\Controllers\StripeController;
-
+use App\Models\DayCounter;
 
 Route::get('/', function () {
     return view('welcome');
@@ -162,42 +163,34 @@ Route::get('/cancel', [StripeController::class, 'cancel']);
 // point of interest routes
 
 Route::get('/age-calculator', [AgeController::class, 'index'])->name('age.calculator.view');
-
 Route::post('/age/calculator', [AgeController::class, 'calculate'])->name('age.calculate');
 Route::post('/age/save', [AgeController::class, 'save'])->name('age.save');
 Route::get('/age-calculation-history', [AgeController::class, 'history'])->name('age.history');
 
 
 
-Route::get('/wolrd-times', [CountriesTimeController::class, 'index'])->name('world.time');
+Route::get('/world-times', [CountriesTimeController::class, 'index'])->name('world.time');
 Route::get('/current-time-in-new-york-united-states', [CountriesTimeController::class, 'newyork_time'])->name('newyork.time');
 Route::get('/current-time-in-california-united-states', [CountriesTimeController::class, 'california_time'])->name('california.time');
 Route::get('/current-time-in-sydney-australia', [CountriesTimeController::class, 'australia_time'])->name('australia.time');
 Route::get('/current-time-in-tokyo-japan', [CountriesTimeController::class, 'japan_time'])->name('japan.time');
 Route::get('/current-time-in-Kathmandu-nepal', [CountriesTimeController::class, 'nepal_time'])->name('nepal.time');
 Route::get('/current-time-in-thimphu-bhutan', [CountriesTimeController::class, 'bhutan_time'])->name('bhutan.time');
-
-
-
-
 Route::get('/current-time-in-Kolkata-india', [CountriesTimeController::class, 'india_time'])->name('india.time');
 Route::get('/current-time-in-dubai-uae', [CountriesTimeController::class, 'uae_time'])->name('uae.time');
 Route::get('/current-time-in-karachi-pakistan', [CountriesTimeController::class, 'pakistan_time'])->name('pakistan.time');
 Route::get('/current-time-in-riyadh-saudia-arabia', [CountriesTimeController::class, 'saudia_arabia_time'])->name('saudia.arabia.time');
 Route::get('/current-time-in-dhaka-bangladesh', [CountriesTimeController::class, 'bangladesh_time'])->name('bangladesh.time');
-
-
-
 Route::get('/sri-lanka-time-now-colombo', [CountriesTimeController::class, 'srilanka_time'])->name('srilanka.time');
 Route::get('/china-time-now-beijing', [CountriesTimeController::class, 'china_time'])->name('china.time');
-
 Route::get('/canada-time-now-toronto', [CountriesTimeController::class, 'canada_time'])->name('canada.time');
 Route::get('/uk-time-now-london', [CountriesTimeController::class, 'uk_time'])->name('uk.time');
-
-
 Route::get('/germany-time-now-berlin', [CountriesTimeController::class, 'germany_time'])->name('germany.time');
 Route::get('/france-time-now-paris', [CountriesTimeController::class, 'france_time'])->name('france.time');
-
 Route::get('/italy-time-now-rome', [CountriesTimeController::class, 'italy_time'])->name('italy.time');
-
 Route::get('/spain-time-now-madrid', [CountriesTimeController::class, 'spain_time'])->name('spain.time');
+
+
+
+Route::get('/day-counter', [DayCounterController::class, 'index'])->name('dayCounter.view');
+Route::POST('/day-counter/calculate', [DayCounterController::class, 'calculate'])->name('dayCounter.calculate');

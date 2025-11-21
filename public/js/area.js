@@ -41,7 +41,6 @@
      * Error helpers
      * =========================== */
     function showError(msg) {
-        console.log(msg);
         $elError.removeClass("-translate-y-full opacity-0");
         $elError.text(msg);
         setTimeout(() => {
@@ -121,7 +120,6 @@
                 );
             });
         } catch (e) {
-            console.log(e);
             showError(e.responseJSON.message);
         }
     }
@@ -213,7 +211,6 @@
                 throw new Error(data.message || "Something went wrong");
             }
         } catch (e) {
-            console.log(e);
             showError(e.responseJSON.message);
 
             $btnSaveArea.html("Error ✗");
@@ -246,7 +243,6 @@
 
     async function loadAreaHistory({ urm }) {
         try {
-            console.log(urm);
             const res = await fetchJson(urm, {
                 category: "area",
                 per_page: 5,
@@ -301,15 +297,13 @@
                 $historyList.append($li.clone(true));
             });
 
-            // (optional) inspect res.meta/res.links for pagination
-            // console.log(res.meta, res.links);
+   
         } catch (e) {
             showError(e.message);
         }
     }
 
     function pagination(links) {
-        console.log(links);
 
         $area_pagination = $("#area_pagination");
 

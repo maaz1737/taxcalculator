@@ -52,12 +52,12 @@
                     'route' => 'india.time'
                 ],
                 [
-                    'name' => 'pakistan Current Time',
+                    'name' => 'Pakistan Current Time',
                     'summary' => 'Get the current time in Pakistan with our live time calculator. View accurate local time and timezone details for major cities including Islamabad, Karachi, Lahore, and Faisalabad.',
                     'route' => 'pakistan.time'
                 ],
                 [
-                    'name' => 'bhutan Current Time',
+                    'name' => 'Bhutan Current Time',
                     'summary' => 'Get the current time in Bhutan with our live time calculator. View accurate local time and timezone details for major cities including Thimphu, Paro, and Phuntsholing.',
                     'route' => 'bhutan.time'
                 ],

@@ -98,7 +98,7 @@ $(function () {
                 $tbody.html(rows);
             })
             .fail(function (xhr) {
-                showError(xhr.responseText || "Request failed.");
+                // showError(xhr.responseText || "Request failed.");
             });
     }
 

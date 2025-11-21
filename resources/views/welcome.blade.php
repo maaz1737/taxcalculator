@@ -62,18 +62,17 @@
         @php
         $featured = [
         ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','data'=>'sciCalcModal'],
+        ['id'=>'openPopupTaxCalculator','title'=>'Tax Calculator','tag'=>'Income Tax','summary'=>'Check your BMI & category','name'=>'Open tax Calculator','data'=>'popupTaxCalculator'],
         ['id'=>'openPopupSalaryCalculator','title'=>'Salary Calculator','tag'=>'Salary','summary'=>'Salary Calculator','name'=>'Open Salary Calculator','data'=>'popupSalaryCalculator'],
         ['id'=>'openPopupRentCalculator','title'=>'Rent Calculator','tag'=>'Rent','summary'=>'Rent Category','name'=>'Open Rent Calculator','data'=>'popupRentCalculator'],
         ['id'=>'openPopupDepreciationCalculator','title'=>'Depreciation Calculator','tag'=>'Depreciation','summary'=>'Check your BMI & category','name'=>'Open Depreciation Calculator','data'=>'popupDepreciationCalculator'],
         ['id'=>'openPopupMortgageCalculator','title'=>'Mortgage Calculator','tag'=>'Mortgage','summary'=>'Mortgage Calculator','name'=>'Open Mortgage Calculator','data'=>'popupMortgageCalculator'],
-        ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','data'=>'popupVolumeConverter'],
+        ['id'=>"openPopupLengthConverter",'title'=>'Length Converter','tag'=>'length','summary'=>'Convert Length','name'=>'Open length Calculator','data'=>'popupLengthConverter'],
         ['id'=>'openPopupTimeConverter','title'=>'Time Calculator','tag'=>'Time','summary'=>'Time Converter','name'=>'Open Time Converter','data'=>'popupTimeConverter'],
-
+        ['id'=>'openPopupAreaConverterNew','title'=>'Area Converter','tag'=>'Area','summary'=>'Calculate area','name'=>'Open Area Converter','data'=>'popupAreaConverterNew'],
+        ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','data'=>'popupVolumeConverter'],
         ['id'=>'openPopupTemperatureConverter','title'=>'Temperature Calculator','tag'=>'Temperature','summary'=>'Temperature Converter','name'=>'Open Temperature Converter ','data'=>'popupTemperatureConverter'],
         ['id'=>'openPopupWeightConverter','title'=>'Weight Calculator','tag'=>'Weight','summary'=>'weight converter','name'=>'Open Weight Converter','data'=>'popupWeightConverter'],
-        ['id'=>'openPopupAreaConverterNew','title'=>'Area Converter','tag'=>'Area','summary'=>'Calculate area','name'=>'Open Area Converter','data'=>'popupAreaConverterNew'],
-        ['id'=>"openPopupLengthConverter",'title'=>'Length Converter','tag'=>'length','summary'=>'Convert Length','name'=>'Open length Calculator','data'=>'popupLengthConverter'],
-        ['id'=>'openPopupTaxCalculator','title'=>'Tax Calculator','tag'=>'Income Tax','summary'=>'Check your BMI & category','name'=>'Open tax Calculator','data'=>'popupTaxCalculator'],
 
         ];
         @endphp
@@ -144,10 +143,6 @@
 
 
 
-
-
-
-
 <script>
     // --- helpers ---
     const toSel = (id) => (id && id[0] === '#') ? id : ('#' + id);
@@ -169,7 +164,6 @@
     $(document).on('click', '[data-modal-target]', function(e) {
         e.preventDefault();
         const id = $(this).attr('data-modal-target');
-        console.log(id)
         showModal(id);
     });
 
@@ -195,11 +189,6 @@
         }
     });
 </script>
-
-
-
-<script src="assets/js/header.js"></script>
-
 
 
 
