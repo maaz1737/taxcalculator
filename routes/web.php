@@ -194,3 +194,5 @@ Route::get('/spain-time-now-madrid', [CountriesTimeController::class, 'spain_tim
 
 Route::get('/day-counter', [DayCounterController::class, 'index'])->name('dayCounter.view');
 Route::POST('/day-counter/calculate', [DayCounterController::class, 'calculate'])->name('dayCounter.calculate');
+Route::POST('/day-counter/save', [DayCounterController::class, 'save'])->name('dayCounter.save');
+Route::get('/day-counter/history', [DayCounterController::class, 'history'])->name('dayCounter.history');

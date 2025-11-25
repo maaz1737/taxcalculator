@@ -10,7 +10,9 @@ class DayCounter extends Model
 
     protected $fillable = [
         'start_date',
+        'user_id',
         'end_date',
         'total_days',
+        'last_day_included'
     ];
 }

@@ -24,16 +24,14 @@
             </span>
         </div>
 
-        {{-- Error Banner --}}
-        <div id="errorCounter"
-            class="hidden mb-4 rounded-xl border border-red-200/70 bg-red-50 text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200 px-3 py-2">
-        </div>
-
         {{-- Inputs --}}
         <div class="relative rounded-2xl border border-yellow-200 bg-yellow-100/30 dark:border-slate-700 dark:bg-slate-800 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)]
         dark:hover:shadow-[0_4px_12px_rgba(56,189,248,0.25)]
         shadow-sm px-5 pt-5 pb-3">
-
+            <div id="errorCounter"
+                class="absolute hidden top-0 left-4 w-1/2 mb-4 rounded-xl border border-red-200/70 bg-red-50 text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200 px-3 py-2">
+                gffgfgfgf
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
 
                 {{-- START DATE --}}
@@ -170,7 +168,7 @@
 
             <!-- RIGHT SIDE BUTTON -->
             <div class="flex-shrink-0">
-                <button id="openHistoryCounter"
+                <button id="openHistory"
                     class="inline-flex w-[110px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium
                 text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 
                 focus:ring-offset-2 focus:ring-slate-300 dark:bg-white dark:text-gray-900 
@@ -253,13 +251,13 @@
         </div>
 
         {{-- HISTORY DRAWER --}}
-        <div id="historySheetCounter" class="scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
+        <div id="historySheet" class="scroll-skin fixed inset-x-0 bottom-0 z-[70] max-h-[85vh] translate-y-full opacity-0 pointer-events-none transition ease-out duration-300">
 
             <div class="mx-auto w-[min(900px,95vw)] rounded-t-2xl shadow-2xl ring-1 ring-slate-200/60 dark:ring-slate-700/60 bg-white dark:bg-gray-900">
 
                 <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-slate-700">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Day Counter – Full History</h3>
-                    <button id="closeHistoryCounter" class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">✕</button>
+                    <button id="closeHistory" class="inline-flex items-center justify-center h-9 w-9 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200/70 dark:hover:bg-gray-700/70 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600">✕</button>
                 </div>
 
                 <div class="scroll-area p-5 overflow-y-auto max-h-[70vh]">
@@ -268,7 +266,7 @@
                 </div>
 
                 <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-700 flex justify-end">
-                    <button id="closeHistoryCounter2" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700">Close</button>
+                    <button id="closeHistory2" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700">Close</button>
                 </div>
 
             </div>
@@ -281,6 +279,8 @@
 @if (request()->routeIs('dayCounter.*'))
 <script>
     window.dayCalculatorUrl = "{{ route('dayCounter.calculate') }}";
+    window.SaveUrl = "{{ route('dayCounter.save') }}";
+    window.HistoryUrl = "{{ route('dayCounter.history') }}";
 </script>
 @endif
 
