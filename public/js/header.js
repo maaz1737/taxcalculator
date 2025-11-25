@@ -4,11 +4,12 @@ const caret = $("#caret-icon");
 
 btn.on("click", (e) => {
     e.stopPropagation();
-    menu.toggleClass("show");
+    console.log("thisfdsfdfkljd");
+    menu.toggleClass("hidden");
     btn.toggleClass("active");
 });
 
 $(document).on("click", () => {
-    menu.removeClass("show");
+    menu.addClass("hidden");
     btn.removeClass("active");
 });

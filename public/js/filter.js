@@ -615,6 +615,31 @@ const suggestions = [
     { text: "find my age", url: "/agecalculator" },
     { text: "current age calculator", url: "/agecalculator" },
     { text: "online age calculator", url: "/agecalculator" },
+
+    // ===== Day Counter CALCULATOR =====
+
+    { text: "day counter calculator", url: "/day-counter" },
+    { text: "calculate days between dates", url: "/day-counter" },
+    { text: "date difference calculator", url: "/day-counter" },
+    { text: "days between two dates", url: "/day-counter" },
+    { text: "days calculator online", url: "/day-counter" },
+    { text: "find number of days", url: "/day-counter" },
+    { text: "count days between dates", url: "/day-counter" },
+    { text: "duration calculator days", url: "/day-counter" },
+    { text: "day gap calculator", url: "/day-counter" },
+    { text: "days elapsed calculator", url: "/day-counter" },
+    { text: "difference in days calculator", url: "/day-counter" },
+    { text: "count days calculator", url: "/day-counter" },
+    { text: "calculate total days", url: "/day-counter" },
+    { text: "between dates day count", url: "/day-counter" },
+    { text: "days counter online tool", url: "/day-counter" },
+    { text: "days calculation tool", url: "/day-counter" },
+    { text: "calculate days from date", url: "/day-counter" },
+    { text: "how many days between", url: "/day-counter" },
+    {
+        text: "days count calculator date difference",
+        url: "/day-counter",
+    },
 ];
 
 $(".sea").on("input change keyup", function () {

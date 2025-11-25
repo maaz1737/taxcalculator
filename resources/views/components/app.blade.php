@@ -132,7 +132,7 @@
                             <a href="{{ route('temperature') }}" class="block px-4 py-2 hover:bg-gray-100">Temperature</a>
                             <a href="{{ route('weight') }}" class="block px-4 py-2 hover:bg-gray-100">Weight Calculator</a>
                             <a href="{{ route('age.calculator.view') }}" class="block px-4 py-2 hover:bg-gray-100">Age calculator</a>
-
+                            <a href="{{ route('dayCounter.view') }}" class="block px-4 py-2 hover:bg-gray-100">Day Counter</a>
                             <a href="{{ route('finance.income_tax') }}" class="block px-4 py-2 hover:bg-gray-100">Tax calculator</a>
                             <a href="{{ route('finance.rent') }}" class="block px-4 py-2 hover:bg-gray-100">Rent Calculator</a>
                             <a href="{{ route('finance.salary') }}" class="block px-4 py-2 hover:bg-gray-100">Salary Calculator</a>
