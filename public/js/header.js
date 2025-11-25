@@ -4,7 +4,6 @@ const caret = $("#caret-icon");
 
 btn.on("click", (e) => {
     e.stopPropagation();
-    console.log("thisfdsfdfkljd");
     menu.toggleClass("hidden");
     btn.toggleClass("active");
 });

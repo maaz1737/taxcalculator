@@ -134,7 +134,7 @@ function showResult(result) {
   } else {
     $("#endFrom").html(`
     <div>
-     Not icluded last day ${days[lastd.getDay()]} , ${lastd.getDate()} ${
+     Not included last day ${days[lastd.getDay()]} , ${lastd.getDate()} ${
       months[lastd.getMonth()]
     } ${lastd.getFullYear()}
     </div>
