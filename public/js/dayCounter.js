@@ -51,6 +51,11 @@ function createDays() {
 startDay.on("input focus", createDays);
 $endDay.on("input focus", createDays);
 
+$("input,select").on("input change", function () {
+    console.log("testing");
+    toggleBtnAfterSave();
+});
+
 $(document).on("click", ".day-select-container button", function () {
     let value = $(this).text();
     let $container = $(this).closest(daySelectContainer);
