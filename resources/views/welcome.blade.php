@@ -56,7 +56,7 @@
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-bold">Featured Calculators</h2>
-            <a href="{{ url('/calculators') }}" class="text-sm text-brand hover:underline">View all</a>
+            <span class="text-sm text-brand hover:underline">View all</span>
         </div>
 
         <!-- @php

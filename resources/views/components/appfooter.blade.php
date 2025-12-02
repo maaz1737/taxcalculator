@@ -13,21 +13,21 @@
              <h4 class="mb-3 font-semibold">Sitemap</h4>
              <ul class="space-y-2 text-sm">
                  <li><a href="{{ url('/') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Home</a></li>
-                 <li><a href="{{ url('/calculators') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Calculators</a></li>
-                 <li><a href="{{ url('/categories') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Categories</a></li>
-                 <li><a href="{{ url('/docs') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Docs</a></li>
-                 <li><a href="{{ url('/pricing') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Pricing</a></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Calculators</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Categories</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Docs</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Pricing</span></li>
              </ul>
          </div>
 
          <div>
              <h4 class="mb-3 font-semibold">Categories</h4>
              <ul class="space-y-2 text-sm">
-                 <li><a href="{{ url('/categories/fitness') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Fitness</a></li>
-                 <li><a href="{{ url('/categories/finance') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Finance</a></li>
-                 <li><a href="{{ url('/categories/converters') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Converters</a></li>
-                 <li><a href="{{ url('/categories/health') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Health</a></li>
-                 <li><a href="{{ url('/categories/utilities') }}" class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Utilities</a></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Fitness</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Finance</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Converters</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Health</span></li>
+                 <li><span class="hover:text-emerald-100 hover:[text-shadow:0_0_6px_#34d399] transition">Utilities</span></li>
              </ul>
          </div>
 
