@@ -30,7 +30,9 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-
+Route::get('/quickcalculators', function () {
+    return view('quickCalculators.quick_calculator');
+})->name('quick.calculator');
 
 // In routes/web.php
 
@@ -65,6 +67,9 @@ Route::view('/home-loan-calculator', 'finance/mortgage')->name('finance.mortgage
 Route::view('/asset-depreciation-calculator', 'finance/depreciation')->name('finance.depreciation');
 Route::view('/rent-cost-calculator', 'finance.rent')->name('finance.rent');
 Route::view('/income-tax-calculator', 'finance.income-tax')->name('finance.income_tax');
+
+
+
 
 
 Route::view('/salary-calculator', 'finance.salary')->name('finance.salary');

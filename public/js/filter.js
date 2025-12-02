@@ -732,3 +732,48 @@ $(document).on("click", function (e) {
         closeSearch();
     }
 });
+
+const input = $(".sea");
+const list = $("#suggestions");
+let currentIndex = -1;
+
+// Only suggestion <li> elements
+let items = $("#suggestions li");
+
+// Keyboard navigation
+input.on("keydown", function (e) {
+    // Refresh items after filtering or changes
+    items = $("#suggestions li");
+
+    if (e.key === "ArrowDown") {
+        e.preventDefault();
+        moveSelection(1);
+    }
+
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        moveSelection(-1);
+    }
+
+    if (e.key === "Enter" && currentIndex >= 0) {
+        input.val(items.eq(currentIndex).text());
+        list.addClass("hidden");
+    }
+});
+
+function moveSelection(direction) {
+    // remove previous active
+    if (currentIndex >= 0) {
+        items.eq(currentIndex).removeClass("bg-red-500");
+    }
+
+    // update index
+    currentIndex += direction;
+
+    // boundaries
+    if (currentIndex < 0) currentIndex = items.length - 1;
+    if (currentIndex >= items.length) currentIndex = 0;
+
+    // add active class
+    items.eq(currentIndex).addClass("bg-red-500");
+}

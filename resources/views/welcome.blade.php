@@ -20,7 +20,7 @@
                 </p>
                 <div class="mt-6 flex gap-3">
                     <a id="browse-cal" href="" class="rounded-xl bg-yellow-500 px-5 py-3 text-white font-semibold hover:bg-yellow-600 transition">Browse Calculators</a>
-                    <a href="{{ route('home') }}" class="rounded-xl border border-emerald-200 px-5 py-3 text-white bg-emerald-800 hover:border-brand/30 hover:bg-emerald-900 transition dark:border-slate-700 dark:hover:bg-slate-800">Quick Calculators</a>
+                    <a href="{{ route('quick.calculator') }}" class="rounded-xl border border-emerald-200 px-5 py-3 text-white bg-emerald-800 hover:border-brand/30 hover:bg-emerald-900 transition dark:border-slate-700 dark:hover:bg-slate-800">Quick Calculators</a>
                 </div>
             </div>
             <div class="lg:justify-self-end">
@@ -59,7 +59,7 @@
             <a href="{{ url('/calculators') }}" class="text-sm text-brand hover:underline">View all</a>
         </div>
 
-        @php
+        <!-- @php
         $featured = [
         ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','data'=>'sciCalcModal'],
         ['id'=>'openPopupTaxCalculator','title'=>'Tax Calculator','tag'=>'Income Tax','summary'=>'Check your BMI & category','name'=>'Open tax Calculator','data'=>'popupTaxCalculator'],
@@ -73,6 +73,26 @@
         ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','data'=>'popupVolumeConverter'],
         ['id'=>'openPopupTemperatureConverter','title'=>'Temperature Calculator','tag'=>'Temperature','summary'=>'Temperature Converter','name'=>'Open Temperature Converter ','data'=>'popupTemperatureConverter'],
         ['id'=>'openPopupWeightConverter','title'=>'Weight Calculator','tag'=>'Weight','summary'=>'weight converter','name'=>'Open Weight Converter','data'=>'popupWeightConverter'],
+
+        ];
+        @endphp -->
+
+
+
+        @php
+        $featured = [
+        ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','url'=>'scientificcalculator'],
+        ['id'=>'openPopupTaxCalculator','title'=>'Tax Calculator','tag'=>'Income Tax','summary'=>'Check your BMI & category','name'=>'Open tax Calculator','url'=>'finance.income_tax'],
+        ['id'=>'openPopupSalaryCalculator','title'=>'Salary Calculator','tag'=>'Salary','summary'=>'Salary Calculator','name'=>'Open Salary Calculator','url'=>'finance.salary'],
+        ['id'=>'openPopupRentCalculator','title'=>'Rent Calculator','tag'=>'Rent','summary'=>'Rent Category','name'=>'Open Rent Calculator','url'=>'finance.rent'],
+        ['id'=>'openPopupDepreciationCalculator','title'=>'Depreciation Calculator','tag'=>'Depreciation','summary'=>'Check your BMI & category','name'=>'Open Depreciation Calculator','url'=>'finance.depreciation'],
+        ['id'=>'openPopupMortgageCalculator','title'=>'Mortgage Calculator','tag'=>'Mortgage','summary'=>'Mortgage Calculator','name'=>'Open Mortgage Calculator','url'=>'finance.mortgage'],
+        ['id'=>"openPopupLengthConverter",'title'=>'Length Converter','tag'=>'length','summary'=>'Convert Length','name'=>'Open length Calculator','url'=>'length'],
+        ['id'=>'openPopupTimeConverter','title'=>'Time Calculator','tag'=>'Time','summary'=>'Time Converter','name'=>'Open Time Converter','url'=>'time'],
+        ['id'=>'openPopupAreaConverterNew','title'=>'Area Converter','tag'=>'Area','summary'=>'Calculate area','name'=>'Open Area Converter','url'=>'area'],
+        ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','url'=>'volume'],
+        ['id'=>'openPopupTemperatureConverter','title'=>'Temperature Calculator','tag'=>'Temperature','summary'=>'Temperature Converter','name'=>'Open Temperature Converter ','url'=>'temperature'],
+        ['id'=>'openPopupWeightConverter','title'=>'Weight Calculator','tag'=>'Weight','summary'=>'weight converter','name'=>'Open Weight Converter','url'=>'weight'],
 
         ];
         @endphp

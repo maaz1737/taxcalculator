@@ -63,21 +63,66 @@
  <script src=" {{ asset('js/header.js') }}" defer></script>
  <script src="{{ asset('js/filter.js') }}" defer></script>
  <script src=" {{ asset('js/simplecalculator.js') }}" defer></script>
+
+
+
+ @if (request()->routeIs('area'))
  <script src=" {{ asset('js/area.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('weight'))
  <script src=" {{ asset('js/weight.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('volume'))
  <script src=" {{ asset('js/volume.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('temperature'))
  <script src=" {{ asset('js/temperature.js') }}" defer></script>
+ @endif
+
+
+ @if (request()->routeIs('time'))
  <script src=" {{ asset('js/time.js') }}" defer></script>
+ @endif
+
+
+ @if (request()->routeIs('length'))
  <script src=" {{ asset('js/length.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('finance.income_tax'))
  <script src=" {{ asset('js/taxcalculation.js') }}" defer></script>
+ @endif
+
+
+ @if (request()->routeIs('finance.rent'))
  <script src=" {{ asset('js/rent.js') }}" defer></script>
+ @endif
+
+
+ @if (request()->routeIs('finance.salary'))
  <script src=" {{ asset('js/salary.js') }}" defer></script>
+ @endif
+
+
+ @if (request()->routeIs('finance.mortgage'))
  <script src=" {{ asset('js/mortgage.js') }}" defer></script>
+ @endif
+
+ @if (request()->routeIs('finance.depreciation'))
  <script src=" {{ asset('js/depreciation.js') }}" defer></script>
+ @endif
+
+
  <script src=" {{ asset('js/simplecalculator.js') }}" defer></script>
+
+
+
+ @if (request()->routeIs('scientificcalculator'))
  <script src="{{ asset('js/scientificCalculator.js') }}" defer></script>
-
-
+ @endif
 
 
  @if (request()->routeIs('age.*'))

@@ -50,7 +50,12 @@ function createDays() {
 
 startDay.on("input focus", createDays);
 $endDay.on("input focus", createDays);
-
+startDay.on("change", function () {
+    toggleBtnAfterSave();
+});
+$endDay.on("change", function () {
+    toggleBtnAfterSave();
+});
 $("input,select").on("input change", function () {
     console.log("testing");
     toggleBtnAfterSave();
