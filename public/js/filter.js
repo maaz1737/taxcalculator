@@ -642,11 +642,15 @@ const suggestions = [
     },
 ];
 
-$(".sea").on("input change keyup", function () {
+$(".sea").on("input change keyup", function (e) {
     const $input = $(this);
     const query = $input.val().trim().toLowerCase();
     const $wrapper = $input.closest("#testing, #testing2");
     const $box = $wrapper.find(".suggestion");
+
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        return;
+    }
 
     $box.empty();
     if (query.length < 1) {
@@ -662,7 +666,7 @@ $(".sea").on("input change keyup", function () {
         matched.forEach((item) => {
             $box.append(`
         <li 
-          class="px-4 rounded-lg py-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
+          class="px-4  rounded-lg py-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
                  cursor-pointer text-gray-800 dark:text-gray-900 transition-colors duration-150"
           data-url="${item.url}"
         >
@@ -736,6 +740,7 @@ $(document).on("click", function (e) {
 const input = $(".sea");
 const list = $("#suggestions");
 let currentIndex = -1;
+const scrollAmount = 50;
 
 // Only suggestion <li> elements
 let items = $("#suggestions li");
@@ -747,33 +752,54 @@ input.on("keydown", function (e) {
 
     if (e.key === "ArrowDown") {
         e.preventDefault();
-        moveSelection(1);
+        moveSelection(1, items);
     }
 
     if (e.key === "ArrowUp") {
         e.preventDefault();
-        moveSelection(-1);
+        moveSelection(-1, items);
     }
 
     if (e.key === "Enter" && currentIndex >= 0) {
-        input.val(items.eq(currentIndex).text());
+        e.preventDefault();
+        input.val(items.eq(currentIndex).text().trim());
         list.addClass("hidden");
+        const url = $(items[currentIndex]).data("url");
+        if (url) window.location.href = url;
     }
 });
 
-function moveSelection(direction) {
-    // remove previous active
+function moveSelection(direction, items) {
+    if (items.length === 0) return;
+
     if (currentIndex >= 0) {
-        items.eq(currentIndex).removeClass("bg-red-500");
+        $(items[currentIndex]).removeClass("actives");
     }
 
-    // update index
     currentIndex += direction;
 
-    // boundaries
-    if (currentIndex < 0) currentIndex = items.length - 1;
-    if (currentIndex >= items.length) currentIndex = 0;
+    if (currentIndex < 0) {
+        currentIndex = items.length - 1;
 
-    // add active class
-    items.eq(currentIndex).addClass("bg-red-500");
+        $("#suggestions").scrollTop($("#suggestions")[0].scrollHeight);
+    } else if (currentIndex >= items.length) {
+        currentIndex = 0;
+
+        $("#suggestions").scrollTop(0);
+    }
+
+    const $current = $(items[currentIndex]);
+    $current.addClass("actives");
+    const container = $("#suggestions");
+    const containerHeight = container.height();
+    const scrollTop = container.scrollTop();
+    const elemTop = $current.position().top;
+    const elemHeight = $current.outerHeight();
+
+    // SCROLL LOGIC (standard up/down scrolling)
+    if (elemTop + elemHeight > containerHeight) {
+        container.scrollTop(scrollTop + elemHeight);
+    } else if (elemTop < 0) {
+        container.scrollTop(scrollTop - elemHeight);
+    }
 }
