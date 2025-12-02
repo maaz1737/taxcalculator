@@ -4,7 +4,7 @@
     :key="'scientific calculator, online calculator, sin cos tan, trigonometric calculator, math tools, advanced calculator'" />
 
 <div class="min-h-screen flex items-center justify-center transition-all duration-500
-    bg-emerald-50
+    bg-emerald-50 dark:bg-slate-900/70
     dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-3 sm:px-6 py-6">
 
     <!-- Calculator Container -->
