@@ -5,7 +5,7 @@
 
 @auth
 
-<div class="min-h-[400px] bg-gray-50 dark:bg-slate-900 py-10 px-4">
+<div class="min-h-[400px] bg-emerald-50 dark:bg-slate-900/70 py-10 px-4">
 
     <div class=" bg-gray-50/80 dark:bg-slate-900/80 backdrop-blur-md  mb-1 py-4">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
@@ -64,7 +64,7 @@
 
 
 @guest
-<div class="min-h-[calc(100vh-400px)] flex justify-center items-center">
+<div class="min-h-[calc(100vh-400px)] flex justify-center items-center bg-emerald-50 dark:bg-slate-900/70">
 
     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">
         Login To Use your favourite calculator
