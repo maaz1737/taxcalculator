@@ -1,24 +1,4 @@
 $(document).ready(function () {
-    let $closeTaxModel = $("#closeTaxModel");
-    let $openPopupTaxCalculator = $("#openPopupTaxCalculator");
-    let $popupTaxCalculator = $("#popupTaxCalculator");
-
-    $openPopupTaxCalculator.on("click", () => {
-        openModal($popupTaxCalculator);
-    });
-    $closeTaxModel.on("click", () => {
-        closeModal($popupTaxCalculator);
-    });
-    $popupTaxCalculator.on("click", function (e) {
-        if (e.target === $popupTaxCalculator[0])
-            closeModal($popupTaxCalculator);
-    });
-
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$popupTaxCalculator.hasClass("hidden")) {
-            closeModal($popupTaxCalculator);
-        }
-    });
     // ---------- Elements (meaningful names) ----------
     const incomeInputEl = $("#annualIncome");
     const levySelectEl = $("#levyPercent");

@@ -36,6 +36,13 @@ Route::get('/quick-calculators', function () {
 
 // In routes/web.php
 
+
+Route::get('/pricing', function () {
+    return view("price.pricing");
+})->name('price');
+
+
+
 // 1. Verification Notice (Controller constructor handles 'auth')
 Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
 
@@ -194,7 +201,21 @@ Route::get('/germany-time-now-berlin', [CountriesTimeController::class, 'germany
 Route::get('/france-time-now-paris', [CountriesTimeController::class, 'france_time'])->name('france.time');
 Route::get('/italy-time-now-rome', [CountriesTimeController::class, 'italy_time'])->name('italy.time');
 Route::get('/spain-time-now-madrid', [CountriesTimeController::class, 'spain_time'])->name('spain.time');
+Route::get('/qatar-time-now-doha', [CountriesTimeController::class, 'qatar_time'])->name('qatar.time');
+Route::get('/egypt-time-now-cairo', [CountriesTimeController::class, 'egypt_time'])->name('egypt.time');
+Route::get('/russia-time-now-moscow', [CountriesTimeController::class, 'russia_time'])->name('russia.time');
 
+Route::get('/current-time-singapore-singapore', [CountriesTimeController::class, 'singapore_time'])->name('singapore.time');
+
+Route::get('/current-time-thailand-bangkok', [CountriesTimeController::class, 'thailand_time'])->name('thailand.time');
+Route::get('/current-time-greece-athens', [CountriesTimeController::class, 'greece_time'])->name('greece.time');
+
+Route::get('/current-time-turkey-istanbul', [CountriesTimeController::class, 'turkey_time'])->name('turkey.time');
+
+Route::get('/current-time-norway-oslo', [CountriesTimeController::class, 'norway_time'])->name('norway.time');
+Route::get('/current-time-switzerland-zurich', [CountriesTimeController::class, 'switzerland_time'])->name('switzerland.time');
+
+Route::get('/current-time-ireland-dublin', [CountriesTimeController::class, 'ireland_time'])->name('ireland.time');
 
 
 Route::get('/day-counter', [DayCounterController::class, 'index'])->name('dayCounter.view');

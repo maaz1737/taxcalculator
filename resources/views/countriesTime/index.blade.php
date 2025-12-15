@@ -110,7 +110,62 @@
                     'name' => 'Spain Current Time',
                     'summary' => 'Check the current time in Madrid, Spain using our live online time converter. View Spanish local time, CET/CEST information, and the time difference with your region.',
                     'route' => 'spain.time'
+                ],
+                [
+                    'name' => 'Qatar Current Time',
+                    'summary' => 'Check the current time in Doha, Qatar using our live online time converter. View Qatar local time, AST information, and the time difference with your region.',
+                    'route' => 'qatar.time'
+                ],
+                [
+                    'name' => 'Egypt Current Time',
+                    'summary' => 'Check the current time in Cairo, Egypt using our live online time converter. View Egypt local time, EET information, and the time difference with your region.',
+                    'route' => 'egypt.time'
+                ],
+                [
+                    'name' => 'Russia Current Time',
+                    'summary' => 'Check the current time in Moscow, Russia using our live online time converter. View Russia local time, MSK information, and the time difference with your region.',
+                    'route' => 'russia.time'
+                ],
+                [
+                    'name' => 'Singapore Current Time',
+                    'summary' => 'Check current time in Singapore with our live online converter. View Singapore time now, SGT details, and time difference from your location.',
+                    'route' => 'singapore.time'
+                ],
+
+                [
+                    'name' => 'Thailand Current Time',
+                    'summary' => 'Check current time in Thailand with our live online converter. View Thailand time now, ICT details, and time difference from your location.',
+                    'route' => 'thailand.time'
+                ],
+                [
+                    'name' => 'Greece Current Time',
+                    'summary' => 'Check current time in Greece with our live online converter. View Greece time now, EET details, and time difference from your location.',
+                    'route' => 'greece.time'
+                ],
+                [
+                    'name' => 'Turkey Current Time',
+                    'summary' => 'Check current time in Turkey with our live online converter. View Turkey time now, TRT details, and time difference from your location.',
+                    'route' => 'turkey.time'
+                ],
+                [
+                    'name' => 'Switzerland Current Time',
+                    'summary' => 'Check current time in Switzerland with our live online converter. View Switzerland time now, CET details, and time difference from your location.',
+                    'route' => 'switzerland.time'
+                ],
+                [
+                    'name' => 'Norway Current Time',
+                    'summary' => 'Check current time in Norway with our live online converter. View Norway time now, CET details, and time difference from your location.',
+                    'route' => 'norway.time'
+                ],
+                [
+                    'name' => 'Ireland Current Time',
+                    'summary' => 'Check current time in Ireland with our live online converter. View Ireland time now, IST details, and time difference from your location.',
+                    'route' => 'ireland.time'
                 ]
+
+
+
+
             ];
 
             ?>

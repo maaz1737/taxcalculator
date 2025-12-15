@@ -1,31 +1,5 @@
 (function ($) {
     /* ===========================
-     * Modal: open/close (Volume Converter)
-     * =========================== */
-    const $openVolumeConverterBtn = $("#openPopupVolumeConverter");
-    const $closeVolumeConverterBtn = $("#closePopupVolumeConverter");
-    const $overlayVolumeConverter = $("#popupVolumeConverter");
-
-    $openVolumeConverterBtn.on("click", () => {
-        openModal($overlayVolumeConverter);
-    });
-    $closeVolumeConverterBtn.on("click", () => {
-        closeModal($overlayVolumeConverter);
-    });
-
-    // Close modal if clicking outside the content
-    $overlayVolumeConverter.on("click", function (e) {
-        if (e.target === $overlayVolumeConverter[0])
-            closeModal($overlayVolumeConverter);
-    });
-
-    // Close with Escape
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlayVolumeConverter.hasClass("hidden"))
-            closeModal($overlayVolumeConverter);
-    });
-
-    /* ===========================
      * DOM refs (Converter + History)
      * =========================== */
     const $elValue = $("#volume_value");

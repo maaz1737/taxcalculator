@@ -153,7 +153,7 @@
                     </div>
 
                     <a href="{{ route('favorites.calculators') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Favorites</a>
-                    <a href="/" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
+                    <a href="{{  route('checkout')  }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Pricing</a>
                 </nav>
             </div>
 

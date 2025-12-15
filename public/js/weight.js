@@ -1,23 +1,5 @@
 (function ($) {
     // open model logic here
-    const $openWeightConverterBtn = $("#openPopupWeightConverter");
-    const $closeWeightConverterBtn = $("#closePopupWeightConverter");
-    const $overlayWeightConverter = $("#popupWeightConverter");
-
-    $openWeightConverterBtn.on("click", () => {
-        openModal($overlayWeightConverter);
-    });
-    $closeWeightConverterBtn.on("click", () => {
-        closeModal($overlayWeightConverter);
-    });
-    $overlayWeightConverter.on("click", function (e) {
-        if (e.target === $overlayWeightConverter[0])
-            closeModal($overlayWeightConverter);
-    });
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlayWeightConverter.hasClass("hidden"))
-            closeModal($overlayWeightConverter);
-    });
 
     const $elValue = $("#weight_value");
     const $elFrom = $("#weight_from");

@@ -1,26 +1,5 @@
 (function ($) {
-    const $overlayLengthConverter = $("#popupLengthConverter");
     const $openLengthConverterBtn = $("#openPopupLengthConverter");
-    const $closeLengthConverterBtn =
-        $overlayLengthConverter.find(".close-popup");
-
-    $openLengthConverterBtn.on("click", () => {
-        openModal($overlayLengthConverter);
-    });
-    $closeLengthConverterBtn.on("click", () => {
-        closeModal($overlayLengthConverter);
-    });
-
-    $overlayLengthConverter.on("click", function (e) {
-        if (e.target === $overlayLengthConverter[0])
-            closeModal($overlayLengthConverter);
-    });
-
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlayLengthConverter.hasClass("hidden")) {
-            closeModal($overlayLengthConverter);
-        }
-    });
 
     const $elValue = $("#value");
     const $elFrom = $("#from");

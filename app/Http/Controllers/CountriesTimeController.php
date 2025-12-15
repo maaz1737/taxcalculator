@@ -86,4 +86,44 @@ class CountriesTimeController extends Controller
     {
         return view("countriesTime.spain_time");
     }
+    public function qatar_time()
+    {
+        return view("countriesTime.qatar_time");
+    }
+    public function egypt_time()
+    {
+        return view("countriesTime.egypt_time");
+    }
+    public function russia_time()
+    {
+        return view("countriesTime.russia_time");
+    }
+    public function singapore_time()
+    {
+        return view("countriesTime.singapore_time");
+    }
+    public function thailand_time()
+    {
+        return view("countriesTime.thailand_time");
+    }
+    public function greece_time()
+    {
+        return view("countriesTime.greece_time");
+    }
+    public function turkey_time()
+    {
+        return view("countriesTime.turkey_time");
+    }
+    public function norway_time()
+    {
+        return view("countriesTime.norway_time");
+    }
+    public function ireland_time()
+    {
+        return view("countriesTime.ireland_time");
+    }
+    public function switzerland_time()
+    {
+        return view("countriesTime.switzerland_time");
+    }
 }

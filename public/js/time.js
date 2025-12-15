@@ -20,28 +20,6 @@
     }
 
     /* ===========================
-     * Converter modal (open/close)
-     * =========================== */
-    const $openTimeConverterBtn = $("#openPopupTimeConverter");
-    const $closeTimeConverterBtn = $("#closePopupTimeConverter");
-    const $overlayTimeConverter = $("#popupTimeConverter");
-
-    $openTimeConverterBtn.on("click", () => {
-        openModal($overlayTimeConverter);
-    });
-    $closeTimeConverterBtn.on("click", () => {
-        closeModal($overlayTimeConverter);
-    });
-    $overlayTimeConverter.on("click", function (e) {
-        if (e.target === $overlayTimeConverter[0])
-            closeModal($overlayTimeConverter);
-    });
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlayTimeConverter.hasClass("hidden"))
-            closeModal($overlayTimeConverter);
-    });
-
-    /* ===========================
      * DOM refs
      * =========================== */
     const $btnSaveTime = $("#btnSaveTime");

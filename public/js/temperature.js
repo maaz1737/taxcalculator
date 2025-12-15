@@ -42,24 +42,6 @@
     const $table = $("#temperature_tableBody");
 
     //=============================
-    // CONVERTER MODAL (open/close)
-    //=============================
-
-    $openConv.on("click", () => {
-        openModal($overlay);
-    });
-    $closeConv.on("click", () => {
-        closeModal($overlay);
-    });
-    $overlay.on("click", function (e) {
-        if (e.target === $overlay[0]) closeModal($overlay);
-    });
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlay.hasClass("hidden"))
-            closeModal($overlay);
-    });
-
-    //=============================
     // HELPERS
     //=============================
     const csrf = () => $('meta[name="csrf-token"]').attr("content");
