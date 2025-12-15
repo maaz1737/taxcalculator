@@ -44,7 +44,6 @@ $(document).ready(function () {
     const $f = $("#salary-form");
     const $saveSalary = $("#saveSalary");
     const $error = $("#error");
-    const $overlay = $("#popupSalaryCalculator");
     const $levy_checkbox = $("#levy");
     let levy = 0;
     const fmt = new Intl.NumberFormat("en-US", {
@@ -76,15 +75,6 @@ $(document).ready(function () {
         other_allowances: valNum("#other_allowances"),
         include_breakdown: true,
         levy: levy,
-    });
-
-    $("#openPopupSalaryCalculator").on("click", () => {
-        $overlay.removeClass("hidden").attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    });
-    $("#closePopupSalaryCalculator").on("click", () => {
-        $overlay.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
     });
 
     function postJSON(url, data) {

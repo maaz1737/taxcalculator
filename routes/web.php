@@ -30,7 +30,7 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::get('/quickcalculators', function () {
+Route::get('/quick-calculators', function () {
     return view('quickCalculators.quick_calculator');
 })->name('quick.calculator');
 

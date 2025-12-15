@@ -127,10 +127,10 @@
             </div>
         </div>
 
-        <div class="p-6 border border-red-300 rounded-xl bg-red-100/30 dark:bg-slate-800 shadow-sm mt-6">
+        <div class="p-6 border border-red-300 dark:border-gray-500 rounded-xl bg-red-100/30 dark:bg-slate-800 shadow-sm mt-6">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Schedule (Yearly)</h3>
 
-            <div class="relative overflow-y-auto max-h-72 border border-red-200 rounded-lg">
+            <div class="relative overflow-y-auto max-h-72 border border-red-200 dark:border-gray-500 rounded-lg">
                 <table class="min-w-full text-sm border-collapse">
                     <thead class="bg-red-100 dark:bg-gray-800/60 sticky top-0 z-10 text-gray-700 dark:text-gray-300">
                         <tr class="border-b border-slate-200 dark:border-slate-800">

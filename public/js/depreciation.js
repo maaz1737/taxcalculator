@@ -53,20 +53,6 @@ $(function () {
         }, 2000);
     }
 
-    function openModal() {
-        $overlay.removeClass("hidden").attr("aria-hidden", "false");
-        $("body").css("overflow", "hidden");
-    }
-    function closeModal() {
-        $overlay.addClass("hidden").attr("aria-hidden", "true");
-        $("body").css("overflow", "");
-    }
-
-    $openBtn.on("click", openModal);
-    $closeBtn.on("click", closeModal);
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape") closeModal();
-    });
     var payload = () => {
         return {
             cost: Number($cost.val()),
@@ -79,7 +65,6 @@ $(function () {
     };
     function calc() {
         let x = payload();
-
         fetchData(x)
             .done(function (data) {
                 $deprSum.text(money(data.totals.depr_sum));

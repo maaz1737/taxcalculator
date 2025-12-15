@@ -58,27 +58,6 @@
             <h2 class="text-xl font-bold">Featured Calculators</h2>
             <span class="text-sm text-brand hover:underline">View all</span>
         </div>
-
-        <!-- @php
-        $featured = [
-        ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','data'=>'sciCalcModal'],
-        ['id'=>'openPopupTaxCalculator','title'=>'Tax Calculator','tag'=>'Income Tax','summary'=>'Check your BMI & category','name'=>'Open tax Calculator','data'=>'popupTaxCalculator'],
-        ['id'=>'openPopupSalaryCalculator','title'=>'Salary Calculator','tag'=>'Salary','summary'=>'Salary Calculator','name'=>'Open Salary Calculator','data'=>'popupSalaryCalculator'],
-        ['id'=>'openPopupRentCalculator','title'=>'Rent Calculator','tag'=>'Rent','summary'=>'Rent Category','name'=>'Open Rent Calculator','data'=>'popupRentCalculator'],
-        ['id'=>'openPopupDepreciationCalculator','title'=>'Depreciation Calculator','tag'=>'Depreciation','summary'=>'Check your BMI & category','name'=>'Open Depreciation Calculator','data'=>'popupDepreciationCalculator'],
-        ['id'=>'openPopupMortgageCalculator','title'=>'Mortgage Calculator','tag'=>'Mortgage','summary'=>'Mortgage Calculator','name'=>'Open Mortgage Calculator','data'=>'popupMortgageCalculator'],
-        ['id'=>"openPopupLengthConverter",'title'=>'Length Converter','tag'=>'length','summary'=>'Convert Length','name'=>'Open length Calculator','data'=>'popupLengthConverter'],
-        ['id'=>'openPopupTimeConverter','title'=>'Time Calculator','tag'=>'Time','summary'=>'Time Converter','name'=>'Open Time Converter','data'=>'popupTimeConverter'],
-        ['id'=>'openPopupAreaConverterNew','title'=>'Area Converter','tag'=>'Area','summary'=>'Calculate area','name'=>'Open Area Converter','data'=>'popupAreaConverterNew'],
-        ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','data'=>'popupVolumeConverter'],
-        ['id'=>'openPopupTemperatureConverter','title'=>'Temperature Calculator','tag'=>'Temperature','summary'=>'Temperature Converter','name'=>'Open Temperature Converter ','data'=>'popupTemperatureConverter'],
-        ['id'=>'openPopupWeightConverter','title'=>'Weight Calculator','tag'=>'Weight','summary'=>'weight converter','name'=>'Open Weight Converter','data'=>'popupWeightConverter'],
-
-        ];
-        @endphp -->
-
-
-
         @php
         $featured = [
         ['id'=>'openSciCalc','title'=>'Scientific Calculator','tag'=>'calculator','summary'=>'Open Scientific Calculator','name'=>'Open Scientific Calculator','url'=>'scientificcalculator'],
@@ -140,23 +119,6 @@
                 </div>
             </div>
         </section>
-        <!-- <button id="openSciCalc" data-modal-target='sciCalcModal'>dfdfdfdfd</button> -->
-
-
-        <x-scientificcalculator />
-
-        <x-lengthmodel />
-        <x-areamodel />
-        <x-weightmodel />
-        <x-temperaturemodel />
-        <x-timemodel />
-        <x-volumemodel />
-        <x-depreciationmodel />
-        <x-rentmodel />
-        <x-salarymodel />
-        <x-incometax />
-        <x-mortgagemodel />
-
 
 </main>
 

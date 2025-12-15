@@ -34,25 +34,6 @@
     });
     const fPct = (x) => (x * 100).toFixed(1) + "%";
 
-    // Modal open/close logic
-    const openModal = () => {
-        const overlayRentCalculator = document.getElementById(
-            "popupRentCalculator"
-        );
-        overlayRentCalculator.classList.remove("hidden");
-        overlayRentCalculator.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-    };
-
-    const closeModal = () => {
-        const overlayRentCalculator = document.getElementById(
-            "popupRentCalculator"
-        );
-        overlayRentCalculator.classList.add("hidden");
-        overlayRentCalculator.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-    };
-
     function showSuccessMessage(msg) {
         $("#rent-message").removeClass(
             "-translate-y-full opacity-0 text-red-700 bg-red-100 border-red-200 dark:text-red-300 dark:bg-red-900/30 dark:border-red-800"
@@ -85,15 +66,6 @@
     //     .addEventListener("click", openModal);
 
     // Close the modal when the close button is clicked
-
-    closePopupRentCalculator.on("click", closeModal);
-
-    // Close modal with 'Escape' key
-    $(document).on("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeModal();
-        }
-    });
 
     function toggleCustom() {
         if ($rule.val() === "custom_percent") $customWrap.show();
@@ -328,9 +300,7 @@
             $sheet.data("hideSheet", hide);
         }
 
-        $(function () {
-            historyInit("openHistoryRent", "historySheetRent");
-        });
+        historyInit("openHistoryRent", "historySheetRent");
     })(jQuery);
 
     let historyListRent = $("#historyListRent");

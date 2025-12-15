@@ -4,7 +4,7 @@
     :key="'Use our Quick Calculator button for instant access to the most commonly used calculators for basic, scientific, financial, and more functions.'" />
 
 
-<div class="bg-emerald-50 min-h-[70vh] flex items-center justify-center">
+<div class="bg-emerald-50 dark:bg-slate-900/30 min-h-[70vh] flex items-center justify-center">
     <div class="rounded-2xl border border-red-300 bg-red-100/30 p-6 shadow-card dark:bg-slate-800 dark:border-slate-700 w-[100%] lg:max-w-[70%] mx-auto">
         <div class="text-xl text-slate-500 mb-4">Quick Access</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">

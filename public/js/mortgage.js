@@ -1,27 +1,4 @@
 $(function () {
-    // ---------- Modal open/close ----------
-    const $openBtn = $("#openPopupMortgageCalculator");
-    const $closeBtn = $("#closePopupMortgageCalculator");
-    const $overlay = $("#popupMortgageCalculator");
-
-    $openBtn.on("click", () => {
-        openModal($overlay);
-    });
-    $closeBtn.on("click", () => {
-        closeModal($overlay);
-    });
-
-    $overlay.on("click", function (e) {
-        if (e.target === this) closeModal($overlay);
-    });
-
-    $(window).on("keydown", function (e) {
-        if (e.key === "Escape" && !$overlay.hasClass("hidden"))
-            closeModal($overlay);
-    });
-
-    $overlay.addClass("hidden").attr("aria-hidden", "true");
-
     // ---------- Element refs ----------
     const $price = $("#mortgage_price");
     const $down = $("#mortgage_down_amount");
