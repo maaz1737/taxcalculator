@@ -284,7 +284,7 @@
                 <span>Pricing</span>
             </a>
 
-            <a href="{{route('world.time')}}"  class="sidebar-item">
+            <a href="{{route('world.time')}}" class="sidebar-item">
                 <i class="fa-solid fa-globe"></i>
                 <span>Global Time</span>
             </a>

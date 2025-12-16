@@ -13,7 +13,7 @@
             ['name'=>'length Converter','desc'=>'length Conversion Calculator','href'=>'length'],
             ['name'=>'Tax calculator','desc'=>'Smart Tax Calculator','href'=>'finance.income_tax'],
 
-            ['name'=>'BMI Calculator','desc'=>'Body Mass Index','href'=>'fitness.bmi'],
+            ['name'=>'Wight Calculator','desc'=>'Weight Conversion Calculator','href'=>'weight'],
             ['name'=>'Scientific Calculator','desc'=>'Scientific Calculations','href'=>'scientificcalculator'],
             ['name'=>'BMI','desc'=>'Body Mass Index','href'=>'fitness.bmi'],
 

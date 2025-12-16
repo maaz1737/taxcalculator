@@ -89,7 +89,7 @@
                 </button>
             </div>
         </div>
-        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center justify-between  rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm px-5 py-5">
+        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center justify-between  rounded-2xl border border-yellow-300 bg-yellow-100/30 dark:from-slate-800/90 dark:to-slate-900/70 shadow-sm px-5 py-5 dark:border-slate-700 dark:bg-slate-800">
             <div class="flex items-center justify-between mb-3">
                 <div>
                     <div class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Result</div>

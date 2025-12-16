@@ -1,9 +1,9 @@
 <x-app
 
-    :title="'title'"
-    :key="'title'"
-    :des="'title'"
-    :tittleTwitter="'title'"></x-app>
+    :title="'Smart Online Calculators – Fast, Accurate & Free'"
+    :key="'online calculators, free calculators, math tools, financial calculators, conversion calculators'"
+    :des="'Explore a collection of free online calculators for math, finance, health, and everyday conversions, designed for quick, accurate answers in your browser.'"
+    :tittleTwitter="'Smart Online Calculators for Everyday Use – Free & Instant Results'"></x-app>
 
 
 
