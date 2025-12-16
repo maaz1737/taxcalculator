@@ -41,6 +41,9 @@ Route::get('/pricing', function () {
     return view("price.pricing");
 })->name('price');
 
+Route::get('/about-calculators', function () {
+    return view("about.about");
+})->name('about.us');
 
 
 // 1. Verification Notice (Controller constructor handles 'auth')

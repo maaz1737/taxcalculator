@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="{{ asset('css/model.css') }}">
 
     <link rel="icon" sizes="32x32" type="image/png" href="https://quickcalculateit.com/images/staticimages/logo_2.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -97,6 +97,27 @@
         .actives {
             background-color: rgba(88, 177, 37, 1);
         }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .sidebar-item i {
+            font-size: 18px;
+            width: 22px;
+            text-align: center;
+            display: block;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateX(4px);
+        }
     </style>
 
 </head>
@@ -105,19 +126,26 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-40 border-b border-white/10 bg-emerald-800  backdrop-blur-md dark:bg-slate-900/70">
-        <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between ">
+        <div class="mx-auto w-full max-w-full px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between ">
             <!-- Left Section: Logo + Nav -->
             <div class="flex items-center gap-4 flex-shrink-0">
-                <!-- LOGO -->
-                <a href="{{ url('/') }}" class="flex items-center gap-2 min-w-[70px]">
-                    <div class="text-brand grid place-items-center font-extrabold">
+                <div class="hidden lg:block">
+                    <div class="text-brand grid place-items-center font-extrabold ">
                         <img class="w-[55px] sm:w-[65px] object-contain" src="{{ asset('images/staticimages/logo_2.png') }}" alt="calculator logo" />
                     </div>
-                </a>
+                </div>
+                <button id="show-sidebar" class=" flex items-center gap-2 min-w-[70px] block lg:hidden">
+                    <svg width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
 
-
-                <nav class="hidden md:flex items-center gap-2 text-sm relative flex-wrap text-white">
+                <nav class="hidden lg:flex items-center gap-2 text-sm relative flex-wrap text-white">
                     <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Home</a>
+                    <a href="{{ route('about.us') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">About</a>
+
+                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Contact</a>
+
                     <a href="{{route('world.time')}}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Global Time</a>
 
                     <div class="relative">
@@ -202,3 +230,95 @@
         <ul class="suggestion hidden max-h-[40vh] overflow-y-hidden rounded-lg absolute left-2 top-16 bg-gray-100 border border-emerald-800 text-gray-700"></ul>
     </div>
     <x-simplecalculator />
+
+
+    <div id="sidebar"
+        class="fixed top-0 left-[-100%] z-[40] h-screen w-[85vw] sm:w-[320px]
+            bg-gradient-to-b from-slate-800 to-slate-900
+            text-white px-5 py-6 shadow-2xl
+            transition-all duration-700 ease-in-out">
+
+
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b border-white/20 pb-4 mb-6">
+            <img class="w-[60px] object-contain"
+                src="{{ asset('images/staticimages/logo_2.png') }}"
+                alt="calculator logo" />
+
+            <button class="p-2 rounded-full hover:bg-white/20 transition">
+                <svg fill="currentColor" height="22px" viewBox="0 0 20 20" width="22px">
+                    <path d="M11.273 10l5.363-5.363a.9.9 0 10-1.273-1.273L10 8.727 
+                         4.637 3.364a.9.9 0 10-1.273 1.273L8.727 10
+                         l-5.363 5.363a.9.9 0 101.274 1.273L10 11.273
+                         l5.363 5.363a.897.897 0 001.274 0
+                         .9.9 0 000-1.273L11.275 10z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu -->
+        <nav class="space-y-2 text-sm font-medium">
+
+            <a href="{{ url('/') }}" class="sidebar-item">
+                <i class="fa-regular fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="{{ route('about.us') }}" class="sidebar-item">
+                <i class="fa-regular fa-address-card"></i>
+                <span>About</span>
+            </a>
+
+            <a href="#" class="sidebar-item">
+                <i class="fa-regular fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+
+            <a href="#" class="sidebar-item">
+                <i class="fa-solid fa-icons"></i>
+                <span>Categories</span>
+            </a>
+
+            <a href="#" class="sidebar-item">
+                <i class="fa-solid fa-tag"></i>
+                <span>Pricing</span>
+            </a>
+
+            <a href="{{route('world.time')}}"  class="sidebar-item">
+                <i class="fa-solid fa-globe"></i>
+                <span>Global Time</span>
+            </a>
+
+            <a href="{{ route('favorites.calculators') }}" class="sidebar-item">
+                <i class="fa-regular fa-heart"></i>
+                <span>Favourite</span>
+            </a>
+
+        </nav>
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+
+            // Show sidebar
+            $("#show-sidebar").on("click", function() {
+                $("#sidebar")
+                    .removeClass("left-[-100%] opacity-0")
+                    .addClass("left-0 opacity-100 ");
+
+                $("body").css("overflow", "hidden");
+            });
+
+            // Hide sidebar (close button)
+            $("#sidebar button").on("click", function() {
+                $("#sidebar")
+                    .removeClass("left-0 opacity-100")
+                    .addClass("left-[-100%] opacity-0");
+
+                $("body").css("overflow", "");
+
+            });
+
+        });
+    </script>
