@@ -144,20 +144,20 @@
                     <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Home</a>
                     <a href="{{ route('about.us') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">About</a>
 
-                    <a href="{{ url('/') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Contact</a>
+                    <a href="{{ route('contact.index') }}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Contact</a>
 
                     <a href="{{route('world.time')}}" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white">Global Time</a>
 
                     <div class="relative">
-                        <button id="categories-btn" class="transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">
+                        <button id="" class="categories-btn transition px-3 py-2 hover:bg-emerald-900 dark:hover:bg-red-500 rounded-md hover:text-white flex items-center gap-1">
                             Categories
                             <svg class="w-4 h-4 transition-transform" id="caret-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
 
-                        <div id="categories-menu"
-                            class="absolute  top-full max-h-[50vh] overflow-y-scroll  left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md hover:text-white shadow-md hidden">
+                        <div id=""
+                            class="categories-menu absolute  top-full max-h-[50vh] overflow-y-scroll  left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md text-gray-900 shadow-md hidden">
                             <a href="{{ route('length') }}" class="block px-4 py-2 hover:bg-gray-100">Length Calculator</a>
                             <a href="{{ route('area') }}" class="block px-4 py-2 hover:bg-gray-100">Area Calculator</a>
                             <a href="{{ route('time') }}" class="block px-4 py-2 hover:bg-gray-100">Time Calculator</a>
@@ -269,15 +269,23 @@
                 <span>About</span>
             </a>
 
-            <a href="#" class="sidebar-item">
+            <a href="{{ route('contact.index') }}" class="sidebar-item">
                 <i class="fa-regular fa-address-book"></i>
                 <span>Contact</span>
             </a>
 
-            <a href="#" class="sidebar-item">
-                <i class="fa-solid fa-icons"></i>
-                <span>Categories</span>
-            </a>
+            <div class="relative">
+                <a class="sidebar-item categories-btn">
+                    <i class="fa-solid fa-icons"></i>
+                    <span>Categories</span>
+                </a>
+                <div class="categories-menu absolute top-8 left-20 bg-gray-100 text-gray-800 flex flex-col  px-1 py-4 rounded hidden">
+
+                    <a href="{{ route('math.measurement') }}" class="py-2 hover:bg-gray-300 rounded-md px-8 py-1 inline-block">Math and Measurement</a>
+                    <a href="{{ route('tax.finance') }}" class="py-2 hover:bg-gray-300 rounded-md px-8 py-1 inline-block">Finance and Tax</a>
+                    <a href="{{ route('health.fitness') }}" class="py-2 hover:bg-gray-300 rounded-md px-8 py-1 inline-block">Health and Fitness</a>
+                </div>
+            </div>
 
             <a href="#" class="sidebar-item">
                 <i class="fa-solid fa-tag"></i>

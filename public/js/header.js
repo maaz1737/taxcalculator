@@ -1,14 +1,20 @@
-const btn = $("#categories-btn");
-const menu = $("#categories-menu");
+const menu = $(".categories-menu");
 const caret = $("#caret-icon");
 
-btn.on("click", (e) => {
+const btn = $(".categories-btn");
+
+btn.on("click", function (e) {
     e.stopPropagation();
-    menu.toggleClass("hidden");
-    btn.toggleClass("active");
+    let showHide = $(this).closest(".relative").find(".categories-menu");
+    showHide.toggleClass("hidden");
+    caret.addClass("active");
 });
 
-$(document).on("click", () => {
-    menu.addClass("hidden");
-    btn.removeClass("active");
+$(".categories-menu").on("click", function (e) {
+    e.stopPropagation();
+});
+
+$(document).on("click", function () {
+    $(".categories-menu").addClass("hidden");
+    caret.removeClass("active");
 });

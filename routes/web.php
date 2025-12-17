@@ -4,6 +4,7 @@ use App\Http\Controllers\AgeController;
 use App\Http\Controllers\AiSuggestController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ConvertController;
 use App\Http\Controllers\CountriesTimeController;
 use App\Http\Controllers\DayCounterController;
@@ -45,6 +46,8 @@ Route::get('/about-calculators', function () {
     return view("about.about");
 })->name('about.us');
 
+
+Route::resource('contact', ContactController::class);
 
 // 1. Verification Notice (Controller constructor handles 'auth')
 Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');

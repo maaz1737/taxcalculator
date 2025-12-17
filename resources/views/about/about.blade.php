@@ -10,7 +10,7 @@
 <div class="bg-emerald-50 dark:bg-slate-900/30 text-justify">
     <div class="max-w-[50%] lg:max-w-[60%] mx-auto py-10  leading-5 font-light dark:text-gray-300" style="word-spacing: 4px;">
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">About Our Online Calculator Hub</h1>
             <div>
                 <p class="my-2">
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Everyday Converters for Quick Wins</h1>
             <div>
                 <p class="my-2">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Scientific Tools for Study and Problem-Solving</h1>
             <div>
                 <p class="my-2">
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Financial Calculators That Make Sense</h1>
             <div>
                 <p class="my-2">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Live World Clock for Global Time Zones</h1>
             <div>
                 <p class="my-2">
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Why People Choose Our Free Calculators</h1>
             <div>
                 <p class="my-2">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded border border-red-300 dark:border-gray-600 dark:bg-slate-800">
+        <div class="mb-4 bg-red-100/70 p-3 lg:py-6 lg:px-10 rounded-md border border-red-300 dark:border-gray-600 dark:bg-slate-800">
             <h1 class="font-semibold text-lg">Premium Subscription: Save and Revisit Your Work</h1>
             <div>
                 <p class="my-2">
