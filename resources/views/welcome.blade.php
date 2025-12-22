@@ -72,6 +72,7 @@
         ['id'=>'openPopupVolumeConverter','title'=>'volume Calculator','tag'=>'volume','summary'=>'volume converter','name'=>'Open Volume Converter','url'=>'volume'],
         ['id'=>'openPopupTemperatureConverter','title'=>'Temperature Calculator','tag'=>'Temperature','summary'=>'Temperature Converter','name'=>'Open Temperature Converter ','url'=>'temperature'],
         ['id'=>'openPopupWeightConverter','title'=>'Weight Calculator','tag'=>'Weight','summary'=>'weight converter','name'=>'Open Weight Converter','url'=>'weight'],
+        ['id'=>'Day Calculator','title'=>'Day Calculator','tag'=>'Day Calculator','summary'=>'Day Calculator','name'=>'Open Day Calculator','url'=>'dayCounter.view'],
 
         ];
         @endphp

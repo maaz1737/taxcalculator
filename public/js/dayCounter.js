@@ -42,7 +42,7 @@ function createDays() {
     );
     let options = "";
     for (let i = 1; i <= 31; i++) {
-        options += `<button class="col-span-1 py-1 bg-white rounded shadow" value="${i}">${i}</button>`;
+        options += `<button class="col-span-1 py-1 bg-white rounded shadow text-gray-900" value="${i}">${i}</button>`;
     }
     $div.html(options);
     $(this).closest(daySelectContainer).append($div);
