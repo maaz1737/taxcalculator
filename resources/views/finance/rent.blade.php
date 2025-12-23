@@ -162,7 +162,7 @@
         <div class="mt-8 px-6 py-5 space-y-4 rounded-xl border border-red-300 bg-red-100/30 dark:border-slate-700 dark:bg-slate-800">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Rent Affordability & Income Ratio Explained</h2>
             <p class="text-sm text-gray-700 dark:text-gray-300">
-                Understanding how rent is calculated helps you make smarter financial decisions. Our <strong>Rent Calculator</strong> uses your <strong>monthly income</strong>, <strong>debts</strong>, and <strong>savings goals</strong> to estimate what rent you can comfortably afford.
+                Our <strong>Rent Calculator</strong> looks at your <strong>monthly income</strong>, any <strong>existing debts</strong>, and your <strong>savings goals</strong> to give you a realistic idea of how much <strong>rent you can comfortably afford</strong>. It’s designed to help you find a <strong>rental home</strong> that fits your <strong>lifestyle</strong> without stretching your <strong>budget</strong> too thin.
                 This method helps both <strong>tenants</strong> and <strong>landlords</strong> determine fair and affordable rental payments while maintaining a healthy financial balance.
             </p>
 

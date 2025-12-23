@@ -221,7 +221,7 @@
 
                 <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">
                     Australian income tax is calculated differently for <strong>individual taxpayers</strong> and <strong>companies</strong>.
-                    Individuals use a marginal tax rate system, while companies are taxed at a flat rate.
+                    In Australia, individuals pay tax according to their income. People who earn more are taxed at higher rates. Companies pay tax at a single rate on all the money they earn. This means that whether a company is very small or very large, the same percentage of their total profits is taken as tax.
                     Below is a breakdown of how each category is taxed according to the latest Australian tax rules.
                 </p>
 
@@ -230,7 +230,7 @@
                         <h4 class="font-medium text-gray-900 dark:text-white">Individual Tax (Residents)</h4>
                         <ul class="mt-1 list-disc pl-5 space-y-1">
                             <li>Tax calculated based on <strong>Australian marginal tax brackets</strong>.</li>
-                            <li><strong>Medicare levy</strong> (usually 2%) is added unless exempt.</li>
+                            <li><strong>Medicare levy</strong> (generally 2%) applies to most taxpayers, except those who are exempt.</li>
                             <li>Eligible <strong>tax offsets</strong> like LITO reduce payable tax.</li>
                             <li>Used for personal tax returns, PAYG tax, salary calculations.</li>
                         </ul>
@@ -297,7 +297,7 @@
 
                 <ol class="list-decimal pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-2">
                     <li>Start with your <strong>taxable income</strong> after deductions.</li>
-                    <li>Apply <strong>Australian marginal tax brackets</strong> (resident/non-resident rules).</li>
+                    <li>Apply <strong>Australian marginal tax brackets</strong>, meaning income is taxed in stages, with different rates for residents and non-residents.</li>
                     <li>For companies, apply <strong>flat company tax rate</strong>.</li>
                     <li>Apply eligible <strong>tax offsets</strong> such as LITO or SAPTO.</li>
                     <li>Add <strong>Medicare levy</strong> (if applicable).</li>

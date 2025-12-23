@@ -155,10 +155,7 @@
 
         <!-- Explanation Section -->
         <p class=" tracking-wide text-sm text-gray-700 dark:text-gray-300 mt-8 bg-red-100/30 dark:bg-slate-800 p-4 rounded-lg border border-red-300 dark:border-slate-500">
-            Understanding how your salary is calculated is essential when reviewing your income in Australia.
-            Whether you’re converting <strong>Gross to Net salary</strong> (before-tax income to take-home pay)
-            or <strong>Net to Gross</strong> (take-home pay back to total salary), Australian tax rules, superannuation, and Medicare levy all affect your final income.
-            This Salary Calculator Australia uses accurate tax brackets, deductions, and superannuation details to estimate your take-home pay in seconds.
+            It’s important to know how your <strong>salary</strong> is calculated so you can better understand your <strong>income in Australia</strong>. Whether you’re converting <strong>gross salary to net pay</strong> (your <strong>income before tax</strong> into what you actually <strong>take home</strong>) or working backwards from <strong>net pay to gross salary</strong> (your <strong>take-home amount</strong> back to your <strong>total earnings</strong>), factors such as <strong>Australian tax rates</strong>, <strong>compulsory superannuation contributions</strong>, and the <strong>Medicare levy</strong> all play an important role in determining your <strong>final income</strong>. This <strong>Salary Calculator Australia</strong> uses <strong>accurate tax brackets</strong>, <strong>deductions</strong>, and <strong>superannuation details</strong> to estimate your <strong>take-home pay</strong> in seconds.
         </p>
 
         <div class=" tracking-wide text-sm text-gray-700 dark:text-gray-300 mt-8 bg-red-100/30 dark:bg-slate-800 p-4 rounded-lg border border-red-300 dark:border-slate-500">

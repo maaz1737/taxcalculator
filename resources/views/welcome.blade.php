@@ -103,7 +103,7 @@
         </section>
 
         <!-- Why BRAND -->
-        <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 ">
             <h2 class="text-xl font-bold mb-4">Why QuickCalculateIt</h2>
             <div class="grid gap-4 md:grid-cols-3">
                 <div class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700">
@@ -120,6 +120,72 @@
                 </div>
             </div>
         </section>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h1 class="font-semibold mb-1">Welcome to QuickCalculate</h1>
+                <p>
+                    QuickCalculate is a simple and user-friendly platform that provides a collection of online calculators designed to make everyday calculations quick, accurate, and hassle-free. Designed for students, professionals, and anyone who needs quick answers.
+                </p>
+            </section>
+
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h2 class="font-semibold mb-1">About Our Calculator Website</h2>
+                <p>
+                    In daily life , we work with calculations from managing finances to calculating age and time . Our website brings multiple calculators in one place by eliminating the need to download apps or search different websites.
+                </p>
+
+                <p>All calculators on this platform are:</p>
+                <ul class="pl-5" style="list-style-type: disc ;">
+                    <li>Easy to use</li>
+                    <li>Free of cost</li>
+                    <li>Accurate and fast</li>
+                    <li>Accessible on all devices</li>
+                </ul>
+            </section>
+
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h2 class="font-semibold mb-1">Available Calculators</h2>
+                <p>
+                    We offer a variety of useful calculators, including but not limited to:
+                </p>
+
+                <ul>
+                    <li><strong>Age Calculator</strong> – This calculator helps to Calculate your exact age in years, months, and days</li>
+                    <li><strong>Time Duration</strong> – you can calculate time duration between two dates.</li>
+                    <li><strong>Date & Time Calculators</strong> – Find differences between dates or time periods</li>
+                    <li><strong>Finance Calculators</strong> – Simple tools for basic financial calculations</li>
+                </ul>
+
+                <p>
+                    New calculators are added regularly to enhance functionality and improve user experience.
+                </p>
+            </section>
+
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h2 class="font-semibold mb-1">Why Choose Our Calculators?</h2>
+                <ul class="pl-5" style="list-style-type:disc;">
+                    <li>No registration required</li>
+                    <li>Instant and accurate results</li>
+                    <li>Simple and clean interface</li>
+                    <li>Designed for real-world use</li>
+                </ul>
+            </section>
+
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h2 class="font-semibold mb-1">Our Mission</h2>
+                <p>
+                    Our aim is to make calculations easier for everyone by providing accurate, quick, and accessible online tools. Users can get the results they need without confusion.
+                </p>
+            </section>
+
+            <section class="rounded-2xl border border-red-300 bg-red-100/30 p-5 shadow-card dark:bg-slate-800 dark:border-slate-700 my-4">
+                <h2 class="font-semibold mb-1">Get Started</h2>
+                <p>
+                    Start using our calculators today and make your calculations effortless. Simply select a calculator from the menu and get instant results.
+                </p>
+            </section>
+
+        </div>
 
 </main>
 
