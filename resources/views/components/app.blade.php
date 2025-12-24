@@ -46,7 +46,7 @@
     <link rel="icon" sizes="32x32" type="image/png" href="https://quickcalculateit.com/images/staticimages/logo_2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+    <meta name="google-adsense-account" content="ca-pub-1263009657725166">
 
     <script>
         tailwind = undefined; // quiet SSR linters

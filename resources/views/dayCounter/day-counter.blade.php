@@ -189,7 +189,7 @@
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Day Counter Calculator – Calculate Days, Weeks, Hours, Minutes & Seconds Between Two Dates</h2>
                 <div
                     class="">
-                    Welcome to the Day Counter Calculator, your easy-to-use online tool designed to quickly find the total number of days between any two dates. Simply enter a start date and an end date to get an accurate, detailed breakdown including weeks, hours, minutes, and seconds.
+                    Welcome to the Day Counter Calculator! This is a very easy-to-use tool. you can easily count the number of days between two dates and also shows you the time difference in weeks, hours, minutes, and seconds.
                 </div>
             </div>
 
@@ -200,9 +200,14 @@
                 </h2>
                 <div
                     class="">
-                    Enter the Start Date – The beginning date of your time period.
-                    Enter the End Date – The ending date you want to calculate up to.
-                    Click the Calculate button to instantly see the difference broken down into days, weeks, hours, minutes, and seconds.
+                    <ul class="pl-5 list-disc">
+                        <li> <strong>Enter the Start Date –</strong> The beginning date of your time period that you want to calculate.</li>
+                        <li> <strong>Enter the End Date –</strong> The ending date up to which you want to calculate. We include a checkbox where the user can select whether they want to include the end date or not.</li>
+                        <li> After entering the start and end dates, click the calculate button to see the results in days, as well as in years, weeks, months, minutes, and seconds.</li>
+
+
+
+                    </ul>
                 </div>
             </div>
             <div class="mt-6 rounded-2xl border border-yellow-200 bg-yellow-100/30 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)] 
@@ -210,10 +215,19 @@
                 dark:border-slate-700 dark:bg-slate-800 shadow-sm p-5 text-sm text-gray-700 dark:text-gray-300">
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Why Use Our Day Counter Calculator?</h2>
                 <div>
-                    Accurate Results: Get precise calculations for days and every time unit in between, helping with scheduling, planning, and time management.
-                    Fast and Simple: No complicated forms—just enter two dates and get instant results.
-                    Free and Accessible: Use this tool anytime on any device without registration or cost.
-                    Perfect for Various Uses: Ideal for project planning, vacation countdowns, event durations, or age calculations.
+                    <p>
+                        <span class="font-semibold"> Accurate Results:</span>
+                        Get precise calculations for days and every time unit in between, helping with scheduling, planning, and time management.
+                    </p>
+                    <p>
+                        <span class="font-semibold">Fast and Simple:</span>
+                        No complicated forms—just enter two dates and get instant results.
+                    </p>
+                    <p>
+                        <span class="font-semibold">Free and Accessible:</span>
+                        Use this tool anytime on any device without registration or cost.
+                        Perfect for Various Uses: Ideal for project planning, vacation countdowns, event durations, or age calculations.
+                    </p>
                 </div>
             </div>
             <div class="mt-6 rounded-2xl border border-yellow-200 bg-yellow-100/30 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)] 
@@ -222,10 +236,12 @@
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3"> Features of Our Date Difference Calculator
                 </h2>
                 <div>
-                    Calculates the exact number of days between two dates.
-                    Provides additional breakdowns in weeks, hours, minutes, and seconds.
-                    User-friendly interface for easy navigation.
-                    Supports all valid date formats to ensure flexibility.
+                    <ul class="list-disc pl-3">
+                        <li> Calculates the exact number of days between two dates.</li>
+                        <li> Provides additional breakdowns in weeks, hours, minutes, and seconds.</li>
+                        <li> User-friendly interface for easy navigation.</li>
+                        <li> Supports all valid date formats to ensure flexibility.</li>
+                    </ul>
                 </div>
             </div>
             <div class="mt-6 rounded-2xl border border-yellow-200 bg-yellow-100/30 hover:shadow-[0_4px_12px_rgba(250,204,21,0.25)] 

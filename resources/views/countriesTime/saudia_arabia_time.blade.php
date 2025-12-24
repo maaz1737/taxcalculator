@@ -47,11 +47,11 @@
         </p>
 
         <p class="text-gray-800 leading-relaxed mb-4 dark:text-gray-200">
-            Saudi time is important for business meetings, travel planning, Gulf trading hours, airline schedules, and live prayer times. Use this converter to compare <strong>Saudi Arabia time vs your local time</strong> easily.
+            Saudi time is important for business meetings, travel planning, Gulf trading hours, airline schedules, and live prayer times. Use our live time tracker to compare <strong>Saudi Arabia time with your local time</strong> easily.
         </p>
 
         <p class="text-gray-800 leading-relaxed dark:text-gray-200">
-            This live clock provides real-time updates, including current day, date, and full 24-hour or 12-hour format for Riyadh time.
+            Our live clock provides real-time updates, including current day, date, and full 24-hour or 12-hour format for Riyadh time.
         </p>
     </div>
 </div>
